@@ -1,5 +1,6 @@
 package com.cloudht.cont.controller;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -22,7 +23,7 @@ import com.sxyht.common.utils.Query;
 import com.sxyht.common.utils.R;
 
 /**
- * 
+ * 类别表
  * 
  * @author yuxueling
  * @email 980899486@qq.com
@@ -32,17 +33,13 @@ import com.sxyht.common.utils.R;
 @Controller
 @RequestMapping("/cont/contCategory")
 public class ContCategoryController extends BaseController{
-	@Autowired
-	private ContCategoryService contCategoryService;
-	
+	@Autowired private ContCategoryService contCategoryService;
 	@GetMapping()
 	@RequiresPermissions("cont:contCategory:contCategory")
 	String ContCategory(){
 	    return "cont/contCategory/contCategory";
 	}
-	
-	@ResponseBody
-	@GetMapping("/list")
+	@GetMapping("/list") @ResponseBody
 	@RequiresPermissions("cont:contCategory:contCategory")
 	public PageUtils list(@RequestParam Map<String, Object> params){
 		//查询列表数据
@@ -74,9 +71,11 @@ public class ContCategoryController extends BaseController{
 	@PostMapping("/save")
 	@RequiresPermissions("cont:contCategory:add")
 	public R save( ContCategoryDO contCategory){
-		if(contCategoryService.save(contCategory)>0){
+		contCategory.setCreateBy(getUserId());
+		contCategory.setGmtCreate(new Date());
+		contCategory.setGmtModified(new Date());
+		if(contCategoryService.save(contCategory)>0)
 			return R.ok();
-		}
 		return R.error();
 	}
 	/**
@@ -86,6 +85,7 @@ public class ContCategoryController extends BaseController{
 	@RequestMapping("/update")
 	@RequiresPermissions("cont:contCategory:edit")
 	public R update( ContCategoryDO contCategory){
+		contCategory.setGmtModified(new Date());
 		contCategoryService.update(contCategory);
 		return R.ok();
 	}
@@ -97,9 +97,8 @@ public class ContCategoryController extends BaseController{
 	@ResponseBody
 	@RequiresPermissions("cont:contCategory:remove")
 	public R remove( Integer contCategoryId){
-		if(contCategoryService.remove(contCategoryId)>0){
-		return R.ok();
-		}
+		if(contCategoryService.remove(contCategoryId)>0)
+			return R.ok();
 		return R.error();
 	}
 	
