@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8">
+<head th:include="include :: header"></head>
+<body class="gray-bg">
+	<div class="wrapper wrapper-content ">
+		<div class="row">
+			<div class="col-sm-12">
+				<div class="ibox float-e-margins">
+					<div class="ibox-content">
+						<form class="form-horizontal m-t" id="signupForm">
+						<input id="cont_product_info_id" name="cont_product_info_id" th:value="${contProductInfo.cont_product_info_id}"  type="hidden">
+							<div class="form-group">	
+								<label class="col-sm-3 control-label">产品主键：</label>
+								<div class="col-sm-8">
+									<input id="contProductId" name="contProductId" th:value="${contProductInfo.contProductId}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">语种：字段表（CmsLangType）：</label>
+								<div class="col-sm-8">
+									<input id="langType" name="langType" th:value="${contProductInfo.langType}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">标题：</label>
+								<div class="col-sm-8">
+									<input id="productName" name="productName" th:value="${contProductInfo.productName}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">简介：</label>
+								<div class="col-sm-8">
+									<input id="productDesc" name="productDesc" th:value="${contProductInfo.productDesc}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">详情：</label>
+								<div class="col-sm-8">
+									<input id="details" name="details" th:value="${contProductInfo.details}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">产品关键词：</label>
+								<div class="col-sm-8">
+									<input id="productKeywords" name="productKeywords" th:value="${contProductInfo.productKeywords}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">SEO关键词：</label>
+								<div class="col-sm-8">
+									<input id="seoKeywords" name="seoKeywords" th:value="${contProductInfo.seoKeywords}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">SEO产品描述：</label>
+								<div class="col-sm-8">
+									<input id="seoDesc" name="seoDesc" th:value="${contProductInfo.seoDesc}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">SEO标题：</label>
+								<div class="col-sm-8">
+									<input id="seoTitle" name="seoTitle" th:value="${contProductInfo.seoTitle}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">创建用户id：</label>
+								<div class="col-sm-8">
+									<input id="createBy" name="createBy" th:value="${contProductInfo.createBy}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">创建时间：</label>
+								<div class="col-sm-8">
+									<input id="gmtCreate" name="gmtCreate" th:value="${contProductInfo.gmtCreate}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">修改时间：</label>
+								<div class="col-sm-8">
+									<input id="gmtModified" name="gmtModified" th:value="${contProductInfo.gmtModified}" class="form-control" type="text">
+								</div>
+							</div>
+																					<div class="form-group">
+								<div class="col-sm-8 col-sm-offset-3">
+									<button type="submit" class="btn btn-primary">提交</button>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+	</div>
+	</div>
+	<div th:include="include::footer"></div>
+	<script type="text/javascript" src="/js/appjs/cont/contProductInfo/edit.js">
+	</script>
+</body>
+</html>

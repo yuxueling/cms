@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.cloudht.cont.dao.ContProductParamDao">
+
+	<select id="get" resultType="com.cloudht.cont.domain.ContProductParamDO">
+		select `cont_product_param_id`,`cont_product_id`,`lang_type`,`param_name`,`limit_num`,`create_by`,`gmt_create`,`gmt_modified` from cont_product_param where cont_product_param_id = #{value}
+	</select>
+
+	<select id="list" resultType="com.cloudht.cont.domain.ContProductParamDO">
+		select `cont_product_param_id`,`cont_product_id`,`lang_type`,`param_name`,`limit_num`,`create_by`,`gmt_create`,`gmt_modified` from cont_product_param
+        <where>  
+		  		  <if test="contProductParamId != null and contProductParamId != ''"> and cont_product_param_id = #{contProductParamId} </if>
+		  		  <if test="contProductId != null and contProductId != ''"> and cont_product_id = #{contProductId} </if>
+		  		  <if test="langType != null and langType != ''"> and lang_type = #{langType} </if>
+		  		  <if test="paramName != null and paramName != ''"> and param_name = #{paramName} </if>
+		  		  <if test="limitNum != null and limitNum != ''"> and limit_num = #{limitNum} </if>
+		  		  <if test="createBy != null and createBy != ''"> and create_by = #{createBy} </if>
+		  		  <if test="gmtCreate != null and gmtCreate != ''"> and gmt_create = #{gmtCreate} </if>
+		  		  <if test="gmtModified != null and gmtModified != ''"> and gmt_modified = #{gmtModified} </if>
+		  		</where>
+        <choose>
+            <when test="sort != null and sort.trim() != ''">
+                order by ${sort} ${order}
+            </when>
+			<otherwise>
+                order by cont_product_param_id desc
+			</otherwise>
+        </choose>
+		<if test="offset != null and limit != null">
+			limit #{offset}, #{limit}
+		</if>
+	</select>
+	
+ 	<select id="count" resultType="int">
+		select count(*) from cont_product_param
+		 <where>  
+		  		  <if test="contProductParamId != null and contProductParamId != ''"> and cont_product_param_id = #{contProductParamId} </if>
+		  		  <if test="contProductId != null and contProductId != ''"> and cont_product_id = #{contProductId} </if>
+		  		  <if test="langType != null and langType != ''"> and lang_type = #{langType} </if>
+		  		  <if test="paramName != null and paramName != ''"> and param_name = #{paramName} </if>
+		  		  <if test="limitNum != null and limitNum != ''"> and limit_num = #{limitNum} </if>
+		  		  <if test="createBy != null and createBy != ''"> and create_by = #{createBy} </if>
+		  		  <if test="gmtCreate != null and gmtCreate != ''"> and gmt_create = #{gmtCreate} </if>
+		  		  <if test="gmtModified != null and gmtModified != ''"> and gmt_modified = #{gmtModified} </if>
+		  		</where>
+	</select>
+	 
+	<insert id="save" parameterType="com.cloudht.cont.domain.ContProductParamDO">
+		insert into cont_product_param
+		(
+			`cont_product_param_id`, 
+			`cont_product_id`, 
+			`lang_type`, 
+			`param_name`, 
+			`limit_num`, 
+			`create_by`, 
+			`gmt_create`, 
+			`gmt_modified`
+		)
+		values
+		(
+			#{contProductParamId}, 
+			#{contProductId}, 
+			#{langType}, 
+			#{paramName}, 
+			#{limitNum}, 
+			#{createBy}, 
+			#{gmtCreate}, 
+			#{gmtModified}
+		)
+	</insert>
+	 
+	<update id="update" parameterType="com.cloudht.cont.domain.ContProductParamDO">
+		update cont_product_param 
+		<set>
+			<if test="contProductId != null">`cont_product_id` = #{contProductId}, </if>
+			<if test="langType != null">`lang_type` = #{langType}, </if>
+			<if test="paramName != null">`param_name` = #{paramName}, </if>
+			<if test="limitNum != null">`limit_num` = #{limitNum}, </if>
+			<if test="createBy != null">`create_by` = #{createBy}, </if>
+			<if test="gmtCreate != null">`gmt_create` = #{gmtCreate}, </if>
+			<if test="gmtModified != null">`gmt_modified` = #{gmtModified}</if>
+		</set>
+		where cont_product_param_id = #{contProductParamId}
+	</update>
+	
+	<delete id="remove">
+		delete from cont_product_param where cont_product_param_id = #{value}
+	</delete>
+	
+	<delete id="batchRemove">
+		delete from cont_product_param where cont_product_param_id in 
+		<foreach item="contProductParamId" collection="array" open="(" separator="," close=")">
+			#{contProductParamId}
+		</foreach>
+	</delete>
+
+</mapper>

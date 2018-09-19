@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.cloudht.cont.dao.ContCategoryDao">
+
+	<select id="get" resultType="com.cloudht.cont.domain.ContCategoryDO">
+		select `cont_category_id`,`category_type`,`parent_category_id`,`category_name`,`create_by`,`gmt_create`,`gmt_modified` from cont_category where cont_category_id = #{value}
+	</select>
+
+	<select id="list" resultType="com.cloudht.cont.domain.ContCategoryDO">
+		select `cont_category_id`,`category_type`,`parent_category_id`,`category_name`,`create_by`,`gmt_create`,`gmt_modified` from cont_category
+        <where>  
+		  		  <if test="contCategoryId != null and contCategoryId != ''"> and cont_category_id = #{contCategoryId} </if>
+		  		  <if test="categoryType != null and categoryType != ''"> and category_type = #{categoryType} </if>
+		  		  <if test="parentCategoryId != null and parentCategoryId != ''"> and parent_category_id = #{parentCategoryId} </if>
+		  		  <if test="categoryName != null and categoryName != ''"> and category_name = #{categoryName} </if>
+		  		  <if test="createBy != null and createBy != ''"> and create_by = #{createBy} </if>
+		  		  <if test="gmtCreate != null and gmtCreate != ''"> and gmt_create = #{gmtCreate} </if>
+		  		  <if test="gmtModified != null and gmtModified != ''"> and gmt_modified = #{gmtModified} </if>
+		  		</where>
+        <choose>
+            <when test="sort != null and sort.trim() != ''">
+                order by ${sort} ${order}
+            </when>
+			<otherwise>
+                order by cont_category_id desc
+			</otherwise>
+        </choose>
+		<if test="offset != null and limit != null">
+			limit #{offset}, #{limit}
+		</if>
+	</select>
+	
+ 	<select id="count" resultType="int">
+		select count(*) from cont_category
+		 <where>  
+		  		  <if test="contCategoryId != null and contCategoryId != ''"> and cont_category_id = #{contCategoryId} </if>
+		  		  <if test="categoryType != null and categoryType != ''"> and category_type = #{categoryType} </if>
+		  		  <if test="parentCategoryId != null and parentCategoryId != ''"> and parent_category_id = #{parentCategoryId} </if>
+		  		  <if test="categoryName != null and categoryName != ''"> and category_name = #{categoryName} </if>
+		  		  <if test="createBy != null and createBy != ''"> and create_by = #{createBy} </if>
+		  		  <if test="gmtCreate != null and gmtCreate != ''"> and gmt_create = #{gmtCreate} </if>
+		  		  <if test="gmtModified != null and gmtModified != ''"> and gmt_modified = #{gmtModified} </if>
+		  		</where>
+	</select>
+	 
+	<insert id="save" parameterType="com.cloudht.cont.domain.ContCategoryDO" useGeneratedKeys="true" keyProperty="contCategoryId">
+		insert into cont_category
+		(
+			`category_type`, 
+			`parent_category_id`, 
+			`category_name`, 
+			`create_by`, 
+			`gmt_create`, 
+			`gmt_modified`
+		)
+		values
+		(
+			#{categoryType}, 
+			#{parentCategoryId}, 
+			#{categoryName}, 
+			#{createBy}, 
+			#{gmtCreate}, 
+			#{gmtModified}
+		)
+	</insert>
+	 
+	<update id="update" parameterType="com.cloudht.cont.domain.ContCategoryDO">
+		update cont_category 
+		<set>
+			<if test="categoryType != null">`category_type` = #{categoryType}, </if>
+			<if test="parentCategoryId != null">`parent_category_id` = #{parentCategoryId}, </if>
+			<if test="categoryName != null">`category_name` = #{categoryName}, </if>
+			<if test="createBy != null">`create_by` = #{createBy}, </if>
+			<if test="gmtCreate != null">`gmt_create` = #{gmtCreate}, </if>
+			<if test="gmtModified != null">`gmt_modified` = #{gmtModified}</if>
+		</set>
+		where cont_category_id = #{contCategoryId}
+	</update>
+	
+	<delete id="remove">
+		delete from cont_category where cont_category_id = #{value}
+	</delete>
+	
+	<delete id="batchRemove">
+		delete from cont_category where cont_category_id in 
+		<foreach item="contCategoryId" collection="array" open="(" separator="," close=")">
+			#{contCategoryId}
+		</foreach>
+	</delete>
+
+</mapper>
