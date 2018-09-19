@@ -43,39 +43,30 @@ function load() {
 						// pageSize, pageNumber, searchText, sortName,
 						// sortOrder.
 						// 返回false将会终止请求
-						columns : [
-								{
+						columns : [{
 									checkbox : true
-								},
-																{
-									field : 'contProductId', 
-									title : '' 
-								},
-																{
+								},{
 									field : 'productName', 
 									title : '产品名称' 
-								},
-																{
+								},{
 									field : 'categoryId', 
 									title : '所属分类：0表示顶级' 
-								},
-																{
+								},{
 									field : 'saleStatus', 
-									title : '销售状态：0-下架，1-上架' 
-								},
-																{
+									title : '销售状态' ,
+									formatter : function(value, row, index) {
+										return {'0':'下架','1':'正常'}[value];
+									}
+								},{
 									field : 'createBy', 
 									title : '创建用户id' 
-								},
-																{
+								},{
 									field : 'gmtCreate', 
 									title : '创建时间' 
-								},
-																{
+								},{
 									field : 'gmtModified', 
 									title : '修改时间' 
-								},
-																{
+								},{
 									title : '操作',
 									field : 'id',
 									align : 'center',
@@ -107,23 +98,16 @@ function add() {
 		content : prefix + '/add' // iframe的url
 	});
 }
-
 function singleSelect() {
-
     var rows = $('#exampleTable').bootstrapTable('getSelections'); // 返回所有选择的行，当没有选择的记录时，返回一个空数组
     if (rows.length == 0 || rows.length > 1) {
         layer.msg("请选择一条数据");
         return;
     }
-
     return rows[0];
-
 }
-
 function setInfo() {
-
 	var contProductId=singleSelect().contProductId;
-
     layer.open({
         type : 2,
         title : '产品基本信息',
@@ -133,12 +117,8 @@ function setInfo() {
         content : prefix + '/setInfo/'+contProductId // iframe的url
     });
 }
-
-
 function setImg() {
-
     var contProductId=singleSelect().contProductId;
-
     layer.open({
         type : 2,
         title : '产品图片',
@@ -148,12 +128,8 @@ function setImg() {
         content : prefix + '/setImg/'+contProductId // iframe的url
     });
 }
-
-
 function setParams() {
-
     var contProductId=singleSelect().contProductId;
-
     layer.open({
         type : 2,
         title : '产品参数',
@@ -163,8 +139,6 @@ function setParams() {
         content : prefix + '/setParams/'+contProductId // iframe的url
     });
 }
-
-
 function edit(id) {
 	layer.open({
 		type : 2,
@@ -196,7 +170,6 @@ function remove(id) {
 		});
 	})
 }
-
 function resetPwd(id) {
 }
 function batchRemove() {
@@ -230,6 +203,5 @@ function batchRemove() {
 			}
 		});
 	}, function() {
-
 	});
 }
