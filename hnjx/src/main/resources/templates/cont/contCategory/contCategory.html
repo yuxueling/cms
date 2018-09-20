@@ -9,7 +9,7 @@
 				<div class="ibox-body">
 					<div class="fixed-table-toolbar">
 						<div class="columns pull-left">
-							<button shiro:hasPermission="cont:contCategory:add" type="button" class="btn  btn-primary" onclick="add()">
+							<button shiro:hasPermission="cont:contCategory:add" type="button" class="btn  btn-primary" onclick="add('0')">
 								<i class="fa fa-plus" aria-hidden="true"></i>添加
 							</button>
 							<button shiro:hasPermission="cont:contCategory:batchRemove" type="button" class="btn  btn-danger"
@@ -37,6 +37,12 @@
 				var s_edit_h = 'hidden';
 				var s_remove_h = 'hidden';
 				var s_resetPwd_h = 'hidden';
+				var s_add_h = 'hidden';
+			</script>
+		</div>
+		<div shiro:hasPermission="cont:contCategory:add">
+			<script type="text/javascript">
+				s_add_h = '';
 			</script>
 		</div>
 		<div shiro:hasPermission="cont:contCategory:edit">
