@@ -37,10 +37,8 @@ public class XssFilter implements Filter {
   
     @Override
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain filterChain) throws IOException,ServletException {
-    	if(logger.isDebugEnabled()){
+    	if(logger.isDebugEnabled())
   			logger.debug("xss filter is open");
-  		}
-  		
   		HttpServletRequest req = (HttpServletRequest) request;
 		HttpServletResponse resp = (HttpServletResponse) response;
   		if(handleExcludeURL(req, resp)){
@@ -54,32 +52,25 @@ public class XssFilter implements Filter {
     
     private boolean handleExcludeURL(HttpServletRequest request, HttpServletResponse response) {
 
-		if (excludes == null || excludes.isEmpty()) {
+		if (excludes == null || excludes.isEmpty()) 
 			return false;
-		}
-
 		String url = request.getServletPath();
 		for (String pattern : excludes) {
 			Pattern p = Pattern.compile("^" + pattern);
 			Matcher m = p.matcher(url);
-			if (m.find()) {
+			if (m.find()) 
 				return true;
-			}
 		}
-
 		return false;
 	}
 
 	@Override
 	public void init(FilterConfig filterConfig) throws ServletException {
-		if(logger.isDebugEnabled()){
+		if(logger.isDebugEnabled())
 			logger.debug("xss filter init~~~~~~~~~~~~");
-		}
 		String isIncludeRichText = filterConfig.getInitParameter("isIncludeRichText");
-		if(StringUtils.isNotBlank(isIncludeRichText)){
+		if(StringUtils.isNotBlank(isIncludeRichText))
 			IS_INCLUDE_RICH_TEXT = BooleanUtils.toBoolean(isIncludeRichText);
-		}
-		
 		String temp = filterConfig.getInitParameter("excludes");
 		if (temp != null) {
 			String[] url = temp.split(",");

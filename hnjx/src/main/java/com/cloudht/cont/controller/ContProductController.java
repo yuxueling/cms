@@ -13,11 +13,9 @@ import com.cloudht.cont.service.ContProductInfoService;
 import com.cloudht.cont.service.ContProductParamService;
 import com.cloudht.system.domain.UserDO;
 import com.sxyht.common.utils.ShiroUtils;
-import org.apache.catalina.User;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -170,10 +168,11 @@ public class ContProductController extends BaseController {
     @GetMapping("/setImg/{contProductId}")
     @RequiresPermissions("cont:contProduct:add")
     String setImg(@PathVariable("contProductId") Integer contProductId,Model model){
-        Map<String,Object> map=new HashMap<>();
+       /* Map<String,Object> map=new HashMap<>();
         map.put("contProductId",contProductId);
         List<ContProductImgDO> list = contProductImgService.list(map);
-        model.addAttribute("rows",list);
+        model.addAttribute("rows",list);*/
+        model.addAttribute("contProductId",contProductId);
         return "cont/contProduct/setImg";
     }
 

@@ -4,15 +4,16 @@
 <mapper namespace="com.cloudht.cont.dao.ContProductImgDao">
 
 	<select id="get" resultType="com.cloudht.cont.domain.ContProductImgDO">
-		select `cont_product_img_id`,`cont_product_id`,`img_url` from cont_product_img where cont_product_img_id = #{value}
+		select `cont_product_img_id`,`cont_product_id`,`img_url`,`sort` from cont_product_img where cont_product_img_id = #{value}
 	</select>
 
 	<select id="list" resultType="com.cloudht.cont.domain.ContProductImgDO">
-		select `cont_product_img_id`,`cont_product_id`,`img_url` from cont_product_img
+		select `cont_product_img_id`,`cont_product_id`,`img_url`,`sort` from cont_product_img
         <where>  
 		  		  <if test="contProductImgId != null and contProductImgId != ''"> and cont_product_img_id = #{contProductImgId} </if>
 		  		  <if test="contProductId != null and contProductId != ''"> and cont_product_id = #{contProductId} </if>
 		  		  <if test="imgUrl != null and imgUrl != ''"> and img_url = #{imgUrl} </if>
+		  		  <if test="sort != null and sort != ''"> and sort = #{sort} </if>
 		  		</where>
         <choose>
             <when test="sort != null and sort.trim() != ''">
@@ -33,6 +34,7 @@
 		  		  <if test="contProductImgId != null and contProductImgId != ''"> and cont_product_img_id = #{contProductImgId} </if>
 		  		  <if test="contProductId != null and contProductId != ''"> and cont_product_id = #{contProductId} </if>
 		  		  <if test="imgUrl != null and imgUrl != ''"> and img_url = #{imgUrl} </if>
+		  		  <if test="sort != null and sort != ''"> and sort = #{sort} </if>
 		  		</where>
 	</select>
 	 
@@ -40,12 +42,14 @@
 		insert into cont_product_img
 		(
 			`cont_product_id`, 
-			`img_url`
+			`img_url`, 
+			`sort`
 		)
 		values
 		(
 			#{contProductId}, 
-			#{imgUrl}
+			#{imgUrl}, 
+			#{sort}
 		)
 	</insert>
 	 
@@ -53,7 +57,8 @@
 		update cont_product_img 
 		<set>
 			<if test="contProductId != null">`cont_product_id` = #{contProductId}, </if>
-			<if test="imgUrl != null">`img_url` = #{imgUrl}</if>
+			<if test="imgUrl != null">`img_url` = #{imgUrl}, </if>
+			<if test="sort != null">`sort` = #{sort}</if>
 		</set>
 		where cont_product_img_id = #{contProductImgId}
 	</update>

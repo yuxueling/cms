@@ -29,14 +29,12 @@ public class XssHttpServletRequestWrapper extends HttpServletRequestWrapper {
     @Override  
     public String getParameter(String name) {
         Boolean flag = ("content".equals(name) || name.endsWith("WithHtml"));
-        if( flag && !isIncludeRichText){
+        if( flag && !isIncludeRichText)
             return super.getParameter(name);
-        }
         name = JsoupUtil.clean(name);
         String value = super.getParameter(name);  
-        if (StringUtils.isNotBlank(value)) {
+        if (StringUtils.isNotBlank(value))
             value = JsoupUtil.clean(value);  
-        }
         return value;  
     }  
     
@@ -51,7 +49,6 @@ public class XssHttpServletRequestWrapper extends HttpServletRequestWrapper {
     	return arr;
     }
     
-  
     /** 
     * 覆盖getHeader方法，将参数名和参数值都做xss过滤。<br/> 
     * 如果需要获得原始的值，则通过super.getHeaders(name)来获取<br/> 
@@ -61,9 +58,8 @@ public class XssHttpServletRequestWrapper extends HttpServletRequestWrapper {
     public String getHeader(String name) {  
         name = JsoupUtil.clean(name);
         String value = super.getHeader(name);  
-        if (StringUtils.isNotBlank(value)) {  
+        if (StringUtils.isNotBlank(value))
             value = JsoupUtil.clean(value); 
-        }  
         return value;  
     }  
   
@@ -82,11 +78,8 @@ public class XssHttpServletRequestWrapper extends HttpServletRequestWrapper {
     * @return 
     */  
     public static HttpServletRequest getOrgRequest(HttpServletRequest req) {  
-        if (req instanceof XssHttpServletRequestWrapper) {  
+        if (req instanceof XssHttpServletRequestWrapper)  
             return ((XssHttpServletRequestWrapper) req).getOrgRequest();  
-        }  
-  
         return req;  
-    }  
-  
+    }
 }  
