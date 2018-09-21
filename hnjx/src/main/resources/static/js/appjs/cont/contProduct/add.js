@@ -36,14 +36,26 @@ function validateRule() {
 	var icon = "<i class='fa fa-times-circle'></i> ";
 	$("#signupForm").validate({
 		rules : {
-			name : {
+			productName : {
 				required : true
 			}
 		},
 		messages : {
-			name : {
-				required : icon + "请输入姓名"
+			productName : {
+				required : icon + "请输入产品名称"
 			}
 		}
 	})
+}
+function openCategory(){
+	layer.open({
+		type:2,
+		title:"选择分类",
+		area : [ '300px', '450px' ],
+		content:"/cont/contCategory/treeView"
+	})
+}
+function loadCategory( categoryId,categoryName){
+	$("#categoryId").val(categoryId);
+	$("#categoryName").val(categoryName);
 }

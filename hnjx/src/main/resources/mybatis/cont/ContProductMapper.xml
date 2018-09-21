@@ -88,5 +88,43 @@
 			#{contProductId}
 		</foreach>
 	</delete>
+	<select id="leftCategoryList" resultType="com.cloudht.cont.domain.ContProductDO">
+		select pd.cont_product_id,pd.product_name,pd.category_id,pd.sale_status,pd.create_by,
+		pd.gmt_create,pd.gmt_modified,cg.category_name
+		from cont_product as pd left join cont_category as cg on pd.category_id=cg.cont_category_id
+        <where>  
+	  		<if test="contProductId != null and contProductId != ''"> and pd.cont_product_id = #{contProductId} </if>
+	  		<if test="productName != null and productName != ''"> and pd.product_name = #{productName} </if>
+	  		<if test="categoryId != null and categoryId != ''"> and pd.category_id = #{categoryId} </if>
+	  		<if test="saleStatus != null and saleStatus != ''"> and pd.sale_status = #{saleStatus} </if>
+	  		<if test="createBy != null and createBy != ''"> and pd.create_by = #{createBy} </if>
+	  		<if test="gmtCreate != null and gmtCreate != ''"> and pd.gmt_create = #{gmtCreate} </if>
+	  		<if test="gmtModified != null and gmtModified != ''"> and pd.gmt_modified = #{gmtModified} </if>
+  		</where>
+        <choose>
+            <when test="sort != null and sort.trim() != ''">
+                order by ${sort} ${order}
+            </when>
+			<otherwise>
+                order by cont_product_id desc
+			</otherwise>
+        </choose>
+		<if test="offset != null and limit != null">
+			limit #{offset}, #{limit}
+		</if>
+	</select>
+	<select id="leftCategoryListCount" resultType="int">
+		select count(*) 
+		from cont_product as pd left join cont_category as cg on pd.category_id=cg.cont_category_id
+        <where>  
+	  		<if test="contProductId != null and contProductId != ''"> and pd.cont_product_id = #{contProductId} </if>
+	  		<if test="productName != null and productName != ''"> and pd.product_name = #{productName} </if>
+	  		<if test="categoryId != null and categoryId != ''"> and pd.category_id = #{categoryId} </if>
+	  		<if test="saleStatus != null and saleStatus != ''"> and pd.sale_status = #{saleStatus} </if>
+	  		<if test="createBy != null and createBy != ''"> and pd.create_by = #{createBy} </if>
+	  		<if test="gmtCreate != null and gmtCreate != ''"> and pd.gmt_create = #{gmtCreate} </if>
+	  		<if test="gmtModified != null and gmtModified != ''"> and pd.gmt_modified = #{gmtModified} </if>
+  		</where>
+	</select>
 
 </mapper>

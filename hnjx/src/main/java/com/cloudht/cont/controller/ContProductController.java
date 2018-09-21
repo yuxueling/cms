@@ -79,6 +79,11 @@ public class ContProductController extends BaseController {
 		return pageUtils;
 	}
 	
+	@GetMapping("/leftCategoryList") @RequiresPermissions("cont:contProduct:contProduct")
+	public @ResponseBody PageUtils leftCategoryList(@RequestParam Map<String, Object> params){
+		return this.contProductService.leftCategoryList(params);
+	}
+	
 	@GetMapping("/add")
 	@RequiresPermissions("cont:contProduct:add")
 	String add(){

@@ -58,13 +58,13 @@ public class DeptServiceImpl implements DeptService {
 
 	@Override
 	public Tree<DeptDO> getTree() {
-		List<Tree<DeptDO>> trees = new ArrayList<Tree<DeptDO>>();
-		List<DeptDO> sysDepts = sysDeptMapper.list(new HashMap<String,Object>(16));
-		for (DeptDO sysDept : sysDepts) {
-			Tree<DeptDO> tree = new Tree<DeptDO>();
-			tree.setId(sysDept.getDeptId().toString());
-			tree.setParentId(sysDept.getParentId().toString());
-			tree.setText(sysDept.getName());
+		List<Tree<DeptDO>> trees = new ArrayList<Tree<DeptDO>>();//创建一个tree的集合
+		List<DeptDO> sysDepts = sysDeptMapper.list(new HashMap<String,Object>(16));//获取所有部门
+		for (DeptDO sysDept : sysDepts) {//遍历每一个部门，将每个部门转换为tree
+			Tree<DeptDO> tree = new Tree<DeptDO>();//创建一个tree的实例
+			tree.setId(sysDept.getDeptId().toString());//设置tree的id
+			tree.setParentId(sysDept.getParentId().toString());//设置tree的父id
+			tree.setText(sysDept.getName());//设置
 			Map<String, Object> state = new HashMap<>(16);
 			state.put("opened", true);
 			tree.setState(state);

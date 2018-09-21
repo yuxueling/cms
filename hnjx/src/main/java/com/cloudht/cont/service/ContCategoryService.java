@@ -1,5 +1,6 @@
 package com.cloudht.cont.service;
 
+import com.cloudht.common.domain.Tree;
 import com.cloudht.cont.domain.ContCategoryDO;
 
 import java.util.List;
@@ -27,4 +28,7 @@ public interface ContCategoryService {
 	int remove(Integer contCategoryId);
 	
 	int batchRemove(Integer[] contCategoryIds);
+
+	Tree<ContCategoryDO> getTree();
+
 }

@@ -29,4 +29,8 @@ public interface ContProductDao {
 	int remove(Integer cont_product_id);
 	
 	int batchRemove(Integer[] contProductIds);
+	
+	List<ContProductDO> leftCategoryList(Map<String, Object> map);
+	
+	int leftCategoryListCount(Map<String, Object> map);
 }

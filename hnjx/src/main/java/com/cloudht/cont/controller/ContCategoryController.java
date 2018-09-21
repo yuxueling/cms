@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.cloudht.common.controller.BaseController;
 import com.cloudht.common.domain.DictDO;
+import com.cloudht.common.domain.Tree;
 import com.cloudht.common.service.DictService;
 import com.cloudht.cont.domain.ContCategoryDO;
 import com.cloudht.cont.service.ContCategoryService;
@@ -136,5 +137,17 @@ public class ContCategoryController extends BaseController{
 		contCategoryService.batchRemove(contCategoryIds);
 		return R.ok();
 	}
-	
+	/**
+	 * 选择分类
+	 */
+	public @GetMapping("/treeView") String treeView() {
+		return  "/cont/contCategory/categoryTree";
+	}
+	/**
+	 * 加载分类
+	 * @return
+	 */
+	@GetMapping("/tree") @ResponseBody Tree<ContCategoryDO> tree() {
+		return this.contCategoryService.getTree();
+	}
 }

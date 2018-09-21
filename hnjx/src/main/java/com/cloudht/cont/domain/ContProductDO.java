@@ -29,7 +29,22 @@ public class ContProductDO implements Serializable {
 	private Date gmtCreate;
 	//修改时间
 	private Date gmtModified;
-
+	//类型名称，辅助查询字段，该数据库表里没有
+	private String categoryName;
+	/**
+	 * 类型名称，辅助查询字段，该数据库表里没有
+	 * @return
+	 */
+	public String getCategoryName() {
+		return categoryName;
+	}
+	/**
+	 * 类型名称，辅助查询字段，该数据库表里没有
+	 * @param categoryName
+	 */
+	public void setCategoryName(String categoryName) {
+		this.categoryName = categoryName;
+	}
 	/**
 	 * 设置：
 	 */

@@ -9,7 +9,7 @@ function load() {
 			.bootstrapTable(
 					{
 						method : 'get', // 服务器数据的请求方式 get or post
-						url : prefix + "/list", // 服务器数据的加载地址
+						url : prefix + "/leftCategoryList", // 服务器数据的加载地址
 					//	showRefresh : true,
 					//	showToggle : true,
 					//	showColumns : true,
@@ -49,8 +49,8 @@ function load() {
 									field : 'productName', 
 									title : '产品名称' 
 								},{
-									field : 'categoryId', 
-									title : '所属分类：0表示顶级' 
+									field : 'categoryName', 
+									title : '分类名称' 
 								},{
 									field : 'saleStatus', 
 									title : '销售状态' ,
@@ -107,7 +107,6 @@ function singleSelect() {
     return rows[0];
 }
 function setInfo() {
-<<<<<<< HEAD
     var contProductId;
     var row;
 	if( row=singleSelect()){
@@ -116,9 +115,6 @@ function setInfo() {
 		return;
 	}
 
-=======
-	var contProductId=singleSelect().contProductId;
->>>>>>> temp
     layer.open({
         type : 2,
         title : '产品基本信息',
@@ -129,7 +125,7 @@ function setInfo() {
     });
 }
 function setImg() {
-<<<<<<< HEAD
+
     var contProductId;
     var row;
     if( row=singleSelect()){
@@ -137,9 +133,7 @@ function setImg() {
     }else {
         return;
     }
-=======
-    var contProductId=singleSelect().contProductId;
->>>>>>> temp
+
     layer.open({
         type : 2,
         title : '产品图片',
@@ -150,7 +144,7 @@ function setImg() {
     });
 }
 function setParams() {
-<<<<<<< HEAD
+
     var contProductId;
     var row;
     if( row=singleSelect()){
@@ -158,9 +152,7 @@ function setParams() {
     }else {
         return;
     }
-=======
-    var contProductId=singleSelect().contProductId;
->>>>>>> temp
+
     layer.open({
         type : 2,
         title : '产品参数',

@@ -1,6 +1,7 @@
 package com.cloudht.cont.service;
 
 import com.cloudht.cont.domain.ContProductDO;
+import com.sxyht.common.utils.PageUtils;
 
 import java.util.List;
 import java.util.Map;
@@ -27,4 +28,6 @@ public interface ContProductService {
 	int remove(Integer contProductId);
 	
 	int batchRemove(Integer[] contProductIds);
+
+	PageUtils leftCategoryList(Map<String, Object> params);
 }

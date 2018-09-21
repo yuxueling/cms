@@ -1,9 +1,1 @@
-.classpath
-.project
-/.git/
-/.settings/
 /target/
-/.idea/
-wall-admin.iml
-/bin/
-/catalina.base_IS_UNDEFINED
