@@ -9,44 +9,14 @@
 				<div class="ibox float-e-margins">
 					<div class="ibox-content">
 						<form class="form-horizontal m-t" id="signupForm">
-						<input id="cont_category_id" name="cont_category_id" th:value="${contCategory.cont_category_id}"  type="hidden">
+						<input id="contCategoryId" name="contCategoryId" th:value="${contCategory.contCategoryId}"  type="hidden">
 							<div class="form-group">	
-								<label class="col-sm-3 control-label">类别类型：（CmsCategoryType）：</label>
-								<div class="col-sm-8">
-									<input id="categoryType" name="categoryType" th:value="${contCategory.categoryType}" class="form-control" type="text">
-								</div>
-							</div>
-														<div class="form-group">	
-								<label class="col-sm-3 control-label">上级类别：</label>
-								<div class="col-sm-8">
-									<input id="parentCategoryId" name="parentCategoryId" th:value="${contCategory.parentCategoryId}" class="form-control" type="text">
-								</div>
-							</div>
-														<div class="form-group">	
 								<label class="col-sm-3 control-label">类别名称：</label>
 								<div class="col-sm-8">
 									<input id="categoryName" name="categoryName" th:value="${contCategory.categoryName}" class="form-control" type="text">
 								</div>
 							</div>
-														<div class="form-group">	
-								<label class="col-sm-3 control-label">创建用户id：</label>
-								<div class="col-sm-8">
-									<input id="createBy" name="createBy" th:value="${contCategory.createBy}" class="form-control" type="text">
-								</div>
-							</div>
-														<div class="form-group">	
-								<label class="col-sm-3 control-label">创建时间：</label>
-								<div class="col-sm-8">
-									<input id="gmtCreate" name="gmtCreate" th:value="${contCategory.gmtCreate}" class="form-control" type="text">
-								</div>
-							</div>
-														<div class="form-group">	
-								<label class="col-sm-3 control-label">修改时间：</label>
-								<div class="col-sm-8">
-									<input id="gmtModified" name="gmtModified" th:value="${contCategory.gmtModified}" class="form-control" type="text">
-								</div>
-							</div>
-																					<div class="form-group">
+							<div class="form-group">
 								<div class="col-sm-8 col-sm-offset-3">
 									<button type="submit" class="btn btn-primary">提交</button>
 								</div>

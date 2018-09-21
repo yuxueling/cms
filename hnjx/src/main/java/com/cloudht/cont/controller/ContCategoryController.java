@@ -1,5 +1,7 @@
 package com.cloudht.cont.controller;
 
+import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -10,19 +12,19 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.cloudht.common.controller.BaseController;
+import com.cloudht.common.domain.DictDO;
+import com.cloudht.common.service.DictService;
 import com.cloudht.cont.domain.ContCategoryDO;
 import com.cloudht.cont.service.ContCategoryService;
-import com.sxyht.common.utils.PageUtils;
-import com.sxyht.common.utils.Query;
 import com.sxyht.common.utils.R;
 
 /**
- * 
+ * 类别表
  * 
  * @author yuxueling
  * @email 980899486@qq.com
@@ -31,31 +33,44 @@ import com.sxyht.common.utils.R;
  
 @Controller
 @RequestMapping("/cont/contCategory")
-public class ContCategoryController {
-	@Autowired
-	private ContCategoryService contCategoryService;
-	
+public class ContCategoryController extends BaseController{
+	@Autowired private ContCategoryService contCategoryService;
+	@Autowired private DictService dictService;
 	@GetMapping()
 	@RequiresPermissions("cont:contCategory:contCategory")
 	String ContCategory(){
 	    return "cont/contCategory/contCategory";
 	}
 	
-	@ResponseBody
-	@GetMapping("/list")
-	@RequiresPermissions("cont:contCategory:contCategory")
-	public PageUtils list(@RequestParam Map<String, Object> params){
-		//查询列表数据
-        Query query = new Query(params);
-		List<ContCategoryDO> contCategoryList = contCategoryService.list(query);
-		int total = contCategoryService.count(query);
-		PageUtils pageUtils = new PageUtils(contCategoryList, total);
-		return pageUtils;
+	@GetMapping("/list") @RequiresPermissions("cont:contCategory:contCategory")
+	public @ResponseBody List<ContCategoryDO> list(@RequestParam Map<String, Object> params){
+		List<DictDO> listDictDO = dictService.listByType("CmsCategoryType");//获取所有的产品类型
+		List<ContCategoryDO> list = contCategoryService.list(params);//获取所有的类目
+		for(ContCategoryDO contCategoryDO:list) {//遍历所有的类目
+			String categoryType = contCategoryDO.getCategoryType();//每个类目的类型
+			for(DictDO dictDO:listDictDO) {//遍历所有的产品类型
+				if(dictDO.getValue().equals(categoryType)) {
+					contCategoryDO.setCategoryType(dictDO.getName());
+					break;
+				}
+			}
+		}
+        return list;
 	}
 	
-	@GetMapping("/add")
+	
 	@RequiresPermissions("cont:contCategory:add")
-	String add(){
+	@GetMapping("/add") String add(Integer parentCategoryId,Model model){
+		List<DictDO> listCmsCategoryType = dictService.listByType("CmsCategoryType");//获取所有的产品类型
+		model.addAttribute("listCmsCategoryType", listCmsCategoryType);//所有产品类型的集合
+		model.addAttribute("parentCategoryId", parentCategoryId);//父id隐藏到页面，顶级为0
+		model.addAttribute("parentCategoryName", "顶级类目");//先假设为顶级类目
+		model.addAttribute("categoryType", "");//继承父页面的产品类型
+		if(parentCategoryId!=null&&parentCategoryId>0) {
+			ContCategoryDO contCategoryDO = this.contCategoryService.get(parentCategoryId);//根据父类型的id查询某个类型
+			model.addAttribute("parentCategoryName", contCategoryDO.getCategoryName());//设置判断后的上级类目
+			model.addAttribute("categoryType", contCategoryDO.getCategoryType());
+		}
 	    return "cont/contCategory/add";
 	}
 
@@ -74,9 +89,11 @@ public class ContCategoryController {
 	@PostMapping("/save")
 	@RequiresPermissions("cont:contCategory:add")
 	public R save( ContCategoryDO contCategory){
-		if(contCategoryService.save(contCategory)>0){
+		contCategory.setCreateBy(getUserId());
+		contCategory.setGmtCreate(new Date());
+		contCategory.setGmtModified(new Date());
+		if(contCategoryService.save(contCategory)>0)
 			return R.ok();
-		}
 		return R.error();
 	}
 	/**
@@ -86,6 +103,7 @@ public class ContCategoryController {
 	@RequestMapping("/update")
 	@RequiresPermissions("cont:contCategory:edit")
 	public R update( ContCategoryDO contCategory){
+		contCategory.setGmtModified(new Date());
 		contCategoryService.update(contCategory);
 		return R.ok();
 	}
@@ -97,9 +115,14 @@ public class ContCategoryController {
 	@ResponseBody
 	@RequiresPermissions("cont:contCategory:remove")
 	public R remove( Integer contCategoryId){
-		if(contCategoryService.remove(contCategoryId)>0){
-		return R.ok();
+		{//判断是否存在子类目parent_category_id
+			Map<String,Object> map =new HashMap<>();
+			map.put("parentCategoryId", contCategoryId);
+			if(contCategoryService.list(map).size()>0)
+				return R.error("删除子类目后才能删除父级类目哦");
 		}
+		if(contCategoryService.remove(contCategoryId)>0)
+			return R.ok();
 		return R.error();
 	}
 	

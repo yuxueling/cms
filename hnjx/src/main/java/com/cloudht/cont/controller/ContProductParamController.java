@@ -10,11 +10,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.cloudht.common.controller.BaseController;
 import com.cloudht.cont.domain.ContProductParamDO;
 import com.cloudht.cont.service.ContProductParamService;
 import com.sxyht.common.utils.PageUtils;
@@ -31,7 +31,7 @@ import com.sxyht.common.utils.R;
  
 @Controller
 @RequestMapping("/cont/contProductParam")
-public class ContProductParamController {
+public class ContProductParamController extends BaseController {
 	@Autowired
 	private ContProductParamService contProductParamService;
 	

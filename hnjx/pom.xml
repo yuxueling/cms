@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.sxyhton</groupId>
     <artifactId>hnjx</artifactId>
-    <version>8.9.17</version>
+    <version>8.9.19</version>
     <packaging>war</packaging>
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -25,7 +25,6 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter</artifactId>
         </dependency>
-
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
@@ -107,7 +106,7 @@
             <groupId>com.alibaba</groupId>
             <artifactId>fastjson</artifactId>
             <version>1.2.31</version>
-        </dependency>
+        </dependency> 
         <!--velocity代码生成使用模板 -->
         <dependency>
             <groupId>org.apache.velocity</groupId>
@@ -162,7 +161,7 @@
             <version>1.9.2</version>
         </dependency>
         <dependency>
-        	<groupId>com.sxyht</groupId>
+        	<groupId>com.sxyhton</groupId>
         	<artifactId>ftcsp-common</artifactId>
         	<version>0.0.1-SNAPSHOT</version>
         </dependency>

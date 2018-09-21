@@ -9,44 +9,27 @@
 				<div class="ibox float-e-margins">
 					<div class="ibox-content">
 						<form class="form-horizontal m-t" id="signupForm">
-						<input id="cont_product_id" name="cont_product_id" th:value="${contProduct.cont_product_id}"  type="hidden">
+						<input id="contProductId" name="contProductId" th:value="${contProduct.contProductId}"  type="hidden">
 							<div class="form-group">	
 								<label class="col-sm-3 control-label">产品名称：</label>
 								<div class="col-sm-8">
 									<input id="productName" name="productName" th:value="${contProduct.productName}" class="form-control" type="text">
 								</div>
 							</div>
-														<div class="form-group">	
+							<div class="form-group">	
 								<label class="col-sm-3 control-label">所属分类：0表示顶级：</label>
 								<div class="col-sm-8">
 									<input id="categoryId" name="categoryId" th:value="${contProduct.categoryId}" class="form-control" type="text">
-								</div>
-							</div>
-														<div class="form-group">	
-								<label class="col-sm-3 control-label">销售状态：0-下架，1-上架：</label>
+								</div>	
+							</div>			
+							<div class="form-group">	
+								<label class="col-sm-3 control-label">销售状态：</label>
 								<div class="col-sm-8">
-									<input id="saleStatus" name="saleStatus" th:value="${contProduct.saleStatus}" class="form-control" type="text">
+									<label class="radio-inline"><input th:checked="${contProduct.saleStatus} == 0? 'true':'false'" type="radio" name="saleStatus" value="0" /> 下架</label> 
+									<label class="radio-inline"><input th:checked="${contProduct.saleStatus} == 1? 'true':'false'" type="radio" name="saleStatus" value="1" /> 正常</label>
 								</div>
 							</div>
-														<div class="form-group">	
-								<label class="col-sm-3 control-label">创建用户id：</label>
-								<div class="col-sm-8">
-									<input id="createBy" name="createBy" th:value="${contProduct.createBy}" class="form-control" type="text">
-								</div>
-							</div>
-														<div class="form-group">	
-								<label class="col-sm-3 control-label">创建时间：</label>
-								<div class="col-sm-8">
-									<input id="gmtCreate" name="gmtCreate" th:value="${contProduct.gmtCreate}" class="form-control" type="text">
-								</div>
-							</div>
-														<div class="form-group">	
-								<label class="col-sm-3 control-label">修改时间：</label>
-								<div class="col-sm-8">
-									<input id="gmtModified" name="gmtModified" th:value="${contProduct.gmtModified}" class="form-control" type="text">
-								</div>
-							</div>
-																					<div class="form-group">
+							<div class="form-group">
 								<div class="col-sm-8 col-sm-offset-3">
 									<button type="submit" class="btn btn-primary">提交</button>
 								</div>
@@ -55,7 +38,7 @@
 					</div>
 				</div>
 			</div>
-	</div>
+		</div>
 	</div>
 	<div th:include="include::footer"></div>
 	<script type="text/javascript" src="/js/appjs/cont/contProduct/edit.js">
