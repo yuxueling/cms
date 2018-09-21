@@ -1,13 +1,7 @@
 package com.cloudht.cont.controller;
 
-<<<<<<< HEAD
-import java.util.*;
-=======
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
->>>>>>> temp
+import org.springframework.stereotype.Controller;
+
 
 import com.alibaba.fastjson.JSON;
 import com.cloudht.common.service.DictService;
@@ -37,6 +31,8 @@ import com.cloudht.cont.service.ContProductService;
 import com.sxyht.common.utils.PageUtils;
 import com.sxyht.common.utils.Query;
 import com.sxyht.common.utils.R;
+
+import java.util.*;
 
 /**
  * 
