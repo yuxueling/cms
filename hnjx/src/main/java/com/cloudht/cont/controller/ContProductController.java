@@ -1,24 +1,25 @@
 package com.cloudht.cont.controller;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
+import com.alibaba.fastjson.JSON;
+import com.cloudht.common.service.DictService;
 import com.cloudht.cont.domain.ContProductImgDO;
 import com.cloudht.cont.domain.ContProductInfoDO;
 import com.cloudht.cont.domain.ContProductParamDO;
 import com.cloudht.cont.service.ContProductImgService;
 import com.cloudht.cont.service.ContProductInfoService;
 import com.cloudht.cont.service.ContProductParamService;
+import com.cloudht.system.domain.UserDO;
+import com.sxyht.common.utils.ShiroUtils;
+import org.apache.catalina.User;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
-import org.apache.xerces.xs.LSInputList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -51,6 +52,9 @@ public class ContProductController {
 
     @Autowired
     private ContProductParamService contProductParamService;
+
+	@Autowired
+	private DictService dictService;
 
 	
 	@GetMapping()
@@ -138,10 +142,16 @@ public class ContProductController {
     @GetMapping("/setInfo/{contProductId}")
     @RequiresPermissions("cont:contProduct:add")
     String setInfo(@PathVariable("contProductId") Integer contProductId,Model model){
-	    Map<String,Object> map=new HashMap<>();
+		Map<String,Object> map=new HashMap<>();
 	    map.put("contProductId",contProductId);
-        List<ContProductInfoDO> list = contProductInfoService.list(map);
-        model.addAllAttributes(list);
+		List<ContProductInfoDO> infoDOList = contProductInfoService.listByDict(map);
+		if(infoDOList==null){
+			infoDOList=new ArrayList<>();
+			model.addAttribute("rows",infoDOList);
+		}else {
+			model.addAttribute("rows",infoDOList);
+		}
+		model.addAttribute("langDictList",dictService.listByType("CmsLangType"));
         return "cont/contProduct/setInfo";
     }
 
@@ -151,7 +161,7 @@ public class ContProductController {
         Map<String,Object> map=new HashMap<>();
         map.put("contProductId",contProductId);
         List<ContProductImgDO> list = contProductImgService.list(map);
-        model.addAllAttributes(list);
+        model.addAttribute("rows",list);
         return "cont/contProduct/setImg";
     }
 
@@ -172,17 +182,22 @@ public class ContProductController {
 	@ResponseBody
 	@PostMapping("/saveInfo")
 	@RequiresPermissions("cont:contProduct:add")
-	public R saveInfo( ContProductInfoDO contProductInfo){
-		if(contProductInfo.getContProductInfoId()==null){
-			//保存
-			if(contProductInfoService.save(contProductInfo)>0){
-				return R.ok();
+	public R saveInfo( String contProductInfo){
+		Date date=new Date();
+		UserDO user = (UserDO)ShiroUtils.getUser();
+		List<ContProductInfoDO> productInfoDOList = JSON.parseArray(contProductInfo, ContProductInfoDO.class);
+		for (ContProductInfoDO infoDO:productInfoDOList){
+			if(infoDO.getContProductInfoId()==null){//保存
+				infoDO.setCreateBy(user.getUserId());
+				infoDO.setGmtCreate(date);
+				infoDO.setGmtModified(date);
+				contProductInfoService.save(infoDO);
+			}else{//修改
+				infoDO.setGmtModified(date);
+				contProductInfoService.update(infoDO);
 			}
-		}else{//修改
-			contProductInfoService.update(contProductInfo);
-			return R.ok();
 		}
-		return R.error();
+		return R.ok();
 	}
 
 	/**

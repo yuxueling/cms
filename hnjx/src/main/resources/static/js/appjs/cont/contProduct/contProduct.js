@@ -115,14 +115,18 @@ function singleSelect() {
         layer.msg("请选择一条数据");
         return;
     }
-
     return rows[0];
 
 }
 
 function setInfo() {
-
-	var contProductId=singleSelect().contProductId;
+    var contProductId;
+    var row;
+	if( row=singleSelect()){
+        contProductId=row.contProductId;
+	}else {
+		return;
+	}
 
     layer.open({
         type : 2,
@@ -136,9 +140,13 @@ function setInfo() {
 
 
 function setImg() {
-
-    var contProductId=singleSelect().contProductId;
-
+    var contProductId;
+    var row;
+    if( row=singleSelect()){
+        contProductId=row.contProductId;
+    }else {
+        return;
+    }
     layer.open({
         type : 2,
         title : '产品图片',
@@ -151,9 +159,13 @@ function setImg() {
 
 
 function setParams() {
-
-    var contProductId=singleSelect().contProductId;
-
+    var contProductId;
+    var row;
+    if( row=singleSelect()){
+        contProductId=row.contProductId;
+    }else {
+        return;
+    }
     layer.open({
         type : 2,
         title : '产品参数',

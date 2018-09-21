@@ -29,4 +29,6 @@ public interface ContProductInfoDao {
 	int remove(Integer cont_product_info_id);
 	
 	int batchRemove(Integer[] contProductInfoIds);
+
+	List<ContProductInfoDO> listByDict(Map<String, Object> map);
 }

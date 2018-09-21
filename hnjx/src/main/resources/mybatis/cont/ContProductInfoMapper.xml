@@ -119,4 +119,28 @@
 		</foreach>
 	</delete>
 
+
+
+	<!--             new                   -->
+
+	<select id="listByDict" resultType="com.cloudht.cont.domain.ContProductInfoDO">
+		SELECT
+			A.`cont_product_info_id`,
+			A.`cont_product_id`,
+			A.`product_name`,
+			A.`product_desc`,
+			A.`details`,
+			A.`product_keywords`,
+			A.`seo_keywords`,
+			A.`seo_desc`,
+			A.`seo_title`,
+			A.`create_by`,
+			A.`gmt_create`,
+			A.`gmt_modified` ,
+			B.`value` AS `lang_type`
+		FROM cont_product_info A RIGHT JOIN sys_dict B ON A.lang_type=B.`value`
+		WHERE  B.type='CmsLangType'
+		ORDER BY B.sort DESC
+	</select>
+
 </mapper>

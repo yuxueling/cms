@@ -51,5 +51,10 @@ public class ContProductInfoServiceImpl implements ContProductInfoService {
 	public int batchRemove(Integer[] contProductInfoIds){
 		return contProductInfoDao.batchRemove(contProductInfoIds);
 	}
-	
+
+	@Override
+	public List<ContProductInfoDO> listByDict(Map<String, Object> map) {
+		return contProductInfoDao.listByDict(map);
+	}
+
 }
