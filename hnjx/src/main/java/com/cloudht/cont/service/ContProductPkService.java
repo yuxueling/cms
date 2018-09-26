@@ -10,7 +10,7 @@ import java.util.Map;
  * 
  * @author yuxueling
  * @email 980899486@qq.com
- * @date 2018-09-18 16:27:29
+ * @date 2018-09-23 13:01:59
  */
 public interface ContProductPkService {
 	
@@ -27,4 +27,8 @@ public interface ContProductPkService {
 	int remove(Integer contProductPkId);
 	
 	int batchRemove(Integer[] contProductPkIds);
+
+	int batchInsert(List<ContProductPkDO> contProductPkList);
+
+	int delByProductParamId(Integer contProductParamId);
 }

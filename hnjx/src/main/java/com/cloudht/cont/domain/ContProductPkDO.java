@@ -1,12 +1,16 @@
 package com.cloudht.cont.domain;
 
 import java.io.Serializable;
+import java.util.Date;
+
+
+
 /**
  * 
  * 
  * @author yuxueling
  * @email 980899486@qq.com
- * @date 2018-09-18 16:27:29
+ * @date 2018-09-23 13:01:59
  */
 public class ContProductPkDO implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -14,9 +18,11 @@ public class ContProductPkDO implements Serializable {
 	//主键
 	private Integer contProductPkId;
 	//参数主键
-	private String contProductParamId;
+	private Integer contProductParamId;
 	//参数值
 	private String paramValue;
+	//排序
+	private Integer sort;
 
 	/**
 	 * 设置：主键
@@ -33,13 +39,13 @@ public class ContProductPkDO implements Serializable {
 	/**
 	 * 设置：参数主键
 	 */
-	public void setContProductParamId(String contProductParamId) {
+	public void setContProductParamId(Integer contProductParamId) {
 		this.contProductParamId = contProductParamId;
 	}
 	/**
 	 * 获取：参数主键
 	 */
-	public String getContProductParamId() {
+	public Integer getContProductParamId() {
 		return contProductParamId;
 	}
 	/**
@@ -53,5 +59,17 @@ public class ContProductPkDO implements Serializable {
 	 */
 	public String getParamValue() {
 		return paramValue;
+	}
+	/**
+	 * 设置：排序
+	 */
+	public void setSort(Integer sort) {
+		this.sort = sort;
+	}
+	/**
+	 * 获取：排序
+	 */
+	public Integer getSort() {
+		return sort;
 	}
 }

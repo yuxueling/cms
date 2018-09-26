@@ -51,5 +51,15 @@ public class ContProductPkServiceImpl implements ContProductPkService {
 	public int batchRemove(Integer[] contProductPkIds){
 		return contProductPkDao.batchRemove(contProductPkIds);
 	}
-	
+
+	@Override
+	public int batchInsert(List<ContProductPkDO> contProductPkList) {
+		return contProductPkDao.batchInsert(contProductPkList);
+	}
+
+	@Override
+	public int delByProductParamId(Integer contProductParamId) {
+		return contProductPkDao.delByProductParamId(contProductParamId);
+	}
+
 }

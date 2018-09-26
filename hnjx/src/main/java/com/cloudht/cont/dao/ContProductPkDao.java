@@ -11,7 +11,7 @@ import org.apache.ibatis.annotations.Mapper;
  * 
  * @author yuxueling
  * @email 980899486@qq.com
- * @date 2018-09-18 16:27:29
+ * @date 2018-09-23 13:01:59
  */
 @Mapper
 public interface ContProductPkDao {
@@ -29,4 +29,8 @@ public interface ContProductPkDao {
 	int remove(Integer cont_product_pk_id);
 	
 	int batchRemove(Integer[] contProductPkIds);
+
+	int batchInsert(List<ContProductPkDO> ContProductPkList);
+
+	int delByProductParamId(Integer contProductParamId);
 }

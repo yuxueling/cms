@@ -10,11 +10,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.cloudht.common.controller.BaseController;
 import com.cloudht.cont.domain.ContProductParamDO;
 import com.cloudht.cont.service.ContProductParamService;
 import com.sxyht.common.utils.PageUtils;
@@ -26,12 +26,12 @@ import com.sxyht.common.utils.R;
  * 
  * @author yuxueling
  * @email 980899486@qq.com
- * @date 2018-09-18 16:27:29
+ * @date 2018-09-23 13:01:59
  */
  
 @Controller
 @RequestMapping("/cont/contProductParam")
-public class ContProductParamController extends BaseController {
+public class ContProductParamController {
 	@Autowired
 	private ContProductParamService contProductParamService;
 	
@@ -61,7 +61,7 @@ public class ContProductParamController extends BaseController {
 
 	@GetMapping("/edit/{contProductParamId}")
 	@RequiresPermissions("cont:contProductParam:edit")
-	String edit(@PathVariable("contProductParamId") String contProductParamId,Model model){
+	String edit(@PathVariable("contProductParamId") Integer contProductParamId,Model model){
 		ContProductParamDO contProductParam = contProductParamService.get(contProductParamId);
 		model.addAttribute("contProductParam", contProductParam);
 	    return "cont/contProductParam/edit";
@@ -96,7 +96,7 @@ public class ContProductParamController extends BaseController {
 	@PostMapping( "/remove")
 	@ResponseBody
 	@RequiresPermissions("cont:contProductParam:remove")
-	public R remove( String contProductParamId){
+	public R remove( Integer contProductParamId){
 		if(contProductParamService.remove(contProductParamId)>0){
 		return R.ok();
 		}
@@ -109,7 +109,7 @@ public class ContProductParamController extends BaseController {
 	@PostMapping( "/batchRemove")
 	@ResponseBody
 	@RequiresPermissions("cont:contProductParam:batchRemove")
-	public R remove(@RequestParam("ids[]") String[] contProductParamIds){
+	public R remove(@RequestParam("ids[]") Integer[] contProductParamIds){
 		contProductParamService.batchRemove(contProductParamIds);
 		return R.ok();
 	}

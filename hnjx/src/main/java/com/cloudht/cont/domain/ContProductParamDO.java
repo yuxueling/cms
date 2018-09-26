@@ -2,7 +2,7 @@ package com.cloudht.cont.domain;
 
 import java.io.Serializable;
 import java.util.Date;
-
+import java.util.List;
 
 
 /**
@@ -10,13 +10,13 @@ import java.util.Date;
  * 
  * @author yuxueling
  * @email 980899486@qq.com
- * @date 2018-09-18 16:27:29
+ * @date 2018-09-23 13:01:59
  */
 public class ContProductParamDO implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	//主键
-	private String contProductParamId;
+	private Integer contProductParamId;
 	//产品主键
 	private Integer contProductId;
 	//语种：字段表（CmsLangType）
@@ -25,6 +25,8 @@ public class ContProductParamDO implements Serializable {
 	private String paramName;
 	//限制数量
 	private Integer limitNum;
+	//排序
+	private Integer sort;
 	//创建用户id
 	private Long createBy;
 	//创建时间
@@ -32,16 +34,20 @@ public class ContProductParamDO implements Serializable {
 	//修改时间
 	private Date gmtModified;
 
+	//new
+
+	private List<ContProductPkDO> contProductPkDOList;
+
 	/**
 	 * 设置：主键
 	 */
-	public void setContProductParamId(String contProductParamId) {
+	public void setContProductParamId(Integer contProductParamId) {
 		this.contProductParamId = contProductParamId;
 	}
 	/**
 	 * 获取：主键
 	 */
-	public String getContProductParamId() {
+	public Integer getContProductParamId() {
 		return contProductParamId;
 	}
 	/**
@@ -93,6 +99,18 @@ public class ContProductParamDO implements Serializable {
 		return limitNum;
 	}
 	/**
+	 * 设置：排序
+	 */
+	public void setSort(Integer sort) {
+		this.sort = sort;
+	}
+	/**
+	 * 获取：排序
+	 */
+	public Integer getSort() {
+		return sort;
+	}
+	/**
 	 * 设置：创建用户id
 	 */
 	public void setCreateBy(Long createBy) {
@@ -127,5 +145,13 @@ public class ContProductParamDO implements Serializable {
 	 */
 	public Date getGmtModified() {
 		return gmtModified;
+	}
+
+	public List<ContProductPkDO> getContProductPkDOList() {
+		return contProductPkDOList;
+	}
+
+	public void setContProductPkDOList(List<ContProductPkDO> contProductPkDOList) {
+		this.contProductPkDOList = contProductPkDOList;
 	}
 }

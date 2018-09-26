@@ -4,17 +4,18 @@
 <mapper namespace="com.cloudht.cont.dao.ContProductParamDao">
 
 	<select id="get" resultType="com.cloudht.cont.domain.ContProductParamDO">
-		select `cont_product_param_id`,`cont_product_id`,`lang_type`,`param_name`,`limit_num`,`create_by`,`gmt_create`,`gmt_modified` from cont_product_param where cont_product_param_id = #{value}
+		select `cont_product_param_id`,`cont_product_id`,`lang_type`,`param_name`,`limit_num`,`sort`,`create_by`,`gmt_create`,`gmt_modified` from cont_product_param where cont_product_param_id = #{value}
 	</select>
 
 	<select id="list" resultType="com.cloudht.cont.domain.ContProductParamDO">
-		select `cont_product_param_id`,`cont_product_id`,`lang_type`,`param_name`,`limit_num`,`create_by`,`gmt_create`,`gmt_modified` from cont_product_param
+		select `cont_product_param_id`,`cont_product_id`,`lang_type`,`param_name`,`limit_num`,`sort`,`create_by`,`gmt_create`,`gmt_modified` from cont_product_param
         <where>  
 		  		  <if test="contProductParamId != null and contProductParamId != ''"> and cont_product_param_id = #{contProductParamId} </if>
 		  		  <if test="contProductId != null and contProductId != ''"> and cont_product_id = #{contProductId} </if>
 		  		  <if test="langType != null and langType != ''"> and lang_type = #{langType} </if>
 		  		  <if test="paramName != null and paramName != ''"> and param_name = #{paramName} </if>
 		  		  <if test="limitNum != null and limitNum != ''"> and limit_num = #{limitNum} </if>
+		  		  <if test="sort != null and sort != ''"> and sort = #{sort} </if>
 		  		  <if test="createBy != null and createBy != ''"> and create_by = #{createBy} </if>
 		  		  <if test="gmtCreate != null and gmtCreate != ''"> and gmt_create = #{gmtCreate} </if>
 		  		  <if test="gmtModified != null and gmtModified != ''"> and gmt_modified = #{gmtModified} </if>
@@ -40,31 +41,32 @@
 		  		  <if test="langType != null and langType != ''"> and lang_type = #{langType} </if>
 		  		  <if test="paramName != null and paramName != ''"> and param_name = #{paramName} </if>
 		  		  <if test="limitNum != null and limitNum != ''"> and limit_num = #{limitNum} </if>
+		  		  <if test="sort != null and sort != ''"> and sort = #{sort} </if>
 		  		  <if test="createBy != null and createBy != ''"> and create_by = #{createBy} </if>
 		  		  <if test="gmtCreate != null and gmtCreate != ''"> and gmt_create = #{gmtCreate} </if>
 		  		  <if test="gmtModified != null and gmtModified != ''"> and gmt_modified = #{gmtModified} </if>
 		  		</where>
 	</select>
 	 
-	<insert id="save" parameterType="com.cloudht.cont.domain.ContProductParamDO">
+	<insert id="save" parameterType="com.cloudht.cont.domain.ContProductParamDO" useGeneratedKeys="true" keyProperty="contProductParamId">
 		insert into cont_product_param
 		(
-			`cont_product_param_id`, 
 			`cont_product_id`, 
 			`lang_type`, 
 			`param_name`, 
 			`limit_num`, 
+			`sort`, 
 			`create_by`, 
 			`gmt_create`, 
 			`gmt_modified`
 		)
 		values
 		(
-			#{contProductParamId}, 
 			#{contProductId}, 
 			#{langType}, 
 			#{paramName}, 
 			#{limitNum}, 
+			#{sort}, 
 			#{createBy}, 
 			#{gmtCreate}, 
 			#{gmtModified}
@@ -78,6 +80,7 @@
 			<if test="langType != null">`lang_type` = #{langType}, </if>
 			<if test="paramName != null">`param_name` = #{paramName}, </if>
 			<if test="limitNum != null">`limit_num` = #{limitNum}, </if>
+			<if test="sort != null">`sort` = #{sort}, </if>
 			<if test="createBy != null">`create_by` = #{createBy}, </if>
 			<if test="gmtCreate != null">`gmt_create` = #{gmtCreate}, </if>
 			<if test="gmtModified != null">`gmt_modified` = #{gmtModified}</if>
@@ -96,4 +99,45 @@
 		</foreach>
 	</delete>
 
+
+	<!--									new							-->
+
+
+
+	<resultMap id="paramList" type="com.cloudht.cont.domain.ContProductParamDO">
+		<id property="contProductParamId" column="cont_product_param_id"></id>
+		<result property="contProductId" column="cont_product_id"></result>
+		<result property="langType" column="lang_type"></result>
+		<result property="paramName" column="param_name"></result>
+		<result property="limitNum" column="limit_num"></result>
+		<result property="sort" column="sort"></result>
+		<result property="createBy" column="create_by"></result>
+		<result property="gmtCreate" column="gmt_create"></result>
+		<result property="gmtModified" column=" gmt_modified"></result>
+
+		<collection property="contProductPkDOList" column="cont_product_param_id" ofType="com.cloudht.cont.domain.ContProductPkDO"
+					select="queryPk">
+		</collection>
+	</resultMap>
+
+
+	<resultMap id="voList" type="com.cloudht.cont.vo.ContProductParamVO">
+		<result property="langType" column="lang_type"></result>
+		<collection property="contProductParamDOList" column="{cont_product_id=cont_product_id,lang_type=lang_type}" ofType="com.cloudht.cont.domain.ContProductParamDO"
+					select="queryParams">
+		</collection>
+	</resultMap>
+
+	<select id="listByDict" resultMap="voList">
+		select #{contProductId} as cont_product_id, `value` as lang_type FROM sys_dict WHERE type = 'CmsLangType' ORDER BY sort
+	</select>
+
+	<select id="queryParams" resultMap="paramList">
+		select `cont_product_param_id`,`cont_product_id`,`lang_type`,`param_name`,`limit_num`,`sort`,`create_by`,`gmt_create`,`gmt_modified` from cont_product_param
+		WHERE cont_product_id = #{cont_product_id} AND lang_type = #{lang_type}
+	</select>
+
+	<select id="queryPk" resultType="com.cloudht.cont.domain.ContProductPkDO">
+		select `cont_product_pk_id`,`cont_product_param_id`,`param_value`,`sort` from cont_product_pk where cont_product_param_id = #{value}
+	</select>
 </mapper>

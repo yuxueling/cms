@@ -60,6 +60,10 @@ function load() {
 									title : '参数值' 
 								},
 																{
+									field : 'sort', 
+									title : '排序' 
+								},
+																{
 									title : '操作',
 									field : 'id',
 									align : 'center',

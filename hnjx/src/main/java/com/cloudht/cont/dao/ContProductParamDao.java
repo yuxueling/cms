@@ -5,18 +5,19 @@ import com.cloudht.cont.domain.ContProductParamDO;
 import java.util.List;
 import java.util.Map;
 
+import com.cloudht.cont.vo.ContProductParamVO;
 import org.apache.ibatis.annotations.Mapper;
 
 /**
  * 
  * @author yuxueling
  * @email 980899486@qq.com
- * @date 2018-09-18 16:27:29
+ * @date 2018-09-23 13:01:59
  */
 @Mapper
 public interface ContProductParamDao {
 
-	ContProductParamDO get(String contProductParamId);
+	ContProductParamDO get(Integer contProductParamId);
 	
 	List<ContProductParamDO> list(Map<String, Object> map);
 	
@@ -26,7 +27,9 @@ public interface ContProductParamDao {
 	
 	int update(ContProductParamDO contProductParam);
 	
-	int remove(String cont_product_param_id);
+	int remove(Integer cont_product_param_id);
 	
-	int batchRemove(String[] contProductParamIds);
+	int batchRemove(Integer[] contProductParamIds);
+
+	List<ContProductParamVO> listByDict(Integer contProductId);
 }

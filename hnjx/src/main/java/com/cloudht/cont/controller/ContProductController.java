@@ -1,23 +1,18 @@
 package com.cloudht.cont.controller;
 
+import com.cloudht.cont.domain.*;
+import com.cloudht.cont.service.*;
+import com.cloudht.cont.vo.ContProductParamVO;
 import org.springframework.stereotype.Controller;
 
 
 import com.alibaba.fastjson.JSON;
 import com.cloudht.common.service.DictService;
-import com.cloudht.cont.domain.ContProductImgDO;
-import com.cloudht.cont.domain.ContProductInfoDO;
-import com.cloudht.cont.domain.ContProductParamDO;
-import com.cloudht.cont.service.ContProductImgService;
-import com.cloudht.cont.service.ContProductInfoService;
-import com.cloudht.cont.service.ContProductParamService;
 import com.cloudht.system.domain.UserDO;
 import com.sxyht.common.utils.ShiroUtils;
-import org.apache.catalina.User;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -26,8 +21,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.cloudht.common.controller.BaseController;
-import com.cloudht.cont.domain.ContProductDO;
-import com.cloudht.cont.service.ContProductService;
 import com.sxyht.common.utils.PageUtils;
 import com.sxyht.common.utils.Query;
 import com.sxyht.common.utils.R;
@@ -56,6 +49,9 @@ public class ContProductController extends BaseController {
 
     @Autowired
     private ContProductParamService contProductParamService;
+
+	@Autowired
+	private ContProductPkService contProductPkService;
 
 	@Autowired
 	private DictService dictService;
@@ -164,6 +160,7 @@ public class ContProductController extends BaseController {
 			model.addAttribute("rows",infoDOList);
 		}
 		model.addAttribute("langDictList",dictService.listByType("CmsLangType"));
+		model.addAttribute("contProductId",contProductId);
         return "cont/contProduct/setInfo";
     }
 
@@ -180,10 +177,15 @@ public class ContProductController extends BaseController {
     @GetMapping("/setParams/{contProductId}")
     @RequiresPermissions("cont:contProduct:add")
     String setParams(@PathVariable("contProductId") Integer contProductId,Model model){
-        Map<String,Object> map=new HashMap<>();
-        map.put("contProductId",contProductId);
-        List<ContProductParamDO> list = contProductParamService.list(map);
-        model.addAllAttributes(list);
+        List<ContProductParamVO> list = contProductParamService.listByDict(contProductId);
+		if(list==null){
+			list=new ArrayList<>();
+			model.addAttribute("rows",list);
+		}else {
+			model.addAttribute("rows",list);
+		}
+		model.addAttribute("langDictList",dictService.listByType("CmsLangType"));
+		model.addAttribute("contProductId",contProductId);
         return "cont/contProduct/setParams";
     }
 
@@ -237,17 +239,41 @@ public class ContProductController extends BaseController {
 	@ResponseBody
 	@PostMapping("/saveParams")
 	@RequiresPermissions("cont:contProduct:add")
-	public R saveParams( ContProductParamDO contProductParam){
-		if(contProductParam.getContProductParamId()==null){
-			//保存
-			if(contProductParamService.save(contProductParam)>0){
-				return R.ok();
+	public R saveParams( String contProductParam){
+		Date date=new Date();
+		UserDO user = (UserDO)ShiroUtils.getUser();
+		List<ContProductParamDO> paramDOList = JSON.parseArray(contProductParam, ContProductParamDO.class);
+		for (ContProductParamDO paramDO:paramDOList){
+			if(paramDO.getContProductParamId()==null){//保存
+				//保存参数
+				paramDO.setCreateBy(user.getUserId());
+				paramDO.setGmtCreate(date);
+				paramDO.setGmtModified(date);
+				contProductParamService.save(paramDO);
+				//删除参数值
+				contProductPkService.delByProductParamId(paramDO.getContProductParamId());
+				//保存参数值
+				if(paramDO.getContProductPkDOList()!=null && !paramDO.getContProductPkDOList().isEmpty()){
+					for(ContProductPkDO pkDO:paramDO.getContProductPkDOList()){
+						pkDO.setContProductParamId(paramDO.getContProductParamId());
+					}
+					contProductPkService.batchInsert(paramDO.getContProductPkDOList());
+				}
+			}else{//修改
+				paramDO.setGmtModified(date);
+				contProductParamService.update(paramDO);
+				//删除参数值
+				contProductPkService.delByProductParamId(paramDO.getContProductParamId());
+				//保存参数值
+				if(paramDO.getContProductPkDOList()!=null && !paramDO.getContProductPkDOList().isEmpty()){
+					for(ContProductPkDO pkDO:paramDO.getContProductPkDOList()){
+						pkDO.setContProductParamId(paramDO.getContProductParamId());
+					}
+					contProductPkService.batchInsert(paramDO.getContProductPkDOList());
+				}
 			}
-		}else{//修改
-            contProductParamService.update(contProductParam);
-            return R.ok();
 		}
-		return R.error();
+		return R.ok();
 	}
 
 }

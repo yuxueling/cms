@@ -68,6 +68,10 @@ function load() {
 									title : '限制数量' 
 								},
 																{
+									field : 'sort', 
+									title : '排序' 
+								},
+																{
 									field : 'createBy', 
 									title : '创建用户id' 
 								},

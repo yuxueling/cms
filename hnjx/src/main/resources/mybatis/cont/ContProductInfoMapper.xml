@@ -124,23 +124,29 @@
 	<!--             new                   -->
 
 	<select id="listByDict" resultType="com.cloudht.cont.domain.ContProductInfoDO">
-		SELECT
-			A.`cont_product_info_id`,
-			A.`cont_product_id`,
-			A.`product_name`,
-			A.`product_desc`,
-			A.`details`,
-			A.`product_keywords`,
-			A.`seo_keywords`,
-			A.`seo_desc`,
-			A.`seo_title`,
-			A.`create_by`,
-			A.`gmt_create`,
-			A.`gmt_modified` ,
+		  SELECT
+			C.`cont_product_info_id`,
+			C.`cont_product_id`,
+			C.`product_name`,
+			C.`product_desc`,
+			C.`details`,
+			C.`product_keywords`,
+			C.`seo_keywords`,
+			C.`seo_desc`,
+			C.`seo_title`,
+			C.`create_by`,
+			C.`gmt_create`,
+			C.`gmt_modified` ,
 			B.`value` AS `lang_type`
-		FROM cont_product_info A RIGHT JOIN sys_dict B ON A.lang_type=B.`value`
+		FROM
+			(
+				SELECT A.`cont_product_info_id`,A.`cont_product_id`,A.`lang_type`,A.`product_name`,A.`product_desc`,A.`details`,A.`product_keywords`,A.`seo_keywords`,A.`seo_desc`,A.`seo_title`,A.`create_by`,A.`gmt_create`,A.`gmt_modified`
+				FROM cont_product_info A
+			  WHERE A.cont_product_id = #{contProductId}
+			) AS C
+		RIGHT JOIN sys_dict B ON C.lang_type=B.`value`
 		WHERE  B.type='CmsLangType'
-		ORDER BY B.sort DESC
+		ORDER BY B.sort
 	</select>
 
 </mapper>

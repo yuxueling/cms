@@ -4,15 +4,16 @@
 <mapper namespace="com.cloudht.cont.dao.ContProductPkDao">
 
 	<select id="get" resultType="com.cloudht.cont.domain.ContProductPkDO">
-		select `cont_product_pk_id`,`cont_product_param_id`,`param_value` from cont_product_pk where cont_product_pk_id = #{value}
+		select `cont_product_pk_id`,`cont_product_param_id`,`param_value`,`sort` from cont_product_pk where cont_product_pk_id = #{value}
 	</select>
 
 	<select id="list" resultType="com.cloudht.cont.domain.ContProductPkDO">
-		select `cont_product_pk_id`,`cont_product_param_id`,`param_value` from cont_product_pk
+		select `cont_product_pk_id`,`cont_product_param_id`,`param_value`,`sort` from cont_product_pk
         <where>  
 		  		  <if test="contProductPkId != null and contProductPkId != ''"> and cont_product_pk_id = #{contProductPkId} </if>
 		  		  <if test="contProductParamId != null and contProductParamId != ''"> and cont_product_param_id = #{contProductParamId} </if>
 		  		  <if test="paramValue != null and paramValue != ''"> and param_value = #{paramValue} </if>
+		  		  <if test="sort != null and sort != ''"> and sort = #{sort} </if>
 		  		</where>
         <choose>
             <when test="sort != null and sort.trim() != ''">
@@ -33,21 +34,22 @@
 		  		  <if test="contProductPkId != null and contProductPkId != ''"> and cont_product_pk_id = #{contProductPkId} </if>
 		  		  <if test="contProductParamId != null and contProductParamId != ''"> and cont_product_param_id = #{contProductParamId} </if>
 		  		  <if test="paramValue != null and paramValue != ''"> and param_value = #{paramValue} </if>
+		  		  <if test="sort != null and sort != ''"> and sort = #{sort} </if>
 		  		</where>
 	</select>
 	 
-	<insert id="save" parameterType="com.cloudht.cont.domain.ContProductPkDO">
+	<insert id="save" parameterType="com.cloudht.cont.domain.ContProductPkDO" useGeneratedKeys="true" keyProperty="contProductPkId">
 		insert into cont_product_pk
 		(
-			`cont_product_pk_id`, 
 			`cont_product_param_id`, 
-			`param_value`
+			`param_value`, 
+			`sort`
 		)
 		values
 		(
-			#{contProductPkId}, 
 			#{contProductParamId}, 
-			#{paramValue}
+			#{paramValue}, 
+			#{sort}
 		)
 	</insert>
 	 
@@ -55,7 +57,8 @@
 		update cont_product_pk 
 		<set>
 			<if test="contProductParamId != null">`cont_product_param_id` = #{contProductParamId}, </if>
-			<if test="paramValue != null">`param_value` = #{paramValue}</if>
+			<if test="paramValue != null">`param_value` = #{paramValue}, </if>
+			<if test="sort != null">`sort` = #{sort}</if>
 		</set>
 		where cont_product_pk_id = #{contProductPkId}
 	</update>
@@ -71,4 +74,27 @@
 		</foreach>
 	</delete>
 
+
+	<!--	new					-->
+
+	<insert id="batchInsert" parameterType="com.cloudht.cont.domain.ContProductPkDO" useGeneratedKeys="true" keyProperty="contProductPkId">
+		insert into cont_product_pk
+		(
+		`cont_product_param_id`,
+		`param_value`,
+		`sort`
+		)
+		values
+		<foreach collection ="list" item="item" index= "index" separator =",">
+			(
+			#{item.contProductParamId},
+			#{item.paramValue},
+			#{item.sort}
+			)
+		</foreach>
+	</insert>
+
+	<delete id="delByProductParamId">
+		delete from cont_product_pk where cont_product_param_id = #{value}
+	</delete>
 </mapper>

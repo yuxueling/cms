@@ -10,11 +10,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.cloudht.common.controller.BaseController;
 import com.cloudht.cont.domain.ContProductPkDO;
 import com.cloudht.cont.service.ContProductPkService;
 import com.sxyht.common.utils.PageUtils;
@@ -26,12 +26,12 @@ import com.sxyht.common.utils.R;
  * 
  * @author yuxueling
  * @email 980899486@qq.com
- * @date 2018-09-18 16:27:29
+ * @date 2018-09-23 13:01:59
  */
  
 @Controller
 @RequestMapping("/cont/contProductPk")
-public class ContProductPkController extends BaseController{
+public class ContProductPkController {
 	@Autowired
 	private ContProductPkService contProductPkService;
 	
