@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8">
+<head th:include="include :: header"></head>
+<body class="gray-bg">
+	<div class="wrapper wrapper-content ">
+		<div class="row">
+			<div class="col-sm-12">
+				<div class="ibox float-e-margins">
+					<div class="ibox-content">
+						<form class="form-horizontal m-t" id="signupForm">
+						<input id="contFormId" name="contFormId" th:value="${contForm.contFormId}"  type="hidden">
+							<div class="form-group">	
+								<label class="col-sm-3 control-label">标题：</label>
+								<div class="col-sm-8">
+									<input id="title" name="title" th:value="${contForm.title}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">语种 字典CmsLangType：</label>
+								<div class="col-sm-8">
+									<input id="langType" name="langType" th:value="${contForm.langType}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">seo标题：</label>
+								<div class="col-sm-8">
+									<input id="seoTitle" name="seoTitle" th:value="${contForm.seoTitle}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">seo关键字：</label>
+								<div class="col-sm-8">
+									<input id="seoKeywords" name="seoKeywords" th:value="${contForm.seoKeywords}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">seo描述：</label>
+								<div class="col-sm-8">
+									<input id="seoDescribe" name="seoDescribe" th:value="${contForm.seoDescribe}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">备注：</label>
+								<div class="col-sm-8">
+									<input id="remark" name="remark" th:value="${contForm.remark}" class="form-control" type="text">
+								</div>
+							</div>
+							<div class="form-group">
+								<div class="col-sm-8 col-sm-offset-3">
+									<button type="submit" class="btn btn-primary">提交</button>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+	</div>
+	</div>
+	<div th:include="include::footer"></div>
+	<script type="text/javascript" src="/js/appjs/cont/contForm/edit.js">
+	</script>
+</body>
+</html>

@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8">
+<head th:include="include :: header"></head>
+<body class="gray-bg">
+<div class="wrapper wrapper-content " id="app">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-content" v-for="(item, index) in rows" v-show="index==activeIndex">
+                    <form class="form-horizontal m-t">
+                        <ul class="nav nav-tabs nav-justified">
+                            <li v-bind:class="[ item.langType==langItem.value?activeClass : ''  ]"
+                                v-for="(langItem, langIndex) in langDictList"><a
+                                    v-on:click="langBarClick(langItem.value)">{{langItem.name}}</a>
+                            </li>
+                        </ul>
+                        <div style="padding-bottom: 10px"></div>
+                        <!--hidden  start-->
+                        <input v-model="item.contProductId" class="form-control" type="hidden">
+                        <input id="langType" name="langType" v-model="item.langType" class="form-control" type="hidden">
+                        <!--hidden  end-->
+
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">标题：</label>
+                            <div class="col-sm-8">
+                                <input id="productName" name="productName" v-model="item.title"
+                                       class="form-control" type="text">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">SEO标题：</label>
+                            <div class="col-sm-8">
+                                <input id="seoTitle" name="seoTitle" v-model="item.seoTitle"
+                                       class="form-control" type="text">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">SEO关键词：</label>
+                            <div class="col-sm-8">
+                                <input id="seoKeywords" name="seoKeywords" v-model="item.seoKeywords"
+                                       class="form-control" type="text">
+                            </div>
+                        </div>
+                        <div class="form-group">	
+							<label class="col-sm-3 control-label">SEO描述：</label>
+							<div class="col-sm-8">
+								<input id="seoDescribe" v-model="item.seoDescribe" class="form-control" type="text">
+							</div>
+						</div>
+						<div class="form-group">	
+							<label class="col-sm-3 control-label">备注：</label>
+							<div class="col-sm-8">
+								<input id="remark" v-model="item.remark"  class="form-control" type="text">
+							</div>
+						</div>
+                        <div class="form-group">
+                            <div class="col-sm-8 col-sm-offset-3">
+                                <button v-on:click="saveInfo(index)" class="btn btn-primary">提交</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+
+                <!-- 模态框（Modal） -->
+                <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+                     aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;
+                                </button>
+                                <h4 class="modal-title" id="myModalLabel">详情</h4>
+                            </div>
+                            <div class="modal-body">
+                                <div class="ibox-content no-padding">
+                                    <div id="content_sn" class="summernote"></div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                                <button type="button" class="btn btn-primary" onclick="changeDetails()" >提交更改</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div th:include="include::footer"></div>
+<script th:inline="javascript">
+
+    var vm = new Vue({
+        el: '#app',
+        data: {
+            activeClass: 'active',
+            activeIndex: 0,
+            rows: [[${rows}]],
+            langDictList: [[${langDictList}]]
+        },
+        methods: {
+            langBarClick: function (langType) {
+                for (var i = 0; i < this.rows.length; i++) {
+                    if (langType == this.rows[i].langType) {
+                        this.activeIndex = i;
+
+                        
+                        break;
+                    }
+                }
+            },
+            saveInfo: function (index) {
+                $.ajax({
+                    type: "POST",
+                    url: "/cont/contProduct/saveInfo",
+                    data: {contProductInfo: JSON.stringify(this.rows)},
+                    dataType: "json",
+                    success: function (data) {
+                        if (data.code == 0) {
+                            layer.msg("保存成功！");
+                        }
+                    }
+                });
+            },
+            changeDetails: function () {
+                console.log('changeDetails');
+                var content_sn = $("#content_sn").summernote('code');
+                this.rows[this.activeIndex].details = content_sn;
+                $('#myModal').modal('hide');
+            }
+        }
+    });
+    function changeDetails() {
+        var content_sn = $("#content_sn").summernote('code');
+        vm.rows[vm.activeIndex].details = content_sn;
+        $('#myModal').modal('hide');
+    }
+</script>
+</body>
+</html>

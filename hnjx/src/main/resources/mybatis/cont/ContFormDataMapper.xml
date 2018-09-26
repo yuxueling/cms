@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.cloudht.cont.dao.ContFormDataDao">
+
+	<select id="get" resultType="com.cloudht.cont.domain.ContFormDataDO">
+		select `cont_form_data_id`,`cont_form_id`,`title`,`value`,`title_style`,`input_style`,`create_by`,`gmt_create`,`gmt_modified` from cont_form_data where cont_form_data_id = #{value}
+	</select>
+
+	<select id="list" resultType="com.cloudht.cont.domain.ContFormDataDO">
+		select `cont_form_data_id`,`cont_form_id`,`title`,`value`,`title_style`,`input_style`,`create_by`,`gmt_create`,`gmt_modified` from cont_form_data
+        <where>  
+		  		  <if test="contFormDataId != null and contFormDataId != ''"> and cont_form_data_id = #{contFormDataId} </if>
+		  		  <if test="contFormId != null and contFormId != ''"> and cont_form_id = #{contFormId} </if>
+		  		  <if test="title != null and title != ''"> and title = #{title} </if>
+		  		  <if test="value != null and value != ''"> and value = #{value} </if>
+		  		  <if test="titleStyle != null and titleStyle != ''"> and title_style = #{titleStyle} </if>
+		  		  <if test="inputStyle != null and inputStyle != ''"> and input_style = #{inputStyle} </if>
+		  		  <if test="createBy != null and createBy != ''"> and create_by = #{createBy} </if>
+		  		  <if test="gmtCreate != null and gmtCreate != ''"> and gmt_create = #{gmtCreate} </if>
+		  		  <if test="gmtModified != null and gmtModified != ''"> and gmt_modified = #{gmtModified} </if>
+		  		</where>
+        <choose>
+            <when test="sort != null and sort.trim() != ''">
+                order by ${sort} ${order}
+            </when>
+			<otherwise>
+                order by cont_form_data_id desc
+			</otherwise>
+        </choose>
+		<if test="offset != null and limit != null">
+			limit #{offset}, #{limit}
+		</if>
+	</select>
+	
+ 	<select id="count" resultType="int">
+		select count(*) from cont_form_data
+		 <where>  
+		  		  <if test="contFormDataId != null and contFormDataId != ''"> and cont_form_data_id = #{contFormDataId} </if>
+		  		  <if test="contFormId != null and contFormId != ''"> and cont_form_id = #{contFormId} </if>
+		  		  <if test="title != null and title != ''"> and title = #{title} </if>
+		  		  <if test="value != null and value != ''"> and value = #{value} </if>
+		  		  <if test="titleStyle != null and titleStyle != ''"> and title_style = #{titleStyle} </if>
+		  		  <if test="inputStyle != null and inputStyle != ''"> and input_style = #{inputStyle} </if>
+		  		  <if test="createBy != null and createBy != ''"> and create_by = #{createBy} </if>
+		  		  <if test="gmtCreate != null and gmtCreate != ''"> and gmt_create = #{gmtCreate} </if>
+		  		  <if test="gmtModified != null and gmtModified != ''"> and gmt_modified = #{gmtModified} </if>
+		  		</where>
+	</select>
+	 
+	<insert id="save" parameterType="com.cloudht.cont.domain.ContFormDataDO" useGeneratedKeys="true" keyProperty="contFormDataId">
+		insert into cont_form_data
+		(
+			`cont_form_id`, 
+			`title`, 
+			`value`, 
+			`title_style`, 
+			`input_style`, 
+			`create_by`, 
+			`gmt_create`, 
+			`gmt_modified`
+		)
+		values
+		(
+			#{contFormId}, 
+			#{title}, 
+			#{value}, 
+			#{titleStyle}, 
+			#{inputStyle}, 
+			#{createBy}, 
+			#{gmtCreate}, 
+			#{gmtModified}
+		)
+	</insert>
+	 
+	<update id="update" parameterType="com.cloudht.cont.domain.ContFormDataDO">
+		update cont_form_data 
+		<set>
+			<if test="contFormId != null">`cont_form_id` = #{contFormId}, </if>
+			<if test="title != null">`title` = #{title}, </if>
+			<if test="value != null">`value` = #{value}, </if>
+			<if test="titleStyle != null">`title_style` = #{titleStyle}, </if>
+			<if test="inputStyle != null">`input_style` = #{inputStyle}, </if>
+			<if test="createBy != null">`create_by` = #{createBy}, </if>
+			<if test="gmtCreate != null">`gmt_create` = #{gmtCreate}, </if>
+			<if test="gmtModified != null">`gmt_modified` = #{gmtModified}</if>
+		</set>
+		where cont_form_data_id = #{contFormDataId}
+	</update>
+	
+	<delete id="remove">
+		delete from cont_form_data where cont_form_data_id = #{value}
+	</delete>
+	
+	<delete id="batchRemove">
+		delete from cont_form_data where cont_form_data_id in 
+		<foreach item="contFormDataId" collection="array" open="(" separator="," close=")">
+			#{contFormDataId}
+		</foreach>
+	</delete>
+
+</mapper>

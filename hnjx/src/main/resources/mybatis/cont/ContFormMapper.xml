@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.cloudht.cont.dao.ContFormDao">
+
+	<select id="get" resultType="com.cloudht.cont.domain.ContFormDO">
+		select `cont_form_id`,`title`,`lang_type`,`seo_title`,`seo_keywords`,`seo_describe`,`remark`,`modified_by`,`gmt_create`,`gmt_modified` from cont_form where cont_form_id = #{value}
+	</select>
+
+	<select id="list" resultType="com.cloudht.cont.domain.ContFormDO">
+		select `cont_form_id`,`title`,`lang_type`,`seo_title`,`seo_keywords`,`seo_describe`,`remark`,`modified_by`,`gmt_create`,`gmt_modified` from cont_form
+        <where>  
+		  		  <if test="contFormId != null and contFormId != ''"> and cont_form_id = #{contFormId} </if>
+		  		  <if test="title != null and title != ''"> and title = #{title} </if>
+		  		  <if test="langType != null and langType != ''"> and lang_type = #{langType} </if>
+		  		  <if test="seoTitle != null and seoTitle != ''"> and seo_title = #{seoTitle} </if>
+		  		  <if test="seoKeywords != null and seoKeywords != ''"> and seo_keywords = #{seoKeywords} </if>
+		  		  <if test="seoDescribe != null and seoDescribe != ''"> and seo_describe = #{seoDescribe} </if>
+		  		  <if test="remark != null and remark != ''"> and remark = #{remark} </if>
+		  		  <if test="modifiedBy != null and modifiedBy != ''"> and modified_by = #{modifiedBy} </if>
+		  		  <if test="gmtCreate != null and gmtCreate != ''"> and gmt_create = #{gmtCreate} </if>
+		  		  <if test="gmtModified != null and gmtModified != ''"> and gmt_modified = #{gmtModified} </if>
+		  		</where>
+        <choose>
+            <when test="sort != null and sort.trim() != ''">
+                order by ${sort} ${order}
+            </when>
+			<otherwise>
+                order by cont_form_id desc
+			</otherwise>
+        </choose>
+		<if test="offset != null and limit != null">
+			limit #{offset}, #{limit}
+		</if>
+	</select>
+	
+ 	<select id="count" resultType="int">
+		select count(*) from cont_form
+		 <where>  
+		  		  <if test="contFormId != null and contFormId != ''"> and cont_form_id = #{contFormId} </if>
+		  		  <if test="title != null and title != ''"> and title = #{title} </if>
+		  		  <if test="langType != null and langType != ''"> and lang_type = #{langType} </if>
+		  		  <if test="seoTitle != null and seoTitle != ''"> and seo_title = #{seoTitle} </if>
+		  		  <if test="seoKeywords != null and seoKeywords != ''"> and seo_keywords = #{seoKeywords} </if>
+		  		  <if test="seoDescribe != null and seoDescribe != ''"> and seo_describe = #{seoDescribe} </if>
+		  		  <if test="remark != null and remark != ''"> and remark = #{remark} </if>
+		  		  <if test="modifiedBy != null and modifiedBy != ''"> and modified_by = #{modifiedBy} </if>
+		  		  <if test="gmtCreate != null and gmtCreate != ''"> and gmt_create = #{gmtCreate} </if>
+		  		  <if test="gmtModified != null and gmtModified != ''"> and gmt_modified = #{gmtModified} </if>
+		  		</where>
+	</select>
+	 
+	<insert id="save" parameterType="com.cloudht.cont.domain.ContFormDO" useGeneratedKeys="true" keyProperty="contFormId">
+		insert into cont_form
+		(
+			`title`, 
+			`lang_type`, 
+			`seo_title`, 
+			`seo_keywords`, 
+			`seo_describe`, 
+			`remark`, 
+			`modified_by`, 
+			`gmt_create`, 
+			`gmt_modified`
+		)
+		values
+		(
+			#{title}, 
+			#{langType}, 
+			#{seoTitle}, 
+			#{seoKeywords}, 
+			#{seoDescribe}, 
+			#{remark}, 
+			#{modifiedBy}, 
+			#{gmtCreate}, 
+			#{gmtModified}
+		)
+	</insert>
+	 
+	<update id="update" parameterType="com.cloudht.cont.domain.ContFormDO">
+		update cont_form 
+		<set>
+			<if test="title != null">`title` = #{title}, </if>
+			<if test="langType != null">`lang_type` = #{langType}, </if>
+			<if test="seoTitle != null">`seo_title` = #{seoTitle}, </if>
+			<if test="seoKeywords != null">`seo_keywords` = #{seoKeywords}, </if>
+			<if test="seoDescribe != null">`seo_describe` = #{seoDescribe}, </if>
+			<if test="remark != null">`remark` = #{remark}, </if>
+			<if test="modifiedBy != null">`modified_by` = #{modifiedBy}, </if>
+			<if test="gmtCreate != null">`gmt_create` = #{gmtCreate}, </if>
+			<if test="gmtModified != null">`gmt_modified` = #{gmtModified}</if>
+		</set>
+		where cont_form_id = #{contFormId}
+	</update>
+	
+	<delete id="remove">
+		delete from cont_form where cont_form_id = #{value}
+	</delete>
+	
+	<delete id="batchRemove">
+		delete from cont_form where cont_form_id in 
+		<foreach item="contFormId" collection="array" open="(" separator="," close=")">
+			#{contFormId}
+		</foreach>
+	</delete>
+
+</mapper>
