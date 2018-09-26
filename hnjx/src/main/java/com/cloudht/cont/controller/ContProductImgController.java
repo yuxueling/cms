@@ -1,5 +1,6 @@
 package com.cloudht.cont.controller;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -13,10 +14,15 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
+import com.cloudht.common.config.FtcspConfig;
 import com.cloudht.common.controller.BaseController;
+import com.cloudht.common.domain.FileDO;
 import com.cloudht.cont.domain.ContProductImgDO;
 import com.cloudht.cont.service.ContProductImgService;
+import com.sxyht.common.utils.FileType;
+import com.sxyht.common.utils.FileUtil;
 import com.sxyht.common.utils.PageUtils;
 import com.sxyht.common.utils.Query;
 import com.sxyht.common.utils.R;
@@ -35,6 +41,8 @@ public class ContProductImgController extends BaseController {
 	@Autowired
 	private ContProductImgService contProductImgService;
 	
+	@Autowired private FtcspConfig ftcspConfig;
+	
 	@GetMapping()
 	@RequiresPermissions("cont:contProductImg:contProductImg")
 	String ContProductImg(){
@@ -43,7 +51,7 @@ public class ContProductImgController extends BaseController {
 	
 	@ResponseBody
 	@GetMapping("/list")
-	@RequiresPermissions("cont:contProductImg:contProductImg")
+	@RequiresPermissions("cont:contProduct:contProduct")
 	public PageUtils list(@RequestParam Map<String, Object> params){
 		//查询列表数据
         Query query = new Query(params);
@@ -95,7 +103,7 @@ public class ContProductImgController extends BaseController {
 	 */
 	@PostMapping( "/remove")
 	@ResponseBody
-	@RequiresPermissions("cont:contProductImg:remove")
+	@RequiresPermissions("cont:contProduct:contProduct")
 	public R remove( Integer contProductImgId){
 		if(contProductImgService.remove(contProductImgId)>0){
 		return R.ok();
@@ -112,6 +120,24 @@ public class ContProductImgController extends BaseController {
 	public R remove(@RequestParam("ids[]") Integer[] contProductImgIds){
 		contProductImgService.batchRemove(contProductImgIds);
 		return R.ok();
+	}
+	@ResponseBody
+	@PostMapping("/upload/{contProductId}")
+	R upload(@RequestParam("file") MultipartFile file,@PathVariable("contProductId") Integer contProductId) {
+		String fileName = file.getOriginalFilename();
+		fileName = FileUtil.renameToUUID(fileName);
+		ContProductImgDO contProductImg=new ContProductImgDO();
+		contProductImg.setImgUrl("/files/" + fileName);
+		contProductImg.setContProductId(contProductId);
+		FileDO sysFile = new FileDO(FileType.fileType(fileName), "/files/" + fileName, new Date());
+		try {
+			FileUtil.uploadFile(file.getBytes(), ftcspConfig.getUploadPath(), fileName);
+		} catch (Exception e) {
+			return R.error();
+		}
+		if (this.contProductImgService.save(contProductImg)>0) 
+			return R.ok().put("fileName",sysFile.getUrl());
+		return R.error();
 	}
 	
 }

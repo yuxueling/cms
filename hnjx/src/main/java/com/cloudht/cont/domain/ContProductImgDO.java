@@ -17,6 +17,8 @@ public class ContProductImgDO implements Serializable {
 	private Integer contProductId;
 	//图片路径
 	private String imgUrl;
+	//排序
+	private Integer sort;
 
 	/**
 	 * 设置：图片主键
@@ -53,5 +55,17 @@ public class ContProductImgDO implements Serializable {
 	 */
 	public String getImgUrl() {
 		return imgUrl;
+	}
+	/**
+	 * 设置：排序
+	 */
+	public void setSort(Integer sort) {
+		this.sort = sort;
+	}
+	/**
+	 * 获取：排序
+	 */
+	public Integer getSort() {
+		return sort;
 	}
 }

@@ -167,10 +167,11 @@ public class ContProductController extends BaseController {
     @GetMapping("/setImg/{contProductId}")
     @RequiresPermissions("cont:contProduct:add")
     String setImg(@PathVariable("contProductId") Integer contProductId,Model model){
-        Map<String,Object> map=new HashMap<>();
+       /* Map<String,Object> map=new HashMap<>();
         map.put("contProductId",contProductId);
         List<ContProductImgDO> list = contProductImgService.list(map);
-        model.addAttribute("rows",list);
+        model.addAttribute("rows",list);*/
+        model.addAttribute("contProductId",contProductId);
         return "cont/contProduct/setImg";
     }
 
