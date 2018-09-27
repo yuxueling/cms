@@ -27,4 +27,5 @@ public interface ContFormService {
 	int remove(Integer contFormId);
 	
 	int batchRemove(Integer[] contFormIds);
+
 }

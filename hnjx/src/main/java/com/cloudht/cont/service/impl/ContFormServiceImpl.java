@@ -51,5 +51,7 @@ public class ContFormServiceImpl implements ContFormService {
 	public int batchRemove(Integer[] contFormIds){
 		return contFormDao.batchRemove(contFormIds);
 	}
-	
+
+
+
 }

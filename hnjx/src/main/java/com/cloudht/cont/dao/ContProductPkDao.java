@@ -33,4 +33,6 @@ public interface ContProductPkDao {
 	int batchInsert(List<ContProductPkDO> ContProductPkList);
 
 	int delByProductParamId(Integer contProductParamId);
+
+	int delByProductId(Integer contProductId);
 }

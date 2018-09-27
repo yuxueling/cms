@@ -97,8 +97,8 @@
         data: {
             activeClass: 'active',
             activeIndex: 0,
-            contProductId:_contProductId,
             rows: _rows,
+            contProductId:_contProductId,
             langDictList: _langDictList,
             newParam:{contProductPkDOList:[]},
             newValue:''
@@ -117,15 +117,18 @@
                 for(i=0;i<this.rows.length;i++){
                     contProductParamList=contProductParamList.concat(this.rows[i].contProductParamDOList);
                 }
-
                 $.ajax({
                     type: "POST",
                     url: "/cont/contProduct/saveParams",
-                    data: {contProductParam: JSON.stringify(contProductParamList)},
+                    data: {contProductParam: JSON.stringify(contProductParamList),contProductId:this.contProductId},
                     dataType: "json",
                     success: function (data) {
                         if (data.code == 0) {
-                            layer.msg("保存成功！");
+
+                            parent.layer.msg("保存成功!");
+                            var index = parent.layer.getFrameIndex(window.name); // 获取窗口索引
+                            parent.layer.close(index);
+
                         }
                     }
                 });

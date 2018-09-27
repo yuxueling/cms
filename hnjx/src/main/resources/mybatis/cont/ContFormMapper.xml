@@ -104,4 +104,14 @@
 		</foreach>
 	</delete>
 
+
+
+	<!--						new 				-->
+
+
+	<select id="listByDict">
+
+
+	</select>
+
 </mapper>

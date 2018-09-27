@@ -5,6 +5,8 @@ import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
+import com.cloudht.cont.domain.ContFormDataDO;
+import com.cloudht.cont.service.ContFormDataService;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
@@ -36,6 +38,9 @@ import com.sxyht.common.utils.R;
 @RequestMapping("/cont/contForm")
 public class ContFormController extends BaseController {
 	@Autowired private ContFormService contFormService;
+
+	@Autowired
+	private ContFormDataService contFormDataService;
 	
 	@Autowired private DictService dictService;
 	
@@ -55,6 +60,7 @@ public class ContFormController extends BaseController {
 	
 	@GetMapping("/add") @RequiresPermissions("cont:contForm:add")
 	String add(Model model){
+
 		List<DictDO> langDictList = dictService.listByType("CmsLangType");	
 		ArrayList<ContFormDO> arrayList = new ArrayList<ContFormDO>(langDictList.size());
 		for(int i=0;i<langDictList.size();i++) 
@@ -99,5 +105,17 @@ public class ContFormController extends BaseController {
 	public R remove(@RequestParam("ids[]") Integer[] contFormIds){
 		contFormService.batchRemove(contFormIds);
 		return R.ok();
-	}	
+	}
+
+
+	///new
+	@PostMapping("/dataList") @RequiresPermissions("cont:contForm:contForm") @ResponseBody
+	public PageUtils dataList(@RequestParam Map<String, Object> params){
+		Query query = new Query(params);
+		List<ContFormDataDO> contFormDataList = contFormDataService.list(query);
+		PageUtils pageUtils = new PageUtils(contFormDataList, 0);
+		return pageUtils;
+	}
+
+
 }
