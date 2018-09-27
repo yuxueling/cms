@@ -1,9 +1,7 @@
-
 var prefix = "/cont/contForm"
 $(function() {
 	load();
 });
-
 function load() {
 	$('#exampleTable')
 			.bootstrapTable(
@@ -46,48 +44,34 @@ function load() {
 						columns : [
 								{
 									checkbox : true
-								},
-																{
-									field : 'contFormId', 
-									title : '表单表主键' 
-								},
-																{
+								},{
 									field : 'title', 
-									title : '标题' 
-								},
-																{
+									title : '标题' ,
+									formatter : function(value, row, index) {
+										return '<a href="#" onclick="queryFormDataByFormId(\''+ row.contFormId + '\')">'+value+'</a> ';
+									}
+								},{
 									field : 'langType', 
 									title : '语种 字典CmsLangType' 
-								},
-																{
+								},{
 									field : 'seoTitle', 
 									title : 'seo标题' 
-								},
-																{
+								},{
 									field : 'seoKeywords', 
 									title : 'seo关键字' 
-								},
-																{
-									field : 'seoDescribe', 
-									title : 'seo描述' 
-								},
-																{
+								},{
 									field : 'remark', 
 									title : '备注' 
-								},
-																{
-									field : 'modifiedBy', 
-									title : '' 
-								},
-																{
+								},{
+									field : 'haveRead', 
+									title : '是否读取' ,
+									formatter : function(value, row, index) {
+										return {'0':'未读','1':'已读'}[value];
+									}
+								},{
 									field : 'gmtCreate', 
 									title : '创建时间' 
-								},
-																{
-									field : 'gmtModified', 
-									title : '修改时间' 
-								},
-																{
+								},{
 									title : '操作',
 									field : 'id',
 									align : 'center',
@@ -108,6 +92,18 @@ function load() {
 }
 function reLoad() {
 	$('#exampleTable').bootstrapTable('refresh');
+}
+function queryFormDataByFormId(contFormId){
+	if(contFormId<1)
+		return;
+	layer.open({
+		type : 2,
+		title : '查看数据详情',
+		maxmin : true,
+		shadeClose : false, // 点击遮罩关闭层
+		area : [ '800px', '520px' ],
+		content : '/cont/contFormData/listBycontFormId?contFormId='+contFormId // iframe的url
+	});
 }
 function add() {
 	layer.open({

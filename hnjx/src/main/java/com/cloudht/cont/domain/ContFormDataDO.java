@@ -10,7 +10,7 @@ import java.util.Date;
  * 
  * @author yuxueling
  * @email 980899486@qq.com
- * @date 2018-09-25 10:01:26
+ * @date 2018-09-27 08:56:14
  */
 public class ContFormDataDO implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -27,12 +27,12 @@ public class ContFormDataDO implements Serializable {
 	private String titleStyle;
 	//输入框样式
 	private String inputStyle;
-	//创建人id
-	private Integer createBy;
 	//创建时间
 	private Date gmtCreate;
 	//修改时间
 	private Date gmtModified;
+	//创建人id
+	private Long createBy;
 
 	/**
 	 * 设置：
@@ -107,18 +107,6 @@ public class ContFormDataDO implements Serializable {
 		return inputStyle;
 	}
 	/**
-	 * 设置：创建人id
-	 */
-	public void setCreateBy(Integer createBy) {
-		this.createBy = createBy;
-	}
-	/**
-	 * 获取：创建人id
-	 */
-	public Integer getCreateBy() {
-		return createBy;
-	}
-	/**
 	 * 设置：创建时间
 	 */
 	public void setGmtCreate(Date gmtCreate) {
@@ -141,5 +129,17 @@ public class ContFormDataDO implements Serializable {
 	 */
 	public Date getGmtModified() {
 		return gmtModified;
+	}
+	/**
+	 * 设置：创建人id
+	 */
+	public void setCreateBy(Long createBy) {
+		this.createBy = createBy;
+	}
+	/**
+	 * 获取：创建人id
+	 */
+	public Long getCreateBy() {
+		return createBy;
 	}
 }

@@ -72,16 +72,16 @@ function load() {
 									title : '输入框样式' 
 								},
 																{
-									field : 'createBy', 
-									title : '创建人id' 
-								},
-																{
 									field : 'gmtCreate', 
 									title : '创建时间' 
 								},
 																{
 									field : 'gmtModified', 
 									title : '修改时间' 
+								},
+																{
+									field : 'createBy', 
+									title : '创建人id' 
 								},
 																{
 									title : '操作',

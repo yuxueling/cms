@@ -1,12 +1,14 @@
 package com.cloudht.cont.controller;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
+<<<<<<< HEAD
 
 import com.cloudht.cont.domain.ContFormDataDO;
 import com.cloudht.cont.service.ContFormDataService;
+=======
+>>>>>>> temp
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
@@ -17,10 +19,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-
-import com.cloudht.common.controller.BaseController;
-import com.cloudht.common.domain.DictDO;
-import com.cloudht.common.service.DictService;
 import com.cloudht.cont.domain.ContFormDO;
 import com.cloudht.cont.service.ContFormService;
 import com.sxyht.common.utils.PageUtils;
@@ -32,25 +30,24 @@ import com.sxyht.common.utils.R;
  * 
  * @author yuxueling
  * @email 980899486@qq.com
- * @date 2018-09-25 10:01:26
+ * @date 2018-09-27 08:56:13
  */
+ 
 @Controller
 @RequestMapping("/cont/contForm")
-public class ContFormController extends BaseController {
+public class ContFormController {
 	@Autowired private ContFormService contFormService;
 
 	@Autowired
 	private ContFormDataService contFormDataService;
 	
-	@Autowired private DictService dictService;
-	
 	@GetMapping() @RequiresPermissions("cont:contForm:contForm")
 	String ContForm(){
 	    return "cont/contForm/contForm";
 	}
-	
-	@GetMapping("/list") @RequiresPermissions("cont:contForm:contForm")
-	public @ResponseBody PageUtils list(@RequestParam Map<String, Object> params){
+	@GetMapping("/list") @RequiresPermissions("cont:contForm:contForm") @ResponseBody
+	public PageUtils list(@RequestParam Map<String, Object> params){
+		//查询列表数据
         Query query = new Query(params);
 		List<ContFormDO> contFormList = contFormService.list(query);
 		int total = contFormService.count(query);
@@ -59,6 +56,7 @@ public class ContFormController extends BaseController {
 	}
 	
 	@GetMapping("/add") @RequiresPermissions("cont:contForm:add")
+<<<<<<< HEAD
 	String add(Model model){
 
 		List<DictDO> langDictList = dictService.listByType("CmsLangType");	
@@ -67,6 +65,9 @@ public class ContFormController extends BaseController {
 			arrayList.add(new ContFormDO());
 		model.addAttribute("rows", arrayList);
 		model.addAttribute("langDictList",langDictList);
+=======
+	String add(){
+>>>>>>> temp
 	    return "cont/contForm/add";
 	}
 
@@ -77,35 +78,51 @@ public class ContFormController extends BaseController {
 	    return "cont/contForm/edit";
 	}
 	
-	@PostMapping("/save") @RequiresPermissions("cont:contForm:add") @ResponseBody
+	/**
+	 * 保存
+	 */
+	@ResponseBody
+	@PostMapping("/save") @RequiresPermissions("cont:contForm:add")
 	public R save( ContFormDO contForm){
 		contForm.setGmtCreate(new Date());
-		contForm.setModifiedBy(this.getUserId());
-		if(contFormService.save(contForm)>0)
+		contForm.setHaveRead(0);
+		if(contFormService.save(contForm)>0){
 			return R.ok();
+		}
 		return R.error();
 	}
-	
-	@RequestMapping("/update") @ResponseBody @RequiresPermissions("cont:contForm:edit")
-	public  R update( ContFormDO contForm){
-		contForm.setGmtModified(new Date());
-		contForm.setModifiedBy(getUserId());
+	/**
+	 * 修改
+	 */
+	@ResponseBody
+	@RequestMapping("/update") @RequiresPermissions("cont:contForm:edit")
+	public R update( ContFormDO contForm){
 		contFormService.update(contForm);
 		return R.ok();
 	}
 	
-	@PostMapping( "/remove") @ResponseBody @RequiresPermissions("cont:contForm:remove")
+	/**
+	 * 删除
+	 */
+	@PostMapping( "/remove") @RequiresPermissions("cont:contForm:remove") @ResponseBody
 	public R remove( Integer contFormId){
-		if(contFormService.remove(contFormId)>0)
-			return R.ok();
+		if(contFormService.remove(contFormId)>0){
+		return R.ok();
+		}
 		return R.error();
 	}
 	
-	@PostMapping("/batchRemove") @RequiresPermissions("cont:contForm:batchRemove") @ResponseBody
+	/**
+	 * 删除
+	 */
+	@PostMapping( "/batchRemove")
+	@ResponseBody
+	@RequiresPermissions("cont:contForm:batchRemove")
 	public R remove(@RequestParam("ids[]") Integer[] contFormIds){
 		contFormService.batchRemove(contFormIds);
 		return R.ok();
 	}
+<<<<<<< HEAD
 
 
 	///new
@@ -118,4 +135,7 @@ public class ContFormController extends BaseController {
 	}
 
 
+=======
+	
+>>>>>>> temp
 }

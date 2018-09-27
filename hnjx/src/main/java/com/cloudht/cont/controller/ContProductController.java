@@ -5,11 +5,8 @@ import com.cloudht.cont.service.*;
 import com.cloudht.cont.vo.ContProductParamVO;
 import org.springframework.stereotype.Controller;
 
-
 import com.alibaba.fastjson.JSON;
 import com.cloudht.common.service.DictService;
-import com.cloudht.system.domain.UserDO;
-import com.sxyht.common.utils.ShiroUtils;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
@@ -192,6 +189,7 @@ public class ContProductController extends BaseController {
     }
 
 
+<<<<<<< HEAD
     /**
      * 保存基本信息
      */
@@ -265,5 +263,90 @@ public class ContProductController extends BaseController {
         }
         return R.ok();
     }
+=======
+	/**
+	 * 保存基本信息
+	 * @param contProductInfo 前台传来的json数据
+	 * @param contProductId 产品表维护的主键
+	 * @return
+	 */
+	@PostMapping("/saveInfo") @RequiresPermissions("cont:contProduct:add") @ResponseBody
+	public R saveInfo( String contProductInfo,Integer contProductId){
+		List<ContProductInfoDO> productInfoDOList = JSON.parseArray(contProductInfo, ContProductInfoDO.class);
+		Date date=new Date();
+		for (ContProductInfoDO infoDO:productInfoDOList){
+			infoDO.setGmtModified(date);
+			if(infoDO.getContProductInfoId()==null){//主键为null执行保存
+				infoDO.setCreateBy(getUserId());
+				infoDO.setGmtCreate(date);
+				infoDO.setContProductId(contProductId);//主键为null的时候产品主键
+				contProductInfoService.save(infoDO);
+			}else//修改
+				contProductInfoService.update(infoDO);
+		}
+		return R.ok();
+	}
+
+	/**
+	 * 保存图片
+	 */
+	@ResponseBody
+	@PostMapping("/saveImg")
+	@RequiresPermissions("cont:contProduct:add")
+	public R saveImg( ContProductImgDO contProductImg){
+		if(contProductImg.getContProductImgId()==null){
+			//保存
+			if(contProductImgService.save(contProductImg)>0){
+				return R.ok();
+			}
+		}else{//修改
+			contProductImgService.update(contProductImg);
+			return R.ok();
+		}
+		return R.error();
+	}
+
+	/**
+	 * 保存参数
+	 */
+	@ResponseBody
+	@PostMapping("/saveParams")
+	@RequiresPermissions("cont:contProduct:add")
+	public R saveParams( String contProductParam){
+		Date date=new Date();
+		List<ContProductParamDO> paramDOList = JSON.parseArray(contProductParam, ContProductParamDO.class);
+		for (ContProductParamDO paramDO:paramDOList){
+			if(paramDO.getContProductParamId()==null){//保存
+				//保存参数
+				paramDO.setCreateBy(getUserId());
+				paramDO.setGmtCreate(date);
+				paramDO.setGmtModified(date);
+				contProductParamService.save(paramDO);
+				//删除参数值
+				contProductPkService.delByProductParamId(paramDO.getContProductParamId());
+				//保存参数值
+				if(paramDO.getContProductPkDOList()!=null && !paramDO.getContProductPkDOList().isEmpty()){
+					for(ContProductPkDO pkDO:paramDO.getContProductPkDOList()){
+						pkDO.setContProductParamId(paramDO.getContProductParamId());
+					}
+					contProductPkService.batchInsert(paramDO.getContProductPkDOList());
+				}
+			}else{//修改
+				paramDO.setGmtModified(date);
+				contProductParamService.update(paramDO);
+				//删除参数值
+				contProductPkService.delByProductParamId(paramDO.getContProductParamId());
+				//保存参数值
+				if(paramDO.getContProductPkDOList()!=null && !paramDO.getContProductPkDOList().isEmpty()){
+					for(ContProductPkDO pkDO:paramDO.getContProductPkDOList()){
+						pkDO.setContProductParamId(paramDO.getContProductParamId());
+					}
+					contProductPkService.batchInsert(paramDO.getContProductPkDOList());
+				}
+			}
+		}
+		return R.ok();
+	}
+>>>>>>> temp
 
 }
