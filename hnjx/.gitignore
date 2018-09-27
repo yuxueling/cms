@@ -1,1 +1,6 @@
+.classpath
+.project
+/.git/
+/.settings/
 /target/
+/.idea/

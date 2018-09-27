@@ -5,11 +5,8 @@ import com.cloudht.cont.service.*;
 import com.cloudht.cont.vo.ContProductParamVO;
 import org.springframework.stereotype.Controller;
 
-
 import com.alibaba.fastjson.JSON;
 import com.cloudht.common.service.DictService;
-import com.cloudht.system.domain.UserDO;
-import com.sxyht.common.utils.ShiroUtils;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
@@ -193,24 +190,23 @@ public class ContProductController extends BaseController {
 
 	/**
 	 * 保存基本信息
+	 * @param contProductInfo 前台传来的json数据
+	 * @param contProductId 产品表维护的主键
+	 * @return
 	 */
-	@ResponseBody
-	@PostMapping("/saveInfo")
-	@RequiresPermissions("cont:contProduct:add")
-	public R saveInfo( String contProductInfo){
-		Date date=new Date();
-		UserDO user = (UserDO)ShiroUtils.getUser();
+	@PostMapping("/saveInfo") @RequiresPermissions("cont:contProduct:add") @ResponseBody
+	public R saveInfo( String contProductInfo,Integer contProductId){
 		List<ContProductInfoDO> productInfoDOList = JSON.parseArray(contProductInfo, ContProductInfoDO.class);
+		Date date=new Date();
 		for (ContProductInfoDO infoDO:productInfoDOList){
-			if(infoDO.getContProductInfoId()==null){//保存
-				infoDO.setCreateBy(user.getUserId());
+			infoDO.setGmtModified(date);
+			if(infoDO.getContProductInfoId()==null){//主键为null执行保存
+				infoDO.setCreateBy(getUserId());
 				infoDO.setGmtCreate(date);
-				infoDO.setGmtModified(date);
+				infoDO.setContProductId(contProductId);//主键为null的时候产品主键
 				contProductInfoService.save(infoDO);
-			}else{//修改
-				infoDO.setGmtModified(date);
+			}else//修改
 				contProductInfoService.update(infoDO);
-			}
 		}
 		return R.ok();
 	}
@@ -242,12 +238,11 @@ public class ContProductController extends BaseController {
 	@RequiresPermissions("cont:contProduct:add")
 	public R saveParams( String contProductParam){
 		Date date=new Date();
-		UserDO user = (UserDO)ShiroUtils.getUser();
 		List<ContProductParamDO> paramDOList = JSON.parseArray(contProductParam, ContProductParamDO.class);
 		for (ContProductParamDO paramDO:paramDOList){
 			if(paramDO.getContProductParamId()==null){//保存
 				//保存参数
-				paramDO.setCreateBy(user.getUserId());
+				paramDO.setCreateBy(getUserId());
 				paramDO.setGmtCreate(date);
 				paramDO.setGmtModified(date);
 				contProductParamService.save(paramDO);

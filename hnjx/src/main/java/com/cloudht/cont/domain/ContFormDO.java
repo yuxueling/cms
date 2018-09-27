@@ -10,7 +10,7 @@ import java.util.Date;
  * 
  * @author yuxueling
  * @email 980899486@qq.com
- * @date 2018-09-25 10:01:26
+ * @date 2018-09-27 08:56:13
  */
 public class ContFormDO implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -29,12 +29,16 @@ public class ContFormDO implements Serializable {
 	private String seoDescribe;
 	//备注
 	private String remark;
-	//
-	private Long modifiedBy;
+	//是否读取 0-未读 1-已读
+	private Integer haveRead;
+	//读取时间
+	private Date readDate;
 	//创建时间
 	private Date gmtCreate;
 	//修改时间
 	private Date gmtModified;
+	//创建人id
+	private Long createBy;
 
 	/**
 	 * 设置：表单表主键
@@ -121,16 +125,28 @@ public class ContFormDO implements Serializable {
 		return remark;
 	}
 	/**
-	 * 设置：
+	 * 设置：是否读取 0-未读 1-已读
 	 */
-	public void setModifiedBy(Long modifiedBy) {
-		this.modifiedBy = modifiedBy;
+	public void setHaveRead(Integer haveRead) {
+		this.haveRead = haveRead;
 	}
 	/**
-	 * 获取：
+	 * 获取：是否读取 0-未读 1-已读
 	 */
-	public Long getModifiedBy() {
-		return modifiedBy;
+	public Integer getHaveRead() {
+		return haveRead;
+	}
+	/**
+	 * 设置：读取时间
+	 */
+	public void setReadDate(Date readDate) {
+		this.readDate = readDate;
+	}
+	/**
+	 * 获取：读取时间
+	 */
+	public Date getReadDate() {
+		return readDate;
 	}
 	/**
 	 * 设置：创建时间
@@ -155,5 +171,17 @@ public class ContFormDO implements Serializable {
 	 */
 	public Date getGmtModified() {
 		return gmtModified;
+	}
+	/**
+	 * 设置：创建人id
+	 */
+	public void setCreateBy(Long createBy) {
+		this.createBy = createBy;
+	}
+	/**
+	 * 获取：创建人id
+	 */
+	public Long getCreateBy() {
+		return createBy;
 	}
 }

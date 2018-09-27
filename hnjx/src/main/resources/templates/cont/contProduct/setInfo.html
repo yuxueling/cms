@@ -121,7 +121,7 @@
         $('#content_sn').summernote('code', details);
     });
 
-
+    var contProductId = [[${contProductId}]];
     var _rows = [[${rows}]];
     var _langDictList = [[${langDictList}]];
     var vm = new Vue({
@@ -149,7 +149,7 @@
 
                 $.ajax({
                     type: "POST",
-                    url: "/cont/contProduct/saveInfo",
+                    url: "/cont/contProduct/saveInfo?contProductId="+contProductId,
                     data: {contProductInfo: JSON.stringify(this.rows)},
                     dataType: "json",
                     success: function (data) {

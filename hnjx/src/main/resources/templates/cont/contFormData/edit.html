@@ -9,7 +9,7 @@
 				<div class="ibox float-e-margins">
 					<div class="ibox-content">
 						<form class="form-horizontal m-t" id="signupForm">
-						<input id="cont_form_data_id" name="cont_form_data_id" th:value="${contFormData.cont_form_data_id}"  type="hidden">
+						<input id="contFormDataId" name="contFormDataId" th:value="${contFormData.contFormDataId}"  type="hidden">
 							<div class="form-group">	
 								<label class="col-sm-3 control-label">表单表主键：</label>
 								<div class="col-sm-8">
@@ -41,12 +41,6 @@
 								</div>
 							</div>
 														<div class="form-group">	
-								<label class="col-sm-3 control-label">创建人id：</label>
-								<div class="col-sm-8">
-									<input id="createBy" name="createBy" th:value="${contFormData.createBy}" class="form-control" type="text">
-								</div>
-							</div>
-														<div class="form-group">	
 								<label class="col-sm-3 control-label">创建时间：</label>
 								<div class="col-sm-8">
 									<input id="gmtCreate" name="gmtCreate" th:value="${contFormData.gmtCreate}" class="form-control" type="text">
@@ -56,6 +50,12 @@
 								<label class="col-sm-3 control-label">修改时间：</label>
 								<div class="col-sm-8">
 									<input id="gmtModified" name="gmtModified" th:value="${contFormData.gmtModified}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">创建人id：</label>
+								<div class="col-sm-8">
+									<input id="createBy" name="createBy" th:value="${contFormData.createBy}" class="form-control" type="text">
 								</div>
 							</div>
 																					<div class="form-group">
