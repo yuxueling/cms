@@ -25,8 +25,16 @@ import java.util.List;
 @Controller
 public class MianController extends BaseController {
 	@Autowired MenuService menuService;
+<<<<<<< HEAD
 	
 	@GetMapping({"","/xmx"})
+=======
+	@GetMapping({"","/","index","index.html"})
+	public String redirect() {
+		return "redirect:/xmx/index";
+	}
+	@GetMapping({"/xmx/index"})
+>>>>>>> temp
 	public String index() {
 		return "/xmx/index";
 	}
