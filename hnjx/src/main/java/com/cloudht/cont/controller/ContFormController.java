@@ -1,14 +1,12 @@
 package com.cloudht.cont.controller;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
-<<<<<<< HEAD
 
-import com.cloudht.cont.domain.ContFormDataDO;
+import com.cloudht.common.domain.DictDO;
 import com.cloudht.cont.service.ContFormDataService;
-=======
->>>>>>> temp
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
@@ -56,18 +54,8 @@ public class ContFormController {
 	}
 	
 	@GetMapping("/add") @RequiresPermissions("cont:contForm:add")
-<<<<<<< HEAD
 	String add(Model model){
 
-		List<DictDO> langDictList = dictService.listByType("CmsLangType");	
-		ArrayList<ContFormDO> arrayList = new ArrayList<ContFormDO>(langDictList.size());
-		for(int i=0;i<langDictList.size();i++) 
-			arrayList.add(new ContFormDO());
-		model.addAttribute("rows", arrayList);
-		model.addAttribute("langDictList",langDictList);
-=======
-	String add(){
->>>>>>> temp
 	    return "cont/contForm/add";
 	}
 
@@ -122,20 +110,5 @@ public class ContFormController {
 		contFormService.batchRemove(contFormIds);
 		return R.ok();
 	}
-<<<<<<< HEAD
 
-
-	///new
-	@PostMapping("/dataList") @RequiresPermissions("cont:contForm:contForm") @ResponseBody
-	public PageUtils dataList(@RequestParam Map<String, Object> params){
-		Query query = new Query(params);
-		List<ContFormDataDO> contFormDataList = contFormDataService.list(query);
-		PageUtils pageUtils = new PageUtils(contFormDataList, 0);
-		return pageUtils;
-	}
-
-
-=======
-	
->>>>>>> temp
 }
