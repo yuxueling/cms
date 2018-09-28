@@ -1,5 +1,6 @@
 package com.cloudht.cont.service.impl;
 
+import com.cloudht.cont.dao.ContProductPkDao;
 import com.cloudht.cont.vo.ContProductParamVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,6 +18,8 @@ import com.cloudht.cont.service.ContProductParamService;
 public class ContProductParamServiceImpl implements ContProductParamService {
 	@Autowired
 	private ContProductParamDao contProductParamDao;
+	@Autowired
+	private ContProductPkDao contProductPkDao;
 	
 	@Override
 	public ContProductParamDO get(Integer contProductParamId){
@@ -56,6 +59,12 @@ public class ContProductParamServiceImpl implements ContProductParamService {
 	@Override
 	public List<ContProductParamVO> listByDict(Integer contProducId) {
 		return contProductParamDao.listByDict(contProducId);
+	}
+
+	@Override
+	public int delByProductId(Integer contProductId) {
+		contProductPkDao.delByProductId(contProductId);
+		return contProductParamDao.delByProductId(contProductId);
 	}
 
 }

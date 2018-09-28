@@ -1,8 +1,12 @@
 package com.cloudht.cont.controller;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
+
+import com.cloudht.common.domain.DictDO;
+import com.cloudht.cont.service.ContFormDataService;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
@@ -31,6 +35,9 @@ import com.sxyht.common.utils.R;
 @RequestMapping("/cont/contForm")
 public class ContFormController {
 	@Autowired private ContFormService contFormService;
+
+	@Autowired
+	private ContFormDataService contFormDataService;
 	
 	@GetMapping() @RequiresPermissions("cont:contForm:contForm")
 	String ContForm(){
@@ -47,7 +54,8 @@ public class ContFormController {
 	}
 	
 	@GetMapping("/add") @RequiresPermissions("cont:contForm:add")
-	String add(){
+	String add(Model model){
+
 	    return "cont/contForm/add";
 	}
 
@@ -102,5 +110,5 @@ public class ContFormController {
 		contFormService.batchRemove(contFormIds);
 		return R.ok();
 	}
-	
+
 }

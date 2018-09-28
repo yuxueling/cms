@@ -32,4 +32,6 @@ public interface ContProductParamDao {
 	int batchRemove(Integer[] contProductParamIds);
 
 	List<ContProductParamVO> listByDict(Integer contProductId);
+
+	int delByProductId(Integer contProductId);
 }

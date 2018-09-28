@@ -140,4 +140,10 @@
 	<select id="queryPk" resultType="com.cloudht.cont.domain.ContProductPkDO">
 		select `cont_product_pk_id`,`cont_product_param_id`,`param_value`,`sort` from cont_product_pk where cont_product_param_id = #{value}
 	</select>
+
+
+	<delete id="delByProductId" >
+		delete from cont_product_param where cont_product_id = #{value}
+	</delete>
+
 </mapper>

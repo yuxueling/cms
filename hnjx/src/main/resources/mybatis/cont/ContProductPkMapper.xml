@@ -97,4 +97,10 @@
 	<delete id="delByProductParamId">
 		delete from cont_product_pk where cont_product_param_id = #{value}
 	</delete>
+
+	<delete id="delByProductId">
+		delete from cont_product_pk where cont_product_param_id in (
+			SELECT cont_product_param_id FROM cont_product_param where cont_product_id = #{value}
+		)
+	</delete>
 </mapper>

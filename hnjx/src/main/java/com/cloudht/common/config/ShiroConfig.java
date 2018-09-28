@@ -56,6 +56,13 @@ public class ShiroConfig {
     ShiroFilterFactoryBean shiroFilterFactoryBean(SecurityManager securityManager) {
     	//shiro框架的过滤器工厂对象
         ShiroFilterFactoryBean shiroFilterFactoryBean = new ShiroFilterFactoryBean();
+<<<<<<< HEAD
+        shiroFilterFactoryBean.setSecurityManager(securityManager);//注入安全管理器对象
+        shiroFilterFactoryBean.setLoginUrl("/login");//设置首页或者登陆页面
+        shiroFilterFactoryBean.setSuccessUrl("/main");//设置登陆成功后跳转的页面
+        shiroFilterFactoryBean.setUnauthorizedUrl("/403");//设置没有权限需要跳转的页面
+=======
+>>>>>>> temp
         LinkedHashMap<String, String> filterChainDefinitionMap = new LinkedHashMap<>();
         filterChainDefinitionMap.put("/", "anon");
         filterChainDefinitionMap.put("/css/**", "anon");//匿名访问过滤器
