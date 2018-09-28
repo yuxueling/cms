@@ -34,7 +34,7 @@ public class MianController extends BaseController {
 		return "/xmx/index";
 	}
 	/**请求访问登录页面 */
-	@GetMapping({"/login"})
+	@GetMapping("/login")
 	String login() {
 		return "login";
 	}
@@ -63,7 +63,6 @@ public class MianController extends BaseController {
 	 * @param model
 	 * @return
 	 */
-	@Log("请求访问主页")
 	@GetMapping("/main")
 	String main(Model model) {
 		List<Tree<MenuDO>> menus = menuService.listMenuTree(getUserId());//通过用户id加载菜单选项

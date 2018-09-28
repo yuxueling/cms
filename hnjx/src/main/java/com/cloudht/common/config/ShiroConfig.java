@@ -57,7 +57,9 @@ public class ShiroConfig {
     	//shiro框架的过滤器工厂对象
         ShiroFilterFactoryBean shiroFilterFactoryBean = new ShiroFilterFactoryBean();
         LinkedHashMap<String, String> filterChainDefinitionMap = new LinkedHashMap<>();
+        filterChainDefinitionMap.put("/", "anon");
         filterChainDefinitionMap.put("/css/**", "anon");//匿名访问过滤器
+        filterChainDefinitionMap.put("/login", "anon");//设置登陆页面为可以访问
         filterChainDefinitionMap.put("/js/**", "anon");
         filterChainDefinitionMap.put("/xmx/**", "anon");//将xmx设置为开放访问
         filterChainDefinitionMap.put("/fonts/**", "anon");
@@ -67,9 +69,6 @@ public class ShiroConfig {
         filterChainDefinitionMap.put("/upload/**", "anon");
         filterChainDefinitionMap.put("/files/**", "anon");
         filterChainDefinitionMap.put("/logout", "logout");
-        filterChainDefinitionMap.put("/", "anon");
-        filterChainDefinitionMap.put("/blog/open/**", "anon");
-        filterChainDefinitionMap.put("/otherSave", "anon");//其它渠道的客户信息保存
         //检查当前登录用户的是否具有中括号里面的权限
         //filterChainDefinitionMap.put("/page_base_staff", "perms[staff-list]");
         //一切请求都会经过这个过滤器，检查当前用户是否已经完成登录
