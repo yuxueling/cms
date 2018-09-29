@@ -255,6 +255,7 @@ table,td{}
 	padding-left:10px;
 	font-size:16px;
 	margin:5px auto;
+	z-index: 999;
 }
 .menu ul li a, .menu ul li a:visited {
 	display:block;
