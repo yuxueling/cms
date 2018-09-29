@@ -22,17 +22,27 @@ function load() {
 			                        visible: false,
 			                        align: 'center',
 			                        valign: 'center',
-			                        width: '5%'
+			                        width: '4%'
 								},{
 									field : 'categoryName', 
 									title : '类别名称' ,
 									valign: 'center',
-									width: '20%'
+									width: '15%'
 								} ,{
 									field : 'categoryType', 
 									title : '类别类型：（CmsCategoryType）' ,
 									valign: 'center',
-									width: '20%'
+									width: '18%'
+								},{
+									field : 'categoryCode', 
+									title : '编码' ,
+									valign: 'center',
+									width: '15%'
+								},{
+									field : 'sort', 
+									title : '排序',
+									valign: 'center',
+									width: '3%'
 								},{
 									field : 'parentCategoryId', 
 									title : '上级类别' ,
@@ -59,7 +69,12 @@ function load() {
 			                                + '" href="#" mce_href="#" title="添加下级" onclick="add(\''
 			                                + item.contCategoryId
 			                                + '\')"><i class="fa fa-plus"></i></a> ';
-			                        	return e+d+f;
+			                        	var g = '<a class="btn btn-primary btn-sm '
+			                                + s_add_h
+			                                + '" href="#" mce_href="#" title="多语种" onclick="addLangView(\''
+			                                + item.contCategoryId
+			                                + '\')"><i class="fa fa-plus"></i></a> ';
+			                        	return e+d+f+g;
 			                        }
 			                    }]
 					});
@@ -75,6 +90,16 @@ function add(parentCategoryId) {
 		shadeClose : false, // 点击遮罩关闭层
 		area : [ '800px', '520px' ],
 		content : prefix + '/add?parentCategoryId='+parentCategoryId // iframe的url
+	});
+}
+function addLangView(contCategoryId) {
+	layer.open({
+		type : 2,
+		title : '多语种设置',
+		maxmin : true,
+		shadeClose : false, // 点击遮罩关闭层
+		area : [ '800px', '520px' ],
+		content : prefix + '/addLangView?contCategoryId='+contCategoryId // iframe的url
 	});
 }
 function edit(id) {

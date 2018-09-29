@@ -4,17 +4,20 @@
 <mapper namespace="com.cloudht.cont.dao.ContCategoryDao">
 
 	<select id="get" resultType="com.cloudht.cont.domain.ContCategoryDO">
-		select `cont_category_id`,`category_type`,`parent_category_id`,`category_name`,`create_by`,`gmt_create`,`gmt_modified` from cont_category where cont_category_id = #{value}
+		select `cont_category_id`,`category_type`,`parent_category_id`,`category_name`,`category_code`,`sort`,`create_by`,`remark`,`gmt_create`,`gmt_modified` from cont_category where cont_category_id = #{value}
 	</select>
 
 	<select id="list" resultType="com.cloudht.cont.domain.ContCategoryDO">
-		select `cont_category_id`,`category_type`,`parent_category_id`,`category_name`,`create_by`,`gmt_create`,`gmt_modified` from cont_category
+		select `cont_category_id`,`category_type`,`parent_category_id`,`category_name`,`category_code`,`sort`,`create_by`,`remark`,`gmt_create`,`gmt_modified` from cont_category
         <where>  
 		  		  <if test="contCategoryId != null and contCategoryId != ''"> and cont_category_id = #{contCategoryId} </if>
 		  		  <if test="categoryType != null and categoryType != ''"> and category_type = #{categoryType} </if>
 		  		  <if test="parentCategoryId != null and parentCategoryId != ''"> and parent_category_id = #{parentCategoryId} </if>
 		  		  <if test="categoryName != null and categoryName != ''"> and category_name = #{categoryName} </if>
+		  		  <if test="categoryCode != null and categoryCode != ''"> and category_code = #{categoryCode} </if>
+		  		  <if test="sort != null and sort != ''"> and sort = #{sort} </if>
 		  		  <if test="createBy != null and createBy != ''"> and create_by = #{createBy} </if>
+		  		  <if test="remark != null and remark != ''"> and remark = #{remark} </if>
 		  		  <if test="gmtCreate != null and gmtCreate != ''"> and gmt_create = #{gmtCreate} </if>
 		  		  <if test="gmtModified != null and gmtModified != ''"> and gmt_modified = #{gmtModified} </if>
 		  		</where>
@@ -38,7 +41,10 @@
 		  		  <if test="categoryType != null and categoryType != ''"> and category_type = #{categoryType} </if>
 		  		  <if test="parentCategoryId != null and parentCategoryId != ''"> and parent_category_id = #{parentCategoryId} </if>
 		  		  <if test="categoryName != null and categoryName != ''"> and category_name = #{categoryName} </if>
+		  		  <if test="categoryCode != null and categoryCode != ''"> and category_code = #{categoryCode} </if>
+		  		  <if test="sort != null and sort != ''"> and sort = #{sort} </if>
 		  		  <if test="createBy != null and createBy != ''"> and create_by = #{createBy} </if>
+		  		  <if test="remark != null and remark != ''"> and remark = #{remark} </if>
 		  		  <if test="gmtCreate != null and gmtCreate != ''"> and gmt_create = #{gmtCreate} </if>
 		  		  <if test="gmtModified != null and gmtModified != ''"> and gmt_modified = #{gmtModified} </if>
 		  		</where>
@@ -50,7 +56,10 @@
 			`category_type`, 
 			`parent_category_id`, 
 			`category_name`, 
+			`category_code`, 
+			`sort`, 
 			`create_by`, 
+			`remark`, 
 			`gmt_create`, 
 			`gmt_modified`
 		)
@@ -59,7 +68,10 @@
 			#{categoryType}, 
 			#{parentCategoryId}, 
 			#{categoryName}, 
+			#{categoryCode}, 
+			#{sort}, 
 			#{createBy}, 
+			#{remark}, 
 			#{gmtCreate}, 
 			#{gmtModified}
 		)
@@ -71,7 +83,10 @@
 			<if test="categoryType != null">`category_type` = #{categoryType}, </if>
 			<if test="parentCategoryId != null">`parent_category_id` = #{parentCategoryId}, </if>
 			<if test="categoryName != null">`category_name` = #{categoryName}, </if>
+			<if test="categoryCode != null">`category_code` = #{categoryCode}, </if>
+			<if test="sort != null">`sort` = #{sort}, </if>
 			<if test="createBy != null">`create_by` = #{createBy}, </if>
+			<if test="remark != null">`remark` = #{remark}, </if>
 			<if test="gmtCreate != null">`gmt_create` = #{gmtCreate}, </if>
 			<if test="gmtModified != null">`gmt_modified` = #{gmtModified}</if>
 		</set>
