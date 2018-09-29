@@ -20,7 +20,9 @@ import com.cloudht.common.controller.BaseController;
 import com.cloudht.common.domain.DictDO;
 import com.cloudht.common.domain.Tree;
 import com.cloudht.common.service.DictService;
+import com.cloudht.cont.dao.ContCategoryInfoDao;
 import com.cloudht.cont.domain.ContCategoryDO;
+import com.cloudht.cont.domain.ContCategoryInfoDO;
 import com.cloudht.cont.service.ContCategoryService;
 import com.sxyht.common.utils.R;
 
@@ -37,6 +39,7 @@ import com.sxyht.common.utils.R;
 public class ContCategoryController extends BaseController{
 	@Autowired private ContCategoryService contCategoryService;
 	@Autowired private DictService dictService;
+	@Autowired private ContCategoryInfoDao contCategoryInfoDao;
 	@GetMapping()
 	@RequiresPermissions("cont:contCategory:contCategory")
 	String ContCategory(){
@@ -59,9 +62,8 @@ public class ContCategoryController extends BaseController{
         return list;
 	}
 	
-	
-	@RequiresPermissions("cont:contCategory:add")
-	@GetMapping("/add") String add(Integer parentCategoryId,Model model){
+	@RequiresPermissions("cont:contCategory:add")@GetMapping("/add") 
+	String add(Integer parentCategoryId,Model model){
 		List<DictDO> listCmsCategoryType = dictService.listByType("CmsCategoryType");//获取所有的产品类型
 		model.addAttribute("listCmsCategoryType", listCmsCategoryType);//所有产品类型的集合
 		model.addAttribute("parentCategoryId", parentCategoryId);//父id隐藏到页面，顶级为0
@@ -149,5 +151,28 @@ public class ContCategoryController extends BaseController{
 	 */
 	@GetMapping("/tree") @ResponseBody Tree<ContCategoryDO> tree() {
 		return this.contCategoryService.getTree();
+	}
+	@GetMapping("/addLangView")@RequiresPermissions("cont:contCategory:add")
+	public String editLangView(Map<String, Object> map,Integer contCategoryId,Model model) {
+		List<DictDO> cmsLangType = this.dictService.listByType("CmsLangType");
+		map.clear();map.put("contCategoryId", contCategoryId);
+		List<ContCategoryInfoDO> contCategoryInfoList = this.contCategoryInfoDao.list(map);
+		if(contCategoryInfoList.size()<1) {//创建
+			int w=0;
+			for(int i=0;i<cmsLangType.size();i++) {
+				ContCategoryInfoDO contCategoryInfoDO = new ContCategoryInfoDO();
+				contCategoryInfoDO.setLangType(cmsLangType.get(w).getValue());
+				w++;
+				contCategoryInfoList.add(contCategoryInfoDO);
+			}
+		}
+		for(ContCategoryInfoDO contCategoryInfoDO:contCategoryInfoList) {
+			for(DictDO dictDO:cmsLangType) {
+				if(contCategoryInfoDO.getLangType().equals(dictDO.getValue()))
+					contCategoryInfoDO.setLangName(dictDO.getName());
+			}
+		}
+		model.addAttribute("contCategoryInfoList", contCategoryInfoList);
+		return "cont/contCategory/editLang";
 	}
 }

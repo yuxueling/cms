@@ -12,12 +12,10 @@
 							<div class="form-group">	
 								<label class="col-sm-3 control-label">类别类型：（CmsCategoryType）：</label>
 								<div class="col-sm-8" >
-									<span th:each="cmsCategoryType,cmsCategoryTypeStat : ${listCmsCategoryType}">
-										<label class="radio-inline"><input th:text="${cmsCategoryType.name}" 
-										th:value="${cmsCategoryType.value}" 
-										th:checked="${categoryType}==${cmsCategoryType.value}?true:false" 
-										type="radio" name="categoryType" /></label> 
-									</span>
+									<label th:each="cmsCategoryType,cmsCategoryTypeStat : ${listCmsCategoryType}" class="radio-inline">
+										<input type="radio" name="categoryType" th:text="${cmsCategoryType.name}" th:value="${cmsCategoryType.value}" 
+										th:checked="${categoryType}==${cmsCategoryType.value}?true:false"/>
+									</label>
 								</div>
 							</div>
 							<input id="parentCategoryId" name="parentCategoryId" th:value="${parentCategoryId}" class="form-control" type="hidden">
@@ -31,6 +29,24 @@
 								<label class="col-sm-3 control-label">类别名称：</label>
 								<div class="col-sm-8">
 									<input id="categoryName" name="categoryName" class="form-control" type="text">
+								</div>
+							</div>
+							<div class="form-group">	
+								<label class="col-sm-3 control-label">编码：</label>
+								<div class="col-sm-8">
+									<input id="categoryCode" name="categoryCode" class="form-control" type="text">
+								</div>
+							</div>
+							<div class="form-group">	
+								<label class="col-sm-3 control-label">排序：</label>
+								<div class="col-sm-8">
+									<input id="sort" name="sort" class="form-control" type="number">
+								</div>
+							</div>
+							<div class="form-group">	
+								<label class="col-sm-3 control-label">备注：</label>
+								<div class="col-sm-8">
+									<input id="remark" name="remark" class="form-control" type="text">
 								</div>
 							</div>
 							<div class="form-group">

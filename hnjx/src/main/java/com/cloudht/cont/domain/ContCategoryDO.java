@@ -10,7 +10,7 @@ import java.util.Date;
  * 
  * @author yuxueling
  * @email 980899486@qq.com
- * @date 2018-09-18 16:27:29
+ * @date 2018-09-29 08:43:59
  */
 public class ContCategoryDO implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -19,12 +19,18 @@ public class ContCategoryDO implements Serializable {
 	private Integer contCategoryId;
 	//类别类型：（CmsCategoryType）
 	private String categoryType;
-	//上级类别
+	//上级分类
 	private Integer parentCategoryId;
 	//类别名称
 	private String categoryName;
+	//编码
+	private String categoryCode;
+	//排序
+	private Integer sort;
 	//创建用户id
 	private Long createBy;
+	//备注
+	private String remark;
 	//创建时间
 	private Date gmtCreate;
 	//修改时间
@@ -55,13 +61,13 @@ public class ContCategoryDO implements Serializable {
 		return categoryType;
 	}
 	/**
-	 * 设置：上级类别
+	 * 设置：上级分类
 	 */
 	public void setParentCategoryId(Integer parentCategoryId) {
 		this.parentCategoryId = parentCategoryId;
 	}
 	/**
-	 * 获取：上级类别
+	 * 获取：上级分类
 	 */
 	public Integer getParentCategoryId() {
 		return parentCategoryId;
@@ -79,6 +85,30 @@ public class ContCategoryDO implements Serializable {
 		return categoryName;
 	}
 	/**
+	 * 设置：编码
+	 */
+	public void setCategoryCode(String categoryCode) {
+		this.categoryCode = categoryCode;
+	}
+	/**
+	 * 获取：编码
+	 */
+	public String getCategoryCode() {
+		return categoryCode;
+	}
+	/**
+	 * 设置：排序
+	 */
+	public void setSort(Integer sort) {
+		this.sort = sort;
+	}
+	/**
+	 * 获取：排序
+	 */
+	public Integer getSort() {
+		return sort;
+	}
+	/**
 	 * 设置：创建用户id
 	 */
 	public void setCreateBy(Long createBy) {
@@ -89,6 +119,18 @@ public class ContCategoryDO implements Serializable {
 	 */
 	public Long getCreateBy() {
 		return createBy;
+	}
+	/**
+	 * 设置：备注
+	 */
+	public void setRemark(String remark) {
+		this.remark = remark;
+	}
+	/**
+	 * 获取：备注
+	 */
+	public String getRemark() {
+		return remark;
 	}
 	/**
 	 * 设置：创建时间
