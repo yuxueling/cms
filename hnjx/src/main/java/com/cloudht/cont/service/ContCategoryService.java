@@ -2,6 +2,7 @@ package com.cloudht.cont.service;
 
 import com.cloudht.common.domain.Tree;
 import com.cloudht.cont.domain.ContCategoryDO;
+import com.cloudht.cont.domain.ContCategoryInfoDO;
 
 import java.util.List;
 import java.util.Map;
@@ -30,5 +31,13 @@ public interface ContCategoryService {
 	int batchRemove(Integer[] contCategoryIds);
 
 	Tree<ContCategoryDO> getTree();
+
+	Tree<ContCategoryDO> getTreeInfo(Map<String, Object> map);
+
+	List<ContCategoryInfoDO> listInfoByDict(Map<String, Object> map);
+
+	int saveInfo(ContCategoryInfoDO contCategoryInfo);
+
+	int updateInfo(ContCategoryInfoDO contCategoryInfo);
 
 }

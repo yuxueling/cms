@@ -29,4 +29,6 @@ public interface ContProductInfoService {
 	int batchRemove(Integer[] contProductInfoIds);
 
 	List<ContProductInfoDO> listByDict(Map<String, Object> map);
+
+
 }

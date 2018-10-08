@@ -36,6 +36,12 @@ public class ContCategoryDO implements Serializable {
 	//修改时间
 	private Date gmtModified;
 
+
+	//new
+
+	//单语种详情
+	private ContCategoryInfoDO contCategoryInfoDO;
+
 	/**
 	 * 设置：主键
 	 */
@@ -155,5 +161,13 @@ public class ContCategoryDO implements Serializable {
 	 */
 	public Date getGmtModified() {
 		return gmtModified;
+	}
+
+	public ContCategoryInfoDO getContCategoryInfoDO() {
+		return contCategoryInfoDO;
+	}
+
+	public void setContCategoryInfoDO(ContCategoryInfoDO contCategoryInfoDO) {
+		this.contCategoryInfoDO = contCategoryInfoDO;
 	}
 }

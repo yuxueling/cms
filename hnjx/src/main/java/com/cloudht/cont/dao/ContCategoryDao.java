@@ -5,6 +5,7 @@ import com.cloudht.cont.domain.ContCategoryDO;
 import java.util.List;
 import java.util.Map;
 
+import com.cloudht.cont.domain.ContCategoryInfoDO;
 import org.apache.ibatis.annotations.Mapper;
 
 /**
@@ -29,4 +30,9 @@ public interface ContCategoryDao {
 	int remove(Integer cont_category_id);
 	
 	int batchRemove(Integer[] contCategoryIds);
+
+	List<ContCategoryInfoDO> listInfoByDict(Map<String, Object> map);
+
+	List<ContCategoryDO> listInfo(Map<String, Object> map);
+
 }
