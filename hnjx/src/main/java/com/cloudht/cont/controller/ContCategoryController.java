@@ -6,9 +6,6 @@ import java.util.List;
 import java.util.Map;
 
 import com.alibaba.fastjson.JSON;
-import com.cloudht.cont.domain.ContProductInfoDO;
-import com.cloudht.system.domain.UserDO;
-import com.sxyht.common.utils.ShiroUtils;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
@@ -24,7 +21,6 @@ import com.cloudht.common.controller.BaseController;
 import com.cloudht.common.domain.DictDO;
 import com.cloudht.common.domain.Tree;
 import com.cloudht.common.service.DictService;
-import com.cloudht.cont.dao.ContCategoryInfoDao;
 import com.cloudht.cont.domain.ContCategoryDO;
 import com.cloudht.cont.domain.ContCategoryInfoDO;
 import com.cloudht.cont.service.ContCategoryService;
@@ -174,14 +170,11 @@ public class ContCategoryController extends BaseController {
      * @param params lang_type
      * @return
      */
-    @RequestMapping("/x")
+    @RequestMapping("/treeInfo")
     @ResponseBody
     Tree<ContCategoryDO> treeInfo(@RequestParam Map<String, Object> params) {
-    	Tree<ContCategoryDO> treeInfo = this.contCategoryService.getTreeInfo(params);
-    	System.out.println(treeInfo);
         return this.contCategoryService.getTreeInfo(params);
     }
-
 
     /**
      * 分类详情设置页面
