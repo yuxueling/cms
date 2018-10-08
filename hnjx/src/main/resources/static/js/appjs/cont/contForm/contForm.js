@@ -48,17 +48,11 @@ function load() {
 									field : 'title', 
 									title : '标题' ,
 									formatter : function(value, row, index) {
-										return '<a href="#" onclick="queryFormDataByFormId(\''+ row.contFormId + '\')">'+value+'</a> ';
+										return '<a href="#" onclick="queryFormDataByFormId(\''+ row.contFormId + '\')"  class="text-info" >'+value+'</a> ';
 									}
 								},{
 									field : 'langType', 
 									title : '语种 字典CmsLangType' 
-								},{
-									field : 'seoTitle', 
-									title : 'seo标题' 
-								},{
-									field : 'seoKeywords', 
-									title : 'seo关键字' 
 								},{
 									field : 'remark', 
 									title : '备注' 

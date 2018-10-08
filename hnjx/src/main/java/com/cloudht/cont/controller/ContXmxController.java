@@ -1,7 +1,10 @@
 package com.cloudht.cont.controller;
 
 import com.cloudht.common.controller.BaseController;
+import com.cloudht.common.domain.Tree;
+import com.cloudht.cont.domain.ContCategoryDO;
 import com.cloudht.cont.domain.ContProductPkDO;
+import com.cloudht.cont.service.ContCategoryService;
 import com.cloudht.cont.service.ContXmxService;
 import com.cloudht.cont.vo.ContProductVO;
 import com.sxyht.common.utils.PageUtils;
@@ -14,11 +17,14 @@ import java.util.List;
 import java.util.Map;
 
 @Controller
-@RequestMapping("/xmx")
+@RequestMapping("/contXmx")
 public class ContXmxController extends BaseController {
 
 	@Autowired
 	private ContXmxService contXmxService;
+
+	@Autowired
+	private ContCategoryService contCategoryService;
 
 
 	/**
@@ -38,5 +44,6 @@ public class ContXmxController extends BaseController {
 		PageUtils pageUtils = new PageUtils(productVOList, total);
 		return pageUtils;
 	}
+
 
 }

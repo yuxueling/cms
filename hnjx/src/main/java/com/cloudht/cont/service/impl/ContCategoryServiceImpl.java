@@ -1,5 +1,7 @@
 package com.cloudht.cont.service.impl;
 
+import com.cloudht.cont.dao.ContCategoryInfoDao;
+import com.cloudht.cont.domain.ContCategoryInfoDO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,12 +15,16 @@ import com.cloudht.common.utils.BuildTree;
 import com.cloudht.cont.dao.ContCategoryDao;
 import com.cloudht.cont.domain.ContCategoryDO;
 import com.cloudht.cont.service.ContCategoryService;
+import sun.misc.Cache;
 
 @Service
 public class ContCategoryServiceImpl implements ContCategoryService {
 	@Autowired
 	private ContCategoryDao contCategoryDao;
-	
+	@Autowired
+	private ContCategoryInfoDao contCategoryInfoDao;
+
+
 	@Override
 	public ContCategoryDO get(Integer contCategoryId){
 		return contCategoryDao.get(contCategoryId);
@@ -71,5 +77,42 @@ public class ContCategoryServiceImpl implements ContCategoryService {
 		Tree<ContCategoryDO> t = BuildTree.build(trees);
 		return t;
 	}
-	
+
+	public @Override Tree<ContCategoryDO> getTreeInfo(Map<String, Object> map) {
+		List<Tree<ContCategoryDO>> trees = new ArrayList<Tree<ContCategoryDO>>();//创建一个tree的集合
+		List<ContCategoryDO> contCategorys = this.contCategoryDao.listInfo(map);//获取所有分类
+		for (ContCategoryDO contCategoryDO : contCategorys) {//遍历每一个分类，将每个分类转换为tree
+			Tree<ContCategoryDO> tree = new Tree<>();//创建一个tree的实例
+			tree.setId(contCategoryDO.getContCategoryId().toString());//设置tree的id
+			tree.setParentId(contCategoryDO.getParentCategoryId().toString());//设置tree的父id
+			if(contCategoryDO.getContCategoryInfoDO()!=null && contCategoryDO.getContCategoryInfoDO().getCategoryName()!=null){
+				tree.setText(contCategoryDO.getContCategoryInfoDO().getCategoryName());//设置tree的名字
+			}else {
+				tree.setText(contCategoryDO.getCategoryName());
+			}
+			Map<String, Object> state = new HashMap<>(16);
+			state.put("opened", true);
+			tree.setState(state);
+			trees.add(tree);
+		}
+		// 默认顶级菜单为０，根据数据库实际情况调整
+		Tree<ContCategoryDO> t = BuildTree.build(trees);
+		return t;
+	}
+
+	@Override
+	public List<ContCategoryInfoDO> listInfoByDict(Map<String, Object> map) {
+		return contCategoryDao.listInfoByDict(map);
+	}
+
+	@Override
+	public int saveInfo(ContCategoryInfoDO contCategoryInfo) {
+		return contCategoryInfoDao.save(contCategoryInfo);
+	}
+
+	@Override
+	public int updateInfo(ContCategoryInfoDO contCategoryInfo) {
+		return contCategoryInfoDao.update(contCategoryInfo);
+	}
+
 }

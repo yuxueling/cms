@@ -197,7 +197,7 @@ public class ContProductController extends BaseController {
     @ResponseBody
     @PostMapping("/saveInfo")
     @RequiresPermissions("cont:contProduct:add")
-    public R saveInfo(String contProductInfo) {
+    public R saveInfo(String contProductInfo,Integer contProductId) {
         Date date = new Date();
         UserDO user = (UserDO) ShiroUtils.getUser();
         List<ContProductInfoDO> productInfoDOList = JSON.parseArray(contProductInfo, ContProductInfoDO.class);
@@ -206,6 +206,7 @@ public class ContProductController extends BaseController {
                 infoDO.setCreateBy(user.getUserId());
                 infoDO.setGmtCreate(date);
                 infoDO.setGmtModified(date);
+                infoDO.setContProductId(contProductId);
                 contProductInfoService.save(infoDO);
             } else {//修改
                 infoDO.setGmtModified(date);

@@ -11,8 +11,7 @@
                     <form class="form-horizontal m-t">
                         <ul class="nav nav-tabs nav-justified">
                             <li v-bind:class="[ item.langType==langItem.value?activeClass : ''  ]"
-                                v-for="(langItem, langIndex) in langDictList"><a
-                                    v-on:click="langBarClick(langItem.value)">{{langItem.name}}</a>
+                                v-for="(langItem, langIndex) in langDictList"><a v-on:click="langBarClick(langItem.value)">{{langItem.name}}</a>
                             </li>
                         </ul>
                         <div style="padding-bottom: 10px"></div>

@@ -25,14 +25,14 @@ import java.util.List;
 @Controller
 public class MianController extends BaseController {
 	@Autowired MenuService menuService;
-	@GetMapping({"","/","index","index.html"})
+	@GetMapping({"","/"})
 	public String redirect() {
-		return "redirect:/xmx/index";
+		return "index";
 	}
-	@GetMapping({"/xmx/index"})
-	public String index() {
-		return "/xmx/index";
-	}
+//	@GetMapping({"/xmx/index"})
+//	public String index() {
+//		return "/xmx/index";
+//	}
 	/**请求访问登录页面 */
 	@GetMapping("/login")
 	String login() {

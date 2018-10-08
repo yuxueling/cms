@@ -71,7 +71,7 @@ function load() {
 			                                + '\')"><i class="fa fa-plus"></i></a> ';
 			                        	var g = '<a class="btn btn-primary btn-sm '
 			                                + s_add_h
-			                                + '" href="#" mce_href="#" title="多语种" onclick="addLangView(\''
+			                                + '" href="#" mce_href="#" title="添加详情" onclick="addLangView(\''
 			                                + item.contCategoryId
 			                                + '\')"><i class="fa fa-plus"></i></a> ';
 			                        	return e+d+f+g;

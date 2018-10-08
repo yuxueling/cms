@@ -62,6 +62,8 @@ public class ShiroConfig {
         filterChainDefinitionMap.put("/login", "anon");//设置登陆页面为可以访问
         filterChainDefinitionMap.put("/js/**", "anon");
         filterChainDefinitionMap.put("/xmx/**", "anon");//将xmx设置为开放访问
+        filterChainDefinitionMap.put("/contXmx/**", "anon");//将xmx设置为开放访问
+        filterChainDefinitionMap.put("/cont/**", "anon");//将xmx设置为开放访问
         filterChainDefinitionMap.put("/fonts/**", "anon");
         filterChainDefinitionMap.put("/img/**", "anon");
         filterChainDefinitionMap.put("/docs/**", "anon");
