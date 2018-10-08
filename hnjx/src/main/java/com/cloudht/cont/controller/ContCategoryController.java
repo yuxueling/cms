@@ -174,7 +174,7 @@ public class ContCategoryController extends BaseController {
      * @param params lang_type
      * @return
      */
-    @RequestMapping("/treeInfo")
+    @RequestMapping("/x")
     @ResponseBody
     Tree<ContCategoryDO> treeInfo(@RequestParam Map<String, Object> params) {
         return this.contCategoryService.getTreeInfo(params);
