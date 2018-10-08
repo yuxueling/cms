@@ -10,25 +10,19 @@ import java.util.Map;
 public class BuildTree {
 
 	public static <T> Tree<T> build(List<Tree<T>> nodes) {
-
-		if (nodes == null) {
+		if (nodes == null)
 			return null;
-		}
-		List<Tree<T>> topNodes = new ArrayList<Tree<T>>();
-
-		for (Tree<T> children : nodes) {
-
-			String pid = children.getParentId();
-			if (pid == null || "0".equals(pid)) {
+		List<Tree<T>> topNodes = new ArrayList<Tree<T>>();//新建一个tree的集合
+		for (Tree<T> children : nodes) {//遍历传入的每一个tree
+			String pid = children.getParentId();//获取父节点id
+			if (pid == null || "0".equals(pid)) {//父id如果为0，则直接放到顶级
 				topNodes.add(children);
-
 				continue;
 			}
-
 			for (Tree<T> parent : nodes) {
 				String id = parent.getId();
-				if (id != null && id.equals(pid)) {
-					parent.getChildren().add(children);
+				if (id != null && id.equals(pid)) {//id如果等于父id，
+					parent.getChildren().add(children);//获取节点的字节点
 					children.setHasParent(true);
 					parent.setChildren(true);
 					continue;
