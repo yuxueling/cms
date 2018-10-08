@@ -7,9 +7,8 @@ import com.cloudht.common.service.DictService;
 
 import com.cloudht.cont.service.ContXmxService;
 import com.cloudht.cont.vo.ContProductVO;
-import com.sxyht.common.utils.MailUtils;
-import com.sxyht.common.utils.PageUtils;
-import com.sxyht.common.utils.Query;
+import com.sxyht.common.utils.*;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -43,10 +42,27 @@ public class ContXmxController extends BaseController {
 		return pageUtils;
 	}
 
+	@GetMapping("/showProduct/{contProductId}")
+	String showProduct(Integer contProductId){
+ 		getSession().setAttribute("contProductId",contProductId);
+		return "forward:/xmx/turbine-blade-115.htm";
+	}
+
+
+	@RequestMapping("/getProduct")
+	@ResponseBody
+	public R getProduct(@RequestParam Map<String, Object> params){
+		Object contProductId = getSession().getAttribute("contProductId");
+		params.put("contProductId",contProductId);
+		ContProductVO contProduct = contXmxService.getProduct(params);
+
+		return R.ok().put("row",contProduct);
+	}
+
+
 	@PostMapping("/sendInquiry")
 	public String sendInquiry(@RequestParam Map<String, Object> params) {
 		Object object = params.get("");
-		System.out.println(object);
 		DictDO dictDO = this.dictService.listByType("mailbox").get(0);
 		MailUtils.sendMail("AM网站客户留言信息", "<h3>"+params.toString()+"</h3>", dictDO.getValue());
 		return "/xmx/index";

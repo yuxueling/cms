@@ -25,4 +25,9 @@ public class ContXmxServiceImpl implements ContXmxService {
 	public int countProductByCategory(Map<String, Object> map) {
 		return contXmxDao.countProductByCategory(map);
 	}
+
+	@Override
+	public ContProductVO getProduct(Map<String, Object> map) {
+		return contXmxDao.getProduct(map);
+	}
 }

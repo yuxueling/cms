@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.cloudht.cont.dao.ContXmxDao">
 
-	<resultMap id="voList" type="com.cloudht.cont.vo.ContProductVO">
+	<resultMap id="productVO" type="com.cloudht.cont.vo.ContProductVO">
 		<id property="contProductId" column="cont_product_id"></id>
 		<result property="productName" column="product_name"></result>
 		<result property="categoryId" column="category_id"></result>
@@ -38,7 +38,7 @@
 
 
 
-	<select id="listProductByCategory" resultMap="voList">
+	<select id="listProductByCategory" resultMap="productVO">
 		select #{langType} as lang_type ,
 			B.`cont_product_id`,B.`product_name`,B.`category_id`,B.`sale_status`,B.`create_by`,B.`gmt_create`,B.`gmt_modified`
 		FROM cont_category A,cont_product B
@@ -54,6 +54,15 @@
 			limit #{offset}, #{limit}
 		</if>
 	</select>
+
+
+	<select id="getProduct" resultMap="productVO">
+		select #{langType} as lang_type ,
+		B.`cont_product_id`,B.`product_name`,B.`category_id`,B.`sale_status`,B.`create_by`,B.`gmt_create`,B.`gmt_modified`
+		FROM cont_product B
+		WHERE B.cont_product_id = #{contProductId}
+	</select>
+	
 
 	<select id="countProductByCategory" resultType="java.lang.Integer">
 		select

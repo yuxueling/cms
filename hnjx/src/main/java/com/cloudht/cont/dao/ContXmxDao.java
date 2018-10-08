@@ -11,4 +11,6 @@ public interface ContXmxDao {
 
 	int countProductByCategory(Map<String,Object> map);
 
+	ContProductVO getProduct(Map<String,Object> map);
+
 }

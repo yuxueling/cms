@@ -1,5 +1,6 @@
 package com.cloudht.common.controller;
 
+import org.apache.shiro.session.Session;
 import org.springframework.stereotype.Controller;
 import com.cloudht.system.domain.UserDO;
 import com.sxyht.common.utils.ShiroUtils;
@@ -16,5 +17,9 @@ public class BaseController {
 
 	public String getUsername() {
 		return getUser().getUsername();
+	}
+
+	public Session getSession() {
+		return ShiroUtils.getSession();
 	}
 }

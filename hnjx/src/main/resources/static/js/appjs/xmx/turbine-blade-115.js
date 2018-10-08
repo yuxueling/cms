@@ -7,12 +7,8 @@ var vm = new Vue({
     el: '#site',
     data: {
         categoryTree:{},
-        productList:[],
-        limit:100,
-        offset:0,
-        contCategoryId:0,
-        langType:'english',
-        categoryName:''
+        product:{},
+        langType:'english'
     },
     methods: {
         init: function () {
@@ -25,27 +21,20 @@ var vm = new Vue({
                 },
                 success: function (data) {
                     vm.categoryTree=data;
-                    var contCategoryId = data.children[0].id;
-                    var categoryName = data.children[0].text;
-                    //初始化产品
-                    vm.listProduct(contCategoryId,categoryName);
                 }
             });
 
         } ,
-        listProduct: function (contCategoryId,categoryName) {
-            vm.categoryName=categoryName;
+        getProduct: function (contCategoryId) {
             $.ajax({
-                url: "/contXmx/listProductByCategory",
+                url: "/contXmx/getProduct",
                 type: "post",
                 data: {
-                    limit:vm.limit,
-                    offset:vm.offset,
                     contCategoryId:contCategoryId,
                     langType:vm.langType
                 },
                 success: function (data) {
-                    vm.productList=data.rows;
+                    vm.product=data.row;
                 }
             });
         }
