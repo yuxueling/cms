@@ -26,8 +26,8 @@
       <file leaf-file-name="ContCategoryController.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/cloudht/cont/controller/ContCategoryController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1794">
-              <caret line="202" column="0" lean-forward="false" selection-start-line="202" selection-start-column="0" selection-end-line="202" selection-end-column="0" />
+            <state relative-caret-position="142">
+              <caret line="180" column="60" lean-forward="true" selection-start-line="180" selection-start-column="60" selection-end-line="180" selection-end-column="60" />
               <folding />
             </state>
           </provider>
@@ -210,8 +210,8 @@
         <option value="$PROJECT_DIR$/src/main/resources/static/xmx/index.html" />
         <option value="$PROJECT_DIR$/src/main/resources/static/js/appjs/xmx/index.js" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/index.html" />
-        <option value="$PROJECT_DIR$/src/main/java/com/cloudht/cont/controller/ContCategoryController.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/cloudht/cont/controller/ContCategoryController.java" />
       </list>
     </option>
   </component>
@@ -436,12 +436,12 @@
       <workItem from="1538182659994" duration="31496000" />
       <workItem from="1538401101647" duration="4483000" />
       <workItem from="1538656341456" duration="3259000" />
-      <workItem from="1538707893646" duration="14599000" />
+      <workItem from="1538707893646" duration="15330000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="195846000" />
+    <option name="totallyTimeSpent" value="196577000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -461,7 +461,7 @@
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3298791" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39896372" sideWeight="0.50455236" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.31638846" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.31638846" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.5215889" sideWeight="0.4969651" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.328152" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
@@ -912,8 +912,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/cloudht/cont/controller/ContCategoryController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1794">
-          <caret line="202" column="0" lean-forward="false" selection-start-line="202" selection-start-column="0" selection-end-line="202" selection-end-column="0" />
+        <state relative-caret-position="142">
+          <caret line="180" column="60" lean-forward="true" selection-start-line="180" selection-start-column="60" selection-end-line="180" selection-end-column="60" />
           <folding />
         </state>
       </provider>

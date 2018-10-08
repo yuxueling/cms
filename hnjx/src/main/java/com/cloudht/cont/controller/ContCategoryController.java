@@ -178,7 +178,6 @@ public class ContCategoryController extends BaseController {
     @ResponseBody
     Tree<ContCategoryDO> treeInfo(@RequestParam Map<String, Object> params) {
     	Tree<ContCategoryDO> treeInfo = this.contCategoryService.getTreeInfo(params);
-    	System.out.println(treeInfo);
         return this.contCategoryService.getTreeInfo(params);
     }
 
