@@ -1,8 +1,0 @@
-<component name="ArtifactManager">
-  <artifact type="war" name="hnjx:war">
-    <output-path>$PROJECT_DIR$/target</output-path>
-    <root id="archive" name="hnjx-8.9.19.war">
-      <element id="artifact" artifact-name="hnjx:war exploded" />
-    </root>
-  </artifact>
-</component>

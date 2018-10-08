@@ -1,12 +1,13 @@
 package com.cloudht.cont.controller;
 
 import com.cloudht.common.controller.BaseController;
-import com.cloudht.common.domain.Tree;
-import com.cloudht.cont.domain.ContCategoryDO;
-import com.cloudht.cont.domain.ContProductPkDO;
-import com.cloudht.cont.service.ContCategoryService;
+
+import com.cloudht.common.domain.DictDO;
+import com.cloudht.common.service.DictService;
+
 import com.cloudht.cont.service.ContXmxService;
 import com.cloudht.cont.vo.ContProductVO;
+import com.sxyht.common.utils.MailUtils;
 import com.sxyht.common.utils.PageUtils;
 import com.sxyht.common.utils.Query;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,12 +21,9 @@ import java.util.Map;
 @RequestMapping("/contXmx")
 public class ContXmxController extends BaseController {
 
-	@Autowired
-	private ContXmxService contXmxService;
-
-	@Autowired
-	private ContCategoryService contCategoryService;
-
+	@Autowired private ContXmxService contXmxService;
+	@Autowired private DictService dictService;
+	//@Autowired private ContCategoryService contCategoryService;
 
 	/**
 	 * 根据语种及类别查询产品（仅支持到两级类别查询）
@@ -45,5 +43,13 @@ public class ContXmxController extends BaseController {
 		return pageUtils;
 	}
 
+	@PostMapping("/sendInquiry")
+	public String sendInquiry(@RequestParam Map<String, Object> params) {
+		Object object = params.get("");
+		System.out.println(object);
+		DictDO dictDO = this.dictService.listByType("mailbox").get(0);
+		MailUtils.sendMail("AM网站客户留言信息", "<h3>"+params.toString()+"</h3>", dictDO.getValue());
+		return "/xmx/index";
+	}
 
 }
