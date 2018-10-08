@@ -1,9 +1,11 @@
 package com.cloudht.cont.controller;
 
 import com.cloudht.common.controller.BaseController;
-import com.cloudht.cont.domain.ContProductPkDO;
+import com.cloudht.common.domain.DictDO;
+import com.cloudht.common.service.DictService;
 import com.cloudht.cont.service.ContXmxService;
 import com.cloudht.cont.vo.ContProductVO;
+import com.sxyht.common.utils.MailUtils;
 import com.sxyht.common.utils.PageUtils;
 import com.sxyht.common.utils.Query;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,10 +19,8 @@ import java.util.Map;
 @RequestMapping("/xmx")
 public class ContXmxController extends BaseController {
 
-	@Autowired
-	private ContXmxService contXmxService;
-
-
+	@Autowired private ContXmxService contXmxService;
+	@Autowired private DictService dictService;
 	/**
 	 * 根据语种及类别查询产品（仅支持到两级类别查询）
 	 * http://localhost:8080/xmx/listProductByCategory?limit=10&offset=0&contCategoryId=2&langType=simChinese
@@ -38,5 +38,12 @@ public class ContXmxController extends BaseController {
 		PageUtils pageUtils = new PageUtils(productVOList, total);
 		return pageUtils;
 	}
-
+	@PostMapping("/sendInquiry")
+	public String sendInquiry(@RequestParam Map<String, Object> params) {
+		Object object = params.get("");
+		System.out.println(object);
+		DictDO dictDO = this.dictService.listByType("mailbox").get(0);
+		MailUtils.sendMail("AM网站客户留言信息", "<h3>"+params.toString()+"</h3>", dictDO.getValue());
+		return "/xmx/index";
+	}
 }
