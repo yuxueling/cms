@@ -27,7 +27,7 @@ public class ContXmxController extends BaseController {
 
 	/**
 	 * 根据语种及类别查询产品（仅支持到两级类别查询）
-	 * http://localhost:8080/xmx/listProductByCategory?limit=10&offset=0&contCategoryId=2&langType=simChinese
+	 * http://localhost:8084/contXmx/listProductByCategory?limit=10&offset=0&contCategoryId=2&langType=simChinese
 	 * @param params
 	 * @return
 	 */
