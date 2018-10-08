@@ -109,15 +109,15 @@
 
 	<resultMap id="categoryInfo" type="com.cloudht.cont.domain.ContCategoryDO">
 		<id property="contCategoryId" column="cont_category_id"></id>
-		<result property="categoryType" column="category_code"></result>
-		<result property="parentCategoryId" column="category_type"></result>
-		<result property="categoryName" column="parent_category_id"></result>
-		<result property="categoryCode" column="category_name"></result>
-		<result property="sort" column="create_by"></result>
-		<result property="createBy" column="gmt_create"></result>
-		<result property="remark" column="gmt_modified"></result>
-		<result property="gmtCreate" column=" sort"></result>
-		<result property="gmtModified" column=" remark"></result>
+		<result property="categoryType" column="category_type"></result>
+		<result property="parentCategoryId" column="parent_category_id"></result>
+		<result property="categoryName" column="category_name"></result>
+		<result property="categoryCode" column="category_code"></result>
+		<result property="sort" column="sort"></result>
+		<result property="createBy" column="create_by"></result>
+		<result property="remark" column="remark"></result>
+		<result property="gmtCreate" column="gmt_create"></result>
+		<result property="gmtModified" column="gmt_modified"></result>
 
 		<association property="contCategoryInfoDO" column="{cont_category_id=cont_category_id,lang_type=lang_type}" select="getInfo"/>
 
