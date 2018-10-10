@@ -1,6 +1,7 @@
 
 $(function(){
     vm.init();
+    vm.getProduct();
 });
 
 var vm = new Vue({
@@ -25,12 +26,11 @@ var vm = new Vue({
             });
 
         } ,
-        getProduct: function (contCategoryId) {
+        getProduct: function () {
             $.ajax({
                 url: "/contXmx/getProduct",
                 type: "post",
                 data: {
-                    contCategoryId:contCategoryId,
                     langType:vm.langType
                 },
                 success: function (data) {
