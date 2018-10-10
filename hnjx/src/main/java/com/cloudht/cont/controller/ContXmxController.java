@@ -45,7 +45,7 @@ public class ContXmxController extends BaseController {
 	@GetMapping("/showProduct/{contProductId}")
 	String showProduct(@PathVariable("contProductId") Integer contProductId){
  		getSession().setAttribute("contProductId",contProductId);
-		return "forward:/xmx/turbine-blade-115.htm";
+		return "xmx/a-productDetail";
 	}
 
 

@@ -27,4 +27,6 @@ public interface ContFormDataService {
 	int remove(Integer contFormDataId);
 	
 	int batchRemove(Integer[] contFormDataIds);
+
+	int batchSave(List<ContFormDataDO> contFormDataList);
 }

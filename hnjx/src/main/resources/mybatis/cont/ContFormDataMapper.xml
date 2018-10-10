@@ -99,4 +99,37 @@
 		</foreach>
 	</delete>
 
+
+
+	<!--				New 			-->
+
+
+	<insert id="batchSave" parameterType="com.cloudht.cont.domain.ContFormDataDO" useGeneratedKeys="true" keyProperty="contFormDataId">
+		insert into cont_form_data
+		(
+		`cont_form_id`,
+		`title`,
+		`value`,
+		`title_style`,
+		`input_style`,
+		`gmt_create`,
+		`gmt_modified`,
+		`create_by`
+		)
+		values
+		<foreach item="item" index="index" collection="list" separator=",">
+			(
+			#{item.contFormId},
+			#{item.title},
+			#{item.value},
+			#{item.titleStyle},
+			#{item.inputStyle},
+			#{item.gmtCreate},
+			#{item.gmtModified},
+			#{item.createBy}
+			)
+		</foreach>
+
+	</insert>
+
 </mapper>

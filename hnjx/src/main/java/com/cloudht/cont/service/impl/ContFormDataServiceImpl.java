@@ -51,5 +51,10 @@ public class ContFormDataServiceImpl implements ContFormDataService {
 	public int batchRemove(Integer[] contFormDataIds){
 		return contFormDataDao.batchRemove(contFormDataIds);
 	}
-	
+
+	@Override
+	public int batchSave(List<ContFormDataDO> contFormDataList) {
+		return contFormDataDao.batchSave(contFormDataList);
+	}
+
 }

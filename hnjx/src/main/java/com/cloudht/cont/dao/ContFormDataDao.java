@@ -29,4 +29,6 @@ public interface ContFormDataDao {
 	int remove(Integer cont_form_data_id);
 	
 	int batchRemove(Integer[] contFormDataIds);
+
+	int batchSave(List<ContFormDataDO> contFormDataList);
 }

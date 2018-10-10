@@ -5,7 +5,10 @@ import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
+import com.alibaba.fastjson.JSON;
+import com.cloudht.common.controller.BaseController;
 import com.cloudht.common.domain.DictDO;
+import com.cloudht.cont.domain.ContFormDataDO;
 import com.cloudht.cont.service.ContFormDataService;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +26,8 @@ import com.sxyht.common.utils.PageUtils;
 import com.sxyht.common.utils.Query;
 import com.sxyht.common.utils.R;
 
+import javax.websocket.Session;
+
 /**
  * 表单表
  * 
@@ -33,7 +38,7 @@ import com.sxyht.common.utils.R;
  
 @Controller
 @RequestMapping("/cont/contForm")
-public class ContFormController {
+public class ContFormController extends BaseController{
 	@Autowired private ContFormService contFormService;
 
 	@Autowired
@@ -110,5 +115,39 @@ public class ContFormController {
 		contFormService.batchRemove(contFormIds);
 		return R.ok();
 	}
+
+
+	//new
+
+	/**
+	 * http://loaclhost:8080/cont/contForm/openSave
+	 * @param contForm
+	 * @param contFormData
+	 * @return
+	 */
+	@ResponseBody
+	@RequestMapping("/openSave")
+	public R openSave( String contForm,String contFormData){
+		Object langType = getSession().getAttribute("langType");
+		Date date = new Date();
+		ContFormDO formDO = JSON.parseObject(contForm, ContFormDO.class);
+		formDO.setGmtCreate(date);
+		formDO.setGmtModified(date);
+		formDO.setHaveRead(0);
+		formDO.setLangType(langType==null?"":langType.toString());
+		if(contFormService.save(formDO)>0){
+			List<ContFormDataDO> contFormDataDOS = JSON.parseArray(contFormData, ContFormDataDO.class);
+			for (ContFormDataDO formDataDO:contFormDataDOS){
+				formDataDO.setGmtCreate(date);
+				formDataDO.setGmtModified(date);
+				formDataDO.setContFormId(formDO.getContFormId());
+			}
+			if (contFormDataService.batchSave(contFormDataDOS) > 0) {
+				return R.ok();
+			}
+		}
+		return R.error();
+	}
+
 
 }

@@ -9,7 +9,8 @@ var vm = new Vue({
     data: {
         categoryTree:{},
         product:{},
-        langType:'english'
+        langType:'english',
+        events:[]
     },
     methods: {
         init: function () {
@@ -22,6 +23,7 @@ var vm = new Vue({
                 },
                 success: function (data) {
                     vm.categoryTree=data;
+                    vm.events=data.state.events;
                 }
             });
 
