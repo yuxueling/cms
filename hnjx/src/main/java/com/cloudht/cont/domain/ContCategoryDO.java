@@ -27,10 +27,14 @@ public class ContCategoryDO implements Serializable {
 	private String categoryCode;
 	//排序
 	private Integer sort;
-	//创建用户id
-	private Long createBy;
+	//是否显示,1显示 0不显示
+	private Integer isShow;
+	//是否显示,1显示 0不显示
+	private Integer isDisplay;
 	//备注
 	private String remark;
+	//创建用户id
+	private Long createBy;
 	//创建时间
 	private Date gmtCreate;
 	//修改时间
@@ -169,5 +173,24 @@ public class ContCategoryDO implements Serializable {
 
 	public void setContCategoryInfoDO(ContCategoryInfoDO contCategoryInfoDO) {
 		this.contCategoryInfoDO = contCategoryInfoDO;
+	}
+	/**
+	 * 设置：是否显示,1显示 0不显示
+	 */
+	public void setIsShow(Integer isShow) {
+		this.isShow = isShow;
+		this.isDisplay=isShow;
+	}
+	/**
+	 * 获取：是否显示,1显示 0不显示
+	 */
+	public Integer getIsShow() {
+		return isShow;
+	}
+	/**
+	 * 获取：是否显示,1显示 0不显示
+	 */
+	public Integer getIsDisplay() {
+		return this.isDisplay;
 	}
 }

@@ -44,6 +44,14 @@ function load() {
 									valign: 'center',
 									width: '3%'
 								},{
+									field : 'isDisplay', 
+									title : '显示',
+									valign: 'center',
+									width: '3%',
+									formatter: function (item, index) {
+										return {"0":"NO","1":"YES"}[item.isDisplay];
+									}
+								},{
 									field : 'parentCategoryId', 
 									title : '上级类别' ,
 									valign: 'center',
