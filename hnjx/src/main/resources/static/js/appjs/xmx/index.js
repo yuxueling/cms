@@ -12,7 +12,8 @@ var vm = new Vue({
         offset:0,
         contCategoryId:0,
         langType:'english',
-        categoryName:''
+        categoryName:'',
+        events:[]
     },
     methods: {
         init: function () {
@@ -27,6 +28,7 @@ var vm = new Vue({
                     vm.categoryTree=data;
                     var contCategoryId = data.children[0].id;
                     var categoryName = data.children[0].text;
+                    vm.events=data.state.events;
                     //初始化产品
                     vm.listProduct(contCategoryId,categoryName);
                 }

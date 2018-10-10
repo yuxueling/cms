@@ -1,0 +1,281 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>investment casting|lost wax casting|aluminum investment casting|vacuum investment casting|stainless steel
+        investment casting|steel investment casting| - Taiyuan SIMIS Industry Co.,Ltd.</title>
+    <meta name="keywords"
+          content="investment casting, investment castings, lost wax casting, China investment casting, stainless steel investment casting, aluminum investment casting, carbon steel investment casting, alloy steel investment casting, superalloy investment casting"/>
+    <meta name="description"
+          content="A professional investment casting manufacturer provides all kinds of investment cast made by lost wax casting process."/>
+    <meta name="author" content="Web Design: xiaoyuer QQ:195094303 website: www.shejifang.net"/>
+    <link href="/xmx/css/css.css" rel="stylesheet" type="text/css"/>
+    <script language="javascript" type="text/javascript" src="js/comm.js"></script>
+    <script src="/js/jquery-1.11.3.min.js"></script>
+    <script language="javascript" type="text/javascript" src="/xmx/js/show.js"></script>
+    <link rel="shortcut icon" href="/favicon.ico"/>
+    <style>
+        .clearfix {
+            clear: both;
+        }
+        .banner {
+            width: 100%;
+            margin: 0 auto;
+            position: relative;
+        }
+        .banner .pic {
+            width: 100%;
+            overflow: hidden;
+        }
+        .banner .pic ul {
+            width: 400%;
+        }
+        .banner .pic ul li {
+            width: 25%;
+            float: left;
+        }
+        .banner .pic ul li img {
+            width: 100%;
+        }
+        .banner .line {
+            width: 120px;
+            height: 4px;
+            margin: 0 auto;
+            position: absolute;
+            bottom: 20px;
+            left: calc(50% - 50px);
+        }
+        .banner .line span {
+            float: left;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background-color: #fff;
+            margin: 0 10px;
+        }
+        .banner .line .line_bth {
+            background-color: #fb8000;
+        }
+        .banner .btn div {
+            width: 32px;
+            height: 32px;
+            background: #000;
+            background: rgba(0, 0, 0, 0.3);
+            color: #fff;
+            font-size: 24px;
+            font-weight: bold;
+            text-align: center;
+            line-height: 30px;
+            cursor: pointer;
+            position: absolute;
+            top: calc(50% - 16px);
+            display: none;
+        }
+        .banner .btn .leftBtn {
+            left: 20px;
+        }
+        .banner .btn .rightBtn {
+            right: 20px;
+        }
+        .banner:hover .btn .leftBtn,
+        .banner:hover .btn .rightBtn {
+            display: block;
+        }
+        .banner .btn div:hover {
+            background: #000; /*怕IE浏览器不支持透明，所以又写了个背景色，*/
+            background: rgba(0, 0, 0, 0.5); /*透明和黑*/
+        }
+        .proimg img {
+            position: static;
+            top: -50%;
+            left: -50%;
+            vertical-align: middle;
+            max-width: 148px;
+            max-height: 148px;
+        }
+    </style>
+</head>
+<body>
+<div id="site">
+    <div th:include="include/public :: header"></div><!-- 共用顶部部分 -->
+    <div id="main">
+        <div th:include="include/public :: left"></div><!-- 共用左部部分 -->
+        <div id="right">
+            <div id="banner">
+                <div class="flash">
+                    <div class="banner">
+                        <div class="pic">
+                            <ul>
+                                <li><img src="/xmx/images/banner.jpg" alt=""></li>
+                                <li><img src="/xmx/images/banner1.png" alt=""></li>
+                                <li><img src="/xmx/images/banner.jpg" alt=""></li>
+                                <li><img src="/xmx/images/banner1.png" alt=""></li>
+                                <div class="clearfix"></div>
+                            </ul>
+                        </div>
+                        <div class="line">
+                            <span class="line_bth"></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="btn">
+                            <div class="leftBtn">&lt;</div>
+                            <div class="rightBtn">&gt;</div>
+                        </div>
+                    </div>
+                    <script>
+                        $(".line span").mouseover(//当鼠标指针位于元素上方时，会发生 mouseover 事件。
+                            function () {
+                                //显示当前控制纽效果，其它按钮恢复原效果
+                                $(this).addClass("line_bth").siblings().removeClass();
+                                //得到当前按钮的位置数
+                                x = $(this).index();
+                                i = x;
+                                //显示位置数对应的图片，其它图片接着隐藏
+                                $(".pic img").hide().eq(x).show();
+                            }
+                        );
+                        //定时器
+                        var i = 0;
+                        var t = setInterval(move, 3000);
+
+                        function move() {
+                            i++;
+                            if (i == 4) {
+                                i = 0;
+                            }
+                            ;
+                            $(".line span").eq(i).addClass("line_bth").siblings().removeClass();
+                            $(".pic img").hide().eq(i).show();
+
+                        }
+                        function movel() {
+                            i--;
+                            if (i == -1) {
+                                i = 3;
+                            }
+                            ;
+                            $(".line span").eq(i).addClass("line_bth").siblings().removeClass();
+                            $(".pic img").hide().eq(i).show();
+                        }
+                        //鼠标经过图片暂停
+                        $(".pic").hover(
+                            function () {
+                                clearInterval(t);
+                                //显示当前时间 ( setInterval() 函数会每秒执行一次函数，类似手表)。使用 clearInterval() 来停止执行:
+                            }, function () {
+                                t = setInterval(move, 3000);
+                            });
+                        //向右点击时间
+                        $(".rightBtn").click(
+                            function () {
+                                move();
+                            });
+                        //向左点击时间
+                        $(".leftBtn").click(
+                            function () {
+                                movel();
+                            }
+                        )
+                    </script>
+                    <!--<script language="javascript" type="text/javascript">
+                    var focus_width=742
+                    var focus_height=220
+                    var text_height=0
+                    var swf_height = focus_height+text_height
+                    var pics = '';
+                    var links = '';
+                    var texts = '';
+                    function ati(url, img, title)
+                    {
+                    if(pics != '')
+                    {
+                    pics = "|" + pics;
+                    links = "|" + links;
+                    texts = "|" + texts;
+                    }
+                    pics = escape(img) + pics;
+                    links = escape(url) + links;
+                    texts = title + texts;
+                    }
+                    ati('index.html/', '/images/banner.jpg', 'testing workshop');
+                    ati('http://www.investment-casting.org/', '/images/banner.jpg', 'machining workshop');
+                    ati('http://www.investment-casting.org/', '/images/banner.jpg', 'melting and pouring');
+                    ati('http://www.investment-casting.org/', '/images/banner.jpg', 'main picture');
+                    var soonidea = '<object classid=\"clsid:d27cdb6e-ae6d-11cf-96b8-444553540000\" codebase=\"http:\/\/fpdownload.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=8,0,0,0" width=\"'+ focus_width +'\" height=\"'+ swf_height +'\">';
+                    soonidea += '<param name="movie" value="/\images\/flash_img.swf"><param name="quality" value="high"><param name="bgcolor" value="#ffffff">';
+                    soonidea += '<param name=\"menu\" value=\"false\"><param name=wmode value=\"opaque\">';
+                    soonidea +='<param name=\"FlashVars\" value=\"pics='+pics+'&links='+links+'&texts='+texts+'&borderwidth='+focus_width+'&borderheight='+focus_height+'&textheight='+text_height+'\">';
+                    soonidea +='<embed src=\"/\images\/flash_img.swf\" wmode=\"opaque\" FlashVars=\"pics='+pics+'&links='+links+'&texts='+texts+'&borderwidth='+focus_width+'&borderheight='+focus_height+'&textheight='+text_height+'\" menu=\"false\" bgcolor=\"#ffffff\" quality=\"high\" width=\"'+ focus_width +'\" height=\"'+ swf_height +'\" allowScriptAccess=\"sameDomain\" type=\"application\/x-shockwave-flash\" pluginspage=\"http:\/\/www.macromedia.com\/go\/getflashplayer\" \/>';
+                    soonidea +='<\/object>';
+                    document.write(soonidea);
+                    </script>-->
+                </div>
+            </div>
+            <div class="board mar"><a href="about-us.html"><img src="/xmx/images/More.gif"/></a><strong>About Us</strong></div>
+            <div class="hcontent">
+                <div class="comInfo">
+                    <div>
+                        Based in the UK, A&M Manufacturing Co.Ltd has over 30 year experience in the foundry and general
+                        metal working industry. With over 10 years experience in building close relations with Taiwan
+                        and China we have a large manufacturing network base enabling us to be extremely competitive and
+                        at the same time produce parts to the highest quality.<br>
+                        We specialize in a wide range of processes including ALL types of casting, fabrications,
+                        forgings, stampings and machined from solid parts. We can supply parts in small, medium and
+                        large volume, from class 1 aerospace castings to small machined turned parts. At design stage we
+                        can advise on both shape and material specification.
+                    </div>
+                    ...[<a href="about-us.html" style="color:#FF9900">more</a>]
+                    <div class="clear"></div>
+                </div>
+            </div>
+            <div class="clear"></div>
+            <div class="board mar"><a href="products.html"><img src="/xmx/images/More.gif"/></a><a class="ic1"><img
+                    id="view_list" src="/xmx/images/viewlist.gif" width="15" height="15" title="View List"
+                    align="absmiddle"/></a><a class="ic1"><img id="view_gallery" src="/xmx/images/viewgallery2.gif"
+                                                               width="15" height="15" title="View Gallery"
+                                                               align="absmiddle"/></a><strong>{{categoryName}}</strong></div>
+            <div class="hcontent2">
+                <div class="featbox" style="width:712px;margin:0 auto" align="center">
+                    <div class="probox" v-for="(item,index) in productList">
+                        <center>
+                            <div class="proimg">
+                                <p><a href="turbine-blade-115.htm" title="turbine blade" rel="nofollow"><img
+                                        :src="item.contProductImgDOList[0].imgUrl" alt="turbine blade" vspace="0" border="0"/></a>
+                                </p>
+                            </div>
+                            <div class="protext"><a href="turbine-blade-115.htm" title="turbine blade" rel="nofollow">
+                                <h2>{{item.contProductInfoDO.productName}}</h2></a> <span></span></div>
+                            <div class="prodes" style="display:none;">{{item.contProductInfoDO.details}}
+                                <p><input type="checkbox" name="Item" value=""/> <img
+                                        src="/xmx/images/inquire_now_en.gif"
+                                        style="cursor:pointer;"
+                                        onclick="javascript:document.location.href='inquiry.asp?Item='"/>
+                                </p>
+                            </div>
+                            <div class="clear"></div>
+                        </center>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+            <div class="clear"></div>
+        </div>
+        <div class="clear"></div>
+    </div>
+    <div class="mainbg"></div>
+    <div th:include="include/public :: root"></div><!-- 共用root部分 -->
+    <div class="flinks">Friendly Links:&nbsp;</div>
+</div>
+<!--<div><script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1254565334'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s95.cnzz.com/z_stat.php%3Fid%3D1254565334%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));</script></div>-->
+	<noscript>
+	    <iframe scr="*.htm"></iframe>
+	</noscript>
+	<script language="JavaScript">
+	    document.oncontextmenu = new Function("event.returnValue=true;");
+	    document.onselectstart = new Function("event.returnValue=true;");
+	</script>
+</body>
+</html>

@@ -17,6 +17,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.cloudht.blog.domain.ContentDO;
+import com.cloudht.blog.service.ContentService;
 import com.cloudht.common.controller.BaseController;
 import com.cloudht.common.domain.DictDO;
 import com.cloudht.common.domain.Tree;
@@ -41,6 +43,7 @@ public class ContCategoryController extends BaseController {
     private ContCategoryService contCategoryService;
     @Autowired
     private DictService dictService;
+    @Autowired private ContentService contentService;
 
     @GetMapping()
     @RequiresPermissions("cont:contCategory:contCategory")
@@ -173,7 +176,14 @@ public class ContCategoryController extends BaseController {
     @RequestMapping("/treeInfo")
     @ResponseBody
     Tree<ContCategoryDO> treeInfo(@RequestParam Map<String, Object> params) {
-        return this.contCategoryService.getTreeInfo(params);
+    	Tree<ContCategoryDO> treeInfo = this.contCategoryService.getTreeInfo(params);
+    	{
+    		String categories  = params.get("langType").toString();
+    		params.clear();params.put("categories", categories);
+    		List<ContentDO> list = this.contentService.list(params);
+    		treeInfo.getState().put("events", list);
+    	}
+        return treeInfo;
     }
 
     /**
@@ -189,7 +199,6 @@ public class ContCategoryController extends BaseController {
         map.put("contCategoryId",contCategoryId);
         List<ContCategoryInfoDO> categoryDOList = contCategoryService.listInfoByDict(map);
         List<DictDO> langDictList = this.dictService.listByType("CmsLangType");
-
         model.addAttribute("contCategoryId", contCategoryId);
         model.addAttribute("langDictList", langDictList);
         model.addAttribute("rows", categoryDOList);

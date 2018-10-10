@@ -8,7 +8,6 @@ import com.cloudht.common.service.DictService;
 import com.cloudht.cont.service.ContXmxService;
 import com.cloudht.cont.vo.ContProductVO;
 import com.sxyht.common.utils.*;
-import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -39,6 +38,7 @@ public class ContXmxController extends BaseController {
 		List<ContProductVO> productVOList = contXmxService.listProductByCategory(query);
 		int total = contXmxService.countProductByCategory(query);
 		PageUtils pageUtils = new PageUtils(productVOList, total);
+		
 		return pageUtils;
 	}
 
@@ -62,7 +62,6 @@ public class ContXmxController extends BaseController {
 
 	@PostMapping("/sendInquiry")
 	public String sendInquiry(@RequestParam Map<String, Object> params) {
-		Object object = params.get("");
 		DictDO dictDO = this.dictService.listByType("mailbox").get(0);
 		MailUtils.sendMail("AM网站客户留言信息", "<h3>"+params.toString()+"</h3>", dictDO.getValue());
 		return "/xmx/index";

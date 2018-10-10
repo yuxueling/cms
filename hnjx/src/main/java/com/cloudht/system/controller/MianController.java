@@ -16,7 +16,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
@@ -28,6 +30,11 @@ public class MianController extends BaseController {
 	public String redirect() {
 		return "index";
 	}
+	@RequestMapping("/xmx/{name}")
+	public String tongYong(@PathVariable("name") String name) {
+		return "xmx/"+name;
+	}
+	
 //	@GetMapping({"/xmx/index"})
 //	public String index() {
 //		return "/xmx/index";
