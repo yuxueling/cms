@@ -66,5 +66,4 @@ public class ContXmxController extends BaseController {
 		MailUtils.sendMail("AM网站客户留言信息", "<h3>"+params.toString()+"</h3>", dictDO.getValue());
 		return "/xmx/index";
 	}
-
 }

@@ -161,7 +161,7 @@
             <version>1.9.2</version>
         </dependency>
         <dependency>
-        	<groupId>com.sxyht</groupId>
+        	<groupId>com.sxyhton</groupId>
         	<artifactId>ftcsp-common</artifactId>
         	<version>0.0.1-SNAPSHOT</version>
         </dependency>
@@ -170,6 +170,10 @@
         	<artifactId>commons-lang3</artifactId>
         	<version>3.6</version>
         </dependency>
+        <dependency>
+	    	<groupId>com.sun.mail</groupId>
+	    	<artifactId>javax.mail</artifactId>
+	    </dependency>
     </dependencies>
     <build>
         <plugins>
