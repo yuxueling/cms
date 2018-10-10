@@ -4,7 +4,6 @@ import com.cloudht.common.annotation.Log;
 
 import com.cloudht.common.controller.BaseController;
 import com.cloudht.common.domain.Tree;
-
 import com.cloudht.system.domain.MenuDO;
 import com.cloudht.system.service.MenuService;
 import com.sxyht.common.utils.MD5Utils;
@@ -21,10 +20,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
-
 @Controller
 public class MianController extends BaseController {
 	@Autowired MenuService menuService;
+	
 	@GetMapping({"","/"})
 	public String redirect() {
 		return "index";

@@ -168,187 +168,27 @@
             </form>
         </div>
     </div>
-
+    <!-- ================菜单栏开始================ -->
     <div class="menu">
         <ul>
             <li><a title="Home" href="index.html" rel="nofollow"><strong>Home</strong></a></li>
             <li><a title="About Us" href="About-Us.html"><strong>About Us</strong></a></li>
-            <li style="z-index: 555;"><a
-                    class="hide" href="Products.html"><b>Products</b></a>
-
-
+            <li style="z-index: 555;"><a class="hide" href="Products.html"><b>Products</b></a>
                 <ul>
-
-                    <li><a class="hide" href="stainless-steel-investment-casting-1.html"
-                           title="Stainless steel investment casting">Stainless steel investment casting</a>
-
-
+                    <li v-for="(item,index) in categoryTree.children">
+                        <a class="hide" href="#" :title="item.text">{{item.text}}</a>
                         <ul>
-
-                            <li><a href="auto-parts-1.html" title="Auto parts">Auto parts</a></li>
-
-                            <li><a href="valve-parts-1.html" title="Valve parts">Valve parts</a></li>
-
+                            <li v-for="(item2,index2) in item.children"><a href="#" :title="item2.text">{{item2.text}}</a></li>
                         </ul>
-
-                    <li><a class="hide" href="alloy-steel-investment-casting-1.html"
-                           title="Alloy steel and carbon steel investment casting">Alloy steel and carbon steel
-                        investment casting</a>
-
-
-                        <ul>
-
-                            <li><a href="mining-drill-bits-1.html" title="Mining drill bits">Mining drill bits</a></li>
-
-                            <li><a href="clamp-casting-1.html" title="Clamp casting">Clamp casting</a></li>
-
-                        </ul>
-
-                    <li><a class="hide" href="aluminum-investment-casting-1.html" title="Aluminum investment casting">Aluminum
-                        investment casting</a>
-
-
-                        <ul>
-
-                            <li><a href="auto-parts-1.html" title="Auto parts">Auto parts</a></li>
-
-                            <li><a href="impeller-and-turbine-1.html" title="Impeller and turbine">Impeller and
-                                turbine</a></li>
-
-                        </ul>
-
-                    <li><a class="hide" href="superalloy-investment-casting-1.html"
-                           title="Superalloy investment casting">Superalloy investment casting</a>
-
-
-                        <ul>
-
-                            <li><a href="blades-and-vanes-for-industrial-gas-turbine-1.html"
-                                   title="blades and vanes for industrial gas turbine">blades and vanes for industrial
-                                gas turbine</a></li>
-
-                            <li><a href="impeller-for-submersible-pump-1.html" title="Impeller for submersible pump">Impeller
-                                for submersible pump</a></li>
-
-                        </ul>
-
-                    <li><a class="hide" href="metal-artware-1.html" title="Metal Artware">Metal Artware</a>
-
-
-                        <ul>
-
-                            <li><a href="gift-souvenir-medal-1.html" title="Gift souvenir medal">Gift souvenir medal</a>
-                            </li>
-
-                            <il><a href="stainless-steel-artware-1-1.html" title="Stainless Steel Artware">Stainless
-                                Steel Artware</a></li>
-
-                        </ul>
-
-                    <li><a class="hide" href="copper-investment-casting-1.html" title="Copper investment casting">Copper
-                        investment casting</a>
-
-
-                        <ul>
-
-                            <li><a href="copper-valve-casting-1.html" title="Copper valve casting">Copper valve
-                                casting</a></li>
-
-                            <li><a href="copper-impeller-casting-1.html" title="Copper impeller casting">Copper impeller
-                                casting</a></li>
-
-                            <li><a href="copper-joint-casting-1.html" title="Copper joint casting">Copper joint
-                                casting</a></li>
-
-                        </ul>
-
-                    <li><a class="hide" href="aluminum-die-casting-1.html" title="Aluminum die casting">Aluminum die
-                        casting</a>
-
-
-                        <ul>
-
-                            <li><a href="auto-parts-1.html" title="Aluminum auto parts">Aluminum auto parts</a></li>
-
-                            <li><a href="housing-1.html" title="Housing">Housing</a></li>
-
-                            <li><a href="radiator-shell-1.html" title="Radiator shell">Radiator shell</a></li>
-
-                            <li><a href="customized-parts-1.html" title="Customized parts">Customized parts</a></li>
-
-                        </ul>
-
-                    <li><a class="hide" href="ductile-iron-investment-casting-1.html"
-                           title="Ductile iron investment casting">Ductile iron investment casting</A>
-
-
-                    <li><a class="hide" href="cnc-machining-parts-1.html" title="CNC machining parts">CNC machining
-                        parts</a>
-
-
-                        <ul>
-
-                            <li><a href="stop-collar-1.html" title="Stop collar">Stop collar</a></li>
-
-                        </ul>
-
-                    <li><a class="hide" href="sand-casting-1.html" title="Iron sand casting">Iron sand casting</a>
-
-
-                        <ul>
-
-                            <li><a href="agricultural-machinery-casting-1.html" title="Agricultural machinery casting">Agricultural
-                                machinery casting</a></li>
-
-                            <li><a href="air-conditioner-parts-1.html" title="Air conditioner parts">Air conditioner
-                                parts</a></li>
-
-                            <li><a href="construction-parts-1.html" title="Construction parts">Construction parts</a>
-                            </li>
-
-                            <li><a href="sewing-machine-parts-1.html" title="Sewing machine parts">Sewing machine
-                                parts</a></li>
-
-                            <li><a href="armature-casting-1.html" title="Armature casting">Armature casting</a></li>
-
-                            <li><a href="adi-casting-1.html" title="ADI casting">ADI casting</a></li>
-
-                        </ul>
-
-                    <li><a class="hide" href="steel-sand-casting-1.html" title="Steel sand casting">Steel sand
-                        casting</a>
-
-
-                        <ul>
-
-                            <li><a href="auto-spare-part-1.html" title="Auto spare part">Auto spare part</a></li>
-
-                            <li><a href="engineering-machinery-and-mining-machinery-1.html"
-                                   title="Engineering machinery and mining machinery">Engineering machinery and mining
-                                machinery</a></li>
-
-                            <li><a href="pump-valve-parts-1.html" title="pump valve parts">pump valve parts</a></li>
-
-                            <li><a href="mine-truck-parts-1.html" title="Mine truck parts">Mine truck parts</a></li>
-
-                            <LI><A href="railway-vehicle-parts-1.html" title="Railway vehicle parts">Railway vehicle
-                                parts</A></LI>
-
-                        </ul>
-
+                    </li> 
                 </ul>
-
             </li>
-
-
             <li><a title="News" href="News.html"><b>News</b></a></li>
             <li><a title="Capability" href="Capability.html"><b>Capability</b></a></li>
-
             <li><a title="Contact Us" href="contact-us.html"><b>Contact Us</b></a></li>
             <li><a href="mailto:market@investment-casting.biz"><b>E-mail:</b> market@investment-casting.biz</a></li>
         </ul>
-
-    </div>
+    </div><!-- ================菜单栏结束============================ -->
     <div class="maint"></div>
     <div id="curpos"></div>
     <div id="main">
