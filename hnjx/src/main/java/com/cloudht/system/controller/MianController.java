@@ -28,7 +28,7 @@ public class MianController extends BaseController {
 	
 	@GetMapping({"","/"})
 	public String redirect() {
-		return "index";
+		return "xmx/index";
 	}
 	@RequestMapping("/xmx/{name}")
 	public String tongYong(@PathVariable("name") String name) {
