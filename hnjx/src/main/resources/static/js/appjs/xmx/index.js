@@ -50,6 +50,9 @@ var vm = new Vue({
                     vm.productList=data.rows;
                 }
             });
+        },
+        viewProduct:function (contProductId) {
+            window.location.href="/contXmx/showProduct/"+contProductId;
         }
 
     }
