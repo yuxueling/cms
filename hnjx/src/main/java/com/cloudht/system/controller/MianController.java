@@ -46,6 +46,7 @@ public class MianController extends BaseController {
 	 * @param model
 	 * @return
 	 */
+	@Log("/xmx/*")
 	@RequestMapping("/xmx/{name}")
 	public String tongYong(@RequestParam Map<String, Object> params,
 			@PathVariable("name") String name,Long cid,Integer news,Model model) {

@@ -88,6 +88,10 @@ function load() {
                         title: 'IP地址'
                     },
                     {
+                        field: 'ipAddress',
+                        title: 'IP城市'
+                    },
+                    {
                         field: 'gmtCreate',
                         title: '创建时间'
                     },

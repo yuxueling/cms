@@ -4,6 +4,8 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 
 import java.util.Date;
 
+import org.lionsoul.ip2region.IpAddressUtils;
+
 public class LogDO {
 	private Long id;
 
@@ -20,6 +22,7 @@ public class LogDO {
 	private String params;
 
 	private String ip;
+	
 	@JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm:ss")
 	private Date gmtCreate;
 
@@ -93,6 +96,9 @@ public class LogDO {
 
 	public void setGmtCreate(Date gmtCreate) {
 		this.gmtCreate = gmtCreate;
+	}
+	public String getIpAddress() {
+		return IpAddressUtils.queryAddressByIp(ip);
 	}
 
 	@Override
