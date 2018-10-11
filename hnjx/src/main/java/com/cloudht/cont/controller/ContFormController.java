@@ -8,8 +8,10 @@ import java.util.Map;
 import com.alibaba.fastjson.JSON;
 import com.cloudht.common.controller.BaseController;
 import com.cloudht.common.domain.DictDO;
+import com.cloudht.common.service.DictService;
 import com.cloudht.cont.domain.ContFormDataDO;
 import com.cloudht.cont.service.ContFormDataService;
+import com.sxyht.common.utils.MailUtils;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
@@ -43,6 +45,9 @@ public class ContFormController extends BaseController{
 
 	@Autowired
 	private ContFormDataService contFormDataService;
+
+	@Autowired
+	private DictService dictService;
 	
 	@GetMapping() @RequiresPermissions("cont:contForm:contForm")
 	String ContForm(){
@@ -143,9 +148,20 @@ public class ContFormController extends BaseController{
 				formDataDO.setContFormId(formDO.getContFormId());
 			}
 			if (contFormDataService.batchSave(contFormDataDOS) > 0) {
+
+				try {
+					List<DictDO> dictDOList = this.dictService.listByType("mailbox");
+					for (DictDO dictDO: dictDOList){
+						MailUtils.sendMail(dictDO.getName(), "<h3>"+contFormData+"</h3>", dictDO.getValue());
+					}
+				}catch (Exception e){
+
+				}
+
 				return R.ok();
 			}
 		}
+
 		return R.error();
 	}
 

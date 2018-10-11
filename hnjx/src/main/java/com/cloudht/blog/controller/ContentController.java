@@ -118,4 +118,7 @@ public class ContentController extends BaseController {
 		bContentService.batchRemove(cids);
 		return R.ok();
 	}
+
+
+
 }

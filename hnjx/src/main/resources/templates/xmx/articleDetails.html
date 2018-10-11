@@ -8,9 +8,9 @@
 <meta name="description" content="Our SIMIS just get the TUV Certificate and Alibaba Assessed Supplier ." />
 <meta name="author" content="Web Design: xiaoyuer QQ:195094303 website: www.shejifang.net" />
 <script language="javascript"  type="text/javascript" src="../pub/hits.asp?action=news_hits&amp;id=156"></script>
-<link href="css/css.css" rel="stylesheet" type="text/css"  />
-<script language="javascript" type="text/javascript" src="js/comm.js"></script>
-<script language="javascript" type="text/javascript" src="js/jquery.js"></script>
+<link href="/xmx/css/css.css" rel="stylesheet" type="text/css"  />
+<script language="javascript" type="text/javascript" src="/xmx/js/comm.js"></script>
+<script language="javascript" type="text/javascript" src="/xmxjs/jquery.js"></script>
 </head>
 <body>
 <div id="site">
@@ -21,21 +21,13 @@
       <div class="board"><strong>News Details</strong></div>
       <div class="hcontent">
         <center>
-          <h1 th:text="${contentDO.title}">TUV Certificate</h1>
+          <h1>{{contentDO.title}}</h1>
         </center>
-        <div align="right"><strong th:text="|Author: ${contentDO.author} Date: ${contentDO.gtmCreate}|"></div>
-        <div class="newscontent" th:text="${contentDO.content}"></div>
-        <div id="content" class="summernote"></div>
-        <script type="text/javascript" th:inline="javascript">
-			$().ready(function() {
-				$('.summernote').summernote({
-					lang : 'zh-CN'
-				});
-				var content = /*[[${contentDO.content}]]*/
-				$('#content').append(content);
-				$('.summernote').destroy();
-			});
-		</script>
+
+        <div align="right"><strong>Author: </strong>{{contentDO.author}}<strong>Date:</strong> {{contentDO.gtmCreate}} </div>
+
+        <div class="newscontent" v-html="contentDO.content"></div>
+
       </div>
       <div class="clear"></div>
     </div>
@@ -44,8 +36,11 @@
     <div class="clear"></div>
   </div>
   <div class="mainbg"> </div>
-<div th:include="include/public :: root"></div><!-- 共用root部分 -->
-<script language="javascript" type="text/javascript" src="/js/rootLink.js"></script>
+  <div th:include="include/public :: root"></div><!-- 共用root部分 -->
+
+  <script type="text/javascript" src="/js/appjs/xmx/articleDetails.js"></script>
+
+
 <div class="flinks">Friendly Links:
 &nbsp;
   </div>

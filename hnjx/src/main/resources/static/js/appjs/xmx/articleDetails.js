@@ -1,7 +1,7 @@
 
 $(function(){
     vm.init();
-    vm.getProduct();
+    vm.openGet();
 });
 
 var vm = new Vue({
@@ -10,7 +10,8 @@ var vm = new Vue({
         categoryTree:{},
         product:{},
         langType:'english',
-        events:[]
+        events:[],
+        contentDO:{}
     },
     methods: {
         init: function () {
@@ -27,7 +28,7 @@ var vm = new Vue({
                 }
             });
 
-        } ,
+        },
         listProduct: function (contCategoryId,categoryName) {
 
             //跳转到详情产品页
@@ -36,15 +37,14 @@ var vm = new Vue({
 
 
         },
-        getProduct: function () {
+        openGet:function () {
             $.ajax({
-                url: "/contXmx/getProduct",
-                type: "post",
-                data: {
-                    langType:vm.langType
-                },
+                url: "/contXmx/openGet",
+                type: "get",
                 success: function (data) {
-                    vm.product=data.row;
+                    if(data.code==0){
+                        vm.contentDO=data.row;
+                    }
                 }
             });
         }

@@ -46,22 +46,22 @@ public class MianController extends BaseController {
 	 * @param model
 	 * @return
 	 */
-	@RequestMapping("/xmx/{name}")
-	public String tongYong(@RequestParam Map<String, Object> params,
-			@PathVariable("name") String name,Long cid,Integer news,Model model) {
-		if(cid!=null&&cid>0) {//用来处理这个请求的getArticleDetails,返回到articleDetails
-			ContentDO contentDO = this.contentService.get(cid);
-			model.addAttribute("contentDO", contentDO);
-		}
-		if("News".equals(name)||"News.html".equals(name)) {
-			//将新闻与事件放入model中
-			Query map =new Query(params);
-			List<ContentDO> list = this.contentService.list(map);
-			int count = this.contentService.count(map);
-			model.addAttribute("news", new PageUtils(list, count));
-		}
-		return "xmx/"+name;
-	}
+//	@RequestMapping("/xmx/{name}")
+//	public String tongYong(@RequestParam Map<String, Object> params,
+//			@PathVariable("name") String name,Long cid,Integer news,Model model) {
+//		if(cid!=null&&cid>0) {//用来处理这个请求的getArticleDetails,返回到articleDetails
+//			ContentDO contentDO = this.contentService.get(cid);
+//			model.addAttribute("contentDO", contentDO);
+//		}
+//		if("News".equals(name)||"News.html".equals(name)) {
+//			//将新闻与事件放入model中
+//			Query map =new Query(params);
+//			List<ContentDO> list = this.contentService.list(map);
+//			int count = this.contentService.count(map);
+//			model.addAttribute("news", new PageUtils(list, count));
+//		}
+//		return "xmx/"+name;
+//	}
 	/**请求访问登录页面 */
 	@GetMapping("/login")
 	String login() {
