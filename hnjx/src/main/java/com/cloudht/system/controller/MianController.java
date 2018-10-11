@@ -46,6 +46,7 @@ public class MianController extends BaseController {
 	 * @param model
 	 * @return
 	 */
+
 //	@RequestMapping("/xmx/{name}")
 //	public String tongYong(@RequestParam Map<String, Object> params,
 //			@PathVariable("name") String name,Long cid,Integer news,Model model) {
@@ -62,6 +63,7 @@ public class MianController extends BaseController {
 //		}
 //		return "xmx/"+name;
 //	}
+
 	/**请求访问登录页面 */
 	@GetMapping("/login")
 	String login() {

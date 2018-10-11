@@ -26,7 +26,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/resources/templates/xmx/a-products.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="69">
-              <caret line="87" column="12" lean-forward="true" selection-start-line="87" selection-start-column="12" selection-end-line="87" selection-end-column="12" />
+              <caret line="87" column="12" lean-forward="false" selection-start-line="87" selection-start-column="12" selection-end-line="87" selection-end-column="12" />
               <folding />
             </state>
           </provider>
@@ -36,7 +36,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/resources/templates/xmx/a-productDetail.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="84">
-              <caret line="64" column="39" lean-forward="true" selection-start-line="64" selection-start-column="39" selection-end-line="64" selection-end-column="39" />
+              <caret line="64" column="39" lean-forward="false" selection-start-line="64" selection-start-column="39" selection-end-line="64" selection-end-column="39" />
               <folding />
             </state>
           </provider>
@@ -52,11 +52,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="articleDetails.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="articleDetails.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/appjs/xmx/articleDetails.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="111">
-              <caret line="29" column="0" lean-forward="true" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
+              <caret line="29" column="0" lean-forward="false" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MianController.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/cloudht/system/controller/MianController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="138">
+              <caret line="64" column="5" lean-forward="true" selection-start-line="64" selection-start-column="5" selection-end-line="64" selection-end-column="5" />
               <folding />
             </state>
           </provider>
@@ -76,7 +86,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/appjs/xmx/index.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="295">
-              <caret line="54" column="71" lean-forward="true" selection-start-line="54" selection-start-column="12" selection-end-line="54" selection-end-column="71" />
+              <caret line="54" column="71" lean-forward="false" selection-start-line="54" selection-start-column="12" selection-end-line="54" selection-end-column="71" />
               <folding />
             </state>
           </provider>
@@ -151,7 +161,6 @@
         <option value="$PROJECT_DIR$/src/main/resources/mybatis/cont/ContFormDataMapper.xml" />
         <option value="$PROJECT_DIR$/src/main/resources/static/js/appjs/xmx/a-inquiry.js" />
         <option value="$PROJECT_DIR$/src/main/java/com/cloudht/cont/controller/ContFormController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/cloudht/system/controller/MianController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/cloudht/blog/controller/ContentController.java" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/blog/index/post.html" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/xmx/articleDetails.html" />
@@ -160,6 +169,7 @@
         <option value="$PROJECT_DIR$/src/main/java/com/cloudht/cont/controller/ContXmxController.java" />
         <option value="$PROJECT_DIR$/src/main/resources/static/js/appjs/xmx/a-productDetail.js" />
         <option value="$PROJECT_DIR$/src/main/resources/static/js/appjs/xmx/articleDetails.js" />
+        <option value="$PROJECT_DIR$/src/main/java/com/cloudht/system/controller/MianController.java" />
       </list>
     </option>
   </component>
@@ -376,13 +386,6 @@
               <item name="templates" type="462c0819:PsiDirectoryNode" />
               <item name="xmx" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="hnjx" type="b2602c69:ProjectViewProjectNode" />
-              <item name="hnjx" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="webapp" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
@@ -509,7 +512,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="52787000" />
+    <option name="totallyTimeSpent" value="53232000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -522,6 +525,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3298791" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3298791" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -540,7 +544,7 @@
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.6683938" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.6683938" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -890,14 +894,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/cloudht/system/controller/MianController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-661">
-          <caret line="43" column="17" lean-forward="true" selection-start-line="43" selection-start-column="17" selection-end-line="43" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/cloudht/common/config/ShiroConfig.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="134">
@@ -968,7 +964,7 @@
     <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/appjs/xmx/index.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="295">
-          <caret line="54" column="71" lean-forward="true" selection-start-line="54" selection-start-column="12" selection-end-line="54" selection-end-column="71" />
+          <caret line="54" column="71" lean-forward="false" selection-start-line="54" selection-start-column="12" selection-end-line="54" selection-end-column="71" />
           <folding />
         </state>
       </provider>
@@ -984,7 +980,7 @@
     <entry file="file://$PROJECT_DIR$/src/main/resources/templates/xmx/a-productDetail.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="84">
-          <caret line="64" column="39" lean-forward="true" selection-start-line="64" selection-start-column="39" selection-end-line="64" selection-end-column="39" />
+          <caret line="64" column="39" lean-forward="false" selection-start-line="64" selection-start-column="39" selection-end-line="64" selection-end-column="39" />
           <folding />
         </state>
       </provider>
@@ -1000,7 +996,7 @@
     <entry file="file://$PROJECT_DIR$/src/main/resources/templates/xmx/a-products.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="69">
-          <caret line="87" column="12" lean-forward="true" selection-start-line="87" selection-start-column="12" selection-end-line="87" selection-end-column="12" />
+          <caret line="87" column="12" lean-forward="false" selection-start-line="87" selection-start-column="12" selection-end-line="87" selection-end-column="12" />
           <folding />
         </state>
       </provider>
@@ -1016,7 +1012,15 @@
     <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/appjs/xmx/articleDetails.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="111">
-          <caret line="29" column="0" lean-forward="true" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
+          <caret line="29" column="0" lean-forward="false" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/cloudht/system/controller/MianController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="138">
+          <caret line="64" column="5" lean-forward="true" selection-start-line="64" selection-start-column="5" selection-end-line="64" selection-end-column="5" />
           <folding />
         </state>
       </provider>
