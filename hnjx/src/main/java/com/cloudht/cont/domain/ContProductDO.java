@@ -31,6 +31,8 @@ public class ContProductDO implements Serializable {
 	private Date gmtModified;
 	//类型名称，辅助查询字段，该数据库表里没有
 	private String categoryName;
+	//级别：（推荐级别：10-19）10-不推荐，11-推荐
+	private Integer level;
 	/**
 	 * 类型名称，辅助查询字段，该数据库表里没有
 	 * @return
@@ -128,5 +130,17 @@ public class ContProductDO implements Serializable {
 	 */
 	public Date getGmtModified() {
 		return gmtModified;
+	}
+	/**
+	 * 级别：（推荐级别：10-19）10-不推荐，11-推荐
+	 */
+	public Integer getLevel() {
+		return this.level;
+	}
+	/**
+	 * 级别：（推荐级别：10-19）10-不推荐，11-推荐
+	 */
+	public void setLevel(Integer level) {
+		this.level=level;
 	}
 }

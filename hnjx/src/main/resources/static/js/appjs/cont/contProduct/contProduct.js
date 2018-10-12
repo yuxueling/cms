@@ -58,6 +58,9 @@ function load() {
 										return {'0':'下架','1':'正常'}[value];
 									}
 								},{
+									field : 'level', 
+									title : '推荐级别' 
+								},{
 									field : 'createBy', 
 									title : '创建用户id' 
 								},{
