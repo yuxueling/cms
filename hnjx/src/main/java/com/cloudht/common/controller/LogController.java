@@ -28,6 +28,10 @@ public class LogController {
 	String log() {
 		return prefix + "/log";
 	}
+	@GetMapping("/statistics")
+	String statistics() {
+		return "/common/log/statistics";
+	}
 
 	@ResponseBody
 	@GetMapping("/list")
