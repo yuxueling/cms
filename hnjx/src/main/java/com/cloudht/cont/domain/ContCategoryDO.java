@@ -28,8 +28,6 @@ public class ContCategoryDO implements Serializable {
 	//排序
 	private Integer sort;
 	//是否显示,1显示 0不显示
-	private Integer isShow;
-	//是否显示,1显示 0不显示
 	private Integer isDisplay;
 	//备注
 	private String remark;
@@ -177,15 +175,8 @@ public class ContCategoryDO implements Serializable {
 	/**
 	 * 设置：是否显示,1显示 0不显示
 	 */
-	public void setIsShow(Integer isShow) {
-		this.isShow = isShow;
-		this.isDisplay=isShow;
-	}
-	/**
-	 * 获取：是否显示,1显示 0不显示
-	 */
-	public Integer getIsShow() {
-		return isShow;
+	public void setIsDisplay(Integer isDisplay) {
+		this.isDisplay=isDisplay;
 	}
 	/**
 	 * 获取：是否显示,1显示 0不显示
