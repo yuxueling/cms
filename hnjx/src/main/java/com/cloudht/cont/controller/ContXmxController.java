@@ -64,6 +64,23 @@ public class ContXmxController extends BaseController {
 		return R.ok().put("row",contProduct);
 	}
 
+	@RequestMapping("/listCateProdsByProdId")
+	@ResponseBody
+	public R listCateProdsByProdId(@RequestParam Map<String, Object> params){
+
+		Object productIdObj = params.get("contProductId");
+		if(productIdObj!=null){
+			params.put("contProductId",productIdObj);
+			getSession().setAttribute("contProductId",productIdObj);
+		}else {
+			productIdObj = getSession().getAttribute("contProductId");
+			params.put("contProductId",getSession().getAttribute("contProductId"));
+		}
+
+		List<ContProductVO> contProductList = contXmxService.listCateProdsByProdId(params);
+		return R.ok().put("rows",contProductList).put("contProductId",productIdObj);
+	}
+
 
 	@PostMapping("/sendInquiry")
 	public String sendInquiry(@RequestParam Map<String, Object> params) {
@@ -74,24 +91,25 @@ public class ContXmxController extends BaseController {
 
 
 	/**
-	 * http://localhost:8080/contXmx/openViewDetail
+	 * 打开新闻详情页面
+	 * http://localhost:8080/contXmx/openViewNewsDetail
 	 * @param cid
 	 * @return
 	 */
-	@GetMapping("/openViewDetail/{cid}")
-	public String openViewDetail(@PathVariable("cid") Long cid) {
+	@GetMapping("/openViewNewsDetail/{cid}")
+	public String openViewNewsDetail(@PathVariable("cid") Long cid) {
 		getSession().setAttribute("cid",cid);
 		return "xmx/articleDetails";
 	}
 
 	/**
-	 * http://localhost:8080/contXmx/openGet
-	 *
+	 *	获取新闻详情
+	 * http://localhost:8080/contXmx/openGetNewsDetail
 	 * @return
 	 */
 	@ResponseBody
-	@RequestMapping("/openGet")
-	public R openGet() {
+	@RequestMapping("/openGetNewsDetail")
+	public R openGetNewsDetail() {
 		Object cidO = getSession().getAttribute("cid");
 		if(cidO==null){
 			return R.error("Session超时或未发现新闻主键");
@@ -102,6 +120,7 @@ public class ContXmxController extends BaseController {
 
 
 	/**
+	 * 打开产品主页面
 	 * http://localhost:8080/contXmx/openViewListProduct
 	 * @param contCategoryId
 	 * @param categoryName
@@ -113,6 +132,20 @@ public class ContXmxController extends BaseController {
 		session.setAttribute("contCategoryId",contCategoryId);
 		session.setAttribute("categoryName",categoryName);
 		return "xmx/a-products";
+	}
+
+
+	/**
+	 * 查询热门产品
+	 * http://localhost:8080/contXmx/listProductByCategoryCode
+	 * @param params
+	 * @return
+	 */
+	@ResponseBody
+	@RequestMapping("/listProductByCategoryCode")
+	public R listProductByCategoryCode(@RequestParam Map<String, Object> params) {
+		List<ContProductVO> contProductVOList = contXmxService.listProductByCategoryCode(params);
+		return R.ok().put("rows",contProductVOList);
 	}
 
 

@@ -1,7 +1,6 @@
 package com.cloudht.cont.service.impl;
 
 import com.cloudht.cont.dao.ContXmxDao;
-import com.cloudht.cont.service.ContProductService;
 import com.cloudht.cont.service.ContXmxService;
 import com.cloudht.cont.vo.ContProductVO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,5 +28,15 @@ public class ContXmxServiceImpl implements ContXmxService {
 	@Override
 	public ContProductVO getProduct(Map<String, Object> map) {
 		return contXmxDao.getProduct(map);
+	}
+
+	@Override
+	public List<ContProductVO> listCateProdsByProdId(Map<String, Object> map) {
+		return contXmxDao.listCateProdsByProdId(map);
+	}
+
+	@Override
+	public List<ContProductVO> listProductByCategoryCode(Map<String, Object> map) {
+		return contXmxDao.listProductByCategoryCode(map);
 	}
 }

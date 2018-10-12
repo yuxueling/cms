@@ -16,7 +16,13 @@ import java.util.Map;
  */
 public interface ContXmxService {
 	List<ContProductVO> listProductByCategory(Map<String,Object> map);
+
 	int countProductByCategory(Map<String,Object> map);
+
 	ContProductVO getProduct(Map<String,Object> map);
+
+	List<ContProductVO> listCateProdsByProdId(Map<String,Object> map);
+
+	List<ContProductVO> listProductByCategoryCode(Map<String,Object> map);
 
 }

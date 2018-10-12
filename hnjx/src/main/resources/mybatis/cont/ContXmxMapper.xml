@@ -56,6 +56,30 @@
 	</select>
 
 
+	<select id="listCateProdsByProdId" resultMap="productVO">
+		select #{langType} as lang_type ,
+		B.`cont_product_id`,B.`product_name`,B.`category_id`,B.`sale_status`,B.`create_by`,B.`gmt_create`,B.`gmt_modified`
+		FROM cont_product B ,cont_product C
+		WHERE B.category_id = C.category_id
+		AND C.cont_product_id = #{contProductId}
+		<if test="offset != null and limit != null">
+			limit #{offset}, #{limit}
+		</if>
+	</select>
+
+	<select id="listProductByCategoryCode" resultMap="productVO">
+		select #{langType} as lang_type ,
+		B.`cont_product_id`,B.`product_name`,B.`category_id`,B.`sale_status`,B.`create_by`,B.`gmt_create`,B.`gmt_modified`
+		FROM cont_product B ,cont_category A
+		WHERE A.category_code = #{categoryCode}
+		AND A.category_type = #{categoryType}
+		AND A.cont_category_id = B.category_id
+		<if test="offset != null and limit != null">
+			limit #{offset}, #{limit}
+		</if>
+	</select>
+
+
 	<select id="getProduct" resultMap="productVO">
 		select #{langType} as lang_type ,
 		B.`cont_product_id`,B.`product_name`,B.`category_id`,B.`sale_status`,B.`create_by`,B.`gmt_create`,B.`gmt_modified`

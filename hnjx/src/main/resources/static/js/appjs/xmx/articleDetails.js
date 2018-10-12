@@ -32,14 +32,12 @@ var vm = new Vue({
         listProduct: function (contCategoryId,categoryName) {
 
             //跳转到详情产品页
-
             window.location.href="/contXmx/openViewListProduct/"+contCategoryId+"/"+categoryName;
-
 
         },
         openGet:function () {
             $.ajax({
-                url: "/contXmx/openGet",
+                url: "/contXmx/openGetNewsDetail",
                 type: "get",
                 success: function (data) {
                     if(data.code==0){

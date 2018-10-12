@@ -124,7 +124,7 @@ table,td{}
 .protext a:hover{color:#ff7700}
 .probox span{ display:block; text-align:center}
 .probox h2{color:#5C5C5C;font-weight:normal; line-height:16px; text-align:center; clear:both}
-.proimg img{position:static;+position:relative; top:-50%;left:-50%; vertical-align:middle}
+.proimg img{position:static;+position:relative; top:-50%;left:-50%; vertical-align:middle;max-width: 148px;max-height: 148px;}
 .proimg p{position:static; +position:absolute; top:50%; vertical-align:middle; margin:0; padding:0 }
 .proimg{width:146px;height:146px;line-height:146px;vertical-align:middle;position:relative;text-align:center;display:table-cell;overflow:hidden;margin:0 auto;border:0;border:1px solid #D2D2D2;}
 .proimg{display:block\0;}/*ie8*/
