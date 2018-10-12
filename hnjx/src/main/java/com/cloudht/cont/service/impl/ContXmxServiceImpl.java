@@ -1,7 +1,6 @@
 package com.cloudht.cont.service.impl;
 
 import com.cloudht.cont.dao.ContXmxDao;
-import com.cloudht.cont.service.ContProductService;
 import com.cloudht.cont.service.ContXmxService;
 import com.cloudht.cont.vo.ContProductVO;
 import org.springframework.beans.factory.annotation.Autowired;

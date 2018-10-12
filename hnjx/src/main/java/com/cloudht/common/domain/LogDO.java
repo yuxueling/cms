@@ -98,6 +98,8 @@ public class LogDO {
 		this.gmtCreate = gmtCreate;
 	}
 	public String getIpAddress() {
+		if("".equals(ip)) 
+			return "";
 		return IpAddressUtils.queryAddressByIp(ip);
 	}
 

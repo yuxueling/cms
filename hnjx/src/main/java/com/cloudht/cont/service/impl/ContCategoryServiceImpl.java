@@ -15,7 +15,6 @@ import com.cloudht.common.utils.BuildTree;
 import com.cloudht.cont.dao.ContCategoryDao;
 import com.cloudht.cont.domain.ContCategoryDO;
 import com.cloudht.cont.service.ContCategoryService;
-import sun.misc.Cache;
 
 @Service
 public class ContCategoryServiceImpl implements ContCategoryService {
