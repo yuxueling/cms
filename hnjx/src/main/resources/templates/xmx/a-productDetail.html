@@ -15,10 +15,22 @@
 
     <script type="text/javascript" src="/xmx/js/lightbox.js"></script>
     <script language="javascript" type="text/javascript" src="/xmx/js/comm.js"></script>
+    <style type="text/css">
 
+        .proimg img {
+            position: static;
+            top: -50%;
+            left: -50%;
+            vertical-align: middle;
+            max-width: 148px;
+            max-height: 148px;
+        }
+
+    </style>
 </head>
 <body>
 <div id="site">
+
     <div th:include="include/public :: header"></div><!-- 共用顶部部分 -->
     <div id="main">
         <div th:include="include/public :: left"></div><!-- 共用左部部分 -->
@@ -27,7 +39,7 @@
             <div class="board"><strong>Products</strong></div>
             <div class="hcontent2">
                 <div align="center" style="margin:20px auto">
-                    <h1>{{product.contProductInfoDO.productName}}</h1>
+                    <h1>{{productList[activeIndex].contProductInfoDO.productName}}</h1>
                 </div>
                 <center>
 
@@ -35,29 +47,32 @@
                         <tr>
                             <td align="center" valign="middle" class="line_buttom_hui_xuxian">
 
-                                <img :src="product.contProductImgDOList[0].imgUrl" alt="turbine blade"
+                                <img :src="productList[activeIndex].contProductImgDOList[0].imgUrl" alt="turbine blade"
                                      title="turbine blade" border="0"
                                      onload="javascript:if(this.width&gt;700) this.width=700;"/></td>
                         </tr>
                     </table>
 
                     <a href="/xmx/a-inquiry" target="_blank"> <img src="/xmx/images/contactnow.gif"
-                                                                 style="cursor:pointer;"/>
+                                                                   style="cursor:pointer;"/>
                     </a>
 
                 </center>
                 <div class="clear"></div>
                 <div class="prenext pdbox"><strong>Previous</strong>:
 
-                    <a href="blades-and-vanes-for-industrial-gas-turbine-202.htm"
-                       title="blades and vanes for industrial gas turbine">blades and vanes for industrial gas
-                        turbine</a>
+                    <a href="javascript:void(0);" v-on:click="setActiveIndex(caculate(activeIndex,-1))">{{productList[caculate(activeIndex,-1)].contProductInfoDO.productName}}</a>
 
                     <strong>Next</strong>:
 
-                    <a href="turbine-wheel-114.htm" title="turbine wheel">turbine wheel</a>
+                    <a href="javascript:void(0);" v-on:click="setActiveIndex(caculate(activeIndex,1))">{{productList[caculate(activeIndex,1)].contProductInfoDO.productName}}</a>
                 </div>
-                <div class="pdbox"><strong>Model: </strong></div>
+                <div class="pdbox">
+                    <strong>Model: </strong>
+                    <h4 v-for="(pItem,pIndex) in productList[activeIndex].contProductParamDOList">
+                        <span v-for="(pkItem,pkIndex) in pItem.contProductPkDOList">&nbsp;{{pkItem.paramValue}}</span>
+                    </h4>
+                </div>
                 <div class="pc pdbox"><strong>Categories: </strong>
                     <a href="superalloy-investment-casting-1.html">Superalloy investment casting</a>
 
@@ -67,7 +82,8 @@
                     &raquo;
                 </div>
                 <div class="pdbox"><strong>Description:</strong>
-                    <div class="prodetaildes" id="prodetaildes" v-html="product.contProductInfoDO.details">
+                    <div class="prodetaildes" id="prodetaildes"
+                         v-html="productList[activeIndex].contProductInfoDO.details">
                         <div class="clear"></div>
                     </div>
 
@@ -80,140 +96,37 @@
                         </div>
                     </div>
                     <div class="clear"></div>
+                    <!--热门产品-->
                     <div class="hotbox" id="hot_1" style="display:none">
 
-                        <div class="probox">
+                        <div class="probox" v-for="(productItem,index) in hotProductList">
                             <center>
                                 <div class="proimg">
-                                    <p><a href="impeller-286.htm" title="impeller - "><img
-                                            src="/xmx/pic/other/286_0.jpg"
-                                            alt="impeller" vspace="0"
-                                            border="0"/></a></p>
+                                    <p><a href="javascript:void(0);" v-on:click="changeCateProduct(productItem.contProductId)">
+                                        <img :src="productItem.contProductImgDOList[0].imgUrl" vspace="0"
+                                             border="0"/></a></p>
                                 </div>
-                                <div class="protext"><a href="impeller-286.htm" title="impeller - "><h2>impeller</h2>
+                                <div class="protext"><a href="javascript:void(0);" v-on:click="changeCateProduct(productItem.contProductId)">
+                                    <h2>{{productItem.contProductInfoDO.productName}}</h2>
                                     <span></span></a></div>
-                            </center>
-                        </div>
-
-                        <div class="probox">
-                            <center>
-                                <div class="proimg">
-                                    <p><a href="auto-part-271.htm" title="auto part - "><img
-                                            src="/xmx/pic/other/271_0.jpg"
-                                            alt="auto part" vspace="0"
-                                            border="0"/></a></p>
-                                </div>
-                                <div class="protext"><a href="auto-part-271.htm" title="auto part - "><h2>auto part</h2>
-                                    <span></span></a></div>
-                            </center>
-                        </div>
-
-                        <div class="probox">
-                            <center>
-                                <div class="proimg">
-                                    <p><a href="auto-part-270.htm" title="auto part - "><img
-                                            src="/xmx/pic/other/270_0.jpg"
-                                            alt="auto part" vspace="0"
-                                            border="0"/></a></p>
-                                </div>
-                                <div class="protext"><a href="auto-part-270.htm" title="auto part - "><h2>auto part</h2>
-                                    <span></span></a></div>
-                            </center>
-                        </div>
-
-                        <div class="probox">
-                            <center>
-                                <div class="proimg">
-                                    <p><a href="auto-part-272.htm" title="auto part - "><img
-                                            src="/xmx/pic/other/272_0.jpg"
-                                            alt="auto part" vspace="0"
-                                            border="0"/></a></p>
-                                </div>
-                                <div class="protext"><a href="auto-part-272.htm" title="auto part - "><h2>auto part</h2>
-                                    <span></span></a></div>
-                            </center>
-                        </div>
-
-                        <div class="probox">
-                            <center>
-                                <div class="proimg">
-                                    <p><a href="auto-part-273.htm" title="auto part - "><img
-                                            src="/xmx/pic/other/273_0.jpg"
-                                            alt="auto part" vspace="0"
-                                            border="0"/></a></p>
-                                </div>
-                                <div class="protext"><a href="auto-part-273.htm" title="auto part - "><h2>auto part</h2>
-                                    <span></span></a></div>
-                            </center>
-                        </div>
-
-                        <div class="probox">
-                            <center>
-                                <div class="proimg">
-                                    <p><a href="aluminum-gear-box-280.htm" title="aluminum gear box - "><img
-                                            src="/xmx/pic/other/280_0.jpg" alt="aluminum gear box" vspace="0"
-                                            border="0"/></a></p>
-                                </div>
-                                <div class="protext"><a href="aluminum-gear-box-280.htm" title="aluminum gear box - ">
-                                    <h2>aluminum gear box</h2><span></span></a></div>
-                            </center>
-                        </div>
-
-                        <div class="probox">
-                            <center>
-                                <div class="proimg">
-                                    <p><a href="radiator-shell-284.htm" title="radiator shell - "><img
-                                            src="/xmx/pic/other/284_0.jpg" alt="radiator shell" vspace="0" border="0"/></a>
-                                    </p>
-                                </div>
-                                <div class="protext"><a href="radiator-shell-284.htm" title="radiator shell - "><h2>
-                                    radiator shell</h2><span></span></a></div>
-                            </center>
-                        </div>
-
-                        <div class="probox">
-                            <center>
-                                <div class="proimg">
-                                    <p><a href="aluminum-housing-277.htm" title="aluminum housing - "><img
-                                            src="/xmx/pic/other/277_0.jpg" alt="aluminum housing" vspace="0"
-                                            border="0"/></a>
-                                    </p>
-                                </div>
-                                <div class="protext"><a href="aluminum-housing-277.htm" title="aluminum housing - "><h2>
-                                    aluminum housing</h2><span></span></a></div>
                             </center>
                         </div>
 
                         <div style="clear:both"></div>
                     </div>
+                    <!--推荐产品-->
                     <div class="hotbox" id="hot_2">
 
-
-                        <div class="probox">
+                        <div class="probox" v-for="(productItem,index) in productList">
                             <center>
                                 <div class="proimg">
-                                    <p><a href="blades-and-vanes-for-industrial-gas-turbine-202.htm"
-                                          title="blades and vanes for industrial gas turbine - "><img
-                                            src="/xmx/pic/other/202_0.jpg"
-                                            alt="blades and vanes for industrial gas turbine"
-                                            vspace="0" border="0"/></a></p>
+                                    <p><a href="javascript:void(0);" v-on:click="setActiveIndex(index)">
+                                        <img :src="productItem.contProductImgDOList[0].imgUrl" vspace="0"
+                                             border="0"/></a></p>
                                 </div>
-                                <div class="protext"><a href="blades-and-vanes-for-industrial-gas-turbine-202.htm"
-                                                        title="blades and vanes for industrial gas turbine - "><h2>
-                                    blades and vanes for industrial gas turbine</h2><span></span></a></div>
-                            </center>
-                        </div>
-
-                        <div class="probox">
-                            <center>
-                                <div class="proimg">
-                                    <p><a href="turbine-wheel-114.htm" title="turbine wheel - "><img
-                                            src="/xmx/pic/other/114_0.jpg" alt="turbine wheel" vspace="0"
-                                            border="0"/></a>
-                                    </p>
-                                </div>
-                                <div class="protext"><a href="turbine-wheel-114.htm" title="turbine wheel - "><h2>
-                                    turbine wheel</h2><span></span></a></div>
+                                <div class="protext"><a href="javascript:void(0);" v-on:click="setActiveIndex(index)">
+                                    <h2>{{productItem.contProductInfoDO.productName}}</h2>
+                                    <span></span></a></div>
                             </center>
                         </div>
 

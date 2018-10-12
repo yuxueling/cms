@@ -243,8 +243,8 @@
                     <div class="probox" v-for="(item,index) in productList">
                         <center>
                             <div class="proimg">
-                                <p><a href="turbine-blade-115.htm" title="turbine blade" rel="nofollow"><img
-                                        :src="item.contProductImgDOList[0].imgUrl" alt="turbine blade" vspace="0" border="0"/></a>
+                                    <p><a href="javascript:void(0);" v-on:click="viewProduct(item.contProductId)" :title="item.contProductName" rel="nofollow"><img
+                                        :src="item.contProductImgDOList[0].imgUrl" :alt="item.contProductName" vspace="0" border="0"/></a>
                                 </p>
                             </div>
                             <div class="protext"><a href="javascript:void(0);" v-on:click="viewProduct(item.contProductId)" title="turbine blade" rel="nofollow">

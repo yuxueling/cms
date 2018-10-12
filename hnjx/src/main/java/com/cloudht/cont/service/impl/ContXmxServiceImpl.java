@@ -29,4 +29,14 @@ public class ContXmxServiceImpl implements ContXmxService {
 	public ContProductVO getProduct(Map<String, Object> map) {
 		return contXmxDao.getProduct(map);
 	}
+
+	@Override
+	public List<ContProductVO> listCateProdsByProdId(Map<String, Object> map) {
+		return contXmxDao.listCateProdsByProdId(map);
+	}
+
+	@Override
+	public List<ContProductVO> listProductByCategoryCode(Map<String, Object> map) {
+		return contXmxDao.listProductByCategoryCode(map);
+	}
 }

@@ -80,7 +80,7 @@ public class ShiroConfig {
         //设置开放的静态资源和开放链接的url
         shiroFilterFactoryBean.setFilterChainDefinitionMap(filterChainDefinitionMap);
         shiroFilterFactoryBean.setSecurityManager(securityManager);//注入安全管理器对象
-        shiroFilterFactoryBean.setLoginUrl("/xmx/index");//设置首页或者登陆页面，登录为/login
+        shiroFilterFactoryBean.setLoginUrl("/");//设置首页或者登陆页面，登录为/login
         shiroFilterFactoryBean.setSuccessUrl("/main");//设置登陆成功后跳转的页面
         shiroFilterFactoryBean.setUnauthorizedUrl("/403");//设置没有权限需要跳转的页面
         return shiroFilterFactoryBean;
