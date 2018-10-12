@@ -79,7 +79,7 @@
                                 </li>
                                 <!--二级分类-->
                                 <li v-for="(item2,index2) in item.children">
-                                    <a href="javascript:void(0);" v-on:click="listProduct(item.id,item.text)" :title="item2.text"><p>{{item2.text}}</p></a>&nbsp;(4)
+                                    <a href="javascript:void(0);" v-on:click="listProduct(item2.id,item2.text)" :title="item2.text"><p>{{item2.text}}</p></a>&nbsp;(4)
                                 </li>
                             </ul>
                         </dt>
