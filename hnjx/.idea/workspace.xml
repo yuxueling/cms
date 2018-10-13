@@ -27,20 +27,40 @@
         <entry file="file://$PROJECT_DIR$/src/main/resources/templates/include/public.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="111">
-              <caret line="39" column="19" lean-forward="true" selection-start-line="39" selection-start-column="19" selection-end-line="39" selection-end-column="19" />
+              <caret line="39" column="19" lean-forward="false" selection-start-line="39" selection-start-column="19" selection-end-line="39" selection-end-column="19" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/resources/templates/xmx/index.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="-409">
-              <caret line="151" column="29" lean-forward="true" selection-start-line="151" selection-start-column="29" selection-end-line="151" selection-end-column="29" />
+              <caret line="151" column="29" lean-forward="false" selection-start-line="151" selection-start-column="29" selection-end-line="151" selection-end-column="29" />
               <folding>
                 <element signature="n#style#0;n#img#0;n#a#0;n#p#0;n#div#2;n#center#0;n#div#0;n#div#0;n#div#5;n#div#1;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ContXmxServiceImpl.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/cloudht/cont/service/impl/ContXmxServiceImpl.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="77">
+              <caret line="61" column="52" lean-forward="true" selection-start-line="61" selection-start-column="52" selection-end-line="61" selection-end-column="52" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ContXmxService.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/cloudht/cont/service/ContXmxService.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="92">
+              <caret line="4" column="44" lean-forward="false" selection-start-line="4" selection-start-column="44" selection-end-line="4" selection-end-column="44" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -81,7 +101,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/com/cloudht/cont/controller/ContXmxController.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="2967">
-              <caret line="148" column="0" lean-forward="true" selection-start-line="148" selection-start-column="0" selection-end-line="148" selection-end-column="0" />
+              <caret line="148" column="0" lean-forward="false" selection-start-line="148" selection-start-column="0" selection-end-line="148" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -162,7 +182,6 @@
         <option value="$PROJECT_DIR$/src/main/resources/static/js/appjs/xmx/articleDetails.js" />
         <option value="$PROJECT_DIR$/src/main/java/com/cloudht/cont/dao/ContXmxDao.java" />
         <option value="$PROJECT_DIR$/src/main/resources/mybatis/cont/ContXmxMapper.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/com/cloudht/cont/service/ContXmxService.java" />
         <option value="$PROJECT_DIR$/src/main/resources/mybatis/cont/ContCategoryMapper.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/cloudht/cont/dao/ContCategoryDao.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/cloudht/cont/service/impl/ContXmxServiceImpl.java" />
@@ -178,6 +197,7 @@
         <option value="$PROJECT_DIR$/src/main/resources/templates/xmx/a-contactUs.html" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/xmx/a-news.html" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/xmx/index.html" />
+        <option value="$PROJECT_DIR$/src/main/java/com/cloudht/cont/service/ContXmxService.java" />
       </list>
     </option>
   </component>
@@ -479,12 +499,12 @@
       <workItem from="1539069529923" duration="979000" />
       <workItem from="1539090056242" duration="5287000" />
       <workItem from="1539269540805" duration="49100000" />
-      <workItem from="1539392135314" duration="3825000" />
+      <workItem from="1539392135314" duration="4137000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="106565000" />
+    <option name="totallyTimeSpent" value="106877000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -733,6 +753,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="459">
           <caret line="45" column="26" lean-forward="true" selection-start-line="45" selection-start-column="26" selection-end-line="45" selection-end-column="26" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -740,6 +761,18 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="65">
           <caret line="66" column="13" lean-forward="true" selection-start-line="66" selection-start-column="13" selection-end-line="66" selection-end-column="13" />
+          <folding>
+            <marker date="1539329007502" expanded="true" signature="2401:2425" ph="SELECT ##{con... " />
+            <marker date="1539329007502" expanded="true" signature="2442:2536" ph="select C.con... cont_category" />
+            <marker date="1539329007502" expanded="true" signature="3608:3825" ph="select ##{lan... cont_product" />
+            <marker date="1539329007502" expanded="true" signature="3911:4235" ph="select COUNT... cont_category" />
+            <marker date="1539329007502" expanded="true" signature="4098:4122" ph="SELECT ##{con... " />
+            <marker date="1539329007502" expanded="true" signature="4137:4231" ph="select C.con... cont_category" />
+            <marker date="1539329007502" expanded="true" signature="4329:4659" ph="SELECT A.`co... cont_product_info" />
+            <marker date="1539329007502" expanded="true" signature="4752:4884" ph="select `cont... cont_product_img" />
+            <marker date="1539329007502" expanded="true" signature="4947:5177" ph="select `cont... cont_product_param" />
+            <marker date="1539329007502" expanded="true" signature="5268:5400" ph="select `cont... cont_product_pk" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -757,17 +790,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/cloudht/cont/service/ContXmxService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="58">
-          <caret line="17" column="16" lean-forward="false" selection-start-line="17" selection-start-column="16" selection-end-line="17" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/cloudht/cont/controller/ContCategoryController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="252">
           <caret line="116" column="29" lean-forward="false" selection-start-line="116" selection-start-column="29" selection-end-line="116" selection-end-column="29" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -782,13 +809,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="189">
           <caret line="176" column="90" lean-forward="false" selection-start-line="176" selection-start-column="86" selection-end-line="176" selection-end-column="90" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/cloudht/cont/service/impl/ContXmxServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="73">
-          <caret line="61" column="52" lean-forward="true" selection-start-line="61" selection-start-column="52" selection-end-line="61" selection-end-column="52" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -877,7 +898,7 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/com/cloudht/cont/controller/ContXmxController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2967">
-          <caret line="148" column="0" lean-forward="true" selection-start-line="148" selection-start-column="0" selection-end-line="148" selection-end-column="0" />
+          <caret line="148" column="0" lean-forward="false" selection-start-line="148" selection-start-column="0" selection-end-line="148" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -909,7 +930,7 @@
     <entry file="file://$PROJECT_DIR$/src/main/resources/templates/include/public.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="111">
-          <caret line="39" column="19" lean-forward="true" selection-start-line="39" selection-start-column="19" selection-end-line="39" selection-end-column="19" />
+          <caret line="39" column="19" lean-forward="false" selection-start-line="39" selection-start-column="19" selection-end-line="39" selection-end-column="19" />
           <folding />
         </state>
       </provider>
@@ -937,10 +958,26 @@
     <entry file="file://$PROJECT_DIR$/src/main/resources/templates/xmx/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-409">
-          <caret line="151" column="29" lean-forward="true" selection-start-line="151" selection-start-column="29" selection-end-line="151" selection-end-column="29" />
+          <caret line="151" column="29" lean-forward="false" selection-start-line="151" selection-start-column="29" selection-end-line="151" selection-end-column="29" />
           <folding>
             <element signature="n#style#0;n#img#0;n#a#0;n#p#0;n#div#2;n#center#0;n#div#0;n#div#0;n#div#5;n#div#1;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/cloudht/cont/service/impl/ContXmxServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="77">
+          <caret line="61" column="52" lean-forward="true" selection-start-line="61" selection-start-column="52" selection-end-line="61" selection-end-column="52" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/cloudht/cont/service/ContXmxService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="92">
+          <caret line="4" column="44" lean-forward="false" selection-start-line="4" selection-start-column="44" selection-end-line="4" selection-end-column="44" />
+          <folding />
         </state>
       </provider>
     </entry>

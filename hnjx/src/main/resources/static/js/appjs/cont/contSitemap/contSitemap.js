@@ -1,5 +1,5 @@
 
-var prefix = "/cont/contProduct"
+var prefix = "/cont/contSitemap"
 $(function() {
 	load();
 });
@@ -9,7 +9,7 @@ function load() {
 			.bootstrapTable(
 					{
 						method : 'get', // 服务器数据的请求方式 get or post
-						url : prefix + "/leftCategoryList", // 服务器数据的加载地址
+						url : prefix + "/list", // 服务器数据的加载地址
 					//	showRefresh : true,
 					//	showToggle : true,
 					//	showColumns : true,
@@ -43,45 +43,63 @@ function load() {
 						// pageSize, pageNumber, searchText, sortName,
 						// sortOrder.
 						// 返回false将会终止请求
-						columns : [{
+						columns : [
+								{
 									checkbox : true
-								},{
-									field : 'productName', 
-									title : '产品名称' 
-								},{
-									field : 'categoryName', 
-									title : '分类名称' 
-								},{
-									field : 'saleStatus', 
-									title : '销售状态' ,
-									formatter : function(value, row, index) {
-										return {'0':'下架','1':'正常'}[value];
-									}
-								},{
-									field : 'level', 
-									title : '推荐级别' 
-								},{
-									field : 'createBy', 
-									title : '创建用户id' 
-								},{
+								},
+																{
+									field : 'contSitemapId', 
+									title : '网站地图主键' 
+								},
+																{
+									field : 'langType', 
+									title : '语言' 
+								},
+																{
+									field : 'pageType', 
+									title : '页面类型' 
+								},
+																{
+									field : 'pageTitle', 
+									title : '页面标题' 
+								},
+																{
+									field : 'loc', 
+									title : '页面地址' 
+								},
+																{
+									field : 'lastmod', 
+									title : '页面更新时间' 
+								},
+																{
+									field : 'changefreq', 
+									title : '更新频率' 
+								},
+																{
+									field : 'priority', 
+									title : '权重' 
+								},
+																{
 									field : 'gmtCreate', 
 									title : '创建时间' 
-								},{
+								},
+																{
 									field : 'gmtModified', 
-									title : '修改时间' 
-								},{
+									title : '更新时间' 
+								},
+																{
 									title : '操作',
 									field : 'id',
 									align : 'center',
 									formatter : function(value, row, index) {
 										var e = '<a class="btn btn-primary btn-sm '+s_edit_h+'" href="#" mce_href="#" title="编辑" onclick="edit(\''
-												+ row.contProductId
+												+ row.contSitemapId
 												+ '\')"><i class="fa fa-edit"></i></a> ';
 										var d = '<a class="btn btn-warning btn-sm '+s_remove_h+'" href="#" title="删除"  mce_href="#" onclick="remove(\''
-												+ row.contProductId
+												+ row.contSitemapId
 												+ '\')"><i class="fa fa-remove"></i></a> ';
 										var f = '<a class="btn btn-success btn-sm" href="#" title="备用"  mce_href="#" onclick="resetPwd(\''
-												+ row.contProductId
+												+ row.contSitemapId
 												+ '\')"><i class="fa fa-key"></i></a> ';
 										return e + d ;
 									}
@@ -101,70 +119,6 @@ function add() {
 		content : prefix + '/add' // iframe的url
 	});
 }
-function singleSelect() {
-    var rows = $('#exampleTable').bootstrapTable('getSelections'); // 返回所有选择的行，当没有选择的记录时，返回一个空数组
-    if (rows.length == 0 || rows.length > 1) {
-        layer.msg("请选择一条数据");
-        return;
-    }
-    return rows[0];
-}
-function setInfo() {
-    var contProductId;
-    var row;
-	if( row=singleSelect()){
-        contProductId=row.contProductId;
-	}else {
-		return;
-	}
-
-    layer.open({
-        type : 2,
-        title : '产品基本信息',
-        maxmin : true,
-        shadeClose : false, // 点击遮罩关闭层
-        area : [ '800px', '520px' ],
-        content : prefix + '/setInfo/'+contProductId // iframe的url
-    });
-}
-function setImg() {
-
-    var contProductId;
-    var row;
-    if( row=singleSelect()){
-        contProductId=row.contProductId;
-    }else {
-        return;
-    }
-
-    layer.open({
-        type : 2,
-        title : '产品图片',
-        maxmin : true,
-        shadeClose : false, // 点击遮罩关闭层
-        area : [ '800px', '520px' ],
-        content : prefix + '/setImg/'+contProductId // iframe的url
-    });
-}
-function setParams() {
-
-    var contProductId;
-    var row;
-    if( row=singleSelect()){
-        contProductId=row.contProductId;
-    }else {
-        return;
-    }
-
-    layer.open({
-        type : 2,
-        title : '产品参数',
-        maxmin : true,
-        shadeClose : false, // 点击遮罩关闭层
-        area : [ '800px', '520px' ],
-        content : prefix + '/setParams/'+contProductId // iframe的url
-    });
-}
 function edit(id) {
 	layer.open({
 		type : 2,
@@ -183,7 +137,7 @@ function remove(id) {
 			url : prefix+"/remove",
 			type : "post",
 			data : {
-				'contProductId' : id
+				'contSitemapId' : id
 			},
 			success : function(r) {
 				if (r.code==0) {
@@ -196,6 +150,7 @@ function remove(id) {
 		});
 	})
 }
+
 function resetPwd(id) {
 }
 function batchRemove() {
@@ -211,7 +166,7 @@ function batchRemove() {
 		var ids = new Array();
 		// 遍历所有选择的行数据，取每条数据对应的ID
 		$.each(rows, function(i, row) {
-			ids[i] = row['contProductId'];
+			ids[i] = row['contSitemapId'];
 		});
 		$.ajax({
 			type : 'POST',
@@ -229,5 +184,6 @@ function batchRemove() {
 			}
 		});
 	}, function() {
+
 	});
 }

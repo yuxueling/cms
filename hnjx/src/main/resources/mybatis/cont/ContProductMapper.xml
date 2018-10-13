@@ -4,16 +4,17 @@
 <mapper namespace="com.cloudht.cont.dao.ContProductDao">
 
 	<select id="get" resultType="com.cloudht.cont.domain.ContProductDO">
-		select `cont_product_id`,`product_name`,`category_id`,`sale_status`,`create_by`,`gmt_create`,`gmt_modified` from cont_product where cont_product_id = #{value}
+		select `cont_product_id`,`product_name`,`category_id`,`sale_status`,`level`,`create_by`,`gmt_create`,`gmt_modified` from cont_product where cont_product_id = #{value}
 	</select>
 
 	<select id="list" resultType="com.cloudht.cont.domain.ContProductDO">
-		select `cont_product_id`,`product_name`,`category_id`,`sale_status`,`create_by`,`gmt_create`,`gmt_modified` from cont_product
+		select `cont_product_id`,`product_name`,`category_id`,`sale_status`,`level`,`create_by`,`gmt_create`,`gmt_modified` from cont_product
         <where>  
 		  		  <if test="contProductId != null and contProductId != ''"> and cont_product_id = #{contProductId} </if>
 		  		  <if test="productName != null and productName != ''"> and product_name = #{productName} </if>
 		  		  <if test="categoryId != null and categoryId != ''"> and category_id = #{categoryId} </if>
 		  		  <if test="saleStatus != null and saleStatus != ''"> and sale_status = #{saleStatus} </if>
+		  		  <if test="level != null and level != ''"> and level = #{level} </if>
 		  		  <if test="createBy != null and createBy != ''"> and create_by = #{createBy} </if>
 		  		  <if test="gmtCreate != null and gmtCreate != ''"> and gmt_create = #{gmtCreate} </if>
 		  		  <if test="gmtModified != null and gmtModified != ''"> and gmt_modified = #{gmtModified} </if>
@@ -38,6 +39,7 @@
 		  		  <if test="productName != null and productName != ''"> and product_name = #{productName} </if>
 		  		  <if test="categoryId != null and categoryId != ''"> and category_id = #{categoryId} </if>
 		  		  <if test="saleStatus != null and saleStatus != ''"> and sale_status = #{saleStatus} </if>
+		  		  <if test="level != null and level != ''"> and level = #{level} </if>
 		  		  <if test="createBy != null and createBy != ''"> and create_by = #{createBy} </if>
 		  		  <if test="gmtCreate != null and gmtCreate != ''"> and gmt_create = #{gmtCreate} </if>
 		  		  <if test="gmtModified != null and gmtModified != ''"> and gmt_modified = #{gmtModified} </if>
@@ -50,6 +52,7 @@
 			`product_name`, 
 			`category_id`, 
 			`sale_status`, 
+			`level`, 
 			`create_by`, 
 			`gmt_create`, 
 			`gmt_modified`
@@ -59,6 +62,7 @@
 			#{productName}, 
 			#{categoryId}, 
 			#{saleStatus}, 
+			#{level}, 
 			#{createBy}, 
 			#{gmtCreate}, 
 			#{gmtModified}
@@ -71,6 +75,7 @@
 			<if test="productName != null">`product_name` = #{productName}, </if>
 			<if test="categoryId != null">`category_id` = #{categoryId}, </if>
 			<if test="saleStatus != null">`sale_status` = #{saleStatus}, </if>
+			<if test="level != null">`level` = #{level}, </if>
 			<if test="createBy != null">`create_by` = #{createBy}, </if>
 			<if test="gmtCreate != null">`gmt_create` = #{gmtCreate}, </if>
 			<if test="gmtModified != null">`gmt_modified` = #{gmtModified}</if>
@@ -90,7 +95,7 @@
 	</delete>
 	<select id="leftCategoryList" resultType="com.cloudht.cont.domain.ContProductDO">
 		select pd.cont_product_id,pd.product_name,pd.category_id,pd.sale_status,pd.create_by,
-		pd.gmt_create,pd.gmt_modified,cg.category_name
+		pd.gmt_create,pd.gmt_modified,cg.category_name,pd.level
 		from cont_product as pd left join cont_category as cg on pd.category_id=cg.cont_category_id
         <where>  
 	  		<if test="contProductId != null and contProductId != ''"> and pd.cont_product_id = #{contProductId} </if>

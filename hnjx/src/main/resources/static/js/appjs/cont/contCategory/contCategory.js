@@ -27,12 +27,12 @@ function load() {
 									field : 'categoryName', 
 									title : '类别名称' ,
 									valign: 'center',
-									width: '15%'
+									width: '18%'
 								} ,{
 									field : 'categoryType', 
-									title : '类别类型：（CmsCategoryType）' ,
+									title : '类别类型' ,
 									valign: 'center',
-									width: '18%'
+									width: '15%'
 								},{
 									field : 'categoryCode', 
 									title : '编码' ,
@@ -51,11 +51,6 @@ function load() {
 									formatter: function (item, index) {
 										return {"0":"NO","1":"YES"}[item.isDisplay];
 									}
-								},{
-									field : 'parentCategoryId', 
-									title : '上级类别' ,
-									valign: 'center',
-									width: '20%'
 								},{
 			                        title: '操作',
 			                        field: 'contCategoryId',
