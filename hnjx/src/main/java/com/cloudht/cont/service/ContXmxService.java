@@ -1,5 +1,6 @@
 package com.cloudht.cont.service;
 
+import com.cloudht.cont.domain.ContCategoryDO;
 import com.cloudht.cont.domain.ContProductDO;
 import com.cloudht.cont.vo.ContProductVO;
 import com.sxyht.common.utils.PageUtils;
@@ -25,4 +26,5 @@ public interface ContXmxService {
 
 	List<ContProductVO> listProductByCategoryCode(Map<String,Object> map);
 
+	List<ContCategoryDO> listProductDetailNavBar(Map<String,Object> map);
 }

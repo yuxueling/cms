@@ -35,4 +35,6 @@ public interface ContCategoryDao {
 
 	List<ContCategoryDO> listInfo(Map<String, Object> map);
 
+	ContCategoryDO getContainInfo(Map<String, Object> map);
+
 }

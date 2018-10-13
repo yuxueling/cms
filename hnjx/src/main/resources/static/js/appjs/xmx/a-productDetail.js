@@ -3,6 +3,7 @@ $(function(){
     vm.init();
     vm.getProduct();
     vm.listHotProduct();
+    vm.getProductDetailNavBar();
 });
 
 var vm = new Vue({
@@ -14,7 +15,9 @@ var vm = new Vue({
         langType:'english',
         events:[],
         activeIndex:0,
-        activeProduct:{}
+        activeProduct:{},
+        navBar:{},
+        imgActiveIndex:0
     },
     methods: {
         init: function () {
@@ -108,7 +111,31 @@ var vm = new Vue({
                     }
                 }
             });
+        },
+        getProductDetailNavBar:function () {
+            $.ajax({
+                url: "/contXmx/listProductDetailNavBar",
+                type: "post",
+                data: {
+                    langType: vm.langType
+                },
+                success: function (data) {
+                    for(var i=0;i<data.rows.length;i++){
+                        if(data.rows[i].parentCategoryId==0){
+                            vm.navBar.first=data.rows[i].contCategoryInfoDO;
+                        }else{
+                            vm.navBar.second=data.rows[i].contCategoryInfoDO;
+                        }
+                    }
+                    vm.$forceUpdate();x
+                }
+            });
+        },
+        imgActive:function (imgIndex) {
+            vm.imgActiveIndex=imgIndex;
         }
+
+
 
     }
 });

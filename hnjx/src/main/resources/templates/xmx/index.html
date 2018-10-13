@@ -18,25 +18,31 @@
         .clearfix {
             clear: both;
         }
+
         .banner {
             width: 100%;
             margin: 0 auto;
             position: relative;
         }
+
         .banner .pic {
             width: 100%;
             overflow: hidden;
         }
+
         .banner .pic ul {
             width: 400%;
         }
+
         .banner .pic ul li {
             width: 25%;
             float: left;
         }
+
         .banner .pic ul li img {
             width: 100%;
         }
+
         .banner .line {
             width: 120px;
             height: 4px;
@@ -45,6 +51,7 @@
             bottom: 20px;
             left: calc(50% - 50px);
         }
+
         .banner .line span {
             float: left;
             width: 8px;
@@ -53,9 +60,11 @@
             background-color: #fff;
             margin: 0 10px;
         }
+
         .banner .line .line_bth {
             background-color: #fb8000;
         }
+
         .banner .btn div {
             width: 32px;
             height: 32px;
@@ -71,20 +80,25 @@
             top: calc(50% - 16px);
             display: none;
         }
+
         .banner .btn .leftBtn {
             left: 20px;
         }
+
         .banner .btn .rightBtn {
             right: 20px;
         }
+
         .banner:hover .btn .leftBtn,
         .banner:hover .btn .rightBtn {
             display: block;
         }
+
         .banner .btn div:hover {
             background: #000; /*怕IE浏览器不支持透明，所以又写了个背景色，*/
             background: rgba(0, 0, 0, 0.5); /*透明和黑*/
         }
+
         .proimg img {
             position: static;
             top: -50%;
@@ -151,6 +165,7 @@
                             $(".pic img").hide().eq(i).show();
 
                         }
+
                         function movel() {
                             i--;
                             if (i == -1) {
@@ -160,6 +175,7 @@
                             $(".line span").eq(i).addClass("line_bth").siblings().removeClass();
                             $(".pic img").hide().eq(i).show();
                         }
+
                         //鼠标经过图片暂停
                         $(".pic").hover(
                             function () {
@@ -214,7 +230,8 @@
                     </script>-->
                 </div>
             </div>
-            <div class="board mar"><a href="about-us.html"><img src="/xmx/images/More.gif"/></a><strong>About Us</strong></div>
+            <div class="board mar"><a href="about-us.html"><img src="/xmx/images/More.gif"/></a><strong>About
+                Us</strong></div>
             <div class="hcontent">
                 <div class="comInfo">
                     <div>
@@ -232,28 +249,38 @@
                 </div>
             </div>
             <div class="clear"></div>
-            <div class="board mar"><a href="products.html"><img src="/xmx/images/More.gif"/></a><a class="ic1"><img
-                    id="view_list" src="/xmx/images/viewlist.gif" width="15" height="15" title="View List"
-                    align="absmiddle"/></a><a class="ic1"><img id="view_gallery" src="/xmx/images/viewgallery2.gif"
-                                                               width="15" height="15" title="View Gallery"
-                                                               align="absmiddle"/></a><strong>{{categoryName}}</strong></div>
+            <div class="board mar">
+                <a href="products.html"><img src="/xmx/images/More.gif"/></a>
+                <a class="ic1">
+                    <img id="view_list" src="/xmx/images/viewlist.gif" width="15" height="15" title="View List" align="absmiddle"/>
+                </a>
+                <a class="ic1">
+                    <img id="view_gallery" src="/xmx/images/viewgallery2.gif" width="15" height="15" title="View Gallery" align="absmiddle"/>
+                </a>
+                <strong>{{categoryName}}</strong>
+            </div>
             <div class="hcontent2">
                 <div class="featbox" style="width:712px;margin:0 auto" align="center">
 
                     <div class="probox" v-for="(item,index) in productList">
                         <center>
                             <div class="proimg">
-                                    <p><a href="javascript:void(0);" v-on:click="viewProduct(item.contProductId)" :title="item.contProductName" rel="nofollow"><img
-                                        :src="item.contProductImgDOList[0].imgUrl" :alt="item.contProductName" vspace="0" border="0"/></a>
+                                <p><a href="javascript:void(0);" v-on:click="viewProduct(item.contProductId)"
+                                      :title="item.contProductName" rel="nofollow"><img
+                                        :src="item.contProductImgDOList[0].imgUrl" :alt="item.contProductName"
+                                        vspace="0" border="0"/></a>
                                 </p>
                             </div>
-                            <div class="protext"><a href="javascript:void(0);" v-on:click="viewProduct(item.contProductId)" title="turbine blade" rel="nofollow">
+                            <div class="protext"><a href="javascript:void(0);"
+                                                    v-on:click="viewProduct(item.contProductId)" title="turbine blade"
+                                                    rel="nofollow">
                                 <h2>{{item.contProductInfoDO.productName}}</h2></a> <span></span></div>
-                            <div class="prodes" style="display:none;">{{item.contProductInfoDO.details}}
-                                <p><input type="checkbox" name="Item" value=""/> <img
-                                        src="/xmx/images/inquire_now_en.gif"
-                                        style="cursor:pointer;"
-                                        onclick="javascript:document.location.href='inquiry.asp?Item='"/>
+                            <div class="prodes" style="display:none;" v-html="item.contProductInfoDO.details">
+                                <p>
+                                    <input type="checkbox" name="Item" value=""/>
+                                    <a href="/xmx/a-inquiry" target="_blank">
+                                        <img src="/xmx/images/inquire_now_en.gif" style="cursor:pointer;"/>
+                                    </a>
                                 </p>
                             </div>
                             <div class="clear"></div>
@@ -274,12 +301,12 @@
     <div class="flinks">Friendly Links:&nbsp;</div>
 </div>
 <!--<div><script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1254565334'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s95.cnzz.com/z_stat.php%3Fid%3D1254565334%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));</script></div>-->
-	<noscript>
-	    <iframe scr="*.htm"></iframe>
-	</noscript>
-	<script language="JavaScript">
-	    document.oncontextmenu = new Function("event.returnValue=true;");
-	    document.onselectstart = new Function("event.returnValue=true;");
-	</script>
+<noscript>
+    <iframe scr="*.htm"></iframe>
+</noscript>
+<script language="JavaScript">
+    document.oncontextmenu = new Function("event.returnValue=true;");
+    document.onselectstart = new Function("event.returnValue=true;");
+</script>
 </body>
 </html>

@@ -8,12 +8,12 @@
     <title>turbine blade, turbine vane, superalloy casting,turbine blades</title>
     <meta name="keywords" content="turbine blade, turbine vane, turbine blades"/>
     <meta name="description" content="turbine blade, nozzle guide vane are our main vacuum investment castings."/>
-    <link href="/xmx/css/lightbox.css" rel="stylesheet" type="text/css"/>
+    <!--<link href="/xmx/css/lightbox.css" rel="stylesheet" type="text/css"/>-->
     <link href="/xmx/css/css.css" rel="stylesheet" type="text/css"/>
     <script language="javascript" type="text/javascript" src="../pub/hits.asp?action=pro_hits&amp;id=115"></script>
     <script type="text/javascript" src="/xmx/js/prototype.js"></script>
 
-    <script type="text/javascript" src="/xmx/js/lightbox.js"></script>
+    <!--<script type="text/javascript" src="/xmx/js/lightbox.js"></script>-->
     <script language="javascript" type="text/javascript" src="/xmx/js/comm.js"></script>
     <style type="text/css">
 
@@ -26,12 +26,43 @@
             max-height: 148px;
         }
 
+        .proInfoimg img{
+            max-width: 80px;
+            max-height: 80px;
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+
+        .proInfoimg img:hover{
+            max-width: 90px;
+            max-height: 90px;
+            padding-left: 15px;
+            padding-right: 15px;
+        }
+
+        .active{
+            filter:alpha(opacity=100);
+            opacity:1;
+            border-color:#999;
+        }
+        .no-active{
+            opacity:0.4;
+        }
+
     </style>
 </head>
 <body>
 <div id="site">
 
     <div th:include="include/public :: header"></div><!-- 共用顶部部分 -->
+    <div id="curpos">
+        <span>You are here:</span>
+        <a href="/">Home</a> &raquo;
+        <span><a href="/xmx/viewProducts">Products</a> &raquo;</span>
+        <span v-if="navBar.first"><a href="javascript:void(0);" v-on:click="listProduct(navBar.first.contCategoryId,navBar.first.categoryName)">{{navBar.first.categoryName}}</a> &raquo;</span>
+        <span v-if="navBar.second"><a href="javascript:void(0);" v-on:click="listProduct(navBar.second.contCategoryId,navBar.second.categoryName)">{{navBar.second.categoryName}}</a> &raquo;</span>
+        {{productList[activeIndex].contProductInfoDO.productName}}
+    </div>
     <div id="main">
         <div th:include="include/public :: left"></div><!-- 共用左部部分 -->
 
@@ -47,9 +78,20 @@
                         <tr>
                             <td align="center" valign="middle" class="line_buttom_hui_xuxian">
 
-                                <img :src="productList[activeIndex].contProductImgDOList[0].imgUrl" alt="turbine blade"
+                                <div class="proInfoimg">
+                                    <a href="javascript:void(0);" v-for="(imgItem,imgIndex) in productList[activeIndex].contProductImgDOList"
+                                       v-on:click="imgActive(imgIndex)">
+                                        <img  :src="imgItem.imgUrl"  title="Metal Medals"
+                                         :class="[ imgIndex==imgActiveIndex?'active' : 'no-active' ]" />
+                                    </a>
+                                </div>
+
+                                <a href="javascript:void(0);">
+                                    <img :src="productList[activeIndex].contProductImgDOList[imgActiveIndex].imgUrl" alt="turbine blade"
                                      title="turbine blade" border="0"
-                                     onload="javascript:if(this.width&gt;700) this.width=700;"/></td>
+                                     onload="javascript:if(this.width&gt;700) this.width=700;"/>
+                                </a>
+                            </td>
                         </tr>
                     </table>
 
@@ -68,18 +110,14 @@
                     <a href="javascript:void(0);" v-on:click="setActiveIndex(caculate(activeIndex,1))">{{productList[caculate(activeIndex,1)].contProductInfoDO.productName}}</a>
                 </div>
                 <div class="pdbox">
-                    <strong>Model: </strong>
-                    <h4 v-for="(pItem,pIndex) in productList[activeIndex].contProductParamDOList">
-                        <span v-for="(pkItem,pkIndex) in pItem.contProductPkDOList">&nbsp;{{pkItem.paramValue}}</span>
-                    </h4>
+                    <span v-for="(pItem,pIndex) in productList[activeIndex].contProductParamDOList">
+                        <strong>{{pItem.paramName}}：</strong>
+                        <span v-for="(pkItem,pkIndex) in pItem.contProductPkDOList">&nbsp;{{pkItem.paramValue}}</span>&nbsp;&nbsp;&nbsp;&nbsp;
+                    <span/>
                 </div>
                 <div class="pc pdbox"><strong>Categories: </strong>
-                    <a href="superalloy-investment-casting-1.html">Superalloy investment casting</a>
-
-                    &raquo; <a href="blades-and-vanes-for-industrial-gas-turbine-1.html">blades and vanes for industrial
-                        gas turbine</a>
-
-                    &raquo;
+                    <span v-if="navBar.first"><a href="javascript:void(0);" v-on:click="listProduct(navBar.first.contCategoryId,navBar.first.categoryName)">{{navBar.first.categoryName}}</a> &raquo;</span>
+                    <span v-if="navBar.second"><a href="javascript:void(0);" v-on:click="listProduct(navBar.second.contCategoryId,navBar.second.categoryName)">{{navBar.second.categoryName}}</a> &raquo;</span>
                 </div>
                 <div class="pdbox"><strong>Description:</strong>
                     <div class="prodetaildes" id="prodetaildes"
@@ -144,7 +182,7 @@
                     }
                 </script>
                 <div class="clear"></div>
-                <div class="searchmore">Didn't find what you are looking for? <A href="send-inquiry.html">Send your
+                <div class="searchmore">Didn't find what you are looking for? <A href="/contXmx/viewInquiry">Send your
                     inquiry</A>.<BR/>
                     <strong>turbine blade Manufacturer</strong> search on: <A
                             href="http://www.google.com/search?hl=en&q=turbine blade&btnG=Google+Search"
@@ -156,12 +194,8 @@
                 </div>
                 <div class="relpro">
                     Related Category:
-                    <a href="superalloy-investment-casting-1.html">Superalloy investment casting</a>
-
-                    &raquo; <a href="blades-and-vanes-for-industrial-gas-turbine-1.html">blades and vanes for industrial
-                    gas turbine</a>
-
-                    &raquo;
+                    <span v-if="navBar.first"><a href="javascript:void(0);" v-on:click="listProduct(navBar.first.contCategoryId,navBar.first.categoryName)">{{navBar.first.categoryName}}</a> &raquo;</span>
+                    <span v-if="navBar.second"><a href="javascript:void(0);" v-on:click="listProduct(navBar.second.contCategoryId,navBar.second.categoryName)">{{navBar.second.categoryName}}</a> &raquo;</span>
                 </div>
 
 

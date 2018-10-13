@@ -7,6 +7,7 @@ import com.cloudht.common.controller.BaseController;
 import com.cloudht.common.domain.DictDO;
 import com.cloudht.common.service.DictService;
 
+import com.cloudht.cont.domain.ContCategoryDO;
 import com.cloudht.cont.service.ContXmxService;
 import com.cloudht.cont.vo.ContProductVO;
 import com.sxyht.common.utils.*;
@@ -70,12 +71,11 @@ public class ContXmxController extends BaseController {
 
 		Object productIdObj = params.get("contProductId");
 		if(productIdObj!=null){
-			params.put("contProductId",productIdObj);
 			getSession().setAttribute("contProductId",productIdObj);
 		}else {
 			productIdObj = getSession().getAttribute("contProductId");
-			params.put("contProductId",getSession().getAttribute("contProductId"));
 		}
+		params.put("contProductId",productIdObj);
 
 		List<ContProductVO> contProductList = contXmxService.listCateProdsByProdId(params);
 		return R.ok().put("rows",contProductList).put("contProductId",productIdObj);
@@ -136,6 +136,18 @@ public class ContXmxController extends BaseController {
 
 
 	/**
+	 * 跳转视图
+	 * http://localhost:8080/view/viewInquiry
+	 * @param target
+	 * @return
+	 */
+	@GetMapping("/view/{target}")
+	public String view(@PathVariable("target") String target) {
+		return "xmx/"+target;
+	}
+
+
+	/**
 	 * 查询热门产品
 	 * http://localhost:8080/contXmx/listProductByCategoryCode
 	 * @param params
@@ -148,5 +160,27 @@ public class ContXmxController extends BaseController {
 		return R.ok().put("rows",contProductVOList);
 	}
 
+
+	/**
+	 * 获取产品详情页的NavBar列表
+	 * http://localhost:8080/contXmx/listProductDetailNavBar
+	 * @param params
+	 * @return
+	 */
+	@ResponseBody
+	@RequestMapping("/listProductDetailNavBar")
+	public R listProductDetailNavBar(@RequestParam Map<String, Object> params) {
+
+		Object productIdObj = params.get("contProductId");
+		if(productIdObj!=null){
+			getSession().setAttribute("contProductId",productIdObj);
+		}else {
+			productIdObj = getSession().getAttribute("contProductId");
+		}
+		params.put("contProductId",productIdObj);
+
+		List<ContCategoryDO> contCategoryDOList = contXmxService.listProductDetailNavBar(params);
+		return R.ok().put("rows",contCategoryDOList);
+	}
 
 }

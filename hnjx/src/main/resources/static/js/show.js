@@ -24,8 +24,8 @@ $(function(){
 											 $(".prodes").hide();
 											 $(".protext").each(function(i){$(this).before($(".proimg").eq(i))});
 											 $(".proboxlist").removeClass("proboxlist").addClass("probox");
-											 this.src="images/viewgallery2.gif";
-											 $("#view_list").attr("src","images/viewlist.gif");
+											 this.src="/xmx/images/viewgallery2.gif";
+											 $("#view_list").attr("src","/xmx/images/viewlist.gif");
 											 if(getCookie("soonidea")!=1)
 											 setCookie("soonidea",1,1)
 											 })
@@ -34,8 +34,8 @@ $(function(){
 											 $(".prodes").show();
 											 $(".protext").each(function(i){$(this).after($(".proimg").eq(i))});
 											 $(".probox").removeClass("probox").addClass("proboxlist");
-											 this.src="images/viewlist2.gif";
-											 $("#view_gallery").attr("src","images/viewgallery.gif");
+											 this.src="/xmx/images/viewlist2.gif";
+											 $("#view_gallery").attr("src","/xmx/images/viewgallery.gif");
 											 if(getCookie("soonidea")!=0)
 											 setCookie("soonidea",0,1)
 											 })

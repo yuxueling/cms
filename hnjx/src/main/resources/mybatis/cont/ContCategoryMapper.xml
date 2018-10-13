@@ -177,4 +177,9 @@
 		select `cont_category_info_id`,`cont_category_id`,`lang_type`,`category_name` from cont_category_info where cont_category_id = #{cont_category_id} AND  lang_type = #{lang_type}
 	</select>
 
+	<select id="getContainInfo" resultMap="categoryInfo">
+		select #{langType} as lang_type,`cont_category_id`,`category_type`,`parent_category_id`,`category_name`,`category_code`,`sort`,`create_by`,`remark`,`gmt_create`,`gmt_modified` from cont_category
+		WHERE  cont_category_id = #{contCategoryId}
+	</select>
+
 </mapper>
