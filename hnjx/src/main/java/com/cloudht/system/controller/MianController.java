@@ -21,13 +21,14 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 @Controller
 public class MianController extends BaseController {
 	@Autowired MenuService menuService;
 	@Autowired private ContSitemapDao contSitemapDao;
+	
+	@Log("/xmx/*")
 	@GetMapping({"","/"})
 	public String redirect() {
 		return "xmx/index";
@@ -84,6 +85,7 @@ public class MianController extends BaseController {
 	 * 谷歌搜索专用
 	 * @return
 	 */
+	@Log("sitemap爬虫一次")
 	@GetMapping("/sitemap.xml")@ResponseBody
 	public String WebSiteMap() {
 		Collection<ContSitemapDO> s = this.contSitemapDao.list(null);

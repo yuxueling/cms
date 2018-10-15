@@ -85,7 +85,8 @@
 			`status`, 
 			`author`, 
 			`gtm_create`, 
-			`gtm_modified`
+			`gtm_modified`,
+			`lang_type`
 		)
 		values
 		(
@@ -105,7 +106,8 @@
 			#{status}, 
 			#{author}, 
 			#{gtmCreate}, 
-			#{gtmModified}
+			#{gtmModified},
+			#{langType}
 		)
 	</insert>
 	 
@@ -128,7 +130,8 @@
 			<if test="status != null">`status` = #{status}, </if>
 			<if test="author != null">`author` = #{author}, </if>
 			<if test="gtmCreate != null">`gtm_create` = #{gtmCreate}, </if>
-			<if test="gtmModified != null">`gtm_modified` = #{gtmModified}</if>
+			<if test="gtmModified != null">`gtm_modified` = #{gtmModified},</if>
+			<if test="langType != null">`lang_type` = #{langType}</if>
 		</set>
 		where cid = #{cid}
 	</update>

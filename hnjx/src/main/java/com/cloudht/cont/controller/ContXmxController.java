@@ -2,6 +2,7 @@ package com.cloudht.cont.controller;
 
 import com.cloudht.blog.domain.ContentDO;
 import com.cloudht.blog.service.ContentService;
+import com.cloudht.common.annotation.Log;
 import com.cloudht.common.controller.BaseController;
 
 import com.cloudht.common.domain.DictDO;
@@ -57,7 +58,7 @@ public class ContXmxController extends BaseController {
 		
 		return pageUtils;
 	}
-
+	@Log("/xmx/*")
 	@GetMapping("/showProduct/{contProductId}")
 	String showProduct(@PathVariable("contProductId") Integer contProductId){
  		getSession().setAttribute("contProductId",contProductId);
@@ -151,6 +152,7 @@ public class ContXmxController extends BaseController {
 	 * @param target
 	 * @return
 	 */
+	@Log("/xmx/*") 
 	@GetMapping("/view/{target}")
 	public String view(@PathVariable("target") String target) {
 		return "xmx/"+target;

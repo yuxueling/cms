@@ -3,6 +3,7 @@ package com.cloudht.blog.controller;
 import com.cloudht.blog.domain.ContentDO;
 import com.cloudht.blog.service.ContentService;
 import com.cloudht.common.controller.BaseController;
+import com.cloudht.common.service.DictService;
 import com.sxyht.common.utils.PageUtils;
 import com.sxyht.common.utils.Query;
 import com.sxyht.common.utils.R;
@@ -27,7 +28,8 @@ import java.util.Map;
 @Controller@RequestMapping("/blog/bContent")
 public class ContentController extends BaseController {
 	@Autowired ContentService bContentService;
-
+	@Autowired private DictService dictService;
+	
 	@GetMapping()
 	@RequiresPermissions("blog:bContent:bContent")
 	String bContent() {
@@ -47,7 +49,9 @@ public class ContentController extends BaseController {
 
 	@GetMapping("/add")
 	@RequiresPermissions("blog:bContent:add")
-	String add() {
+	String add(Model model) {
+		model.addAttribute("langTypes", this.dictService.listByType("CmsLangType"));//将语言类型放到前台
+		model.addAttribute("newsTypes", this.dictService.listByType("newsType"));
 		return "blog/bContent/add";
 	}
 

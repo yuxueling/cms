@@ -117,8 +117,7 @@ function setInfo() {
 	}else {
 		return;
 	}
-
-    layer.open({
+	var addPage = layer.open({
         type : 2,
         title : '产品基本信息',
         maxmin : true,
@@ -126,6 +125,7 @@ function setInfo() {
         area : [ '800px', '520px' ],
         content : prefix + '/setInfo/'+contProductId // iframe的url
     });
+	layer.full(addPage);
 }
 function setImg() {
 
