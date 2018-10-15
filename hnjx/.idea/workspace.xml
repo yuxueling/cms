@@ -23,65 +23,45 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="public.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/templates/include/public.html">
+      <file leaf-file-name="ContXmxController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/cloudht/cont/controller/ContXmxController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="111">
-              <caret line="39" column="19" lean-forward="false" selection-start-line="39" selection-start-column="19" selection-end-line="39" selection-end-column="19" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/templates/xmx/index.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-409">
-              <caret line="151" column="29" lean-forward="false" selection-start-line="151" selection-start-column="29" selection-end-line="151" selection-end-column="29" />
+            <state relative-caret-position="327">
+              <caret line="146" column="0" lean-forward="true" selection-start-line="146" selection-start-column="0" selection-end-line="146" selection-end-column="0" />
               <folding>
-                <element signature="n#style#0;n#img#0;n#a#0;n#p#0;n#div#2;n#center#0;n#div#0;n#div#0;n#div#5;n#div#1;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="e#4632#4633#0" expanded="true" />
+                <element signature="e#4659#4660#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ContXmxServiceImpl.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/cloudht/cont/service/impl/ContXmxServiceImpl.java">
+      <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/appjs/xmx/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="77">
-              <caret line="61" column="52" lean-forward="true" selection-start-line="61" selection-start-column="52" selection-end-line="61" selection-end-column="52" />
+            <state relative-caret-position="1035">
+              <caret line="45" column="50" lean-forward="false" selection-start-line="45" selection-start-column="50" selection-end-line="45" selection-end-column="50" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ContXmxService.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/cloudht/cont/service/ContXmxService.java">
+      <file leaf-file-name="ContXmxMapper.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/mybatis/cont/ContXmxMapper.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="92">
-              <caret line="4" column="44" lean-forward="false" selection-start-line="4" selection-start-column="44" selection-end-line="4" selection-end-column="44" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="a-productDetail.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/templates/xmx/a-productDetail.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="345">
-              <caret line="97" column="61" lean-forward="false" selection-start-line="97" selection-start-column="20" selection-end-line="97" selection-end-column="61" />
+            <state relative-caret-position="23">
+              <caret line="47" column="67" lean-forward="false" selection-start-line="47" selection-start-column="67" selection-end-line="47" selection-end-column="67" />
               <folding>
-                <element signature="n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-                <element signature="e#1979#1986#0" expanded="true" />
-                <element signature="e#2042#2049#0" expanded="true" />
-                <element signature="e#2235#2242#0" expanded="true" />
-                <element signature="e#2432#2439#0" expanded="true" />
-                <element signature="e#5652#5659#0" expanded="true" />
-                <element signature="e#5861#5868#0" expanded="true" />
-                <element signature="n#script#0;n#div#1;n#div#1;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-                <element signature="n#A#3;n#div#9;n#div#1;n#div#1;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-                <element signature="e#10414#10421#0" expanded="true" />
-                <element signature="e#10623#10630#0" expanded="true" />
+                <marker date="1539423613285" expanded="true" signature="2466:2490" ph="SELECT ##{con... " />
+                <marker date="1539423613285" expanded="true" signature="2509:2603" ph="select C.con... cont_category" />
+                <marker date="1539423613285" expanded="true" signature="4038:4255" ph="select ##{lan... cont_product" />
+                <marker date="1539423613285" expanded="true" signature="4341:4665" ph="select COUNT... cont_category" />
+                <marker date="1539423613285" expanded="true" signature="4528:4552" ph="SELECT ##{con... " />
+                <marker date="1539423613285" expanded="true" signature="4567:4661" ph="select C.con... cont_category" />
+                <marker date="1539423613285" expanded="true" signature="4759:5089" ph="SELECT A.`co... cont_product_info" />
+                <marker date="1539423613285" expanded="true" signature="5182:5314" ph="select `cont... cont_product_img" />
+                <marker date="1539423613285" expanded="true" signature="5377:5607" ph="select `cont... cont_product_param" />
+                <marker date="1539423613285" expanded="true" signature="5698:5830" ph="select `cont... cont_product_pk" />
               </folding>
             </state>
           </provider>
@@ -90,18 +70,38 @@
       <file leaf-file-name="a-products.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/resources/templates/xmx/a-products.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="299">
-              <caret line="13" column="59" lean-forward="false" selection-start-line="13" selection-start-column="49" selection-end-line="13" selection-end-column="59" />
+            <state relative-caret-position="23">
+              <caret line="112" column="97" lean-forward="false" selection-start-line="112" selection-start-column="97" selection-end-line="112" selection-end-column="97" />
+              <folding>
+                <element signature="n#style#0;n#span#0;n#div#1;n#div#0;n#div#1;n#div#1;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#span#0;n#span#0;n#div#1;n#div#0;n#div#1;n#div#1;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#0;n#form#0;n#div#1;n#div#1;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#1;n#div#0;n#form#0;n#div#1;n#div#1;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#2;n#form#0;n#div#1;n#div#1;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#div#0;n#div#2;n#form#0;n#div#1;n#div#1;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+                <element signature="e#6775#6782#0" expanded="true" />
+                <element signature="e#7048#7055#0" expanded="true" />
+                <element signature="n#style#0;n#select#0;n#div#0;n#div#4;n#form#0;n#div#1;n#div#1;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="a-products.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/appjs/xmx/a-products.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="295">
+              <caret line="72" column="50" lean-forward="true" selection-start-line="72" selection-start-column="50" selection-end-line="72" selection-end-column="50" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ContXmxController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/cloudht/cont/controller/ContXmxController.java">
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/templates/xmx/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2967">
-              <caret line="148" column="0" lean-forward="false" selection-start-line="148" selection-start-column="0" selection-end-line="148" selection-end-column="0" />
+            <state relative-caret-position="6601">
+              <caret line="287" column="26" lean-forward="false" selection-start-line="264" selection-start-column="20" selection-end-line="287" selection-end-column="26" />
               <folding />
             </state>
           </provider>
@@ -111,11 +111,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>save</find>
-      <find>arc</find>
-      <find>articleDetails</find>
-      <find>get</find>
-      <find>&quot;blog/bContent/edit&quot;</find>
       <find>News Details</find>
       <find>openViewDetail</find>
       <find>incomeNum</find>
@@ -123,7 +118,6 @@
       <find>main</find>
       <find>ipAddress</find>
       <find>listProduct</find>
-      <find>viewProduct</find>
       <find>product</find>
       <find>.proimg img</find>
       <find>You are here</find>
@@ -141,12 +135,18 @@
       <find>More.gif</find>
       <find>View List</find>
       <find>viewlist2.gif</find>
+      <find>box-sizing</find>
+      <find>&quot;pic</find>
+      <find>butterfly valve</find>
+      <find>listProductByCategory</find>
+      <find>viewProduct</find>
+      <find>selectPage</find>
     </findStrings>
     <replaceStrings>
       <replace>productVO</replace>
-      <replace>&quot;/xmx/pic</replace>
       <replace>&quot;/xmx/images</replace>
       <replace>src=&quot;/xmx/js/</replace>
+      <replace>&quot;/xmx/pic</replace>
     </replaceStrings>
   </component>
   <component name="GradleLocalSettings">
@@ -175,29 +175,33 @@
         <option value="$PROJECT_DIR$/src/main/resources/templates/blog/index/post.html" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/xmx/articleDetails.html" />
         <option value="$PROJECT_DIR$/src/main/java/com/cloudht/system/controller/MianController.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/templates/xmx/a-products.html" />
         <option value="$PROJECT_DIR$/src/main/java/com/cloudht/common/config/ShiroConfig.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/cloudht/common/domain/LogDO.java" />
         <option value="$PROJECT_DIR$/src/main/resources/static/xmx/css/css.css" />
         <option value="$PROJECT_DIR$/src/main/resources/static/js/appjs/xmx/articleDetails.js" />
-        <option value="$PROJECT_DIR$/src/main/java/com/cloudht/cont/dao/ContXmxDao.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/mybatis/cont/ContXmxMapper.xml" />
         <option value="$PROJECT_DIR$/src/main/resources/mybatis/cont/ContCategoryMapper.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/cloudht/cont/dao/ContCategoryDao.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/cloudht/cont/service/impl/ContXmxServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/xmx/Metal-Medals-263.htm" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/xmx/a-productDetail2.html" />
-        <option value="$PROJECT_DIR$/src/main/resources/static/js/appjs/xmx/a-productDetail.js" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/xmx/a-productDetail.html" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/xmx/a-inquiry.html" />
-        <option value="$PROJECT_DIR$/src/main/java/com/cloudht/cont/controller/ContXmxController.java" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/include/public.html" />
-        <option value="$PROJECT_DIR$/src/main/resources/templates/xmx/a-aboutUs.html" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/xmx/a-capability.html" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/xmx/a-contactUs.html" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/xmx/a-news.html" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/xmx/index.html" />
         <option value="$PROJECT_DIR$/src/main/java/com/cloudht/cont/service/ContXmxService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/cloudht/cont/dao/ContXmxDao.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/cloudht/cont/service/impl/ContXmxServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/templates/cont/contProduct/add.html" />
+        <option value="$PROJECT_DIR$/src/main/resources/templates/cont/contProduct/edit.html" />
+        <option value="$PROJECT_DIR$/src/main/resources/templates/xmx/a-aboutUs.html" />
+        <option value="$PROJECT_DIR$/src/main/resources/static/js/appjs/xmx/a-aboutUs.js" />
+        <option value="$PROJECT_DIR$/src/main/java/com/cloudht/cont/controller/ContXmxController.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/mybatis/cont/ContXmxMapper.xml" />
+        <option value="$PROJECT_DIR$/src/main/resources/static/js/appjs/xmx/a-productDetail.js" />
+        <option value="$PROJECT_DIR$/src/main/resources/templates/xmx/a-products.html" />
+        <option value="$PROJECT_DIR$/src/main/resources/static/js/appjs/xmx/a-products.js" />
       </list>
     </option>
   </component>
@@ -334,7 +338,18 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+              <item name="js" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="hnjx" type="b2602c69:ProjectViewProjectNode" />
+              <item name="hnjx" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+              <item name="js" type="462c0819:PsiDirectoryNode" />
+              <item name="appjs" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="hnjx" type="b2602c69:ProjectViewProjectNode" />
@@ -343,17 +358,6 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="resources" type="462c0819:PsiDirectoryNode" />
               <item name="templates" type="462c0819:PsiDirectoryNode" />
-              <item name="cont" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="hnjx" type="b2602c69:ProjectViewProjectNode" />
-              <item name="hnjx" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-              <item name="cont" type="462c0819:PsiDirectoryNode" />
-              <item name="contProduct" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="hnjx" type="b2602c69:ProjectViewProjectNode" />
@@ -363,6 +367,15 @@
               <item name="resources" type="462c0819:PsiDirectoryNode" />
               <item name="templates" type="462c0819:PsiDirectoryNode" />
               <item name="include" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="hnjx" type="b2602c69:ProjectViewProjectNode" />
+              <item name="hnjx" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+              <item name="system" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="hnjx" type="b2602c69:ProjectViewProjectNode" />
@@ -398,10 +411,10 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\workspace\cms\hnjx\src\main\resources\static\js\appjs\xmx" />
       <recent name="E:\workspace\cms\hnjx\src\main\resources\templates\xmx" />
       <recent name="E:\workspace\cms\hnjx\src\main\resources\static\xmx\css" />
       <recent name="E:\workspace\cms\hnjx\src\main\resources\static\xmx\js" />
-      <recent name="E:\workspace\cms\hnjx\src\main\resources\static\js\appjs\xmx" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -499,12 +512,13 @@
       <workItem from="1539069529923" duration="979000" />
       <workItem from="1539090056242" duration="5287000" />
       <workItem from="1539269540805" duration="49100000" />
-      <workItem from="1539392135314" duration="4137000" />
+      <workItem from="1539392135314" duration="22570000" />
+      <workItem from="1539564217915" duration="392000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="106877000" />
+    <option name="totallyTimeSpent" value="125702000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -525,15 +539,14 @@
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32852808" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3298791" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.5164076" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2663126" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.27086493" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32928678" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3298791" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.6683938" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -542,6 +555,7 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3298791" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
@@ -579,82 +593,11 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="26" />
+      <option name="time" value="33" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/cloudht/blog/domain/ContentDO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="275">
-          <caret line="18" column="20" lean-forward="false" selection-start-line="18" selection-start-column="17" selection-end-line="18" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/xmx/tuv-certificate-156.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="186">
-          <caret line="233" column="31" lean-forward="false" selection-start-line="233" selection-start-column="20" selection-end-line="233" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/cloudht/blog/controller/ContentController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="28" column="4" lean-forward="false" selection-start-line="28" selection-start-column="4" selection-end-line="28" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/blog/bContent/bContent.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-161">
-          <caret line="29" column="71" lean-forward="true" selection-start-line="29" selection-start-column="71" selection-end-line="29" selection-end-column="71" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/xmx/articleDetails.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="368">
-          <caret line="28" column="66" lean-forward="true" selection-start-line="28" selection-start-column="66" selection-end-line="28" selection-end-column="66" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/blog/index/main.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="163">
-          <caret line="59" column="65" lean-forward="false" selection-start-line="59" selection-start-column="50" selection-end-line="59" selection-end-column="65" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/cloudht/blog/controller/BlogController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="43" column="31" lean-forward="false" selection-start-line="43" selection-start-column="27" selection-end-line="43" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/blog/index/post.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="69">
-          <caret line="27" column="48" lean-forward="false" selection-start-line="27" selection-start-column="48" selection-end-line="27" selection-end-column="48" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/xmx/stainless-steel-investment-casting-1.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-437">
-          <caret line="14" column="6" lean-forward="true" selection-start-line="14" selection-start-column="6" selection-end-line="14" selection-end-column="6" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/cloudht/system/controller/MianController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="943">
-          <caret line="72" column="25" lean-forward="true" selection-start-line="72" selection-start-column="25" selection-end-line="72" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/cloudht/common/controller/LogController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="88">
@@ -674,13 +617,6 @@
         <state relative-caret-position="1035">
           <caret line="180" column="21" lean-forward="false" selection-start-line="180" selection-start-column="21" selection-end-line="180" selection-end-column="21" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/appjs/xmx/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="341">
-          <caret line="53" column="19" lean-forward="false" selection-start-line="53" selection-start-column="8" selection-end-line="53" selection-end-column="19" />
         </state>
       </provider>
     </entry>
@@ -731,7 +667,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-77">
           <caret line="126" column="125" lean-forward="false" selection-start-line="126" selection-start-column="125" selection-end-line="126" selection-end-column="125" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -753,33 +688,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="459">
           <caret line="45" column="26" lean-forward="true" selection-start-line="45" selection-start-column="26" selection-end-line="45" selection-end-column="26" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/mybatis/cont/ContXmxMapper.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="65">
-          <caret line="66" column="13" lean-forward="true" selection-start-line="66" selection-start-column="13" selection-end-line="66" selection-end-column="13" />
-          <folding>
-            <marker date="1539329007502" expanded="true" signature="2401:2425" ph="SELECT ##{con... " />
-            <marker date="1539329007502" expanded="true" signature="2442:2536" ph="select C.con... cont_category" />
-            <marker date="1539329007502" expanded="true" signature="3608:3825" ph="select ##{lan... cont_product" />
-            <marker date="1539329007502" expanded="true" signature="3911:4235" ph="select COUNT... cont_category" />
-            <marker date="1539329007502" expanded="true" signature="4098:4122" ph="SELECT ##{con... " />
-            <marker date="1539329007502" expanded="true" signature="4137:4231" ph="select C.con... cont_category" />
-            <marker date="1539329007502" expanded="true" signature="4329:4659" ph="SELECT A.`co... cont_product_info" />
-            <marker date="1539329007502" expanded="true" signature="4752:4884" ph="select `cont... cont_product_img" />
-            <marker date="1539329007502" expanded="true" signature="4947:5177" ph="select `cont... cont_product_param" />
-            <marker date="1539329007502" expanded="true" signature="5268:5400" ph="select `cont... cont_product_pk" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/cloudht/cont/dao/ContXmxDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="299">
-          <caret line="17" column="74" lean-forward="true" selection-start-line="17" selection-start-column="74" selection-end-line="17" selection-end-column="74" />
         </state>
       </provider>
     </entry>
@@ -794,7 +702,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="252">
           <caret line="116" column="29" lean-forward="false" selection-start-line="116" selection-start-column="29" selection-end-line="116" selection-end-column="29" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -809,7 +716,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="189">
           <caret line="176" column="90" lean-forward="false" selection-start-line="176" selection-start-column="86" selection-end-line="176" selection-end-column="90" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -827,13 +733,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/appjs/xmx/a-productDetail.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="134">
-          <caret line="120" column="18" lean-forward="true" selection-start-line="120" selection-start-column="18" selection-end-line="120" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/cloudht/cont/domain/ContProductParamDO.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1">
@@ -845,6 +744,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-5635">
           <caret line="10" column="0" lean-forward="true" selection-start-line="10" selection-start-column="0" selection-end-line="16" selection-end-column="88" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -863,43 +763,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/xmx/a-aboutUs.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="17" column="29" lean-forward="true" selection-start-line="17" selection-start-column="29" selection-end-line="17" selection-end-column="29" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/xmx/a-inquiry.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="15" column="12" lean-forward="true" selection-start-line="15" selection-start-column="12" selection-end-line="15" selection-end-column="12" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/templates/xmx/a-news.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="230">
           <caret line="10" column="17" lean-forward="false" selection-start-line="10" selection-start-column="17" selection-end-line="10" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/xmx/a-products.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="299">
-          <caret line="13" column="59" lean-forward="false" selection-start-line="13" selection-start-column="49" selection-end-line="13" selection-end-column="59" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/cloudht/cont/controller/ContXmxController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2967">
-          <caret line="148" column="0" lean-forward="false" selection-start-line="148" selection-start-column="0" selection-end-line="148" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -907,7 +774,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-3266">
           <caret line="17" column="29" lean-forward="true" selection-start-line="17" selection-start-column="29" selection-end-line="17" selection-end-column="29" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -915,7 +781,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="621">
           <caret line="36" column="8" lean-forward="true" selection-start-line="36" selection-start-column="8" selection-end-line="36" selection-end-column="8" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -923,60 +788,204 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="184">
           <caret line="14" column="0" lean-forward="true" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/include/public.html">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/cloudht/cont/controller/ContProductController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="111">
-          <caret line="39" column="19" lean-forward="false" selection-start-line="39" selection-start-column="19" selection-end-line="39" selection-end-column="19" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/xmx/a-productDetail.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="97" column="61" lean-forward="false" selection-start-line="97" selection-start-column="20" selection-end-line="97" selection-end-column="61" />
-          <folding>
-            <element signature="n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="e#1979#1986#0" expanded="true" />
-            <element signature="e#2042#2049#0" expanded="true" />
-            <element signature="e#2235#2242#0" expanded="true" />
-            <element signature="e#2432#2439#0" expanded="true" />
-            <element signature="e#5652#5659#0" expanded="true" />
-            <element signature="e#5861#5868#0" expanded="true" />
-            <element signature="n#script#0;n#div#1;n#div#1;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#A#3;n#div#9;n#div#1;n#div#1;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="e#10414#10421#0" expanded="true" />
-            <element signature="e#10623#10630#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/xmx/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-409">
-          <caret line="151" column="29" lean-forward="false" selection-start-line="151" selection-start-column="29" selection-end-line="151" selection-end-column="29" />
-          <folding>
-            <element signature="n#style#0;n#img#0;n#a#0;n#p#0;n#div#2;n#center#0;n#div#0;n#div#0;n#div#5;n#div#1;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
+        <state relative-caret-position="-4871">
+          <caret line="34" column="11" lean-forward="true" selection-start-line="34" selection-start-column="11" selection-end-line="34" selection-end-column="11" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/cloudht/cont/service/impl/ContXmxServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="77">
-          <caret line="61" column="52" lean-forward="true" selection-start-line="61" selection-start-column="52" selection-end-line="61" selection-end-column="52" />
-          <folding />
+        <state relative-caret-position="925">
+          <caret line="62" column="52" lean-forward="true" selection-start-line="62" selection-start-column="52" selection-end-line="62" selection-end-column="52" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/cloudht/cont/service/ContXmxService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="92">
-          <caret line="4" column="44" lean-forward="false" selection-start-line="4" selection-start-column="44" selection-end-line="4" selection-end-column="44" />
+        <state relative-caret-position="19">
+          <caret line="17" column="23" lean-forward="false" selection-start-line="17" selection-start-column="23" selection-end-line="17" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/cloudht/cont/dao/ContXmxDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="19" column="38" lean-forward="false" selection-start-line="19" selection-start-column="24" selection-end-line="19" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/jquery-1.11.3.min.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="183">
+          <caret line="3" column="24297" lean-forward="false" selection-start-line="3" selection-start-column="24297" selection-end-line="3" selection-end-column="24297" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/cont/contProduct/edit.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="437">
+          <caret line="37" column="73" lean-forward="true" selection-start-line="37" selection-start-column="73" selection-end-line="37" selection-end-column="73" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/cont/contProduct/add.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="161">
+          <caret line="7" column="35" lean-forward="true" selection-start-line="7" selection-start-column="35" selection-end-line="7" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/appjs/xmx/a-inquiry.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-69">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/xmx/a-aboutUs.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-103">
+          <caret line="98" column="35" lean-forward="true" selection-start-line="98" selection-start-column="35" selection-end-line="98" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/appjs/xmx/a-aboutUs.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="15" column="20" lean-forward="true" selection-start-line="15" selection-start-column="20" selection-end-line="15" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/show.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-225">
+          <caret line="22" column="35" lean-forward="false" selection-start-line="22" selection-start-column="30" selection-end-line="22" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/xmx/a-inquiry.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="211">
+          <caret line="41" column="23" lean-forward="false" selection-start-line="41" selection-start-column="23" selection-end-line="41" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/include/public.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-575">
+          <caret line="11" column="20" lean-forward="true" selection-start-line="11" selection-start-column="20" selection-end-line="11" selection-end-column="20" />
+          <folding>
+            <element signature="n#style#0;n#span#0;n#li#0;n#ul#0;n#div#0;n#div#0;n#div#4;n#div#0;n#div#1;n#!!top" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/common/file/file.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="275">
+          <caret line="127" column="30" lean-forward="false" selection-start-line="127" selection-start-column="20" selection-end-line="127" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/com/sxyht/ftcsp-common/0.0.1-SNAPSHOT/ftcsp-common-0.0.1-SNAPSHOT.jar!/com/sxyht/common/utils/PageUtils.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="299">
+          <caret line="17" column="27" lean-forward="true" selection-start-line="17" selection-start-column="27" selection-end-line="17" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/xmx/a-productDetail.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-966">
+          <caret line="64" column="10" lean-forward="true" selection-start-line="64" selection-start-column="10" selection-end-line="64" selection-end-column="10" />
+          <folding>
+            <element signature="n#script#0;n#div#1;n#div#1;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#A#3;n#div#9;n#div#1;n#div#1;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/appjs/xmx/a-productDetail.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1127">
+          <caret line="60" column="21" lean-forward="true" selection-start-line="60" selection-start-column="21" selection-end-line="60" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/appjs/xmx/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1035">
+          <caret line="45" column="50" lean-forward="false" selection-start-line="45" selection-start-column="50" selection-end-line="45" selection-end-column="50" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/xmx/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="6601">
+          <caret line="287" column="26" lean-forward="false" selection-start-line="264" selection-start-column="20" selection-end-line="287" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/cloudht/cont/controller/ContXmxController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="327">
+          <caret line="146" column="0" lean-forward="true" selection-start-line="146" selection-start-column="0" selection-end-line="146" selection-end-column="0" />
+          <folding>
+            <element signature="e#4632#4633#0" expanded="true" />
+            <element signature="e#4659#4660#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/mybatis/cont/ContXmxMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="23">
+          <caret line="47" column="67" lean-forward="false" selection-start-line="47" selection-start-column="67" selection-end-line="47" selection-end-column="67" />
+          <folding>
+            <marker date="1539423613285" expanded="true" signature="2466:2490" ph="SELECT ##{con... " />
+            <marker date="1539423613285" expanded="true" signature="2509:2603" ph="select C.con... cont_category" />
+            <marker date="1539423613285" expanded="true" signature="4038:4255" ph="select ##{lan... cont_product" />
+            <marker date="1539423613285" expanded="true" signature="4341:4665" ph="select COUNT... cont_category" />
+            <marker date="1539423613285" expanded="true" signature="4528:4552" ph="SELECT ##{con... " />
+            <marker date="1539423613285" expanded="true" signature="4567:4661" ph="select C.con... cont_category" />
+            <marker date="1539423613285" expanded="true" signature="4759:5089" ph="SELECT A.`co... cont_product_info" />
+            <marker date="1539423613285" expanded="true" signature="5182:5314" ph="select `cont... cont_product_img" />
+            <marker date="1539423613285" expanded="true" signature="5377:5607" ph="select `cont... cont_product_param" />
+            <marker date="1539423613285" expanded="true" signature="5698:5830" ph="select `cont... cont_product_pk" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/xmx/a-products.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="23">
+          <caret line="112" column="97" lean-forward="false" selection-start-line="112" selection-start-column="97" selection-end-line="112" selection-end-column="97" />
+          <folding>
+            <element signature="n#style#0;n#span#0;n#div#1;n#div#0;n#div#1;n#div#1;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#span#0;n#div#1;n#div#0;n#div#1;n#div#1;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#form#0;n#div#1;n#div#1;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#0;n#form#0;n#div#1;n#div#1;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#2;n#form#0;n#div#1;n#div#1;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#div#0;n#div#2;n#form#0;n#div#1;n#div#1;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="e#6775#6782#0" expanded="true" />
+            <element signature="e#7048#7055#0" expanded="true" />
+            <element signature="n#style#0;n#select#0;n#div#0;n#div#4;n#form#0;n#div#1;n#div#1;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/appjs/xmx/a-products.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="295">
+          <caret line="72" column="50" lean-forward="true" selection-start-line="72" selection-start-column="50" selection-end-line="72" selection-end-column="50" />
           <folding />
         </state>
       </provider>

@@ -11,7 +11,7 @@
     <meta name="author" content="Web Design: xiaoyuer QQ:195094303 website: www.shejifang.net"/>
     <link href="/xmx/css/css.css" rel="stylesheet" type="text/css"/>
     <script language="javascript" type="text/javascript" src="/xmx/js/comm.js"></script>
-    <!--<script language="javascript" type="text/javascript" src="/xmx/js/jquery.js"></script>-->
+    <script language="javascript" type="text/javascript" src="/xmx/js/jquery.js"></script>
     <script language="javascript" type="text/javascript" src="/xmx/js/show.js"></script>
 </head>
 <body>
@@ -19,6 +19,13 @@
 
     <div th:include="include/public :: header"></div><!-- 共用顶部部分 -->
 
+    <div id="curpos">
+        <span>You are here:</span>
+        <a href="/">Home</a> &raquo;
+        <span><a href="/xmx/viewProducts">Products</a> &raquo;</span>
+        <span v-if="navBar.first"><a href="javascript:void(0);" v-on:click="listProduct(navBar.first.contCategoryId,navBar.first.categoryName)">{{navBar.first.categoryName}}</a> &raquo;</span>
+        <span v-if="navBar.second"><a href="javascript:void(0);" v-on:click="listProduct(navBar.second.contCategoryId,navBar.second.categoryName)">{{navBar.second.categoryName}}</a> &raquo;</span>
+    </div>
     <div id="main">
         <div th:include="include/public :: left"></div><!-- 共用左部部分 -->
 
@@ -29,7 +36,7 @@
                     <h2>Stainless steel investment casting</h2>
                     <div>Total <span class="red">9</span> Product(s)</div>
                     <div class="cdes">
-                        <img src="pic/link/2015-9-16-12-9-51.jpg" alt="Stainless steel investment casting"
+                        <img src="/xmx/pic/link/2015-9-16-12-9-51.jpg" alt="Stainless steel investment casting"
                              align="right"/><span style="font-size: 16px;"><span
                             style="font-family: 'Times New Roman';"><!--Taiyuan Simis is a leading manufacturer for investment casting in China.&nbsp;<br />-->
                             Stainless steel investment casting is one of our popular products .<br/>
@@ -50,252 +57,63 @@
                 <div class="clear"></div>
                 <form action="inquiry.asp" method="get" name="Inquire">
                     <div class="showctr">
-                        <div style="float:left;width:550px;" align="left"><input name="chkAll" type="checkbox"
-                                                                                 id="chkAll" onClick=CheckAll(this.form)
-                                                                                 value="checkbox">
-                            <input name="image" type="image" src="images/inquire_now_en.gif"/>
+                        <div style="float:left;width:550px;" align="left">
+                            <input name="chkAll" type="checkbox" id="chkAll" onClick=CheckAll(this.form) value="checkbox">
+                            <input name="image" type="image" src="/xmx/images/inquire_now_en.gif"/>
                             (Select to inquire products)
                         </div>
-                        <div style="float:right;width:150px;"><strong>View:</strong> <img id="view_list"
-                                                                                          src="images/viewlist.gif"
-                                                                                          width="15" height="15"
-                                                                                          title="View List"
-                                                                                          align="absmiddle"/> <img
-                                id="view_gallery" src="images/viewgallery2.gif" width="15" height="15"
-                                title="View Gallery" align="absmiddle"/></div>
+                        <div style="float:right;width:150px;"><strong>View:</strong> 
+                            <img id="view_list" src="/xmx/images/viewlist.gif" width="15" height="15" title="View List" align="absmiddle"/> 
+                            <img id="view_gallery" src="/xmx/images/viewgallery2.gif" width="15" height="15"  title="View Gallery" align="absmiddle"/></div>
                     </div>
                     <div class="clear"></div>
 
                     <div style=" width:712px; margin:0 auto">
 
-                        <div class="probox">
+                        <div class="probox" v-for="(item,index) in productList">
                             <center>
                                 <div class="proimg">
-                                    <p><a href="butterfly-valve-260.htm" title="butterfly valve" rel="nofollow"><img
-                                            src="pic/other/260_0.jpg" alt="butterfly valve" vspace="0" border="0"/></a>
+                                    <p><a href="javascript:void(0);" v-on:click="viewProduct(item.contProductId)"
+                                          :title="item.contProductName" rel="nofollow"><img
+                                            :src="item.contProductImgDOList[0].imgUrl" :alt="item.contProductName"
+                                            vspace="0" border="0"/></a>
                                     </p>
                                 </div>
-                                <div class="protext"><a href="butterfly-valve-260.htm" title="butterfly valve"
-                                                        rel="nofollow"><h2>butterfly valve</h2></a> <span></span></div>
-                                <div class="prodes" style="display:none;">Our company in accordance with the national
-                                    standard GB, America API , Jappanese ANSI ,JIS , German DIN standard design and
-                                    manufactrue of various types of high quality general valve.The main products the
-                                    company has a check valve , hard sealed butterfly valve in the valve body , the
-                                    valve plate and other products . ...
-                                    <p><input type="checkbox" name="Item" value=""/> <img
-                                            src="images/inquire_now_en.gif" style="cursor:pointer;"
-                                            onclick="javascript:document.location.href='inquiry.asp?Item='"/></p>
-                                </div>
-                                <div class="clear"></div>
-                            </center>
-                        </div>
-
-                        <div class="probox">
-                            <center>
-                                <div class="proimg">
-                                    <p><a href="Valve-parts-4-230.htm" title="Valve parts 4" rel="nofollow"><img
-                                            src="pic/other/230_0.jpg" alt="Valve parts 4" vspace="0" border="0"/></a>
+                                <div class="protext"><a href="javascript:void(0);"
+                                                        v-on:click="viewProduct(item.contProductId)" title="turbine blade"
+                                                        rel="nofollow">
+                                    <h2>{{item.contProductInfoDO.productName}}</h2></a> <span></span></div>
+                                <div class="prodes" style="display:none;" v-html="item.contProductInfoDO.details">
+                                    <p>
+                                        <input type="checkbox" name="Item" value=""/>
+                                        <a href="/xmx/a-inquiry" target="_blank">
+                                            <img src="/xmx/images/inquire_now_en.gif" style="cursor:pointer;"/>
+                                        </a>
                                     </p>
                                 </div>
-                                <div class="protext"><a href="Valve-parts-4-230.htm" title="Valve parts 4"
-                                                        rel="nofollow"><h2>Valve parts 4</h2></a> <span></span></div>
-                                <div class="prodes" style="display:none;">&nbsp; ...
-                                    <p><input type="checkbox" name="Item" value=""/> <img
-                                            src="images/inquire_now_en.gif" style="cursor:pointer;"
-                                            onclick="javascript:document.location.href='inquiry.asp?Item='"/></p>
-                                </div>
                                 <div class="clear"></div>
                             </center>
                         </div>
-
-                        <div class="probox">
-                            <center>
-                                <div class="proimg">
-                                    <p><a href="Valve-parts-3-229.htm" title="Valve parts 3" rel="nofollow"><img
-                                            src="pic/other/229_0.jpg" alt="Valve parts 3" vspace="0" border="0"/></a>
-                                    </p>
-                                </div>
-                                <div class="protext"><a href="Valve-parts-3-229.htm" title="Valve parts 3"
-                                                        rel="nofollow"><h2>Valve parts 3</h2></a> <span></span></div>
-                                <div class="prodes" style="display:none;">&nbsp;We can make valve castings by investment
-                                    casting &nbsp;and sand casting as customer's requirements.<br>
-                                    The material is carbon steel , alloy steel and stainless steel .<br>
-                                    Also we can supply coating services. ...
-                                    <p><input type="checkbox" name="Item" value=""/> <img
-                                            src="images/inquire_now_en.gif" style="cursor:pointer;"
-                                            onclick="javascript:document.location.href='inquiry.asp?Item='"/></p>
-                                </div>
-                                <div class="clear"></div>
-                            </center>
-                        </div>
-
-                        <div class="probox">
-                            <center>
-                                <div class="proimg">
-                                    <p><a href="Valve-parts-2-228.htm" title="Valve parts 2" rel="nofollow"><img
-                                            src="pic/other/228_0.jpg" alt="Valve parts 2" vspace="0" border="0"/></a>
-                                    </p>
-                                </div>
-                                <div class="protext"><a href="Valve-parts-2-228.htm" title="Valve parts 2"
-                                                        rel="nofollow"><h2>Valve parts 2</h2></a> <span></span></div>
-                                <div class="prodes" style="display:none;">&nbsp; ...
-                                    <p><input type="checkbox" name="Item" value=""/> <img
-                                            src="images/inquire_now_en.gif" style="cursor:pointer;"
-                                            onclick="javascript:document.location.href='inquiry.asp?Item='"/></p>
-                                </div>
-                                <div class="clear"></div>
-                            </center>
-                        </div>
-
-                        <div class="probox">
-                            <center>
-                                <div class="proimg">
-                                    <p><a href="Valve-parts-227.htm" title="Valve parts" rel="nofollow"><img
-                                            src="pic/other/227_0.jpg" alt="Valve parts" vspace="0" border="0"/></a></p>
-                                </div>
-                                <div class="protext"><a href="Valve-parts-227.htm" title="Valve parts" rel="nofollow">
-                                    <h2>Valve parts</h2></a> <span></span></div>
-                                <div class="prodes" style="display:none;">&nbsp; ...
-                                    <p><input type="checkbox" name="Item" value=""/> <img
-                                            src="images/inquire_now_en.gif" style="cursor:pointer;"
-                                            onclick="javascript:document.location.href='inquiry.asp?Item='"/></p>
-                                </div>
-                                <div class="clear"></div>
-                            </center>
-                        </div>
-
-                        <div class="probox">
-                            <center>
-                                <div class="proimg">
-                                    <p><a href="auto-part-4-226.htm" title="auto part 4" rel="nofollow"><img
-                                            src="pic/other/226_0.jpg" alt="auto part 4" vspace="0" border="0"/></a></p>
-                                </div>
-                                <div class="protext"><a href="auto-part-4-226.htm" title="auto part 4" rel="nofollow">
-                                    <h2>auto part 4</h2></a> <span></span></div>
-                                <div class="prodes" style="display:none;">&nbsp;Our castings:
-                                    The weight : from 0.005KG to 60KG .<br>
-                                    The size&nbsp;&nbsp; :500mm x 500mm <br>
-                                    The tolerance : CT4-CT7<br>
-                                    The surface&nbsp; : Ra3.2<br>
-                                    &nbsp;<br>
-                                    Our usual stainless steel material :<br>
-                                    SUS304 &ndash; 1.4301<br>
-                                    SUS304L &ndash; 1.4306<br>
-                                    SUS316 &ndash; 1.4401<br>
-                                    SUS316L &ndash; 1.4404<br> ...
-                                    <p><input type="checkbox" name="Item" value=""/> <img
-                                            src="images/inquire_now_en.gif" style="cursor:pointer;"
-                                            onclick="javascript:document.location.href='inquiry.asp?Item='"/></p>
-                                </div>
-                                <div class="clear"></div>
-                            </center>
-                        </div>
-
-                        <div class="probox">
-                            <center>
-                                <div class="proimg">
-                                    <p><a href="auto-part-3-225.htm" title="auto part 3" rel="nofollow"><img
-                                            src="pic/other/225_0.jpg" alt="auto part 3" vspace="0" border="0"/></a></p>
-                                </div>
-                                <div class="protext"><a href="auto-part-3-225.htm" title="auto part 3" rel="nofollow">
-                                    <h2>auto part 3</h2></a> <span></span></div>
-                                <div class="prodes" style="display:none;">&nbsp;Our castings:
-                                    The weight : from 0.005KG to 60KG .<br>
-                                    The size&nbsp;&nbsp; :500mm x 500mm <br>
-                                    The tolerance : CT4-CT7<br>
-                                    The surface&nbsp; : Ra3.2<br>
-                                    &nbsp;<br>
-                                    Our usual stainless steel material :<br>
-                                    SUS304 &ndash; 1.4301<br>
-                                    SUS304L &ndash; 1.4306<br>
-                                    SUS316 &ndash; 1.4401<br>
-                                    SUS316L &ndash; 1.4404<br> ...
-                                    <p><input type="checkbox" name="Item" value=""/> <img
-                                            src="images/inquire_now_en.gif" style="cursor:pointer;"
-                                            onclick="javascript:document.location.href='inquiry.asp?Item='"/></p>
-                                </div>
-                                <div class="clear"></div>
-                            </center>
-                        </div>
-
-                        <div class="probox">
-                            <center>
-                                <div class="proimg">
-                                    <p><a href="auto-part-2-224.htm" title="auto part 2" rel="nofollow"><img
-                                            src="pic/other/224_0.jpg" alt="auto part 2" vspace="0" border="0"/></a></p>
-                                </div>
-                                <div class="protext"><a href="auto-part-2-224.htm" title="auto part 2" rel="nofollow">
-                                    <h2>auto part 2</h2></a> <span></span></div>
-                                <div class="prodes" style="display:none;">Our castings:<br>
-                                    The weight : from 0.005KG to 60KG .<br>
-                                    The size&nbsp;&nbsp; :500mm x 500mm <br>
-                                    The tolerance : CT4-CT7<br>
-                                    The surface&nbsp; : Ra3.2<br>
-                                    &nbsp;<br>
-                                    Our usual stainless steel material :<br>
-                                    SUS304 &ndash; 1.4301<br>
-                                    SUS304L &ndash; 1.4306<br>
-                                    SUS316 &ndash; 1.4401<br>
-                                    SUS316L &ndash; 1.4404<br> ...
-                                    <p><input type="checkbox" name="Item" value=""/> <img
-                                            src="images/inquire_now_en.gif" style="cursor:pointer;"
-                                            onclick="javascript:document.location.href='inquiry.asp?Item='"/></p>
-                                </div>
-                                <div class="clear"></div>
-                            </center>
-                        </div>
-
-                        <div class="probox">
-                            <center>
-                                <div class="proimg">
-                                    <p><a href="auto-part-1-223.htm" title="auto part 1" rel="nofollow"><img
-                                            src="pic/other/223_0.jpg" alt="auto part 1" vspace="0" border="0"/></a></p>
-                                </div>
-                                <div class="protext"><a href="auto-part-1-223.htm" title="auto part 1" rel="nofollow">
-                                    <h2>auto part 1</h2></a> <span></span></div>
-                                <div class="prodes" style="display:none;">Our castings:<br>
-                                    The weight : from 0.005KG to 60KG .<br>
-                                    The size&nbsp;&nbsp; :500mm x 500mm <br>
-                                    The tolerance : CT4-CT7<br>
-                                    The surface&nbsp; : Ra3.2<br>
-                                    &nbsp;<br>
-                                    Our usual stainless steel material :<br>
-                                    SUS304 &ndash; 1.4301<br>
-                                    SUS304L &ndash; 1.4306<br>
-                                    SUS316 &ndash; 1.4401<br>
-                                    SUS316L &ndash; 1.4404<br> ...
-                                    <p><input type="checkbox" name="Item" value=""/> <img
-                                            src="images/inquire_now_en.gif" style="cursor:pointer;"
-                                            onclick="javascript:document.location.href='inquiry.asp?Item='"/></p>
-                                </div>
-                                <div class="clear"></div>
-                            </center>
-                        </div>
-
 
                     </div>
                     <div class="clear"></div>
                     <div class="page">
-
                         <div class="pl">
-                            <span>Total: <b>9</b> Pcs</span>
-                            <span>Page: <b>1</b> / <b>1</b></span>
+                            <span>Total: <b>{{pageTool.totalPages}}</b> Pcs</span>
+                            <span>Page: <b>{{pageTool.currentPage}}</b> / <b>{{productList.length}}</b></span>
 
-                            <a href="stainless-steel-investment-casting-1.html">First</a>
-                            <a href="stainless-steel-investment-casting-1.html">&laquo;&nbsp;Previous</a>
+                            <a href="javascript:void(0);" v-on:click="selectPage(0,0)">First</a>
+                            <a href="javascript:void(0);" v-on:click="selectPage('currentPage',-1)">&laquo;&nbsp;Previous</a>
 
-                            <span class="cur">1</span>
+                            <span class="cur" v-for="(item,index) in pageTool.pageList" v-on:click="selectPage(item,0)">{{item}}</span>
 
-                            <a href="stainless-steel-investment-casting-1.html">Next&nbsp;&raquo;</a>
-                            <a href="stainless-steel-investment-casting-1.html">End</a>
+                            <a href="javascript:void(0);" v-on:click="selectPage('currentPage',1)">Next&nbsp;&raquo;</a>
+                            <a href="javascript:void(0);" v-on:click="selectPage('endPage',0)">End</a>
 
-                            <select name="page" onchange="location=this.options[this.selectedIndex].value"
-                                    style="border:0;">
-                                <option value="stainless-steel-investment-casting.html" selected='selected'>1 Page
-                                </option>
-                            </select></div>
-
-
+                            <select name="page" v-model="pageTool.currentPage" style="border:0;">
+                                <option v-for="(item,index) in pageTool.pageList" @click="selectPage(item,0)">{{item}} Page </option>
+                            </select>
+                        </div>
                     </div>
                 </form>
             </div>
@@ -304,63 +122,9 @@
     </div>
     <div class="mainbg"></div>
     <div class="clear"></div>
-    <div id="root">
-        <div class="rootseo">Keywords:</div>
-        <div class="rootmenu">
+    <div th:include="include/public :: root"></div><!-- 共用root部分 -->
 
-            <a href="index.html" title="Home">Home</a> |
-
-            <a href="About-Us.html" title="About Us">About Us</a> |
-
-            <a href="Products.html" title="Products">Products</a> |
-
-            <a href="News.html" title="News">News</a> |
-
-            <a href="send-inquiry.html" title="Inquiry">Inquiry</a> |
-
-            <a href="Capability.html" title="Capability">Capability</a> |
-
-            <a href="contact-us.html" title="Contact Us">Contact Us</a> |
-
-        </div>
-        <script language="javascript" type="text/javascript" src="/js/lang.js"></script>
-        <div class="trans"><a href="javascript:translator('en|en')"><img src="images/english.gif" width="15" height="11"
-                                                                         align="absmiddle"/> English</a>
-            <a href="javascript:translator('en|de')"><img src="images/deutsch1.gif" width="15" height="11"
-                                                          align="absmiddle"/> German</a>
-            <a href="javascript:translator('en|es')"><img src="images/espanol.gif" width="15" height="11"
-                                                          align="absmiddle"/> Spanish</a>
-            <a href="javascript:translator('en|fr')"><img src="images/francies.gif" width="15" height="11"
-                                                          align="absmiddle"/> French</a>
-            <a href="javascript:translator('en|it')"><img src="images/italino.gif" width="15" height="11"
-                                                          align="absmiddle"/> Italian</a>
-            <a href="javascript:translator('en|pt')"><img src="images/portgues.gif" width="15" height="11"
-                                                          align="absmiddle"/> Portuguese</a>
-            <a href="javascript:translator('en|ja')"><img src="images/japan.jpg" width="15" height="11"
-                                                          align="absmiddle"/> Japanese</a>
-            <a href="javascript:translator('en|ko')"><img src="images/korea.jpg" width="15" height="11"
-                                                          align="absmiddle"/> Korean</a>
-            <a href="javascript:translator('en|ar')"><img src="images/arabia.jpg" width="15" height="11"
-                                                          align="absmiddle"/> Arabic</a>
-            <a href="javascript:translator('en|ru')"><img src="images/russia.jpg" width="15" height="11"
-                                                          align="absmiddle"/> Russian</a>
-            <a href="javascript:translator('en|cn')"><img src="images/chinese.gif" width="15" height="11"
-                                                          align="absmiddle"/> Chinese</a></div>
-
-
-        <div class="copyright"> Copyright <span id="CopyRight">
-    &copy; </span> 2018&nbsp;<a href="index.html">A&M Manufacturing Co.Ltd</a> All Rights Reserved <a
-                href="sitemap.html">SiteMap</a> <a href="/rss.xml"><img src="images/rss.jpg" width="49" height="14"
-                                                                        border="0"/></a>&nbsp;<a
-                href="/sitemap.xml"><img src="images/map.gif" width="36" height="14" border="0"/></a>
-
-            <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
-            document.write(unescape("%3Cspan id='cnzz_stat_icon_1254565334'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s95.cnzz.com/z_stat.php%3Fid%3D1254565334%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));</script>
-
-        </div>
-        <div class="clear"></div>
-    </div>
-    <script language="javascript" type="text/javascript" src="/js/rootLink.js"></script>
+    <script type="text/javascript" src="/js/appjs/xmx/a-products.js"></script>
     <div class="flinks">Friendly Links:
         &nbsp;
 

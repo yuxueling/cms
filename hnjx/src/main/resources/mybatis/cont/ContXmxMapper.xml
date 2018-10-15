@@ -44,11 +44,14 @@
 		FROM cont_category A,cont_product B
 		WHERE A.cont_category_id = B.category_id
 		AND A.category_type = #{categoryType}
-		AND A.cont_category_id in (
-			SELECT #{contCategoryId}
-			union all
-			select C.cont_category_id  FROM cont_category C WHERE C.parent_category_id = #{contCategoryId}
-		)
+
+		<if test="contCategoryId != null and contCategoryId != ''">
+			AND A.cont_category_id in (
+				SELECT #{contCategoryId}
+				union all
+				select C.cont_category_id  FROM cont_category C WHERE C.parent_category_id = #{contCategoryId}
+			)
+		</if>
 		ORDER BY A.sort
 		<if test="offset != null and limit != null">
 			limit #{offset}, #{limit}
@@ -78,6 +81,20 @@
 			limit #{offset}, #{limit}
 		</if>
 	</select>
+
+
+
+	<select id="listRecProduct" resultMap="productVO">
+		select #{langType} as lang_type ,
+		B.`cont_product_id`,B.`product_name`,B.`category_id`,B.`sale_status`,B.`create_by`,B.`gmt_create`,B.`gmt_modified`
+		FROM cont_product B
+		WHERE B.level = #{level}
+		<if test="offset != null and limit != null">
+			limit #{offset}, #{limit}
+		</if>
+	</select>
+
+
 
 
 	<select id="getProduct" resultMap="productVO">

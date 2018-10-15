@@ -38,6 +38,16 @@ public class ContXmxController extends BaseController {
 	@RequestMapping("/listProductByCategory")
 	@ResponseBody
 	public PageUtils listProductByCategory(@RequestParam Map<String, Object> params){
+
+		Object categoryIdObj = params.get("contCategoryId");
+		if(categoryIdObj != null){
+			getSession().setAttribute("contCategoryId",categoryIdObj);
+		}else {
+			categoryIdObj = getSession().getAttribute("contCategoryId");
+		}
+		params.put("contCategoryId",categoryIdObj);
+
+
 		//查询列表数据
 		Query query = new Query(params);
 		query.put("categoryType",0);
@@ -159,6 +169,20 @@ public class ContXmxController extends BaseController {
 		List<ContProductVO> contProductVOList = contXmxService.listProductByCategoryCode(params);
 		return R.ok().put("rows",contProductVOList);
 	}
+
+	/**
+	 * 根据等级查询商品信息
+	 * http://localhost:8080/contXmx/listRecProduct?limit=10&offset=0&level=11&langType=english
+	 * @param params
+	 * @return
+	 */
+	@ResponseBody
+	@RequestMapping("/listRecProduct")
+	public R listRecProduct(@RequestParam Map<String, Object> params) {
+		List<ContProductVO> contProductVOList = contXmxService.listRecProduct(params);
+		return R.ok().put("rows",contProductVOList);
+	}
+
 
 
 	/**

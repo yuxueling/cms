@@ -27,4 +27,7 @@ public interface ContXmxService {
 	List<ContProductVO> listProductByCategoryCode(Map<String,Object> map);
 
 	List<ContCategoryDO> listProductDetailNavBar(Map<String,Object> map);
+
+	List<ContProductVO> listRecProduct(Map<String,Object> map);
+
 }

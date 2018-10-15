@@ -72,4 +72,9 @@ public class ContXmxServiceImpl implements ContXmxService {
 		return resultList;
 	}
 
+	@Override
+	public List<ContProductVO> listRecProduct(Map<String, Object> map) {
+		return contXmxDao.listRecProduct(map);
+	}
+
 }

@@ -17,4 +17,6 @@ public interface ContXmxDao {
 
 	List<ContProductVO> listProductByCategoryCode(Map<String,Object> map);
 
+	List<ContProductVO> listRecProduct(Map<String,Object> map);
+
 }

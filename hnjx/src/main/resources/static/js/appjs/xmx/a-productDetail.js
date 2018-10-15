@@ -78,12 +78,11 @@ var vm = new Vue({
         },
         listHotProduct:function () {
             $.ajax({
-                url: "/contXmx/listProductByCategoryCode",
+                url: "/contXmx/listRecProduct",
                 type: "post",
                 data: {
                     langType: vm.langType,
-                    categoryCode:"hotProduct",
-                    categoryType:0
+                    level:11
                 },
                 success: function (data) {
                     vm.hotProductList=data.rows;
@@ -127,7 +126,7 @@ var vm = new Vue({
                             vm.navBar.second=data.rows[i].contCategoryInfoDO;
                         }
                     }
-                    vm.$forceUpdate();x
+                    vm.$forceUpdate();
                 }
             });
         },
