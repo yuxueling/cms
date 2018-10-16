@@ -8,6 +8,7 @@ import com.cloudht.common.domain.DictDO;
 import com.cloudht.common.service.DictService;
 
 import com.cloudht.cont.domain.ContCategoryDO;
+import com.cloudht.cont.domain.ContCategoryInfoDO;
 import com.cloudht.cont.service.ContXmxService;
 import com.cloudht.cont.vo.ContProductVO;
 import com.sxyht.common.utils.*;
@@ -58,10 +59,55 @@ public class ContXmxController extends BaseController {
 		return pageUtils;
 	}
 
+
+
+	/**
+	 * 根据语种\类别\产品名称模糊查询产品（仅支持到两级类别查询）
+	 * http://localhost:8084/contXmx/searchProductByCategory?limit=10&offset=0&contCategoryId=2&langType=simChinese&searchKey=yuthf
+	 * @param params
+	 * @return
+	 */
+	@RequestMapping("/searchProductByCategory")
+	@ResponseBody
+	public PageUtils searchProductByCategory(@RequestParam Map<String, Object> params){
+
+		Object categoryIdObj = params.get("contCategoryId");
+		Object searchKeyObj = params.get("searchKey");
+		if(categoryIdObj == null || categoryIdObj.toString().equals("")){
+			categoryIdObj = getSession().getAttribute("contCategoryId");
+		}else {
+			getSession().setAttribute("contCategoryId",categoryIdObj);
+		}
+		if(searchKeyObj==null || searchKeyObj.toString().equals("")){
+			searchKeyObj = getSession().getAttribute("searchKey");
+		}
+
+		params.put("contCategoryId",categoryIdObj);
+		params.put("searchKey",searchKeyObj);
+
+		//查询列表数据
+		Query query = new Query(params);
+		query.put("categoryType",0);
+		List<ContProductVO> productVOList = contXmxService.listProductByCategory(query);
+		int total = contXmxService.countProductByCategory(query);
+		PageUtils pageUtils = new PageUtils(productVOList, total);
+
+		return pageUtils;
+	}
+
+
+
 	@GetMapping("/showProduct/{contProductId}")
 	String showProduct(@PathVariable("contProductId") Integer contProductId){
  		getSession().setAttribute("contProductId",contProductId);
 		return "xmx/a-productDetail";
+	}
+
+	@GetMapping("/viewSearch")
+	String viewSearch(@RequestParam Map<String, Object> params){
+		getSession().setAttribute("contCategoryId",params.get("contCategoryId"));
+		getSession().setAttribute("searchKey",params.get("searchKey"));
+		return "xmx/a-search";
 	}
 
 
@@ -215,14 +261,28 @@ public class ContXmxController extends BaseController {
 	 */
 	@RequestMapping("/listContent")
 	@ResponseBody
-	public PageUtils listContent(@RequestParam Map<String, Object> params){
+	public R listContent(@RequestParam Map<String, Object> params){
 		//查询列表数据
 		Query query = new Query(params);
 		List<ContentDO> contentDOList = bContentService.list(query);
 		int total = bContentService.count(query);
-		PageUtils pageUtils = new PageUtils(contentDOList, total);
-		return pageUtils;
+		return R.ok().put("rows",contentDOList).put("total",total);
 	}
 
+	/**
+	 * 获取分类详情
+	 * http://localhost:8080/contXmx/getCategoryInfo
+	 * @param params langType  conCategoryId
+	 * @return
+	 */
+	@RequestMapping("/getCategoryInfo")
+	@ResponseBody
+	public R getCategoryInfo(@RequestParam Map<String, Object> params){
+		List<ContCategoryInfoDO> categoryInfoDOList = contXmxService.listCategoryInfo(params);
+		if(categoryInfoDOList!=null && !categoryInfoDOList.isEmpty()){
+			return R.ok().put("row",categoryInfoDOList.get(0));
+		}
+		return R.error();
+	}
 
 }

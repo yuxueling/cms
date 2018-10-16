@@ -1,7 +1,6 @@
 $(function () {
-    $("#loadgif").hide();
     vm.init();
-    vm.listProduct();
+    vm.searchProduct();
 });
 
 
@@ -9,20 +8,18 @@ var vm = new Vue({
     el: '#site',
     data: {
         categoryTree: {},
-        searchParam:{searchKey:'',contCategoryId:''},
         contactInfo:{},
         langType: 'english',
         events: [],
+        searchParam:{searchKey:'',contCategoryId:''},
         productList:[],
         pageTool:{
             limit:12,
             offset:0,
             currentPage:1,
             totalPages:0,
-            pageList:[],
-            total:0
+            pageList:[]
         },
-        navBar:{},
         formDO: {},
         formDataDOList: [
             {title: 'Subject', value: ''},
@@ -33,8 +30,7 @@ var vm = new Vue({
             {title: 'Company', value: ''},
             {title: 'Tel', value: ''},
             {title: 'Address', value: ''}
-        ],
-        categoryInfo:{}
+        ]
     },
     methods: {
         init: function () {
@@ -52,21 +48,19 @@ var vm = new Vue({
                 }
             });
         },
-        listProduct: function (contCategoryId,categoryName) {
-            $("#loadgif").show();
+        searchProduct: function () {
             $.ajax({
-                url: "/contXmx/listProductByCategory",
+                url: "/contXmx/searchProductByCategory",
                 type: "post",
                 data: {
                     limit:vm.pageTool.limit,
                     offset:vm.pageTool.offset,
-                    contCategoryId:contCategoryId,
+                    contCategoryId:vm.searchParam.contCategoryId,
+                    searchKey:vm.searchParam.searchKey,
                     langType:vm.langType
                 },
                 success: function (data) {
-                    $("#loadgif").hide();
                     vm.productList=data.rows;
-                    vm.pageTool.total=data.total;
                     vm.pageTool.totalPages=Math.ceil(data.total/vm.pageTool.limit);
                     vm.pageTool.pageList.length = 0;
                     for(var i=1;i<=vm.pageTool.totalPages;i++){
@@ -74,21 +68,6 @@ var vm = new Vue({
                     }
                 }
             });
-
-            $.ajax({
-                url: "/contXmx/getCategoryInfo",
-                type: "post",
-                data: {
-                    contCategoryId:contCategoryId,
-                    langType:vm.langType
-                },
-                success: function (data) {
-                    vm.categoryInfo=data.row;
-                }
-            });
-        },
-        searchProduct:function () {
-            window.location.href="/contXmx/viewSearch?contCategoryId="+vm.searchParam.contCategoryId+"&searchKey="+vm.searchParam.searchKey;
         },
         selectPage:function (page,step) {
            if(page=='currentPage'){

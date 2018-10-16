@@ -10,7 +10,7 @@
 		<result property="createBy" column="create_by"></result>
 		<result property="gmtCreate" column="gmt_create"></result>
 		<result property="gmtModified" column="gmt_modified"></result>
-		<association property="contProductInfoDO" column="{cont_product_id=cont_product_id,lang_type=lang_type}" select="getInfo"/>
+		<association property="contProductInfoDO" column="{cont_product_id=cont_product_id,lang_type=lang_type,searchKey=searchKey}" select="getInfo"/>
 
 		<collection property="contProductImgDOList" column="cont_product_id" ofType="com.cloudht.cont.domain.ContProductImgDO"
 					select="queryImg">
@@ -39,7 +39,7 @@
 
 
 	<select id="listProductByCategory" resultMap="productVO">
-		select #{langType} as lang_type ,
+		select #{langType} as lang_type ,#{searchKey} as searchKey ,
 			B.`cont_product_id`,B.`product_name`,B.`category_id`,B.`sale_status`,B.`create_by`,B.`gmt_create`,B.`gmt_modified`
 		FROM cont_category A,cont_product B
 		WHERE A.cont_category_id = B.category_id
@@ -60,7 +60,7 @@
 
 
 	<select id="listCateProdsByProdId" resultMap="productVO">
-		select #{langType} as lang_type ,
+		select #{langType} as lang_type ,'' as searchKey ,
 		B.`cont_product_id`,B.`product_name`,B.`category_id`,B.`sale_status`,B.`create_by`,B.`gmt_create`,B.`gmt_modified`
 		FROM cont_product B ,cont_product C
 		WHERE B.category_id = C.category_id
@@ -71,7 +71,7 @@
 	</select>
 
 	<select id="listProductByCategoryCode" resultMap="productVO">
-		select #{langType} as lang_type ,
+		select #{langType} as lang_type ,'' as searchKey ,
 		B.`cont_product_id`,B.`product_name`,B.`category_id`,B.`sale_status`,B.`create_by`,B.`gmt_create`,B.`gmt_modified`
 		FROM cont_product B ,cont_category A
 		WHERE A.category_code = #{categoryCode}
@@ -82,10 +82,8 @@
 		</if>
 	</select>
 
-
-
 	<select id="listRecProduct" resultMap="productVO">
-		select #{langType} as lang_type ,
+		select #{langType} as lang_type ,'' as searchKey ,
 		B.`cont_product_id`,B.`product_name`,B.`category_id`,B.`sale_status`,B.`create_by`,B.`gmt_create`,B.`gmt_modified`
 		FROM cont_product B
 		WHERE B.level = #{level}
@@ -94,16 +92,12 @@
 		</if>
 	</select>
 
-
-
-
 	<select id="getProduct" resultMap="productVO">
 		select #{langType} as lang_type ,
 		B.`cont_product_id`,B.`product_name`,B.`category_id`,B.`sale_status`,B.`create_by`,B.`gmt_create`,B.`gmt_modified`
 		FROM cont_product B
 		WHERE B.cont_product_id = #{contProductId}
 	</select>
-	
 
 	<select id="countProductByCategory" resultType="java.lang.Integer">
 		select
@@ -111,11 +105,14 @@
 		FROM cont_category A,cont_product B
 		WHERE A.cont_category_id = B.category_id
 		AND A.category_type = #{categoryType}
-		AND A.cont_category_id in (
-		SELECT #{contCategoryId}
-		union all
-		select C.cont_category_id  FROM cont_category C WHERE C.parent_category_id = #{contCategoryId}
-		)
+
+		<if test="contCategoryId != null and contCategoryId != ''">
+			AND A.cont_category_id in (
+			SELECT #{contCategoryId}
+			union all
+			select C.cont_category_id  FROM cont_category C WHERE C.parent_category_id = #{contCategoryId}
+			)
+		</if>
 	</select>
 
 
@@ -124,6 +121,9 @@
 		FROM cont_product_info A
 		WHERE A.cont_product_id = #{cont_product_id}
 		AND A.`lang_type`= #{lang_type}
+		<if test="searchKey != null and searchKey != null">
+			AND  A.product_name LIKE CONCAT('%',#{searchKey},'%')
+		</if>
 	</select>
 
 	<select id="queryImg" resultType="com.cloudht.cont.domain.ContProductImgDO">

@@ -23,8 +23,7 @@
         <span>You are here:</span>
         <a href="/">Home</a> &raquo;
         <span><a href="/xmx/viewProducts">Products</a> &raquo;</span>
-        <span v-if="navBar.first"><a href="javascript:void(0);" v-on:click="listProduct(navBar.first.contCategoryId,navBar.first.categoryName)">{{navBar.first.categoryName}}</a> &raquo;</span>
-        <span v-if="navBar.second"><a href="javascript:void(0);" v-on:click="listProduct(navBar.second.contCategoryId,navBar.second.categoryName)">{{navBar.second.categoryName}}</a> &raquo;</span>
+        <span><a href="/xmx/viewProducts">search</a> &raquo;</span>
     </div>
     <div id="main">
         <div th:include="include/public :: left"></div><!-- 共用左部部分 -->
@@ -33,15 +32,15 @@
             <div class="board"><strong>Products</strong></div>
             <div class="hcontent">
                 <div class="padd" style="padding-right:32px;">
-                    <h1>Search Keywords “<font color="red">Enter Search Keyword</font>” result as following:</h1>
+                    <h1>Search Keywords “<font color="red">{{searchParam.searchKey}}</font>” result as following:</h1>
                 </div>
                 <div class="clear"></div>
                 <form action="inquiry.asp" method="get" name="Inquire">
                     <div class="showctr">
                         <div style="float:left;width:550px;" align="left">
-                            <input name="chkAll" type="checkbox" id="chkAll" onClick=CheckAll(this.form) value="checkbox">
-                            <input name="image" type="image" src="/xmx/images/inquire_now_en.gif"/>
-                            (Select to inquire products)
+                            <a href="/contXmx/view/a-inquiry" target="_blank">
+                                <img src="/xmx/images/inquire_now_en.gif" style="cursor:pointer;"/>
+                            </a>
                         </div>
                         <div style="float:right;width:150px;"><strong>View:</strong> 
                             <img id="view_list" src="/xmx/images/viewlist.gif" width="15" height="15" title="View List" align="absmiddle"/> 
@@ -51,23 +50,22 @@
 
                     <div style=" width:712px; margin:0 auto">
 
-                        <div class="probox" v-for="(item,index) in productList">
+                        <div class="probox" v-for="(item,index) in productList" v-if="item.contProductInfoDO">
                             <center>
                                 <div class="proimg">
                                     <p><a href="javascript:void(0);" v-on:click="viewProduct(item.contProductId)"
-                                          :title="item.contProductName" rel="nofollow"><img
+                                          :title="item.contProductInfoDO.contProductName" rel="nofollow"><img
                                             :src="item.contProductImgDOList[0].imgUrl" :alt="item.contProductName"
                                             vspace="0" border="0"/></a>
                                     </p>
                                 </div>
-                                <div class="protext"><a href="javascript:void(0);"
-                                                        v-on:click="viewProduct(item.contProductId)" title="turbine blade"
-                                                        rel="nofollow">
+                                <div class="protext">
+                                    <a href="javascript:void(0);" v-on:click="viewProduct(item.contProductId)" title="turbine blade" rel="nofollow">
                                     <h2>{{item.contProductInfoDO.productName}}</h2></a> <span></span></div>
                                 <div class="prodes" style="display:none;" v-html="item.contProductInfoDO.details">
                                     <p>
                                         <input type="checkbox" name="Item" value=""/>
-                                        <a href="/xmx/a-inquiry" target="_blank">
+                                        <a href="/contXmx/view/a-inquiry" target="_blank">
                                             <img src="/xmx/images/inquire_now_en.gif" style="cursor:pointer;"/>
                                         </a>
                                     </p>

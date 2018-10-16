@@ -56,36 +56,36 @@
                                     <table width="100%" border="0" align="left" cellpadding="0" cellspacing="1">
 
                                         <tr>
-                                            <td height="30" align="right" class="color_huise2">{{formDataDOList[0].title}}:</td>
-                                            <td height="30" align="left"><input name="title" type="text" id="title" v-model="formDataDOList[0].value"
+                                            <td height="30" align="right" class="color_huise2">{{mainFormDataDOList[0].title}}:</td>
+                                            <td height="30" align="left"><input name="title" type="text" id="title" v-model="mainFormDataDOList[0].value"
                                                                                 size="40" maxlength="50"
                                                                                 value="turbine wheel /"/>
                                                 <span class="red">*</span></td>
                                         </tr>
                                         <tr>
-                                            <td align="right" class="color_huise2">{{formDataDOList[1].title}}:</td>
+                                            <td align="right" class="color_huise2">{{mainFormDataDOList[1].title}}:</td>
                                             <td align="left"><input type="hidden" name="Products"  value=""/><textarea
-                                                    name="content" cols="80" rows="12" id="content" v-model="formDataDOList[1].value"
+                                                    name="content" cols="80" rows="12" id="content" v-model="mainFormDataDOList[1].value"
                                                     style="height:120px;"></textarea>
                                                 <span class="red">*</span><br/></td>
                                         </tr>
                                         <tr>
-                                            <td width="123" height="30" align="right" class="color_huise2">{{formDataDOList[2].title}}:</td>
+                                            <td width="123" height="30" align="right" class="color_huise2">{{mainFormDataDOList[2].title}}:</td>
                                             <td width="562" height="30" align="left"><input name="name" type="text"
-                                                                                            id="name" size="40" v-model="formDataDOList[2].value"
+                                                                                            id="name" size="40" v-model="mainFormDataDOList[2].value"
                                                                                             maxlength="50"/>
                                                 <span class="red">*</span></td>
                                         </tr>
                                         <tr>
-                                            <td height="30" align="right" class="color_huise2">{{formDataDOList[3].title}}:</td>
-                                            <td height="30" align="left"><input name="email" type="text" id="email" v-model="formDataDOList[3].value"
+                                            <td height="30" align="right" class="color_huise2">{{mainFormDataDOList[3].title}}:</td>
+                                            <td height="30" align="left"><input name="email" type="text" id="email" v-model="mainFormDataDOList[3].value"
                                                                                 size="50" maxlength="50"/>
                                                 <span class="red">*</span></td>
                                         </tr>
                                         <tr>
-                                            <td height="30" align="right" class="color_huise2">{{formDataDOList[4].title}}:</td>
+                                            <td height="30" align="right" class="color_huise2">{{mainFormDataDOList[4].title}}:</td>
                                             <td height="30" align="left">
-                                                <select name="msn" id="msn" v-model="formDataDOList[4].value" />
+                                                <select name="msn" id="msn" v-model="mainFormDataDOList[4].value" />
                                                 <option value="">--------------- Select Country/Region ---------------
                                                 </option>
                                                 <option v-for="countryItem  in countryArr" :value="countryItem.value">{{countryItem.name}}</option>
@@ -93,20 +93,20 @@
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td height="26" align="right" class="color_huise2">{{formDataDOList[5].title}}:</td>
+                                            <td height="26" align="right" class="color_huise2">{{mainFormDataDOList[5].title}}:</td>
                                             <td height="26" align="left"><input name="company_name" type="text"
-                                                                                id="company_name" size="50" v-model="formDataDOList[5].value"
+                                                                                id="company_name" size="50" v-model="mainFormDataDOList[5].value"
                                                                                 maxlength="255"/></td>
                                         </tr>
                                         <tr>
-                                            <td height="26" align="right" class="color_huise2">{{formDataDOList[6].title}}:</td>
-                                            <td height="26" align="left"><input name="tel" type="text" id="tel" v-model="formDataDOList[6].value"
+                                            <td height="26" align="right" class="color_huise2">{{mainFormDataDOList[6].title}}:</td>
+                                            <td height="26" align="left"><input name="tel" type="text" id="tel" v-model="mainFormDataDOList[6].value"
                                                                                 size="40" maxlength="50"/> <span
                                                     class="red">*</span></td>
                                         </tr>
                                         <tr>
-                                            <td height="30" align="right" class="color_huise2">{{formDataDOList[7].title}}:</td>
-                                            <td height="30" align="left"><input name="add" type="text" id="add" v-model="formDataDOList[7].value"
+                                            <td height="30" align="right" class="color_huise2">{{mainFormDataDOList[7].title}}:</td>
+                                            <td height="30" align="left"><input name="add" type="text" id="add" v-model="mainFormDataDOList[7].value"
                                                                                 size="60" maxlength="255"/></td>
                                         </tr>
 
@@ -118,7 +118,7 @@
                                         <tr>
                                             <td align="right">&nbsp;</td>
                                             <td align="left">
-                                                <input name="OK" type="button" class="input_submit" id="OK" v-on:click="submit" value="Submit"/>
+                                                <input name="OK" type="button" class="input_submit" id="OK" v-on:click="mainSubmit" value="Submit"/>
                                                 &nbsp;&nbsp;
                                                 <input name="reset" type="reset" class="input_submit" value="Reset"/>
                                             </td>

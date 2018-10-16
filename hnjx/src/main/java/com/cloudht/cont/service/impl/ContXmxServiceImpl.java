@@ -2,9 +2,11 @@ package com.cloudht.cont.service.impl;
 
 import com.cloudht.blog.domain.ContentDO;
 import com.cloudht.cont.dao.ContCategoryDao;
+import com.cloudht.cont.dao.ContCategoryInfoDao;
 import com.cloudht.cont.dao.ContProductDao;
 import com.cloudht.cont.dao.ContXmxDao;
 import com.cloudht.cont.domain.ContCategoryDO;
+import com.cloudht.cont.domain.ContCategoryInfoDO;
 import com.cloudht.cont.domain.ContProductDO;
 import com.cloudht.cont.service.ContXmxService;
 import com.cloudht.cont.vo.ContProductVO;
@@ -23,6 +25,8 @@ public class ContXmxServiceImpl implements ContXmxService {
 	private ContXmxDao contXmxDao;
 	@Autowired
 	private ContCategoryDao contCategoryDao;
+	@Autowired
+	private ContCategoryInfoDao contCategoryInfoDao;
 	@Autowired
 	private ContProductDao contProductDao;
 
@@ -76,6 +80,11 @@ public class ContXmxServiceImpl implements ContXmxService {
 	@Override
 	public List<ContProductVO> listRecProduct(Map<String, Object> map) {
 		return contXmxDao.listRecProduct(map);
+	}
+
+	@Override
+	public List<ContCategoryInfoDO> listCategoryInfo(Map<String, Object> map) {
+		return contCategoryInfoDao.list(map);
 	}
 
 

@@ -7,11 +7,23 @@ var vm = new Vue({
     el: '#site',
     data: {
         categoryTree: {},
+        searchParam:{searchKey:'',contCategoryId:''},
         contactInfo:{},
         langType: 'english',
         events: [],
         formDO: {},
         formDataDOList: [
+            {title: 'Subject', value: ''},
+            {title: 'Content', value: ''},
+            {title: 'Name', value: ''},
+            {title: 'E-mail', value: ''},
+            {title: 'Country/Region', value: ''},
+            {title: 'Company', value: ''},
+            {title: 'Tel', value: ''},
+            {title: 'Address', value: ''}
+        ],
+        mainFormDO: {},
+        mainFormDataDOList: [
             {title: 'Subject', value: ''},
             {title: 'Content', value: ''},
             {title: 'Name', value: ''},
@@ -281,6 +293,36 @@ var vm = new Vue({
                 }
             });
 
+        },
+        listProduct: function (contCategoryId,categoryName) {
+            //跳转到详情产品页
+            window.location.href="/contXmx/openViewListProduct/"+contCategoryId+"/"+categoryName;
+        },
+        searchProduct:function () {
+            window.location.href="/contXmx/viewSearch?contCategoryId="+vm.searchParam.contCategoryId+"&searchKey="+vm.searchParam.searchKey;
+        },
+        mainSubmit:function () {
+
+            if(!vm.checkadd()){
+                return ;
+            }
+
+            vm.mainFormDO.title="您有新消息了~";
+
+            $.ajax({
+                url: "/cont/contForm/openSave",
+                type: "post",
+                data: {
+                    contForm: JSON.stringify(vm.mainFormDO),
+                    contFormData:JSON.stringify(vm.mainFormDataDOList)
+                },
+                success: function (data) {
+                    if(data.code==0){
+                        //刷新页面
+                        window.location.reload();
+                    }
+                }
+            });
         },
         submit:function () {
 

@@ -33,33 +33,20 @@
             <div class="board"><strong>Products</strong></div>
             <div class="hcontent">
                 <div class="padd" style="padding-right:32px;">
-                    <h2>Stainless steel investment casting</h2>
-                    <div>Total <span class="red">9</span> Product(s)</div>
-                    <div class="cdes">
-                        <img src="/xmx/pic/link/2015-9-16-12-9-51.jpg" alt="Stainless steel investment casting"
-                             align="right"/><span style="font-size: 16px;"><span
-                            style="font-family: 'Times New Roman';"><!--Taiyuan Simis is a leading manufacturer for investment casting in China.&nbsp;<br />-->
-                            Stainless steel investment casting is one of our popular products .<br/>
-                            Our castings :<br/>
-                            The weight : from 0.005KG to 60KG ;<br/>
-                            The size &nbsp; &nbsp; : Max 500mm x 500mm &nbsp;;<br/>
-                            The tolerance : CT4 - CT7 ;<br/>
-                            The surface &nbsp; &nbsp;: Ra 3.2 ;<br/>
-                            Our usual material :<br/>
-                            SUS304 &nbsp; - 1.4301<br/>
-                            SUS304L - 1.4306<br/>
-                            SUS316 &nbsp; - 1.4401<br/>
-                            SUS316L - 1.4404&nbsp;<br/>
-                            </span></span>
-                        <div>&nbsp;</div>
+                    <h2>{{categoryInfo.categoryName}}</h2>
+                    <div>Total <span class="red">{{pageTool.total}}</span> Product(s)</div>
+                    <div class="cdes" v-html="categoryInfo.details">
+
                     </div>
                 </div>
                 <div class="clear"></div>
-                <form action="inquiry.asp" method="get" name="Inquire">
+                <form action="" method="get" name="Inquire">
                     <div class="showctr">
                         <div style="float:left;width:550px;" align="left">
                             <input name="chkAll" type="checkbox" id="chkAll" onClick=CheckAll(this.form) value="checkbox">
-                            <input name="image" type="image" src="/xmx/images/inquire_now_en.gif"/>
+                            <a href="/contXmx/view/a-inquiry" target="_blank">
+                                <img src="/xmx/images/inquire_now_en.gif" style="cursor:pointer;"/>
+                            </a>
                             (Select to inquire products)
                         </div>
                         <div style="float:right;width:150px;"><strong>View:</strong> 
@@ -86,7 +73,7 @@
                                 <div class="prodes" style="display:none;" v-html="item.contProductInfoDO.details">
                                     <p>
                                         <input type="checkbox" name="Item" value=""/>
-                                        <a href="/xmx/a-inquiry" target="_blank">
+                                        <a href="/contXmx/view/a-inquiry" target="_blank">
                                             <img src="/xmx/images/inquire_now_en.gif" style="cursor:pointer;"/>
                                         </a>
                                     </p>
@@ -111,7 +98,7 @@
                             <a href="javascript:void(0);" v-on:click="selectPage('endPage',0)">End</a>
 
                             <select name="page" v-model="pageTool.currentPage" style="border:0;">
-                                <option v-for="(item,index) in pageTool.pageList" @click="selectPage(item,0)">{{item}} Page </option>
+                                <option v-for="(item,index) in pageTool.pageList" @click="selectPage(item,0)" :value="item">{{item}} Page </option>
                             </select>
                         </div>
                     </div>
@@ -123,12 +110,12 @@
     <div class="mainbg"></div>
     <div class="clear"></div>
     <div th:include="include/public :: root"></div><!-- 共用root部分 -->
-
+    <div id="loadgif" style="width:66px;height:66px;position:absolute;top:50%;left:50%;">
+        　　<img  alt="加载中..." src="/img/loading.gif"/>
+    </div>
     <script type="text/javascript" src="/js/appjs/xmx/a-products.js"></script>
     <div class="flinks">Friendly Links:
         &nbsp;
-
-
     </div>
 </div>
 <div>

@@ -4,6 +4,7 @@ package com.cloudht.cont.service;
 
 import com.cloudht.blog.domain.ContentDO;
 import com.cloudht.cont.domain.ContCategoryDO;
+import com.cloudht.cont.domain.ContCategoryInfoDO;
 import com.cloudht.cont.vo.ContProductVO;
 
 import java.util.List;
@@ -30,5 +31,7 @@ public interface ContXmxService {
 	List<ContCategoryDO> listProductDetailNavBar(Map<String,Object> map);
 
 	List<ContProductVO> listRecProduct(Map<String,Object> map);
+
+	List<ContCategoryInfoDO> listCategoryInfo(Map<String,Object> map);
 
 }
