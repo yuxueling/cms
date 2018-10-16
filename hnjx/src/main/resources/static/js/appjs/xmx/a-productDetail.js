@@ -10,6 +10,7 @@ var vm = new Vue({
     el: '#site',
     data: {
         categoryTree:{},
+        contactInfo:{},
         productList:{},
         hotProductList:{},
         langType:'english',
@@ -31,6 +32,7 @@ var vm = new Vue({
                 success: function (data) {
                     vm.categoryTree=data;
                     vm.events=data.state.events;
+                    vm.contactInfo=data.state.contactInfo;
                 }
             });
 

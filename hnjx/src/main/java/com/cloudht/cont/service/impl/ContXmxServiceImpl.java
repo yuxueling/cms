@@ -1,5 +1,6 @@
 package com.cloudht.cont.service.impl;
 
+import com.cloudht.blog.domain.ContentDO;
 import com.cloudht.cont.dao.ContCategoryDao;
 import com.cloudht.cont.dao.ContProductDao;
 import com.cloudht.cont.dao.ContXmxDao;
@@ -76,5 +77,6 @@ public class ContXmxServiceImpl implements ContXmxService {
 	public List<ContProductVO> listRecProduct(Map<String, Object> map) {
 		return contXmxDao.listRecProduct(map);
 	}
+
 
 }

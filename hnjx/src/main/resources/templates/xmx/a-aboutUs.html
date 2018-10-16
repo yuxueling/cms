@@ -1,118 +1,62 @@
-
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 
-<title>Taiyuan Simis Investment Casting</title>
-<meta name="keywords" content="investment casting, lost wax casting, China investment casting" />
-<meta name="description" content="Taiyuan Simis Investment Casting Co., Ltd., is a professional investment casting manufacturer through lost wax casting process in China" />
-<meta name="author" content="Web Design: xiaoyuer QQ:195094303 website: www.shejifang.net" />
-<link href="/xmx/css/css.css" rel="stylesheet" type="text/css"  />
-<script language="javascript" type="text/javascript" src="/xmx/js/comm.js"></script>
-<script language="javascript" type="text/javascript" src="/xmx/js/jquery.js"></script>
+    <title>Taiyuan Simis Investment Casting</title>
+    <meta name="keywords" content="investment casting, lost wax casting, China investment casting"/>
+    <meta name="description"
+          content="Taiyuan Simis Investment Casting Co., Ltd., is a professional investment casting manufacturer through lost wax casting process in China"/>
+    <meta name="author" content="Web Design: xiaoyuer QQ:195094303 website: www.shejifang.net"/>
+    <link href="/xmx/css/css.css" rel="stylesheet" type="text/css"/>
+    <script language="javascript" type="text/javascript" src="/xmx/js/comm.js"></script>
+    <script language="javascript" type="text/javascript" src="/xmx/js/jquery.js"></script>
 
 
-<style type="text/css">
-.hcontent p {
-	padding:20px 10px 0 10px;
-}
-</style>
+    <style type="text/css">
+        .hcontent p {
+            padding: 20px 10px 0 10px;
+        }
+    </style>
 </head>
 <body>
 <div id="site">
-  <div th:include="include/public :: header"></div><!-- 共用顶部部分 -->
-  <div id="curpos"><span>You are here:</span> <a href="index.html">Home</a> &raquo; <a href="about-us.html" title="About Us">About Us</a></div>
-  <div id="main">
-    <div th:include="include/public :: left"></div><!-- 共用左部部分 -->
-    <div id="right">
-      <div class="board"><strong>About Us</strong></div>
-      <div class="hcontent padle">
-        <div>
-        <h1 style="text-align:center;font-size:14pt;margin-left:140pt;">
-				<strong>About A & M Manufacturing Co.Ltd</strong>
-		  </h1>
-      	  <br>
-         <br>
-        <span style="font-size: 14px;font-family: Verdana;">
-        	 Based in the UK, A&M Manufacturing Co.Ltd has over 30 year experience in the 	   foundry and general metal working industry. With over 10 years experience in 	 
-        	 building close relations with Taiwan and China we have a large manufacturing 	 
-        	 network base enabling us to be extremely competitive and at the same time     
-        	 produce parts to the highest quality.	
-        </span>
-       	  <br/>
-				<br/>
-       	  <span style="font-size: 14px;font-family: Verdana;">
-        	We specialize in a wide range of processes including ALL types of casting,  
-        	fabrications, forgings, stampings and machined from solid parts. We can supply 
-        	parts in small, medium and large volume, from class 1 aerospace castings to small 
-        	machined turned parts. At design stage we can advise on both shape and material 
-        	specification.
-        	</span>
-        	<br/>
-			<br/>
-		  <span style="font-size: 14px;font-family: Verdana;">
-				Parts are supplied finished as to drawing requirements ie; including ALL finishing processes.
-			</span>
-			<br/>
-			<br/>	
-			<img src="images/homepage.jpg" alt="">
-			<br/>
-			<br/>							 	 	
-		<h2 style="text-align:center;font-size:16px;margin-left:190pt;">
-				<strong>Metal products supplied</strong>
-			</h2>
-			<br/>
-			<br/>
-			
-		  <span style="font-size: 14px;font-family: Verdana;">
-				Investment Casting, Gravity and Pressure Die Castings, Fabrications, Forgings, Stampings, Lazer and Flame Cutting, MIM (Metal Injection Moulding), Extrusions
-			</span>
-			<br/>
-			<br/>
-		<h2 style="text-align:center;font-size:12pt;margin-left:200pt;">
-				<strong>Machining / Finishing</strong>
-		</h2>
-			<br/>
-			<br/>
-		  <span style="font-size: 14px;font-family: Verdana;">
-				Apart from supplying all the above parts fully machined we also machine components from bar stock including CNC Milling, Turning, Grinding, Lapping, Broaching etc.
-			</span>
-			<br/>
-			<br/>
-		  <span style="font-size: 14px;font-family: Verdana;">
-				All finishing processes are carried out as to your requirements including: Heat treatment, Painting / Powder Coating, Plating, Anodising, Phosphate and Hard Facing, Chemi-Black.
-			</span>
-			<br/>
-			<br/>
-        <div class="clear"></div>
-      </div>
-      <div class="clear"></div>
+    <div th:include="include/public :: header"></div><!-- 共用顶部部分 -->
+    <div id="curpos"><span>You are here:</span> <a href="index.html">Home</a> &raquo; <a href="about-us.html"
+                                                                                         title="About Us">About Us</a>
     </div>
-    <div class="clear"></div>
-  </div>
-  <div class="mainbg"> </div>
-  <div th:include="include/public :: root"></div><!-- 共用root部分 -->
+    <div id="main">
+        <div th:include="include/public :: left"></div><!-- 共用左部部分 -->
+        <div id="right">
+            <div class="board"><strong>About Us</strong></div>
+            <div class="hcontent padle">
+                <div v-for="(item,index) in contentList" v-html="item.content"></div>
+                <div class="clear"></div>
+            </div>
+            <div class="clear"></div>
+        </div>
+        <div class="mainbg"></div>
+        <div th:include="include/public :: root"></div><!-- 共用root部分 -->
 
-	  <script type="text/javascript" src="/js/appjs/xmx/a-aboutUs.js"></script>
+        <script type="text/javascript" src="/js/appjs/xmx/a-aboutUs.js"></script>
 
-<div class="flinks">Friendly Links:
-&nbsp;
+        <div class="flinks">Friendly Links:
+            &nbsp;
+        </div>
+    </div>
+    <div>
+        <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+        document.write(unescape("%3Cspan id='cnzz_stat_icon_1254565334'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s95.cnzz.com/z_stat.php%3Fid%3D1254565334%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));</script>
+    </div>
 
-
-
-
-  </div>
-</div>
-<div><script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1254565334'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s95.cnzz.com/z_stat.php%3Fid%3D1254565334%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));</script></div>
-
-<noscript>
-<iframe scr="*.htm"></iframe>
-</noscript>
-<script language="JavaScript">
-document.oncontextmenu=new Function("event.returnValue=true;");
-document.onselectstart=new Function("event.returnValue=true;");
-</script>
+    <noscript>
+        <iframe scr="*.htm"></iframe>
+    </noscript>
+    <script language="JavaScript">
+        document.oncontextmenu = new Function("event.returnValue=true;");
+        document.onselectstart = new Function("event.returnValue=true;");
+    </script>
 
 </body>
 </html>

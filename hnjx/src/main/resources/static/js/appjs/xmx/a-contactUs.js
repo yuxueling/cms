@@ -1,5 +1,4 @@
-
-$(function(){
+$(function () {
     vm.init();
     vm.listContent();
 });
@@ -7,11 +6,11 @@ $(function(){
 var vm = new Vue({
     el: '#site',
     data: {
-        categoryTree:{},
-        contactInfo:{},
-        langType:'english',
-        contentList:[],
-        events:[]
+        categoryTree: {},
+        contactInfo: {},
+        langType: 'english',
+        contentList: [],
+        events: []
     },
     methods: {
         init: function () {
@@ -23,29 +22,29 @@ var vm = new Vue({
                     langType: vm.langType
                 },
                 success: function (data) {
-                    vm.categoryTree=data;
-                    vm.events=data.state.events;
-                    vm.contactInfo=data.state.contactInfo;
+                    vm.categoryTree = data;
+                    vm.events = data.state.events;
+                    vm.contactInfo = data.state.contactInfo;
                 }
             });
 
         },
-        listProduct: function (contCategoryId,categoryName) {
+        listProduct: function (contCategoryId, categoryName) {
             //跳转到详情产品页
-            window.location.href="/contXmx/openViewListProduct/"+contCategoryId+"/"+categoryName;
+            window.location.href = "/contXmx/openViewListProduct/" + contCategoryId + "/" + categoryName;
         },
         listContent: function () {
             $.ajax({
                 url: "/contXmx/listContent",
                 type: "post",
                 data: {
-                    limit:10,
-                    offset:0,
-                    type:'aboutUs',
-                    langType:vm.langType
+                    limit: 10,
+                    offset: 0,
+                    type: 'contactUs',
+                    langType: vm.langType
                 },
                 success: function (data) {
-                    vm.contentList=data.rows;
+                    vm.contentList = data.rows;
                 }
             });
         }

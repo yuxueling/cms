@@ -207,4 +207,22 @@ public class ContXmxController extends BaseController {
 		return R.ok().put("rows",contCategoryDOList);
 	}
 
+
+	/**
+	 * 获取文章列表
+	 * @param params
+	 * @return
+	 */
+	@RequestMapping("/listContent")
+	@ResponseBody
+	public PageUtils listContent(@RequestParam Map<String, Object> params){
+		//查询列表数据
+		Query query = new Query(params);
+		List<ContentDO> contentDOList = bContentService.list(query);
+		int total = bContentService.count(query);
+		PageUtils pageUtils = new PageUtils(contentDOList, total);
+		return pageUtils;
+	}
+
+
 }

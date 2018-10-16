@@ -2,8 +2,8 @@
     <div id="topline">
         investment casting|lost wax casting|aluminum investment casting|vacuum investment casting|stainless steel
         investment casting|steel investment casting|.
-	</div>
-	<div id="top">
+    </div>
+    <div id="top">
         <div id="logo"><a href="index.html" title="A&M Manufacturing Co.Ltd"><img src="/xmx/images/logo.png"
                                                                                   alt="A&M Manufacturing Co.Ltd"
                                                                                   border="0"/></a></div>
@@ -40,7 +40,7 @@
             </form>
         </div>
     </div>
-	<!-- ================菜单栏开始================ -->
+    <!-- ================菜单栏开始================ -->
     <div class="menu">
         <ul>
             <li><a title="Home" href="/" rel="nofollow"><strong>Home</strong></a></li>
@@ -48,11 +48,13 @@
             <li style="z-index: 555;"><a class="hide" href="/contXmx/view/a-products"><b>Products</b></a>
                 <ul>
                     <li v-for="(item,index) in categoryTree.children">
-                        <a class="hide" href="#" :title="item.text">{{item.text}}</a>
+                        <a class="hide" href="#" v-on:click="listProduct(item.id,item.text)" :title="item.text">{{item.text}}</a>
                         <ul>
-                            <li v-for="(item2,index2) in item.children"><a href="#" :title="item2.text">{{item2.text}}</a></li>
+                            <li v-for="(item2,index2) in item.children"><a href="#"
+                                                                           v-on:click="listProduct(item2.id,item2.text)"
+                                                                           :title="item2.text">{{item2.text}}</a></li>
                         </ul>
-                    </li> 
+                    </li>
                 </ul>
             </li>
             <li><a title="News" href="/contXmx/view/a-news"><b>News</b></a></li>
@@ -64,57 +66,55 @@
     <div class="maint"></div>
 </div><!-- 顶部部分结束 -->
 <div th:fragment="left"><!-- 左侧部分开始 -->
-	<div id="left">
-	    <div class="lefttop"></div>
-            <div class="ltit" v-on:click="init"><strong>Products Catagories</strong></div>
-            <div id="nav">
-                <div class="navmid">
-                    <dl>
-                        <dt v-for="(item,index) in categoryTree.children">
-                            <ul>
-                                <!--一级分类-->
-                                <li><a href="javascript:void(0);" v-on:click="listProduct(item.id,item.text)" :title="item.text">
-                                    <h2>{{item.text}}</h2>
-                                </a>&nbsp;(9)
-                                </li>
-                                <!--二级分类-->
-                                <li v-for="(item2,index2) in item.children">
-                                    <a href="javascript:void(0);" v-on:click="listProduct(item2.id,item2.text)" :title="item2.text"><p>{{item2.text}}</p></a>&nbsp;(4)
-                                </li>
-                            </ul>
-                        </dt>
-                    </dl>
-                </div>
-            </div>
-            <!-- =============新闻与事件================ -->
-            <div class="ltit"><strong>News &amp; Events</strong></div>
-            <div class="contactBox">
-                <div id="i_news">
-                    <div class="inner">
+    <div id="left">
+        <div class="lefttop"></div>
+        <div class="ltit" v-on:click="init"><strong>Products Catagories</strong></div>
+        <div id="nav">
+            <div class="navmid">
+                <dl>
+                    <dt v-for="(item,index) in categoryTree.children">
                         <ul>
-                            <li v-for="(event,index) in events">
-                                <h2><a :href="'/contXmx/openViewNewsDetail/'+event.cid">{{event.title}}</a></h2>
-                                <span class="time" style="padding-left:15px;">{{event.gtmModified}}</span>
-                                <!--<p style="padding-left:15px;">Our SIMIS just get the TUV Certificate and Alibaba Assessed Supplier ....</p>-->
+                            <!--一级分类-->
+                            <li><a href="javascript:void(0);" v-on:click="listProduct(item.id,item.text)"
+                                   :title="item.text">
+                                <h2>{{item.text}}</h2>
+                            </a>&nbsp;(9)
+                            </li>
+                            <!--二级分类-->
+                            <li v-for="(item2,index2) in item.children">
+                                <a href="javascript:void(0);" v-on:click="listProduct(item2.id,item2.text)"
+                                   :title="item2.text"><p>{{item2.text}}</p></a>&nbsp;(4)
                             </li>
                         </ul>
-                    </div>
-                </div>
-                <div class="clear"></div>
+                    </dt>
+                </dl>
             </div>
-            <!-- ================新闻与事件结束,联系信息开始=================== -->
-            <div class="ltit"><strong>Contact Information</strong></div>
-            <div class="contactBox">
-		    <span style="padding:0 0 10px 10px;"><strong>A&M Manufacturing Co.Ltd</strong><br/><strong>Add:</strong>&nbsp;Taiyuan City, Shanxi Province, China<br/>
-		    <strong>Tel.:</strong>&nbsp;0086-351-4063799<br/><strong>Email:</strong>&nbsp;<a
-		                href="mailto:market@investment-casting.biz">market@investment-casting.biz</a><br/><strong>Web:</strong>&nbsp;<a
-		                href="http://www.investment-casting.biz"
-		                title="Add to your favorates">http://www.investment-casting.biz</a><br/>
-		    </span>
-                <center><a href="contact-us.html"><img src="/xmx/images/contact_now.gif"/></a></center><br/>
-	        <div class="clear"></div>
-	    </div>
-	</div>
+        </div>
+        <!-- =============新闻与事件================ -->
+        <div class="ltit"><strong>News &amp; Events</strong></div>
+        <div class="contactBox">
+            <div id="i_news">
+                <div class="inner">
+                    <ul>
+                        <li v-for="(event,index) in events">
+                            <h2><a :href="'/contXmx/openViewNewsDetail/'+event.cid">{{event.title}}</a></h2>
+                            <span class="time" style="padding-left:15px;">{{event.gtmModified}}</span>
+                            <!--<p style="padding-left:15px;">Our SIMIS just get the TUV Certificate and Alibaba Assessed Supplier ....</p>-->
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="clear"></div>
+        </div>
+        <!-- ================新闻与事件结束,联系信息开始=================== -->
+        <div class="ltit"><strong>Contact Information</strong></div>
+        <div class="contactBox">
+            <div v-html="contactInfo.content"></div>
+            <center><a href="contact-us.html"><img src="/xmx/images/contact_now.gif"/></a></center>
+            <br/>
+            <div class="clear"></div>
+        </div>
+    </div>
 </div><!-- 左侧部分结束 -->
 <div th:fragment="root"><!-- 底部开始 -->
     <div id="root">
@@ -132,7 +132,8 @@
         <div class="trans"><a href="javascript:translator('en|en')"><img src="/xmx/images/english.gif" width="15"
                                                                          height="11"
                                                                          align="absmiddle"/> English</a>
-            <a href="javascript:translator('en|de')"><img src="/xmx/images/deutsch1.gif" width="15" height="11" align="absmiddle"/> German</a>
+            <a href="javascript:translator('en|de')"><img src="/xmx/images/deutsch1.gif" width="15" height="11"
+                                                          align="absmiddle"/> German</a>
             <a href="javascript:translator('en|es')"><img src="/xmx/images/espanol.gif" width="15" height="11"
                                                           align="absmiddle"/> Spanish</a>
             <a href="javascript:translator('en|fr')"><img src="/xmx/images/francies.gif" width="15" height="11"

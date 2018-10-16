@@ -7,6 +7,7 @@ var vm = new Vue({
     el: '#site',
     data: {
         categoryTree: {},
+        contactInfo:{},
         langType: 'english',
         events: [],
         formDO: {},
@@ -276,6 +277,7 @@ var vm = new Vue({
                 success: function (data) {
                     vm.categoryTree = data;
                     vm.events = data.state.events;
+                    vm.contactInfo = data.state.contactInfo;
                 }
             });
 

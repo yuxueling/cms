@@ -1,7 +1,7 @@
 
 $(function(){
     vm.init();
-    vm.openGet();
+    vm.listNews();
 });
 
 var vm = new Vue({
@@ -9,10 +9,17 @@ var vm = new Vue({
     data: {
         categoryTree:{},
         contactInfo:{},
-        product:{},
         langType:'english',
         events:[],
-        contentDO:{}
+        newsList:[],
+        pageTool:{
+            limit:12,
+            offset:0,
+            currentPage:1,
+            currentLength:0,
+            totalPages:0,
+            pageList:[]
+        }
     },
     methods: {
         init: function () {
@@ -32,18 +39,26 @@ var vm = new Vue({
 
         },
         listProduct: function (contCategoryId,categoryName) {
-
             //跳转到详情产品页
             window.location.href="/contXmx/openViewListProduct/"+contCategoryId+"/"+categoryName;
-
         },
-        openGet:function () {
+        listNews: function () {
             $.ajax({
-                url: "/contXmx/openGetNewsDetail",
-                type: "get",
+                url: "/contXmx/listContent",
+                type: "post",
+                data: {
+                    limit:vm.pageTool.limit,
+                    offset:vm.pageTool.offset,
+                    type:'news',
+                    langType:vm.langType
+                },
                 success: function (data) {
-                    if(data.code==0){
-                        vm.contentDO=data.row;
+                    vm.newsList=data.rows;
+                    vm.pageTool.currentLength=data.rows.length;
+                    vm.pageTool.totalPages=Math.ceil(data.total/vm.pageTool.limit);
+                    vm.pageTool.pageList.length = 0;
+                    for(var i=1;i<=vm.pageTool.totalPages;i++){
+                        vm.pageTool.pageList.push(i);
                     }
                 }
             });

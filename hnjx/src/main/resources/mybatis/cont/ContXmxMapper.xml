@@ -20,7 +20,7 @@
 		</collection>
 	</resultMap>
 
-	<resultMap id="paramList" type="com.cloudht.cont.domain.ContProductParamDO">
+	<resultMap id="paramDO" type="com.cloudht.cont.domain.ContProductParamDO">
 		<id property="contProductParamId" column="cont_product_param_id"></id>
 		<result property="contProductId" column="cont_product_id"></result>
 		<result property="langType" column="lang_type"></result>
@@ -132,7 +132,7 @@
 		where cont_product_id = #{cont_product_id}
 	</select>
 
-	<select id="queryParam" resultMap="paramList">
+	<select id="queryParam" resultMap="paramDO">
 		select `cont_product_param_id`,`cont_product_id`,`lang_type`,`param_name`,`limit_num`,`sort`,`create_by`,`gmt_create`,`gmt_modified` from cont_product_param
 		WHERE cont_product_id = #{cont_product_id} AND lang_type = #{lang_type}
 	</select>

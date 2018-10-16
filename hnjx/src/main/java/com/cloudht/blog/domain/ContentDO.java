@@ -32,7 +32,7 @@ public class ContentDO implements Serializable {
 	//标签
 	private String tags;
 	//分类
-	private String categories;
+		private String categories;
 	//
 	private Integer hits;
 	//评论数量

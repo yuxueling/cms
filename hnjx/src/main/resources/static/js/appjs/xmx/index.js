@@ -7,13 +7,15 @@ var vm = new Vue({
     el: '#site',
     data: {
         categoryTree:{},
+        contactInfo:{},
         productList:[],
         limit:100,
         offset:0,
         contCategoryId:0,
         langType:'english',
         categoryName:'',
-        events:[]
+        events:[],
+        contentList: []
     },
     methods: {
         init: function () {
@@ -29,6 +31,7 @@ var vm = new Vue({
                     var contCategoryId = data.children[0].id;
                     var categoryName = data.children[0].text;
                     vm.events=data.state.events;
+                    vm.contactInfo=data.state.contactInfo;
                     //初始化产品
                     vm.listProduct(contCategoryId,categoryName);
                 }
@@ -53,6 +56,21 @@ var vm = new Vue({
         },
         viewProduct:function (contProductId) {
             window.location.href="/contXmx/showProduct/"+contProductId;
+        },
+        listContent: function () {
+            $.ajax({
+                url: "/contXmx/listContent",
+                type: "post",
+                data: {
+                    limit: 10,
+                    offset: 0,
+                    type: 'contactUs',
+                    langType: vm.langType
+                },
+                success: function (data) {
+                    vm.contentList = data.rows;
+                }
+            });
         }
 
     }

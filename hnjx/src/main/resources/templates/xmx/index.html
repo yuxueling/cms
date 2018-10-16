@@ -234,17 +234,8 @@
                 Us</strong></div>
             <div class="hcontent">
                 <div class="comInfo">
-                    <div>
-                        Based in the UK, A&M Manufacturing Co.Ltd has over 30 year experience in the foundry and general
-                        metal working industry. With over 10 years experience in building close relations with Taiwan
-                        and China we have a large manufacturing network base enabling us to be extremely competitive and
-                        at the same time produce parts to the highest quality.<br>
-                        We specialize in a wide range of processes including ALL types of casting, fabrications,
-                        forgings, stampings and machined from solid parts. We can supply parts in small, medium and
-                        large volume, from class 1 aerospace castings to small machined turned parts. At design stage we
-                        can advise on both shape and material specification.
-                    </div>
-                    ...[<a href="about-us.html" style="color:#FF9900">more</a>]
+                    <div v-for="(item,index) in contentList" v-html="item.content"></div>
+                    ...[<a href="/view/a-aboutUs" style="color:#FF9900">more</a>]
                     <div class="clear"></div>
                 </div>
             </div>

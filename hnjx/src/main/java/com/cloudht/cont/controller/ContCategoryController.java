@@ -178,11 +178,25 @@ public class ContCategoryController extends BaseController {
     Tree<ContCategoryDO> treeInfo(@RequestParam Map<String, Object> params) {
     	Tree<ContCategoryDO> treeInfo = this.contCategoryService.getTreeInfo(params);
     	{
-    		String categories  = params.get("langType").toString();
-    		params.clear();params.put("categories", categories);
+    		String langType  = params.get("langType").toString();
+    		params.clear();
+    		params.put("langType", langType);
+    		params.put("type","news");
     		List<ContentDO> list = this.contentService.list(params);
     		treeInfo.getState().put("events", list);
     	}
+        {
+            String langType  = params.get("langType").toString();
+            params.clear();
+            params.put("langType", langType);
+            params.put("type","contactInfo");
+            List<ContentDO>  contactInfoList= this.contentService.list(params);
+            if(contactInfoList!=null &&  !contactInfoList.isEmpty()){
+                treeInfo.getState().put("contactInfo", contactInfoList.get(0));
+            }else {
+                treeInfo.getState().put("contactInfo", new ContentDO());
+            }
+        }
         return treeInfo;
     }
 
