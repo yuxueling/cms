@@ -14,9 +14,10 @@ import java.util.Date;
  */
 public class ContentDO implements Serializable {
 	private static final long serialVersionUID = 1L;
-	
 	//
 	private Long cid;
+	/**语言类型*/
+	private String langType;
 	//标题
 	private String title;
 	//
@@ -63,6 +64,14 @@ public class ContentDO implements Serializable {
 	 */
 	public Long getCid() {
 		return cid;
+	}
+	/**语言类型*/
+	public void setLangType(String langType) {
+		this.langType=langType;
+	}
+	/**语言类型*/
+	public String getLangType() {
+		return this.langType;
 	}
 	/**
 	 * 设置：标题

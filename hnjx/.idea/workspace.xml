@@ -127,9 +127,9 @@
         <option value="$PROJECT_DIR$/src/main/resources/static/js/appjs/xmx/a-inquiry.js" />
         <option value="$PROJECT_DIR$/src/main/java/com/cloudht/cont/service/ContXmxService.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/cloudht/cont/service/impl/ContXmxServiceImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/cloudht/cont/controller/ContXmxController.java" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/xmx/a-products.html" />
         <option value="$PROJECT_DIR$/src/main/resources/static/js/appjs/xmx/a-products.js" />
+        <option value="$PROJECT_DIR$/src/main/java/com/cloudht/cont/controller/ContXmxController.java" />
       </list>
     </option>
   </component>
@@ -215,6 +215,25 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="cloudht" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="hnjx" type="b2602c69:ProjectViewProjectNode" />
+              <item name="hnjx" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="cloudht" type="462c0819:PsiDirectoryNode" />
+              <item name="cont" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="hnjx" type="b2602c69:ProjectViewProjectNode" />
+              <item name="hnjx" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="cloudht" type="462c0819:PsiDirectoryNode" />
+              <item name="cont" type="462c0819:PsiDirectoryNode" />
+              <item name="controller" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -349,12 +368,12 @@
       <workItem from="1539587058071" duration="8482000" />
       <workItem from="1539597201024" duration="294000" />
       <workItem from="1539618133753" duration="3115000" />
-      <workItem from="1539651020651" duration="20821000" />
+      <workItem from="1539651020651" duration="21156000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="166444000" />
+    <option name="totallyTimeSpent" value="166779000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -591,14 +610,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/cloudht/system/controller/MianController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="138">
-          <caret line="29" column="40" lean-forward="false" selection-start-line="29" selection-start-column="40" selection-end-line="29" selection-end-column="40" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/com/sxyht/ftcsp-common/0.0.1-SNAPSHOT/ftcsp-common-0.0.1-SNAPSHOT.jar!/com/sxyht/common/utils/PageUtils.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="219">
@@ -807,14 +818,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/cloudht/cont/controller/ContXmxController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="318">
-          <caret line="279" column="28" lean-forward="false" selection-start-line="279" selection-start-column="13" selection-end-line="279" selection-end-column="28" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/cloudht/cont/domain/ContCategoryInfoDO.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="252">
@@ -842,6 +845,22 @@
             <element signature="e#3675#4283#0" expanded="false" />
             <element signature="e#4314#5445#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/cloudht/system/controller/MianController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="207">
+          <caret line="34" column="5" lean-forward="true" selection-start-line="34" selection-start-column="5" selection-end-line="34" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/cloudht/cont/controller/ContXmxController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="299">
+          <caret line="220" column="0" lean-forward="true" selection-start-line="220" selection-start-column="0" selection-end-line="220" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>

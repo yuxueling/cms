@@ -1,10 +1,9 @@
 package com.cloudht.common.domain;
 
+import com.cloudht.common.utils.ipAddress.IpAddressUtils;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 import java.util.Date;
-
-import org.lionsoul.ip2region.IpAddressUtils;
 
 public class LogDO {
 	private Long id;

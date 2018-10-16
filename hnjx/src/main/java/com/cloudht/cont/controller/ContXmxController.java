@@ -2,6 +2,7 @@ package com.cloudht.cont.controller;
 
 import com.cloudht.blog.domain.ContentDO;
 import com.cloudht.blog.service.ContentService;
+import com.cloudht.common.annotation.Log;
 import com.cloudht.common.controller.BaseController;
 
 import com.cloudht.common.domain.DictDO;
@@ -60,7 +61,6 @@ public class ContXmxController extends BaseController {
 	}
 
 
-
 	/**
 	 * 根据语种\类别\产品名称模糊查询产品（仅支持到两级类别查询）
 	 * http://localhost:8084/contXmx/searchProductByCategory?limit=10&offset=0&contCategoryId=2&langType=simChinese&searchKey=yuthf
@@ -97,6 +97,8 @@ public class ContXmxController extends BaseController {
 
 
 
+
+	@Log("/xmx/*")
 	@GetMapping("/showProduct/{contProductId}")
 	String showProduct(@PathVariable("contProductId") Integer contProductId){
  		getSession().setAttribute("contProductId",contProductId);
@@ -197,6 +199,7 @@ public class ContXmxController extends BaseController {
 	 * @param target
 	 * @return
 	 */
+	@Log("/xmx/*") 
 	@GetMapping("/view/{target}")
 	public String view(@PathVariable("target") String target) {
 		return "xmx/"+target;
