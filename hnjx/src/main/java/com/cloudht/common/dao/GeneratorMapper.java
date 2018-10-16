@@ -3,6 +3,7 @@ package com.cloudht.common.dao;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 
 public interface GeneratorMapper {
@@ -22,7 +23,7 @@ public interface GeneratorMapper {
 	int count(Map<String, Object> map);
 
 	/**
-	 * 查看当前使用库指定表的一些信息
+	 * 查看指定表的表信息
 	 * @param tableName
 	 * @return
 	 */
@@ -31,11 +32,18 @@ public interface GeneratorMapper {
 	Map<String, String> get(String tableName);
 
 	/**
-	 * 查看当前使用库指定表的所有字段
+	 * 查看指定表的所有字段
 	 * @param tableName
 	 * @return
 	 */
 	@Select("select column_name columnName, data_type dataType, column_comment columnComment, column_key columnKey, extra from information_schema.columns\r\n"
 			+ " where table_name = #{tableName} and table_schema = (select database()) order by ordinal_position")
 	List<Map<String, String>> listColumns(String tableName);
+	/**
+	 * 将指定表的所有数据返回
+	 * @param tableName
+	 * @return
+	 */
+	@Select("select * from ${tableName}")
+	List<Map<String, String>> listDatas(@Param("tableName") String tableName);
 }
