@@ -51,7 +51,7 @@ public class ContentController extends BaseController {
 	@RequiresPermissions("blog:bContent:add")
 	String add(Model model) {
 		model.addAttribute("langTypes", this.dictService.listByType("CmsLangType"));//将语言类型放到前台
-		model.addAttribute("newsTypes", this.dictService.listByType("newsType"));
+		model.addAttribute("newsTypes", this.dictService.listByType("cmsNewsType"));
 		return "blog/bContent/add";
 	}
 

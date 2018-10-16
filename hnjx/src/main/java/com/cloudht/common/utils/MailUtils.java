@@ -29,7 +29,7 @@ public class MailUtils {
     public static String activeUrl = "http://localhost:9003/bos_fore/customer_activeMail";
     @Autowired private static DictService dictService;
     public static void setMailSite() {
-    	List<DictDO> listByType = dictService.listByType("mail");
+    	List<DictDO> listByType = dictService.listByType("cmsMail");
     	for(DictDO dictDO:listByType) {
     		if("smtp_host".equals(dictDO.getName()))
     			smtp_host=dictDO.getValue();
