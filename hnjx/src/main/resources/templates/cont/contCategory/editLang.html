@@ -29,6 +29,30 @@
 						</div>
 					</form>
 				</div>
+
+				<!-- 模态框（Modal） -->
+				<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+					 aria-hidden="true">
+					<div class="modal-dialog" style="width:90%;">
+						<div class="modal-content">
+							<div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;
+								</button>
+								<h4 class="modal-title" id="myModalLabel">详情</h4>
+							</div>
+							<div class="modal-body">
+								<div class="ibox-content no-padding">
+									<div id="content_sn" class="summernote"></div>
+								</div>
+							</div>
+							<div class="modal-footer">
+								<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+								<button type="button" class="btn btn-primary" onclick="changeDetails()" >提交更改</button>
+							</div>
+						</div>
+					</div>
+				</div>
+
 			</div>
 		</div>
 	</div>
@@ -36,6 +60,12 @@
 <div th:include="include::footer"></div>
 <script th:inline="javascript">
 
+
+    $().ready(function () {
+        vm.summernote();
+        var details = vm.rows[vm.activeIndex].details;
+        $('#content_sn').summernote('code', details);
+    });
 
     var _contCategoryId = [[${contCategoryId}]];
     var _rows = [[${rows}]];
@@ -54,12 +84,14 @@
                     if (langType == this.rows[i].langType) {
                         this.activeIndex = i;
 
+                        var details = this.rows[i].details;
+                        $('#content_sn').summernote('code', details);
+
                         break;
                     }
                 }
             } ,
             saveInfo: function (index) {
-				debugger;
                 $.ajax({
                     type: "POST",
                     url: "/cont/contCategory/saveInfo?contCategoryId="+_contCategoryId,
@@ -71,6 +103,24 @@
                             var index = parent.layer.getFrameIndex(window.name); // 获取窗口索引
                             parent.layer.close(index);
 
+                        }
+                    }
+                });
+            },
+            changeDetails: function () {
+
+                var content_sn = $("#content_sn").summernote('code');
+                this.rows[this.activeIndex].details = content_sn;
+
+                $('#myModal').modal('hide');
+            },
+            summernote: function () {
+                $('.summernote').summernote({
+                    height: '220px',
+                    lang: 'zh-CN',
+                    callbacks: {
+                        onImageUpload: function (files, editor, $editable) {
+                            sendFile(files);
                         }
                     }
                 });
