@@ -1,5 +1,4 @@
-ftcsp:
-  uploadPath: D:/ProgramData/htfq_crm/
+uploadPath: D:/ProgramData/hnjx/
 logging:
   level:
     root: info

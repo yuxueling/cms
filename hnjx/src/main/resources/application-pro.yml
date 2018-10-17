@@ -1,5 +1,4 @@
-ftcsp:
-  uploadPath: /var/uploaded_files/
+uploadPath: D:/ProgramData/htfq_crm/
 logging:
   level:
     root: error
@@ -9,8 +8,8 @@ spring:
     type: com.alibaba.druid.pool.DruidDataSource
     driverClassName: com.mysql.jdbc.Driver
     url: jdbc:mysql://122.114.163.201/htfq?useUnicode=true&characterEncoding=utf8
-    username: htfq
-    password: jzuihytrtffglkjvmbrif
+    username: danteng
+    password: jfjjgg
     initialSize: 1
     minIdle: 3
     maxActive: 20

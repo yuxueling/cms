@@ -1,7 +1,7 @@
 package com.cloudht.common.service.impl;
 
-import com.cloudht.common.config.FtcspConfig;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import java.io.File;
@@ -19,8 +19,7 @@ public class FileServiceImpl implements FileService {
 	@Autowired
 	private FileDao sysFileMapper;
 
-	@Autowired
-	private FtcspConfig ftcspConfig;
+	@Value("${uploadPath}") String uploadPath;
 	@Override
 	public FileDO get(Long id){
 		return sysFileMapper.get(id);
@@ -61,7 +60,7 @@ public class FileServiceImpl implements FileService {
 		Boolean isExist = false;
 		if (!StringUtils.isEmpty(url)) {
 			String filePath = url.replace("/files/", "");
-			filePath = ftcspConfig.getUploadPath() + filePath;
+			filePath = this.uploadPath + filePath;
 			File file = new File(filePath);
 			if (file.exists()) {
 				isExist = true;
