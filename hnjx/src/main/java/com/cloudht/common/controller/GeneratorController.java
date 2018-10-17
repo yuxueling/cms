@@ -1,6 +1,7 @@
 package com.cloudht.common.controller;
 
 import com.alibaba.fastjson.JSON;
+import com.cloudht.common.dao.GeneratorMapper;
 import com.cloudht.common.service.GeneratorService;
 import com.cloudht.common.utils.GenUtils;
 import com.sxyht.common.utils.R;
@@ -16,10 +17,16 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipOutputStream;
 
 @RequestMapping("/common/generator")
 @Controller
@@ -27,10 +34,16 @@ public class GeneratorController {
 	String prefix = "common/generator";
 	@Autowired
 	GeneratorService generatorService;
+	@Autowired  GeneratorMapper generatorMapper;
 
 	@GetMapping()
 	String generator() {
 		return prefix + "/list";
+	}
+	
+	@GetMapping("/backupRestore")
+	String backupRestoreView() {
+		return prefix + "/backupRestore";
 	}
 
 	@ResponseBody
@@ -60,6 +73,52 @@ public class GeneratorController {
 		byte[] data = generatorService.generatorCode(tableNames);
 		response.reset();
 		response.setHeader("Content-Disposition", "attachment; filename=\"cloudht.zip\"");
+		response.addHeader("Content-Length", "" + data.length);
+		response.setContentType("application/octet-stream; charset=UTF-8");
+
+		IOUtils.write(data, response.getOutputStream());
+	}
+	
+	@RequestMapping("/batchBackup")
+	public void batchBackup(HttpServletRequest request, HttpServletResponse response, String tables) throws IOException {
+		String[] tableNames = new String[] {};
+		tableNames = JSON.parseArray(tables).toArray(tableNames);//将前端传来的表名转换成数组
+		ByteArrayOutputStream outputStream = new ByteArrayOutputStream();//字节数组输入流
+		ZipOutputStream zip = new ZipOutputStream(outputStream);//zip输入流
+		for(String tableName : tableNames){//遍历传来的每一张表
+			List<Map<String,String>> listDatas = generatorMapper.listDatas(tableName);
+			List<String> listStrings=new ArrayList<String>();
+			zip.putNextEntry(new ZipEntry(tableName+".sql"));
+			//update 表名 set 字段名=值,字段名=值... where 条件;
+			//insert into 表名 (列名1,列名2...) values (值1,值2...);值是字符串或日期要加引号
+			for(Map<String,String> map:listDatas) {
+				StringBuffer sbf= new StringBuffer();
+				sbf.append("insert into " +tableName+" (" );
+				Set<String> keySet = map.keySet();
+				for(String str3:keySet) {
+					sbf.append(str3+",");
+				}
+				sbf.deleteCharAt(sbf.lastIndexOf(","));//删除最后一个逗号
+				sbf.append(") values (");
+				for(String str3:keySet) {
+					sbf.append(map.get(str3+","));
+				}
+				sbf.deleteCharAt(sbf.lastIndexOf(","));//删除最后一个逗号
+				sbf.append(");");
+				listStrings.add(sbf.toString());
+			}
+			IOUtils.write(listStrings.toString(), zip, "UTF-8");
+			//查询表信息
+			//Map<String, String> table = generatorMapper.get(tableName);
+			//查询列信息
+			//List<Map<String, String>> columns = generatorMapper.listColumns(tableName);
+			//生成代码
+			//GenUtils.generatorCode(table, columns, zip);
+		}
+		IOUtils.closeQuietly(zip);
+		byte[] data = outputStream.toByteArray();
+		response.reset();
+		response.setHeader("Content-Disposition", "attachment; filename=\"sxyhton.zip\"");
 		response.addHeader("Content-Length", "" + data.length);
 		response.setContentType("application/octet-stream; charset=UTF-8");
 

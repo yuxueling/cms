@@ -5,8 +5,6 @@ import java.io.Serializable;
 
 
 /**
- * 
- * 
  * @author yuxueling
  * @email 980899486@qq.com
  * @date 2018-09-29 08:43:59
@@ -22,6 +20,8 @@ public class ContCategoryInfoDO implements Serializable {
 	private String langType;
 	//类别名称
 	private String categoryName;
+	//详情
+	private String details;
 	//数据库里没有，辅助显示语种的
 	private String langName;
 	/**
@@ -71,6 +71,18 @@ public class ContCategoryInfoDO implements Serializable {
 	 */
 	public String getCategoryName() {
 		return categoryName;
+	}
+	/**
+	 * 设置：详情
+	 */
+	public void setDetails(String details) {
+		this.details = details;
+	}
+	/**
+	 * 获取：详情
+	 */
+	public String getDetails() {
+		return details;
 	}
 	/**
 	 * 语种名称，数据库没有

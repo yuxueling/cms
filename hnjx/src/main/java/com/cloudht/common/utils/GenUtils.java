@@ -51,9 +51,10 @@ public class GenUtils {
 
     /**
      * 生成代码
+     * @param table 表的信息
+     * @param columns 表的列
+     * @param zip zip输入流
      */
-
-
     public static void generatorCode(Map<String, String> table, List<Map<String, String>> columns, ZipOutputStream zip) {
         //配置信息
         Configuration config = getConfig();
