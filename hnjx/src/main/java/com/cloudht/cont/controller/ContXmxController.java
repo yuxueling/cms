@@ -10,12 +10,15 @@ import com.cloudht.common.service.DictService;
 
 import com.cloudht.cont.domain.ContCategoryDO;
 import com.cloudht.cont.domain.ContCategoryInfoDO;
+import com.cloudht.cont.domain.ContSeoDO;
+import com.cloudht.cont.service.ContSeoService;
 import com.cloudht.cont.service.ContXmxService;
 import com.cloudht.cont.vo.ContProductVO;
 import com.sxyht.common.utils.*;
 import org.apache.shiro.session.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -27,9 +30,8 @@ public class ContXmxController extends BaseController {
 
 	@Autowired private ContXmxService contXmxService;
 	@Autowired private DictService dictService;
-	@Autowired
-	ContentService bContentService;
-
+	@Autowired private ContentService bContentService;
+	@Autowired private ContSeoService contSeoService;
 
 	/**
 	 * 根据语种及类别查询产品（仅支持到两级类别查询）
@@ -100,15 +102,39 @@ public class ContXmxController extends BaseController {
 
 	@Log("/xmx/*")
 	@GetMapping("/showProduct/{contProductId}")
-	String showProduct(@PathVariable("contProductId") Integer contProductId){
+	String showProduct(@PathVariable("contProductId") Integer contProductId,Map<String,Object> map,Model model){
  		getSession().setAttribute("contProductId",contProductId);
+ 		map.clear();map.put("pageAddress", "showProduct");
+ 		//map.put("langType", "langType");//如有需要传入语言类型
+ 		List<ContSeoDO> list = this.contSeoService.list(map);
+ 		if(list.size()!=0) {
+ 			for(ContSeoDO contSeoDO:list) {
+ 				String seoTitle = contSeoDO.getSeoTitle();
+ 				if(!("null".equals(seoTitle)&&"".equals(seoTitle))) {
+ 					model.addAttribute("seoTitle", seoTitle);
+ 				}
+ 			}
+ 			model.addAttribute("metaSeo", list);
+ 		}
 		return "xmx/a-productDetail";
 	}
 
 	@GetMapping("/viewSearch")
-	String viewSearch(@RequestParam Map<String, Object> params){
+	String viewSearch(@RequestParam Map<String, Object> params,Model model){
 		getSession().setAttribute("contCategoryId",params.get("contCategoryId"));
 		getSession().setAttribute("searchKey",params.get("searchKey"));
+		params.clear();params.put("pageAddress", "viewSearch");
+ 		//map.put("langType", "langType");//如有需要传入语言类型
+ 		List<ContSeoDO> list = this.contSeoService.list(params);
+ 		if(list.size()!=0) {
+ 			for(ContSeoDO contSeoDO:list) {
+ 				String seoTitle = contSeoDO.getSeoTitle();
+ 				if(!("null".equals(seoTitle)&&"".equals(seoTitle))) {
+ 					model.addAttribute("seoTitle", seoTitle);
+ 				}
+ 			}
+ 			model.addAttribute("metaSeo", list);
+ 		}
 		return "xmx/a-search";
 	}
 
@@ -155,8 +181,20 @@ public class ContXmxController extends BaseController {
 	 * @return
 	 */
 	@GetMapping("/openViewNewsDetail/{cid}")
-	public String openViewNewsDetail(@PathVariable("cid") Long cid) {
+	public String openViewNewsDetail(@PathVariable("cid") Long cid,Map<String,Object> map,Model model) {
 		getSession().setAttribute("cid",cid);
+		map.clear();map.put("pageAddress", "openViewNewsDetail");
+ 		//map.put("langType", "langType");//如有需要传入语言类型
+ 		List<ContSeoDO> list = this.contSeoService.list(map);
+ 		if(list.size()!=0) {
+ 			for(ContSeoDO contSeoDO:list) {
+ 				String seoTitle = contSeoDO.getSeoTitle();
+ 				if(!("null".equals(seoTitle)&&"".equals(seoTitle))) {
+ 					model.addAttribute("seoTitle", seoTitle);
+ 				}
+ 			}
+ 			model.addAttribute("metaSeo", list);
+ 		}
 		return "xmx/articleDetails";
 	}
 
@@ -185,7 +223,20 @@ public class ContXmxController extends BaseController {
 	 * @return
 	 */
 	@GetMapping("/openViewListProduct/{contCategoryId}/{categoryName}")
-	public String openViewListProduct(@PathVariable("contCategoryId") Integer contCategoryId,@PathVariable("categoryName") String categoryName) {
+	public String openViewListProduct(@PathVariable("contCategoryId") Integer contCategoryId,
+			@PathVariable("categoryName") String categoryName,Map<String,Object> map,Model model) {
+		map.clear();map.put("pageAddress", "openViewListProduct");
+ 		//map.put("langType", "langType");//如有需要传入语言类型
+ 		List<ContSeoDO> list = this.contSeoService.list(map);
+ 		if(list.size()!=0) {
+ 			for(ContSeoDO contSeoDO:list) {
+ 				String seoTitle = contSeoDO.getSeoTitle();
+ 				if(!("null".equals(seoTitle)&&"".equals(seoTitle))) {
+ 					model.addAttribute("seoTitle", seoTitle);
+ 				}
+ 			}
+ 			model.addAttribute("metaSeo", list);
+ 		}
 		Session session = getSession();
 		session.setAttribute("contCategoryId",contCategoryId);
 		session.setAttribute("categoryName",categoryName);
@@ -201,7 +252,19 @@ public class ContXmxController extends BaseController {
 	 */
 	@Log("/xmx/*") 
 	@GetMapping("/view/{target}")
-	public String view(@PathVariable("target") String target) {
+	public String view(@PathVariable("target") String target,Map<String,Object> map,Model model) {
+		map.clear();map.put("pageAddress", target);
+ 		//map.put("langType", "langType");//如有需要传入语言类型
+ 		List<ContSeoDO> list = this.contSeoService.list(map);
+ 		if(list.size()!=0) {
+ 			for(ContSeoDO contSeoDO:list) {
+ 				String seoTitle = contSeoDO.getSeoTitle();
+ 				if(!("null".equals(seoTitle)&&"".equals(seoTitle))) {
+ 					model.addAttribute("seoTitle", seoTitle);
+ 				}
+ 			}
+ 			model.addAttribute("metaSeo", list);
+ 		}
 		return "xmx/"+target;
 	}
 
