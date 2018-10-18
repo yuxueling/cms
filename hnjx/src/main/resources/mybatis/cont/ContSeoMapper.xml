@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cloudht.cont.dao.ContSeoDao">
+
+	<select id="get" resultType="com.cloudht.cont.domain.ContSeoDO">
+		select `cont_seo_id`,`lang_type`,`page_title`,`page_address`,`seo_title`,`meta_name`,`meta_content` from cont_seo where cont_seo_id = #{value}
+	</select>
+
+	<select id="list" resultType="com.cloudht.cont.domain.ContSeoDO">
+		select `cont_seo_id`,`lang_type`,`page_title`,`page_address`,`seo_title`,`meta_name`,`meta_content` from cont_seo
+        <where>  
+		  		  <if test="contSeoId != null and contSeoId != ''"> and cont_seo_id = #{contSeoId} </if>
+		  		  <if test="langType != null and langType != ''"> and lang_type = #{langType} </if>
+		  		  <if test="pageTitle != null and pageTitle != ''"> and page_title = #{pageTitle} </if>
+		  		  <if test="pageAddress != null and pageAddress != ''"> and page_address = #{pageAddress} </if>
+		  		  <if test="seoTitle != null and seoTitle != ''"> and seo_title = #{seoTitle} </if>
+		  		  <if test="metaName != null and metaName != ''"> and meta_name = #{metaName} </if>
+		  		  <if test="metaContent != null and metaContent != ''"> and meta_content = #{metaContent} </if>
+		  		</where>
+        <choose>
+            <when test="sort != null and sort.trim() != ''">
+                order by ${sort} ${order}
+            </when>
+			<otherwise>
+                order by cont_seo_id desc
+			</otherwise>
+        </choose>
+		<if test="offset != null and limit != null">
+			limit #{offset}, #{limit}
+		</if>
+	</select>
+	
+ 	<select id="count" resultType="int">
+		select count(*) from cont_seo
+		 <where>  
+		  		  <if test="contSeoId != null and contSeoId != ''"> and cont_seo_id = #{contSeoId} </if>
+		  		  <if test="langType != null and langType != ''"> and lang_type = #{langType} </if>
+		  		  <if test="pageTitle != null and pageTitle != ''"> and page_title = #{pageTitle} </if>
+		  		  <if test="pageAddress != null and pageAddress != ''"> and page_address = #{pageAddress} </if>
+		  		  <if test="seoTitle != null and seoTitle != ''"> and seo_title = #{seoTitle} </if>
+		  		  <if test="metaName != null and metaName != ''"> and meta_name = #{metaName} </if>
+		  		  <if test="metaContent != null and metaContent != ''"> and meta_content = #{metaContent} </if>
+		  		</where>
+	</select>
+	 
+	<insert id="save" parameterType="com.cloudht.cont.domain.ContSeoDO" useGeneratedKeys="true" keyProperty="contSeoId">
+		insert into cont_seo
+		(
+			`lang_type`, 
+			`page_title`, 
+			`page_address`, 
+			`seo_title`, 
+			`meta_name`, 
+			`meta_content`
+		)
+		values
+		(
+			#{langType}, 
+			#{pageTitle}, 
+			#{pageAddress}, 
+			#{seoTitle}, 
+			#{metaName}, 
+			#{metaContent}
+		)
+	</insert>
+	 
+	<update id="update" parameterType="com.cloudht.cont.domain.ContSeoDO">
+		update cont_seo 
+		<set>
+			<if test="langType != null">`lang_type` = #{langType}, </if>
+			<if test="pageTitle != null">`page_title` = #{pageTitle}, </if>
+			<if test="pageAddress != null">`page_address` = #{pageAddress}, </if>
+			<if test="seoTitle != null">`seo_title` = #{seoTitle}, </if>
+			<if test="metaName != null">`meta_name` = #{metaName}, </if>
+			<if test="metaContent != null">`meta_content` = #{metaContent}</if>
+		</set>
+		where cont_seo_id = #{contSeoId}
+	</update>
+	
+	<delete id="remove">
+		delete from cont_seo where cont_seo_id = #{value}
+	</delete>
+	
+	<delete id="batchRemove">
+		delete from cont_seo where cont_seo_id in 
+		<foreach item="contSeoId" collection="array" open="(" separator="," close=")">
+			#{contSeoId}
+		</foreach>
+	</delete>
+
+</mapper>
