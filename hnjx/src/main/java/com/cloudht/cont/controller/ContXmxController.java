@@ -15,6 +15,8 @@ import com.cloudht.cont.service.ContSeoService;
 import com.cloudht.cont.service.ContXmxService;
 import com.cloudht.cont.vo.ContProductVO;
 import com.sxyht.common.utils.*;
+
+import org.apache.catalina.servlet4preview.http.HttpServletRequest;
 import org.apache.shiro.session.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -102,7 +104,9 @@ public class ContXmxController extends BaseController {
 
 	@Log("/xmx/*")
 	@GetMapping("/showProduct/{contProductId}")
-	String showProduct(@PathVariable("contProductId") Integer contProductId,Map<String,Object> map,Model model){
+	String showProduct(HttpServletRequest request, @PathVariable("contProductId") Integer contProductId,Map<String,Object> map,Model model){
+		String pageAddress="showProduct";
+		this.commonSesssion(pageAddress, request, model);
  		getSession().setAttribute("contProductId",contProductId);
  		map.clear();map.put("pageAddress", "showProduct");
  		//map.put("langType", "langType");//如有需要传入语言类型
@@ -120,10 +124,12 @@ public class ContXmxController extends BaseController {
 	}
 
 	@GetMapping("/viewSearch")
-	String viewSearch(@RequestParam Map<String, Object> params,Model model){
+	String viewSearch(HttpServletRequest request,@RequestParam Map<String, Object> params,Model model){
+		String pageAddress="viewSearch";
+		this.commonSesssion(pageAddress, request, model);
 		getSession().setAttribute("contCategoryId",params.get("contCategoryId"));
 		getSession().setAttribute("searchKey",params.get("searchKey"));
-		params.clear();params.put("pageAddress", "viewSearch");
+		params.clear();params.put("pageAddress", pageAddress);
  		//map.put("langType", "langType");//如有需要传入语言类型
  		List<ContSeoDO> list = this.contSeoService.list(params);
  		if(list.size()!=0) {
@@ -252,19 +258,8 @@ public class ContXmxController extends BaseController {
 	 */
 	@Log("/xmx/*") 
 	@GetMapping("/view/{target}")
-	public String view(@PathVariable("target") String target,Map<String,Object> map,Model model) {
-		map.clear();map.put("pageAddress", target);
- 		//map.put("langType", "langType");//如有需要传入语言类型
- 		List<ContSeoDO> list = this.contSeoService.list(map);
- 		if(list.size()!=0) {
- 			for(ContSeoDO contSeoDO:list) {
- 				String seoTitle = contSeoDO.getSeoTitle();
- 				if(!("null".equals(seoTitle)&&"".equals(seoTitle))) {
- 					model.addAttribute("seoTitle", seoTitle);
- 				}
- 			}
- 			model.addAttribute("metaSeo", list);
- 		}
+	public String view(HttpServletRequest request,@PathVariable("target")String target,Model model) {
+		this.commonSesssion(target, request, model);
 		return "xmx/"+target;
 	}
 

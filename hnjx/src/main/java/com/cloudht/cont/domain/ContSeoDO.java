@@ -1,13 +1,16 @@
 package com.cloudht.cont.domain;
 
 import java.io.Serializable;
+import java.util.Date;
+
+
 
 /**
  * 
  * 
  * @author yuxueling
  * @email 980899486@qq.com
- * @date 2018-10-18 09:15:37
+ * @date 2018-10-19 11:18:07
  */
 public class ContSeoDO implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -23,9 +26,13 @@ public class ContSeoDO implements Serializable {
 	//seo标题
 	private String seoTitle;
 	//meta名称
-	private String metaName;
+	private String keywords;
 	//meta描述或内容
-	private String metaContent;
+	private String description;
+	//
+	private Long createBy;
+	//最后修改时间
+	private Date gmtModified;
 
 	/**
 	 * 设置：主键
@@ -90,25 +97,49 @@ public class ContSeoDO implements Serializable {
 	/**
 	 * 设置：meta名称
 	 */
-	public void setMetaName(String metaName) {
-		this.metaName = metaName;
+	public void setKeywords(String keywords) {
+		this.keywords = keywords;
 	}
 	/**
 	 * 获取：meta名称
 	 */
-	public String getMetaName() {
-		return metaName;
+	public String getKeywords() {
+		return keywords;
 	}
 	/**
 	 * 设置：meta描述或内容
 	 */
-	public void setMetaContent(String metaContent) {
-		this.metaContent = metaContent;
+	public void setDescription(String description) {
+		this.description = description;
 	}
 	/**
 	 * 获取：meta描述或内容
 	 */
-	public String getMetaContent() {
-		return metaContent;
+	public String getDescription() {
+		return description;
+	}
+	/**
+	 * 设置：
+	 */
+	public void setCreateBy(Long createBy) {
+		this.createBy = createBy;
+	}
+	/**
+	 * 获取：
+	 */
+	public Long getCreateBy() {
+		return createBy;
+	}
+	/**
+	 * 设置：最后修改时间
+	 */
+	public void setGmtModified(Date gmtModified) {
+		this.gmtModified = gmtModified;
+	}
+	/**
+	 * 获取：最后修改时间
+	 */
+	public Date getGmtModified() {
+		return gmtModified;
 	}
 }

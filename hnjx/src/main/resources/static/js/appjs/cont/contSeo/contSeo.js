@@ -68,14 +68,16 @@ function load() {
 									title : 'seo标题' 
 								},
 																{
-									field : 'metaName', 
-									title : 'meta名称' 
+									field : 'keywords', 
+									title : '搜索关键字' 
 								},
 																{
-									field : 'metaContent', 
-									title : 'meta描述或内容' 
-								},
-																{
+									field : 'description', 
+									title : '页面描述' 
+								},{
+									field : 'gmtModified', 
+									title : '最后修改时间' 
+								},{
 									title : '操作',
 									field : 'id',
 									align : 'center',
