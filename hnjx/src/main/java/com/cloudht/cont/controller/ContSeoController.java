@@ -1,11 +1,11 @@
 package com.cloudht.cont.controller;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.ui.Model;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -13,7 +13,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-
+import org.springframework.ui.Model;
+import com.cloudht.common.controller.BaseController;
+import com.cloudht.common.service.DictService;
 import com.cloudht.cont.domain.ContSeoDO;
 import com.cloudht.cont.service.ContSeoService;
 import com.sxyht.common.utils.PageUtils;
@@ -30,9 +32,9 @@ import com.sxyht.common.utils.R;
  
 @Controller
 @RequestMapping("/cont/contSeo")
-public class ContSeoController {
-	@Autowired
-	private ContSeoService contSeoService;
+public class ContSeoController extends BaseController {
+	@Autowired private ContSeoService contSeoService;
+	@Autowired private DictService dictService;
 	
 	@GetMapping()
 	@RequiresPermissions("cont:contSeo:contSeo")
@@ -54,7 +56,8 @@ public class ContSeoController {
 	
 	@GetMapping("/add")
 	@RequiresPermissions("cont:contSeo:add")
-	String add(){
+	String add(Model model){
+		model.addAttribute("listLangType",this.dictService.listByType("CmsLangType"));
 	    return "cont/contSeo/add";
 	}
 
@@ -63,6 +66,7 @@ public class ContSeoController {
 	String edit(@PathVariable("contSeoId") Integer contSeoId,Model model){
 		ContSeoDO contSeo = contSeoService.get(contSeoId);
 		model.addAttribute("contSeo", contSeo);
+		model.addAttribute("langTypes", this.dictService.listByType("CmsLangType"));
 	    return "cont/contSeo/edit";
 	}
 	
@@ -73,9 +77,10 @@ public class ContSeoController {
 	@PostMapping("/save")
 	@RequiresPermissions("cont:contSeo:add")
 	public R save( ContSeoDO contSeo){
-		if(contSeoService.save(contSeo)>0){
+		contSeo.setCreateBy(this.getUserId());
+		contSeo.setGmtModified(new Date());
+		if(contSeoService.save(contSeo)>0)
 			return R.ok();
-		}
 		return R.error();
 	}
 	/**
@@ -85,6 +90,7 @@ public class ContSeoController {
 	@RequestMapping("/update")
 	@RequiresPermissions("cont:contSeo:edit")
 	public R update( ContSeoDO contSeo){
+		contSeo.setGmtModified(new Date());
 		contSeoService.update(contSeo);
 		return R.ok();
 	}
