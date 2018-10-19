@@ -29,7 +29,7 @@ public class MianController extends BaseController {
 	@Autowired private ContSitemapDao contSitemapDao;
 	
 	@Log("/xmx/*")
-	@GetMapping({"","/"})
+	@GetMapping({"","/","index.html"})
 	public String redirect() {
 		return "xmx/index";
 	}

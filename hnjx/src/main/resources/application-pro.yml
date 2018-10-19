@@ -8,9 +8,9 @@ spring:
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
     driverClassName: com.mysql.jdbc.Driver
-    url: jdbc:mysql://122.114.163.201/htfq?useUnicode=true&characterEncoding=utf8
-    username: htfq
-    password: jzuihytrtffglkjvmbrif
+    url: jdbc:mysql:///cms?useUnicode=true&characterEncoding=utf8
+    username: cms
+    password: AsDG2wff2J
     initialSize: 1
     minIdle: 3
     maxActive: 20
