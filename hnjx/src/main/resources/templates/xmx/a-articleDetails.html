@@ -15,7 +15,7 @@
 <body>
 <div id="site">
   <div th:include="include/public :: header"></div><!-- 共用顶部部分 -->        
-  <div id="curpos"><span>You are here:</span> <a href="index.html">Home</a> &raquo; <a href="news.html">News &amp; Events</a> &raquo; TUV Certificate</div>
+  <div id="curpos"><span>You are here:</span> <a href="index.html">Home</a> &raquo; <a href="news.html">News &amp; Events</a> &raquo; {{contentDO.title}}</div>
   <div id="main">
     <div id="right">
       <div class="board"><strong>News Details</strong></div>
@@ -38,7 +38,7 @@
   <div class="mainbg"> </div>
   <div th:include="include/public :: root"></div><!-- 共用root部分 -->
 
-  <script type="text/javascript" src="/js/appjs/xmx/articleDetails.js"></script>
+  <script type="text/javascript" src="/js/appjs/xmx/a-articleDetails.js"></script>
 
 
 <div class="flinks">Friendly Links:

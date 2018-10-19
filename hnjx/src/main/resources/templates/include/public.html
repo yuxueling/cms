@@ -107,19 +107,25 @@
 </div><!-- 左侧部分结束 -->
 <div th:fragment="root"><!-- 底部开始 -->
     <div id="root">
-        <div style="float:left;width: 49%">
-            <div class="rootseo">Keywords:</div>
+        <div style="float:left;width: 30%">
             <div class="rootmenu">
-                <a href="/" title="Home">Home</a> |
-                <a href="/contXmx/view/a-aboutUs" title="About Us">About Us</a> |
-                <a href="/contXmx/view/a-products" title="Products">Products</a> |
-                <a href="/contXmx/view/a-news" title="News">News</a> |
-                <a href="/contXmx/view/a-inquiry" title="Inquiry">Inquiry</a> |
-                <a href="/contXmx/view/a-capability" title="Capability">Capability</a> |
-                <a href="/contXmx/view/a-contactUs" title="Contact Us">Contact Us</a> |
+                <a href="/" title="Home">Home</a>
+                <br/>
+                <a href="/contXmx/view/a-aboutUs" title="About Us">About Us</a>
+                <br/>
+                <a href="/contXmx/view/a-products" title="Products">Products</a>
+                <br/>
+                <a href="/contXmx/view/a-news" title="News">News</a>
+                <br/>
+                <a href="/contXmx/view/a-inquiry" title="Inquiry">Inquiry</a>
+                <br/>
+                <a href="/contXmx/view/a-capability" title="Capability">Capability</a>
+                <br/>
+                <a href="/contXmx/view/a-contactUs" title="Contact Us">Contact Us</a>
             </div>
-            <script language="javascript" type="text/javascript" src="/js/lang.js"></script>
-            <div class="trans"><a href="javascript:translator('en|en')"><img src="/xmx/images/english.gif" width="15"
+            <!--<script language="javascript" type="text/javascript" src="/js/lang.js"></script>-->
+           <!-- <div class="trans">
+                <a href="javascript:translator('en|en')"><img src="/xmx/images/english.gif" width="15"
                                                                              height="11"
                                                                              align="absmiddle"/> English</a>
                 <a href="javascript:translator('en|de')"><img src="/xmx/images/deutsch1.gif" width="15" height="11"
@@ -141,10 +147,10 @@
                 <a href="javascript:translator('en|ru')"><img src="/xmx/images/russia.jpg" width="15" height="11"
                                                               align="absmiddle"/> Russian</a>
                 <a href="javascript:translator('en|cn')"><img src="/xmx/images/chinese.gif" width="15" height="11"
-                                                              align="absmiddle"/> Chinese</a></div>
+                                                              align="absmiddle"/> Chinese</a></div>-->
 
         </div>
-        <div style="float:left;width:49%;color: #fff">
+        <div style="float:left;width:70%;color: #fff">
             <form action="" method="post" name="feedback" id="feedback">
                 <table width="100%" border="0" align="left" cellpadding="0" cellspacing="1">
 
@@ -152,30 +158,23 @@
                         <!--<td height="30" align="right" class="color_huise2">{{formDataDOList[0].title}}：</td>-->
                         <!--<td height="30" align="left">-->
                             <!--<input name="title" type="text" id="title" v-model="formDataDOList[0].value"-->
-                                   <!--size="40" maxlength="50"-->
+                                   <!--size="30" maxlength="50"-->
                                    <!--value="turbine wheel /"/>-->
                             <!--<span class="red">*</span></td>-->
                     <!--</tr>-->
+
                     <tr>
-                        <td align="right" class="color_huise2">{{formDataDOList[1].title}}：</td>
-                        <td align="left"><input type="hidden" name="Products"  value=""/><textarea
-                                name="content" cols="40" rows="12" id="content" v-model="formDataDOList[1].value"
-                                style="height:120px;"></textarea>
-                            <span class="red">*</span><br/></td>
-                    </tr>
-                    <tr>
-                        <td width="123" height="30" align="right" class="color_huise2">{{formDataDOList[2].title}}：</td>
-                        <td width="562" height="30" align="left"><input name="name" type="text"
-                                                                        id="name" size="40" v-model="formDataDOList[2].value"
-                                                                        maxlength="50"/>
-                            <span class="red">*</span></td>
-                    </tr>
-                    <tr>
+                        <td height="30" align="right" class="color_huise2">{{formDataDOList[2].title}}：</td>
+                        <td height="30" align="left">
+                            <input name="name" type="text" id="name" size="30" v-model="formDataDOList[2].value" maxlength="50"/>
+                            <span class="red">*</span>
+                        </td>
                         <td height="30" align="right" class="color_huise2">{{formDataDOList[3].title}}：</td>
                         <td height="30" align="left"><input name="email" type="text" id="email" v-model="formDataDOList[3].value"
-                                                            size="40" maxlength="50"/>
+                                                            size="30" maxlength="50"/>
                             <span class="red">*</span></td>
                     </tr>
+
                     <!--<tr>-->
                         <!--<td height="30" align="right" class="color_huise2">{{formDataDOList[4].title}}：</td>-->
                         <!--<td height="30" align="left">-->
@@ -189,26 +188,28 @@
                     <tr>
                         <td height="26" align="right" class="color_huise2">{{formDataDOList[5].title}}：</td>
                         <td height="26" align="left"><input name="company_name" type="text"
-                                                            id="company_name" size="40" v-model="formDataDOList[5].value"
+                                                            id="company_name" size="30" v-model="formDataDOList[5].value"
                                                             maxlength="255"/></td>
-                    </tr>
-                    <tr>
                         <td height="26" align="right" class="color_huise2">{{formDataDOList[6].title}}：</td>
                         <td height="26" align="left"><input name="tel" type="text" id="tel" v-model="formDataDOList[6].value"
-                                                            size="40" maxlength="50"/> <span
+                                                            size="30" maxlength="50"/> <span
                                 class="red">*</span></td>
                     </tr>
+
                     <!--<tr>-->
                         <!--<td height="30" align="right" class="color_huise2">{{formDataDOList[7].title}}：</td>-->
                         <!--<td height="30" align="left"><input name="add" type="text" id="add" v-model="formDataDOList[7].value"-->
                                                             <!--size="60" maxlength="255"/></td>-->
                     <!--</tr>-->
 
-
                     <tr>
-                        <td align="right">&nbsp;</td>
-                        <td align="left">(All <span class="red">* </span>must be filled )</td>
+                        <td align="right" class="color_huise2">{{formDataDOList[1].title}}：</td>
+                        <td align="left" colspan="3"><input type="hidden" name="Products"  value=""/><textarea
+                                name="content" cols="79" rows="6" id="content" v-model="formDataDOList[1].value"
+                                style="height:120px;"></textarea>
+                            <span class="red">*</span><br/></td>
                     </tr>
+
                     <tr>
                         <td align="right">&nbsp;</td>
                         <td align="left">

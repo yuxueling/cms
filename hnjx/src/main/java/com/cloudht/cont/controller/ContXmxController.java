@@ -201,7 +201,7 @@ public class ContXmxController extends BaseController {
  			}
  			model.addAttribute("metaSeo", list);
  		}
-		return "xmx/articleDetails";
+		return "xmx/a-articleDetails";
 	}
 
 	/**
