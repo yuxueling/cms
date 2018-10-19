@@ -13,52 +13,44 @@
 							<div class="form-group">	
 								<label class="col-sm-3 control-label">语言类型：</label>
 								<div class="col-sm-8">
-									<input id="langType" name="langType" th:value="${contSeo.langType}" class="form-control" type="text">
+									<select name="langType">
+										<hzof th:each="langType:${langTypes}">
+										<option th:value="${langType.value}" th:text="${langType.name}" th:selected="${contSeo.langType}==${langType.value}?true:false"></option>
+										</hzof>
+									</select>
 								</div>
 							</div>
-														<div class="form-group">	
+							<div class="form-group">	
 								<label class="col-sm-3 control-label">页面标题：</label>
 								<div class="col-sm-8">
 									<input id="pageTitle" name="pageTitle" th:value="${contSeo.pageTitle}" class="form-control" type="text">
 								</div>
 							</div>
-														<div class="form-group">	
+							<div class="form-group">	
 								<label class="col-sm-3 control-label">页面地址：</label>
 								<div class="col-sm-8">
 									<input id="pageAddress" name="pageAddress" th:value="${contSeo.pageAddress}" class="form-control" type="text">
 								</div>
 							</div>
-														<div class="form-group">	
+							<div class="form-group">	
 								<label class="col-sm-3 control-label">seo标题：</label>
 								<div class="col-sm-8">
 									<input id="seoTitle" name="seoTitle" th:value="${contSeo.seoTitle}" class="form-control" type="text">
 								</div>
 							</div>
-														<div class="form-group">	
-								<label class="col-sm-3 control-label">meta名称：</label>
+							<div class="form-group">	
+								<label class="col-sm-3 control-label">关键词：</label>
 								<div class="col-sm-8">
 									<input id="keywords" name="keywords" th:value="${contSeo.keywords}" class="form-control" type="text">
 								</div>
 							</div>
-														<div class="form-group">	
-								<label class="col-sm-3 control-label">meta描述或内容：</label>
+							<div class="form-group">	
+								<label class="col-sm-3 control-label">页面描述：</label>
 								<div class="col-sm-8">
 									<input id="description" name="description" th:value="${contSeo.description}" class="form-control" type="text">
 								</div>
 							</div>
-														<div class="form-group">	
-								<label class="col-sm-3 control-label">：</label>
-								<div class="col-sm-8">
-									<input id="createBy" name="createBy" th:value="${contSeo.createBy}" class="form-control" type="text">
-								</div>
-							</div>
-														<div class="form-group">	
-								<label class="col-sm-3 control-label">最后修改时间：</label>
-								<div class="col-sm-8">
-									<input id="gmtModified" name="gmtModified" th:value="${contSeo.gmtModified}" class="form-control" type="text">
-								</div>
-							</div>
-																					<div class="form-group">
+							<div class="form-group">
 								<div class="col-sm-8 col-sm-offset-3">
 									<button type="submit" class="btn btn-primary">提交</button>
 								</div>
