@@ -3,6 +3,7 @@ package com.cloudht.common.dao;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 
@@ -45,5 +46,18 @@ public interface GeneratorMapper {
 	 * @return
 	 */
 	@Select("select * from ${tableName}")
-	List<Map<String, String>> listDatas(@Param("tableName") String tableName);
+	List<Map<String, Object>> listDatas(@Param("tableName") String tableName);
+	/**
+	 * 向任意表中插入数据
+	 * @param insert 数据插入语句
+	 * @return
+	 */
+	@Insert("${insert}")
+	int insert( @Param("insert") String insert);
+	/**
+	 * 将表摧毁
+	 * @param tableName 摧毁表的名称
+	 * @return
+	 */
+	int truncate( @Param("tableName") String tableName);
 }

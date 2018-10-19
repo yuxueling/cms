@@ -1,6 +1,5 @@
 package com.cloudht.common.controller;
 
-import com.cloudht.common.config.FtcspConfig;
 import com.cloudht.common.domain.FileDO;
 import com.cloudht.common.service.FileService;
 import com.sxyht.common.utils.FileType;
@@ -12,6 +11,7 @@ import com.sxyht.common.utils.R;
 import javax.servlet.http.HttpServletRequest;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -35,8 +35,7 @@ public class FileController extends BaseController {
 	@Autowired
 	private FileService sysFileService;
 
-	@Autowired
-	private FtcspConfig ftcspConfig;
+	@Value("${uploadPath}") String uploadPath;
 
 	@GetMapping()
 	@RequiresPermissions("common:sysFile:sysFile")
@@ -111,7 +110,7 @@ public class FileController extends BaseController {
 	@ResponseBody
 	// @RequiresPermissions("common:remove")
 	public R remove(Long id, HttpServletRequest request) {
-		String fileName = ftcspConfig.getUploadPath() + sysFileService.get(id).getUrl().replace("/files/", "");
+		String fileName = this.uploadPath + sysFileService.get(id).getUrl().replace("/files/", "");
 		if (sysFileService.remove(id) > 0) {
 			boolean b = FileUtil.deleteFile(fileName);
 			if (!b) 
@@ -140,7 +139,7 @@ public class FileController extends BaseController {
 		fileName = FileUtil.renameToUUID(fileName);
 		FileDO sysFile = new FileDO(FileType.fileType(fileName), "/files/" + fileName, new Date());
 		try {
-			FileUtil.uploadFile(file.getBytes(), ftcspConfig.getUploadPath(), fileName);
+			FileUtil.uploadFile(file.getBytes(), this.uploadPath, fileName);
 		} catch (Exception e) {
 			return R.error();
 		}

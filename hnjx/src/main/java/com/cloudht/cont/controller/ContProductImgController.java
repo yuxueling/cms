@@ -6,6 +6,7 @@ import java.util.Map;
 
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.ui.Model;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,7 +17,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.cloudht.common.config.FtcspConfig;
 import com.cloudht.common.controller.BaseController;
 import com.cloudht.common.domain.FileDO;
 import com.cloudht.cont.domain.ContProductImgDO;
@@ -41,7 +41,7 @@ public class ContProductImgController extends BaseController {
 	@Autowired
 	private ContProductImgService contProductImgService;
 	
-	@Autowired private FtcspConfig ftcspConfig;
+	@Value("${uploadPath}") String uploadPath;
 	
 	@GetMapping()
 	@RequiresPermissions("cont:contProductImg:contProductImg")
@@ -131,7 +131,7 @@ public class ContProductImgController extends BaseController {
 		contProductImg.setContProductId(contProductId);
 		FileDO sysFile = new FileDO(FileType.fileType(fileName), "/files/" + fileName, new Date());
 		try {
-			FileUtil.uploadFile(file.getBytes(), ftcspConfig.getUploadPath(), fileName);
+			FileUtil.uploadFile(file.getBytes(), this.uploadPath, fileName);
 		} catch (Exception e) {
 			return R.error();
 		}

@@ -3,7 +3,6 @@ package com.cloudht.system.service.impl;
 import java.io.ByteArrayOutputStream;
 import java.util.*;
 
-import com.cloudht.common.config.FtcspConfig;
 import com.cloudht.common.domain.FileDO;
 import com.cloudht.common.service.FileService;
 import com.cloudht.common.utils.*;
@@ -14,6 +13,7 @@ import com.sxyht.common.utils.FileUtil;
 import com.sxyht.common.utils.MD5Utils;
 import org.apache.commons.lang.ArrayUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -40,8 +40,7 @@ public class UserServiceImpl implements UserService {
     DeptDao deptMapper;
     @Autowired
     private FileService sysFileService;
-    @Autowired
-    private FtcspConfig ftcspConfig;
+    @Value("${uploadPath}") String uploadPath;
 
     @Override
 //    @Cacheable(key = "#id")
@@ -210,7 +209,7 @@ public class UserServiceImpl implements UserService {
             ByteArrayOutputStream out = new ByteArrayOutputStream();
             //转换后存入数据库
             byte[] b = out.toByteArray();
-            FileUtil.uploadFile(b, ftcspConfig.getUploadPath(), fileName);
+            FileUtil.uploadFile(b, this.uploadPath, fileName);
         } catch (Exception e) {
             throw new Exception("图片裁剪错误！！");
         }

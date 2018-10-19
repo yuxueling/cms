@@ -1,6 +1,5 @@
 package com.cloudht.cont.service.impl;
 
-import com.cloudht.blog.domain.ContentDO;
 import com.cloudht.cont.dao.ContCategoryDao;
 import com.cloudht.cont.dao.ContCategoryInfoDao;
 import com.cloudht.cont.dao.ContProductDao;

@@ -86,12 +86,10 @@ public class GeneratorController {
 		ByteArrayOutputStream outputStream = new ByteArrayOutputStream();//字节数组输入流
 		ZipOutputStream zip = new ZipOutputStream(outputStream);//zip输入流
 		for(String tableName : tableNames){//遍历传来的每一张表
-			List<Map<String,String>> listDatas = generatorMapper.listDatas(tableName);
+			List<Map<String,Object>> listDatas = generatorMapper.listDatas(tableName);
 			List<String> listStrings=new ArrayList<String>();
 			zip.putNextEntry(new ZipEntry(tableName+".sql"));
-			//update 表名 set 字段名=值,字段名=值... where 条件;
-			//insert into 表名 (列名1,列名2...) values (值1,值2...);值是字符串或日期要加引号
-			for(Map<String,String> map:listDatas) {
+			for(Map<String,Object> map:listDatas) {
 				StringBuffer sbf= new StringBuffer();
 				sbf.append("insert into " +tableName+" (" );
 				Set<String> keySet = map.keySet();
@@ -101,19 +99,19 @@ public class GeneratorController {
 				sbf.deleteCharAt(sbf.lastIndexOf(","));//删除最后一个逗号
 				sbf.append(") values (");
 				for(String str3:keySet) {
-					sbf.append(map.get(str3+","));
+					try {
+						sbf.append("'"+map.get(str3).toString()+"',");
+					} catch (Exception e) {
+						sbf.append("''"+",");
+					}
 				}
 				sbf.deleteCharAt(sbf.lastIndexOf(","));//删除最后一个逗号
 				sbf.append(");");
 				listStrings.add(sbf.toString());
 			}
-			IOUtils.write(listStrings.toString(), zip, "UTF-8");
-			//查询表信息
-			//Map<String, String> table = generatorMapper.get(tableName);
-			//查询列信息
-			//List<Map<String, String>> columns = generatorMapper.listColumns(tableName);
-			//生成代码
-			//GenUtils.generatorCode(table, columns, zip);
+			for(String liu:listStrings) {
+				IOUtils.write(liu, zip, "UTF-8");
+			}
 		}
 		IOUtils.closeQuietly(zip);
 		byte[] data = outputStream.toByteArray();
@@ -121,7 +119,6 @@ public class GeneratorController {
 		response.setHeader("Content-Disposition", "attachment; filename=\"sxyhton.zip\"");
 		response.addHeader("Content-Length", "" + data.length);
 		response.setContentType("application/octet-stream; charset=UTF-8");
-
 		IOUtils.write(data, response.getOutputStream());
 	}
 

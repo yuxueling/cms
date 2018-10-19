@@ -12,6 +12,7 @@ import com.cloudht.system.service.MenuService;
 import com.sxyht.common.utils.MD5Utils;
 import com.sxyht.common.utils.R;
 
+import org.apache.catalina.servlet4preview.http.HttpServletRequest;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.subject.Subject;
@@ -23,21 +24,24 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import java.util.Collection;
 import java.util.List;
+
 @Controller
 public class MianController extends BaseController {
 	@Autowired MenuService menuService;
 	@Autowired private ContSitemapDao contSitemapDao;
-	
+
 	@Log("/xmx/*")
-	@GetMapping({"","/","index.html"})
-	public String redirect() {
-		return "xmx/index";
+	@GetMapping({"","/"})
+	public String indexView(HttpServletRequest request,Model model) {
+		String pageAddress="index";
+		this.commonSesssion(pageAddress,request,model);
+		return "xmx/"+pageAddress;
 	}
 	
 	/**请求访问登录页面 */
 	@GetMapping("/login")
 	String login() {
-		return "login";
+		return "main/login";
 	}
 	/**
 	 * 验证用户名和密码，将相关信息放入缓存
@@ -71,7 +75,7 @@ public class MianController extends BaseController {
 		model.addAttribute("name", getUser().getName());
 		model.addAttribute("picUrl","/img/photo_s2.png");
 		model.addAttribute("username", getUser().getUsername());
-		return "system/main/main";
+		return "main/mainPage";
 	}
 	/**
 	 * 首页内容显示
@@ -79,7 +83,7 @@ public class MianController extends BaseController {
 	 */
 	@GetMapping("/homePage")
 	String homePage() {
-		return "system/main/homePage";
+		return "main/homePage";
 	}
 	/**
 	 * 谷歌搜索专用
