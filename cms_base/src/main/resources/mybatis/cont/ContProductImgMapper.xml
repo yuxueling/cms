@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.cloudht.cont.dao.ContProductImgDao">
+
+	<select id="get" resultType="com.cloudht.cont.domain.ContProductImgDO">
+		select `cont_product_img_id`,`cont_product_id`,`img_url`,`sort` from cont_product_img where cont_product_img_id = #{value}
+	</select>
+
+	<select id="list" resultType="com.cloudht.cont.domain.ContProductImgDO">
+		select `cont_product_img_id`,`cont_product_id`,`img_url`,`sort` from cont_product_img
+        <where>  
+		  		  <if test="contProductImgId != null and contProductImgId != ''"> and cont_product_img_id = #{contProductImgId} </if>
+		  		  <if test="contProductId != null and contProductId != ''"> and cont_product_id = #{contProductId} </if>
+		  		  <if test="imgUrl != null and imgUrl != ''"> and img_url = #{imgUrl} </if>
+		  		  <if test="sort != null and sort != ''"> and sort = #{sort} </if>
+		  		</where>
+        <choose>
+            <when test="sort != null and sort.trim() != ''">
+                order by ${sort} ${order}
+            </when>
+			<otherwise>
+                order by cont_product_img_id desc
+			</otherwise>
+        </choose>
+		<if test="offset != null and limit != null">
+			limit #{offset}, #{limit}
+		</if>
+	</select>
+	
+ 	<select id="count" resultType="int">
+		select count(*) from cont_product_img
+		 <where>  
+		  		  <if test="contProductImgId != null and contProductImgId != ''"> and cont_product_img_id = #{contProductImgId} </if>
+		  		  <if test="contProductId != null and contProductId != ''"> and cont_product_id = #{contProductId} </if>
+		  		  <if test="imgUrl != null and imgUrl != ''"> and img_url = #{imgUrl} </if>
+		  		  <if test="sort != null and sort != ''"> and sort = #{sort} </if>
+		  		</where>
+	</select>
+	 
+	<insert id="save" parameterType="com.cloudht.cont.domain.ContProductImgDO" useGeneratedKeys="true" keyProperty="contProductImgId">
+		insert into cont_product_img
+		(
+			`cont_product_id`, 
+			`img_url`, 
+			`sort`
+		)
+		values
+		(
+			#{contProductId}, 
+			#{imgUrl}, 
+			#{sort}
+		)
+	</insert>
+	 
+	<update id="update" parameterType="com.cloudht.cont.domain.ContProductImgDO">
+		update cont_product_img 
+		<set>
+			<if test="contProductId != null">`cont_product_id` = #{contProductId}, </if>
+			<if test="imgUrl != null">`img_url` = #{imgUrl}, </if>
+			<if test="sort != null">`sort` = #{sort}</if>
+		</set>
+		where cont_product_img_id = #{contProductImgId}
+	</update>
+	
+	<delete id="remove">
+		delete from cont_product_img where cont_product_img_id = #{value}
+	</delete>
+	
+	<delete id="batchRemove">
+		delete from cont_product_img where cont_product_img_id in 
+		<foreach item="contProductImgId" collection="array" open="(" separator="," close=")">
+			#{contProductImgId}
+		</foreach>
+	</delete>
+
+</mapper>

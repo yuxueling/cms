@@ -1,0 +1,77 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+    <title th:text="${seoTitle}">investment casting|lost wa</title>
+    <meta name="keywords" th:content="${keywords}" />
+    <meta name="description" th:content="${description}" />
+    <meta name="author" content="Web Design: xiaoyuer QQ:195094303 website: www.shejifang.net"/>
+    <link href="/xmx/css/css.css" rel="stylesheet" type="text/css"/>
+    <script language="javascript" type="text/javascript" src="/xmx/js/comm.js"></script>
+    <script language="javascript" type="text/javascript" src="/xmx/js/jquery.js"></script>
+
+
+    <style type="text/css">
+        .hcontent p {
+            padding: 20px 10px 0 10px;
+        }
+    </style>
+</head>
+<body>
+<div id="site">
+    <div th:include="include/public :: header"></div><!-- 共用顶部部分 -->
+    <!--<LI><A class="hide" title="Language" href="#">Language</A>
+<UL>
+<LI><A href='javascript:translator("en|zh-CN")' ><img src="/images/ico_china.gif" border="0" align="absmiddle" style="padding-top:3px;"> China</A></LI>
+<LI><A href='javascript:translator("en|de")' ><img src="/images/ico_deutsch.gif" border="0" align="absmiddle" style="padding-top:3px;"> Deutsch</A></LI>
+<LI><A href='javascript:translator("en|es")' ><img src="/images/ico_espanol.gif" border="0" align="absmiddle" style="padding-top:3px;"> Espanol</A></LI>
+<LI><A href='javascript:translator("en|fr")' ><img src="/images/ico_francies.gif" border="0" align="absmiddle" style="padding-top:3px;"> Francies</A></LI>
+<LI><A href='javascript:translator("en|it")' ><img src="/images/ico_italino.gif" border="0" align="absmiddle" style="padding-top:3px;"> Italino</A></LI>
+<LI><A href='javascript:translator("en|pt")' ><img src="/images/ico_portgues.gif" border="0" align="absmiddle" style="padding-top:3px;"> Portgues</A></LI>
+<LI><A href='javascript:translator("en|ja")' ><img src="/images/ico_japan.jpg" border="0" align="absmiddle" style="padding-top:3px;"> Japan</A></LI>
+<LI><A href='javascript:translator("en|ko")' ><img src="/images/ico_korea.jpg" border="0" align="absmiddle" style="padding-top:3px;"> Korea</A></LI>
+<LI><A href='javascript:translator("en|ar")' ><img src="/images/ico_arabia.jpg" border="0" align="absmiddle" style="padding-top:3px;"> Arabia</A></LI>
+<LI><A href='javascript:translator("en|ru")' ><img src="/images/ico_russia.jpg" border="0" align="absmiddle" style="padding-top:3px;"> Russia</A></LI>
+<LI><A href='javascript:translator("en|id")' ><img src="/images/ico_indonesia.jpg" border="0" align="absmiddle" style="padding-top:3px;"> Indonesia</A></LI>
+<LI><A href='javascript:translator("en|vi")' ><img src="/images/ico_vietnam.jpg" border="0" align="absmiddle" style="padding-top:3px;"> Vietnam</A></LI>
+</UL></LI> -->
+    <div id="curpos"><span>You are here:</span> <a href="index.html">Home</a> &raquo; <a href="Capability.html"
+                                                                                         title="Capability">Capability</a>
+    </div>
+    <div id="main">
+        <div th:include="include/public :: left"></div><!-- 共用左部部分 -->
+
+        <div id="right">
+            <div class="board"><strong>Capability</strong></div>
+            <div class="hcontent padle">
+                <div v-for="(item,index) in contentList" v-html="item.content"></div>
+            </div>
+            <div class="clear"></div>
+        </div>
+        <div class="clear"></div>
+    </div>
+    <div class="mainbg"></div>
+    <div th:include="include/public :: root"></div><!-- 共用root部分 -->
+
+    <script type="text/javascript" src="/js/appjs/xmx/a-capability.js"></script>
+    <div class="flinks">Friendly Links:
+        &nbsp;
+    </div>
+</div>
+<div>
+    <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+    document.write(unescape("%3Cspan id='cnzz_stat_icon_1254565334'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s95.cnzz.com/z_stat.php%3Fid%3D1254565334%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));</script>
+</div>
+
+<noscript>
+    <iframe scr="*.htm"></iframe>
+</noscript>
+<script language="JavaScript">
+    document.oncontextmenu = new Function("event.returnValue=true;");
+    document.onselectstart = new Function("event.returnValue=true;");
+</script>
+
+</body>
+</html>

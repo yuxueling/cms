@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.cloudht.cont.dao.ContProductInfoDao">
+
+	<select id="get" resultType="com.cloudht.cont.domain.ContProductInfoDO">
+		select `cont_product_info_id`,`cont_product_id`,`lang_type`,`product_name`,`product_desc`,`details`,`product_keywords`,`seo_keywords`,`seo_desc`,`seo_title`,`create_by`,`gmt_create`,`gmt_modified` from cont_product_info where cont_product_info_id = #{value}
+	</select>
+
+	<select id="list" resultType="com.cloudht.cont.domain.ContProductInfoDO">
+		select `cont_product_info_id`,`cont_product_id`,`lang_type`,`product_name`,`product_desc`,`details`,`product_keywords`,`seo_keywords`,`seo_desc`,`seo_title`,`create_by`,`gmt_create`,`gmt_modified` from cont_product_info
+        <where>  
+		  		  <if test="contProductInfoId != null and contProductInfoId != ''"> and cont_product_info_id = #{contProductInfoId} </if>
+		  		  <if test="contProductId != null and contProductId != ''"> and cont_product_id = #{contProductId} </if>
+		  		  <if test="langType != null and langType != ''"> and lang_type = #{langType} </if>
+		  		  <if test="productName != null and productName != ''"> and product_name = #{productName} </if>
+		  		  <if test="productDesc != null and productDesc != ''"> and product_desc = #{productDesc} </if>
+		  		  <if test="details != null and details != ''"> and details = #{details} </if>
+		  		  <if test="productKeywords != null and productKeywords != ''"> and product_keywords = #{productKeywords} </if>
+		  		  <if test="seoKeywords != null and seoKeywords != ''"> and seo_keywords = #{seoKeywords} </if>
+		  		  <if test="seoDesc != null and seoDesc != ''"> and seo_desc = #{seoDesc} </if>
+		  		  <if test="seoTitle != null and seoTitle != ''"> and seo_title = #{seoTitle} </if>
+		  		  <if test="createBy != null and createBy != ''"> and create_by = #{createBy} </if>
+		  		  <if test="gmtCreate != null and gmtCreate != ''"> and gmt_create = #{gmtCreate} </if>
+		  		  <if test="gmtModified != null and gmtModified != ''"> and gmt_modified = #{gmtModified} </if>
+		  		</where>
+        <choose>
+            <when test="sort != null and sort.trim() != ''">
+                order by ${sort} ${order}
+            </when>
+			<otherwise>
+                order by cont_product_info_id desc
+			</otherwise>
+        </choose>
+		<if test="offset != null and limit != null">
+			limit #{offset}, #{limit}
+		</if>
+	</select>
+	
+ 	<select id="count" resultType="int">
+		select count(*) from cont_product_info
+		 <where>  
+		  		  <if test="contProductInfoId != null and contProductInfoId != ''"> and cont_product_info_id = #{contProductInfoId} </if>
+		  		  <if test="contProductId != null and contProductId != ''"> and cont_product_id = #{contProductId} </if>
+		  		  <if test="langType != null and langType != ''"> and lang_type = #{langType} </if>
+		  		  <if test="productName != null and productName != ''"> and product_name = #{productName} </if>
+		  		  <if test="productDesc != null and productDesc != ''"> and product_desc = #{productDesc} </if>
+		  		  <if test="details != null and details != ''"> and details = #{details} </if>
+		  		  <if test="productKeywords != null and productKeywords != ''"> and product_keywords = #{productKeywords} </if>
+		  		  <if test="seoKeywords != null and seoKeywords != ''"> and seo_keywords = #{seoKeywords} </if>
+		  		  <if test="seoDesc != null and seoDesc != ''"> and seo_desc = #{seoDesc} </if>
+		  		  <if test="seoTitle != null and seoTitle != ''"> and seo_title = #{seoTitle} </if>
+		  		  <if test="createBy != null and createBy != ''"> and create_by = #{createBy} </if>
+		  		  <if test="gmtCreate != null and gmtCreate != ''"> and gmt_create = #{gmtCreate} </if>
+		  		  <if test="gmtModified != null and gmtModified != ''"> and gmt_modified = #{gmtModified} </if>
+		  		</where>
+	</select>
+	 
+	<insert id="save" parameterType="com.cloudht.cont.domain.ContProductInfoDO" useGeneratedKeys="true" keyProperty="contProductInfoId">
+		insert into cont_product_info
+		(
+			`cont_product_id`, 
+			`lang_type`, 
+			`product_name`, 
+			`product_desc`, 
+			`details`, 
+			`product_keywords`, 
+			`seo_keywords`, 
+			`seo_desc`, 
+			`seo_title`, 
+			`create_by`, 
+			`gmt_create`, 
+			`gmt_modified`
+		)
+		values
+		(
+			#{contProductId}, 
+			#{langType}, 
+			#{productName}, 
+			#{productDesc}, 
+			#{details}, 
+			#{productKeywords}, 
+			#{seoKeywords}, 
+			#{seoDesc}, 
+			#{seoTitle}, 
+			#{createBy}, 
+			#{gmtCreate}, 
+			#{gmtModified}
+		)
+	</insert>
+	 
+	<update id="update" parameterType="com.cloudht.cont.domain.ContProductInfoDO">
+		update cont_product_info 
+		<set>
+			<if test="contProductId != null">`cont_product_id` = #{contProductId}, </if>
+			<if test="langType != null">`lang_type` = #{langType}, </if>
+			<if test="productName != null">`product_name` = #{productName}, </if>
+			<if test="productDesc != null">`product_desc` = #{productDesc}, </if>
+			<if test="details != null">`details` = #{details}, </if>
+			<if test="productKeywords != null">`product_keywords` = #{productKeywords}, </if>
+			<if test="seoKeywords != null">`seo_keywords` = #{seoKeywords}, </if>
+			<if test="seoDesc != null">`seo_desc` = #{seoDesc}, </if>
+			<if test="seoTitle != null">`seo_title` = #{seoTitle}, </if>
+			<if test="createBy != null">`create_by` = #{createBy}, </if>
+			<if test="gmtCreate != null">`gmt_create` = #{gmtCreate}, </if>
+			<if test="gmtModified != null">`gmt_modified` = #{gmtModified}</if>
+		</set>
+		where cont_product_info_id = #{contProductInfoId}
+	</update>
+	
+	<delete id="remove">
+		delete from cont_product_info where cont_product_info_id = #{value}
+	</delete>
+	
+	<delete id="batchRemove">
+		delete from cont_product_info where cont_product_info_id in 
+		<foreach item="contProductInfoId" collection="array" open="(" separator="," close=")">
+			#{contProductInfoId}
+		</foreach>
+	</delete>
+
+
+
+	<!--             new                   -->
+
+	<select id="listByDict" resultType="com.cloudht.cont.domain.ContProductInfoDO">
+		  SELECT
+			C.`cont_product_info_id`,
+			C.`cont_product_id`,
+			C.`product_name`,
+			C.`product_desc`,
+			C.`details`,
+			C.`product_keywords`,
+			C.`seo_keywords`,
+			C.`seo_desc`,
+			C.`seo_title`,
+			C.`create_by`,
+			C.`gmt_create`,
+			C.`gmt_modified` ,
+			B.`value` AS `lang_type`
+		FROM
+			(
+				SELECT A.`cont_product_info_id`,A.`cont_product_id`,A.`lang_type`,A.`product_name`,A.`product_desc`,A.`details`,A.`product_keywords`,A.`seo_keywords`,A.`seo_desc`,A.`seo_title`,A.`create_by`,A.`gmt_create`,A.`gmt_modified`
+				FROM cont_product_info A
+			  WHERE A.cont_product_id = #{contProductId}
+			) AS C
+		RIGHT JOIN sys_dict B ON C.lang_type=B.`value`
+		WHERE  B.type='CmsLangType'
+		ORDER BY B.sort
+	</select>
+
+</mapper>

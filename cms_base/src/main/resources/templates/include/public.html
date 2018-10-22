@@ -1,0 +1,234 @@
+<div th:fragment="header">
+    <div id="topline">
+        investment casting|lost wax casting|aluminum investment casting|vacuum investment casting|stainless steel
+        investment casting|steel investment casting|.
+    </div>
+    <div id="top">
+        <div id="logo"><a href="index.html" title="A&M Manufacturing Co.Ltd"><img src="/xmx/images/logo.png"
+                                                                                  alt="A&M Manufacturing Co.Ltd"
+                                                                                  border="0"/></a></div>
+        <div id="search">
+            <form id="form1" name="form1" method="get" action="">
+                <ul>
+                    <li><strong>Search Product:</strong></li>
+                    <li>
+                        <input v-model="searchParam.searchKey" type="text" placeholder="Enter Search Keyword"
+                               class="search_input"/>
+                    </li>
+                    <li>
+                        <select v-model="searchParam.contCategoryId" class="search_select">
+                            <option value="">All Categories</option>
+                            <option v-for="(item,index) in categoryTree.children" :value="item.id">{{item.text}}
+                            </option>
+                        </select>
+                    </li>
+                    <li>
+                        <input type="button" class="search_btn" v-on:click="searchProduct"/>
+                    </li>
+                </ul>
+            </form>
+        </div>
+    </div>
+    <!-- ================菜单栏开始================ -->
+    <div class="menu">
+        <ul>
+            <li><a title="Home" href="/" rel="nofollow"><strong>Home</strong></a></li>
+            <li><a title="About Us" href="/contXmx/view/a-aboutUs"><strong>About Us</strong></a></li>
+            <li style="z-index: 555;"><a class="hide" href="/contXmx/view/a-products"><b>Products</b></a>
+                <ul>
+                    <li v-for="(item,index) in categoryTree.children">
+                        <a class="hide" href="#" v-on:click="listProduct(item.id,item.text)" :title="item.text">{{item.text}}</a>
+                        <ul>
+                            <li v-for="(item2,index2) in item.children"><a href="#"
+                                                                           v-on:click="listProduct(item2.id,item2.text)"
+                                                                           :title="item2.text">{{item2.text}}</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <li><a title="News" href="/contXmx/view/a-news"><b>News</b></a></li>
+            <li><a title="Capability" href="/contXmx/view/a-capability"><b>Capability</b></a></li>
+            <li><a title="Contact Us" href="/contXmx/view/a-contactUs"><b>Contact Us</b></a></li>
+            <li><a href="mailto:market@investment-casting.biz"><b>E-mail:</b> market@investment-casting.biz</a></li>
+        </ul>
+    </div>
+    <div class="maint"></div>
+</div><!-- 顶部部分结束 -->
+<div th:fragment="left"><!-- 左侧部分开始 -->
+    <div id="left">
+        <div class="lefttop"></div>
+        <div class="ltit" v-on:click="init"><strong>Products Catagories</strong></div>
+        <div id="nav">
+            <div class="navmid">
+                <dl>
+                    <dt v-for="(item,index) in categoryTree.children">
+                        <ul>
+                            <!--一级分类-->
+                            <li><a href="javascript:void(0);" v-on:click="listProduct(item.id,item.text)"
+                                   :title="item.text">
+                                <h2>{{item.text}}</h2>
+                            </a>&nbsp;(9)
+                            </li>
+                            <!--二级分类-->
+                            <li v-for="(item2,index2) in item.children">
+                                <a href="javascript:void(0);" v-on:click="listProduct(item2.id,item2.text)"
+                                   :title="item2.text"><p>{{item2.text}}</p></a>&nbsp;(4)
+                            </li>
+                        </ul>
+                    </dt>
+                </dl>
+            </div>
+        </div>
+        <!-- =============新闻与事件================ -->
+        <div class="ltit"><strong>News &amp; Events</strong></div>
+        <div class="contactBox">
+            <div id="i_news">
+                <div class="inner">
+                    <ul>
+                        <li v-for="(event,index) in events">
+                            <h2><a :href="'/contXmx/openViewNewsDetail/'+event.cid">{{event.title}}</a></h2>
+                            <span class="time" style="padding-left:15px;">{{event.gtmModified}}</span>
+                            <!--<p style="padding-left:15px;">Our SIMIS just get the TUV Certificate and Alibaba Assessed Supplier ....</p>-->
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="clear"></div>
+        </div>
+        <!-- ================新闻与事件结束,联系信息开始=================== -->
+        <div class="ltit"><strong>Contact Information</strong></div>
+        <div class="contactBox">
+            <div v-html="contactInfo.content"></div>
+            <center><a href="/contXmx/view/a-inquiry"><img src="/xmx/images/contact_now.gif"/></a></center>
+            <br/>
+            <div class="clear"></div>
+        </div>
+    </div>
+</div><!-- 左侧部分结束 -->
+<div th:fragment="root"><!-- 底部开始 -->
+    <div id="root">
+        <div style="float:left;width: 30%">
+            <div class="rootmenu">
+                <a href="/" title="Home">Home</a>
+                <br/>
+                <a href="/contXmx/view/a-aboutUs" title="About Us">About Us</a>
+                <br/>
+                <a href="/contXmx/view/a-products" title="Products">Products</a>
+                <br/>
+                <a href="/contXmx/view/a-news" title="News">News</a>
+                <br/>
+                <a href="/contXmx/view/a-inquiry" title="Inquiry">Inquiry</a>
+                <br/>
+                <a href="/contXmx/view/a-capability" title="Capability">Capability</a>
+                <br/>
+                <a href="/contXmx/view/a-contactUs" title="Contact Us">Contact Us</a>
+            </div>
+            <!--<script language="javascript" type="text/javascript" src="/js/lang.js"></script>-->
+           <!-- <div class="trans">
+                <a href="javascript:translator('en|en')"><img src="/xmx/images/english.gif" width="15"
+                                                                             height="11"
+                                                                             align="absmiddle"/> English</a>
+                <a href="javascript:translator('en|de')"><img src="/xmx/images/deutsch1.gif" width="15" height="11"
+                                                              align="absmiddle"/> German</a>
+                <a href="javascript:translator('en|es')"><img src="/xmx/images/espanol.gif" width="15" height="11"
+                                                              align="absmiddle"/> Spanish</a>
+                <a href="javascript:translator('en|fr')"><img src="/xmx/images/francies.gif" width="15" height="11"
+                                                              align="absmiddle"/> French</a>
+                <a href="javascript:translator('en|it')"><img src="/xmx/images/italino.gif" width="15" height="11"
+                                                              align="absmiddle"/> Italian</a>
+                <a href="javascript:translator('en|pt')"><img src="/xmx/images/portgues.gif" width="15" height="11"
+                                                              align="absmiddle"/> Portuguese</a>
+                <a href="javascript:translator('en|ja')"><img src="/xmx/images/japan.jpg" width="15" height="11"
+                                                              align="absmiddle"/> Japanese</a>
+                <a href="javascript:translator('en|ko')"><img src="/xmx/images/korea.jpg" width="15" height="11"
+                                                              align="absmiddle"/> Korean</a>
+                <a href="javascript:translator('en|ar')"><img src="/xmx/images/arabia.jpg" width="15" height="11"
+                                                              align="absmiddle"/> Arabic</a>
+                <a href="javascript:translator('en|ru')"><img src="/xmx/images/russia.jpg" width="15" height="11"
+                                                              align="absmiddle"/> Russian</a>
+                <a href="javascript:translator('en|cn')"><img src="/xmx/images/chinese.gif" width="15" height="11"
+                                                              align="absmiddle"/> Chinese</a></div>-->
+
+        </div>
+        <div style="float:left;width:70%;color: #fff">
+            <form action="" method="post" name="feedback" id="feedback">
+                <table width="100%" border="0" align="left" cellpadding="0" cellspacing="1">
+
+                    <!--<tr>-->
+                        <!--<td height="30" align="right" class="color_huise2">{{formDataDOList[0].title}}：</td>-->
+                        <!--<td height="30" align="left">-->
+                            <!--<input name="title" type="text" id="title" v-model="formDataDOList[0].value"-->
+                                   <!--size="30" maxlength="50"-->
+                                   <!--value="turbine wheel /"/>-->
+                            <!--<span class="red">*</span></td>-->
+                    <!--</tr>-->
+
+                    <tr>
+                        <td height="30" align="right" class="color_huise2">{{formDataDOList[2].title}}：</td>
+                        <td height="30" align="left">
+                            <input name="name" type="text" id="name" size="30" v-model="formDataDOList[2].value" maxlength="50"/>
+                            <span class="red">*</span>
+                        </td>
+                        <td height="30" align="right" class="color_huise2">{{formDataDOList[3].title}}：</td>
+                        <td height="30" align="left"><input name="email" type="text" id="email" v-model="formDataDOList[3].value"
+                                                            size="30" maxlength="50"/>
+                            <span class="red">*</span></td>
+                    </tr>
+
+                    <!--<tr>-->
+                        <!--<td height="30" align="right" class="color_huise2">{{formDataDOList[4].title}}：</td>-->
+                        <!--<td height="30" align="left">-->
+                            <!--<select name="msn" id="msn" v-model="formDataDOList[4].value" />-->
+                            <!--<option value="">-&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45; Select Country/Region -&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;-->
+                            <!--</option>-->
+                            <!--<option v-for="countryItem  in countryArr" :value="countryItem.value">{{countryItem.name}}</option>-->
+                            <!--</select>-->
+                        <!--</td>-->
+                    <!--</tr>-->
+                    <tr>
+                        <td height="26" align="right" class="color_huise2">{{formDataDOList[5].title}}：</td>
+                        <td height="26" align="left"><input name="company_name" type="text"
+                                                            id="company_name" size="30" v-model="formDataDOList[5].value"
+                                                            maxlength="255"/></td>
+                        <td height="26" align="right" class="color_huise2">{{formDataDOList[6].title}}：</td>
+                        <td height="26" align="left"><input name="tel" type="text" id="tel" v-model="formDataDOList[6].value"
+                                                            size="30" maxlength="50"/> <span
+                                class="red">*</span></td>
+                    </tr>
+
+                    <!--<tr>-->
+                        <!--<td height="30" align="right" class="color_huise2">{{formDataDOList[7].title}}：</td>-->
+                        <!--<td height="30" align="left"><input name="add" type="text" id="add" v-model="formDataDOList[7].value"-->
+                                                            <!--size="60" maxlength="255"/></td>-->
+                    <!--</tr>-->
+
+                    <tr>
+                        <td align="right" class="color_huise2">{{formDataDOList[1].title}}：</td>
+                        <td align="left" colspan="3"><input type="hidden" name="Products"  value=""/><textarea
+                                name="content" cols="79" rows="6" id="content" v-model="formDataDOList[1].value"
+                                style="height:120px;"></textarea>
+                            <span class="red">*</span><br/></td>
+                    </tr>
+
+                    <tr>
+                        <td align="right">&nbsp;</td>
+                        <td align="left">
+                            <input name="OK" type="button" class="input_submit" id="OK" v-on:click="submit" value="Submit"/>
+                        </td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+
+        <div class="copyright"> Copyright <span id="CopyRight"> &copy; </span> 2018&nbsp;
+            <a href="/">A&M Manufacturing Co.Ltd</a> All Rights Reserved
+            <a href="sitemap.html">SiteMap</a>
+            <a href="/rss.xml"><img src="/xmx/images/rss.jpg" width="49" height="14" border="0"/></a>&nbsp;
+            <a href="/sitemap.xml"><img src="/xmx/images/map.gif" width="36" height="14" border="0"/></a>
+        </div>
+        <div class="clear"></div>
+    </div>
+    <script src="/js/jquery-1.11.3.min.js"></script>
+    <script language="javascript" type="text/javascript" src="/js/rootLink.js"></script>
+    <script type="text/javascript" src="/js/vue.min.js"></script>
+</div><!-- 底部结束 -->

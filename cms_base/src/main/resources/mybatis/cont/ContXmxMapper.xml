@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cloudht.cont.dao.ContXmxDao">
+
+	<resultMap id="productVO" type="com.cloudht.cont.vo.ContProductVO">
+		<id property="contProductId" column="cont_product_id"></id>
+		<result property="productName" column="product_name"></result>
+		<result property="categoryId" column="category_id"></result>
+		<result property="saleStatus" column="sale_status"></result>
+		<result property="createBy" column="create_by"></result>
+		<result property="gmtCreate" column="gmt_create"></result>
+		<result property="gmtModified" column="gmt_modified"></result>
+		<association property="contProductInfoDO" column="{cont_product_id=cont_product_id,lang_type=lang_type,searchKey=searchKey}" select="getInfo"/>
+
+		<collection property="contProductImgDOList" column="cont_product_id" ofType="com.cloudht.cont.domain.ContProductImgDO"
+					select="queryImg">
+		</collection>
+		<collection property="contProductParamDOList" column="{cont_product_id=cont_product_id,lang_type=lang_type}" ofType="com.cloudht.cont.domain.ContProductParamDO"
+					select="queryParam">
+		</collection>
+	</resultMap>
+
+	<resultMap id="paramDO" type="com.cloudht.cont.domain.ContProductParamDO">
+		<id property="contProductParamId" column="cont_product_param_id"></id>
+		<result property="contProductId" column="cont_product_id"></result>
+		<result property="langType" column="lang_type"></result>
+		<result property="paramName" column="param_name"></result>
+		<result property="limitNum" column="limit_num"></result>
+		<result property="sort" column="sort"></result>
+		<result property="createBy" column="create_by"></result>
+		<result property="gmtCreate" column="gmt_create"></result>
+		<result property="gmtModified" column=" gmt_modified"></result>
+
+		<collection property="contProductPkDOList" column="cont_product_param_id" ofType="com.cloudht.cont.domain.ContProductPkDO"
+					select="queryPk">
+		</collection>
+	</resultMap>
+
+
+
+	<select id="listProductByCategory" resultMap="productVO">
+		select #{langType} as lang_type ,#{searchKey} as searchKey ,
+			B.`cont_product_id`,B.`product_name`,B.`category_id`,B.`sale_status`,B.`create_by`,B.`gmt_create`,B.`gmt_modified`
+		FROM cont_category A,cont_product B
+		WHERE A.cont_category_id = B.category_id
+		AND A.category_type = #{categoryType}
+
+		<if test="contCategoryId != null and contCategoryId != ''">
+			AND A.cont_category_id in (
+				SELECT #{contCategoryId}
+				union all
+				select C.cont_category_id  FROM cont_category C WHERE C.parent_category_id = #{contCategoryId}
+			)
+		</if>
+		ORDER BY A.sort
+		<if test="offset != null and limit != null">
+			limit #{offset}, #{limit}
+		</if>
+	</select>
+
+
+	<select id="listCateProdsByProdId" resultMap="productVO">
+		select #{langType} as lang_type ,'' as searchKey ,
+		B.`cont_product_id`,B.`product_name`,B.`category_id`,B.`sale_status`,B.`create_by`,B.`gmt_create`,B.`gmt_modified`
+		FROM cont_product B ,cont_product C
+		WHERE B.category_id = C.category_id
+		AND C.cont_product_id = #{contProductId}
+		<if test="offset != null and limit != null">
+			limit #{offset}, #{limit}
+		</if>
+	</select>
+
+	<select id="listProductByCategoryCode" resultMap="productVO">
+		select #{langType} as lang_type ,'' as searchKey ,
+		B.`cont_product_id`,B.`product_name`,B.`category_id`,B.`sale_status`,B.`create_by`,B.`gmt_create`,B.`gmt_modified`
+		FROM cont_product B ,cont_category A
+		WHERE A.category_code = #{categoryCode}
+		AND A.category_type = #{categoryType}
+		AND A.cont_category_id = B.category_id
+		<if test="offset != null and limit != null">
+			limit #{offset}, #{limit}
+		</if>
+	</select>
+
+	<select id="listRecProduct" resultMap="productVO">
+		select #{langType} as lang_type ,'' as searchKey ,
+		B.`cont_product_id`,B.`product_name`,B.`category_id`,B.`sale_status`,B.`create_by`,B.`gmt_create`,B.`gmt_modified`
+		FROM cont_product B
+		WHERE B.level = #{level}
+		<if test="offset != null and limit != null">
+			limit #{offset}, #{limit}
+		</if>
+	</select>
+
+	<select id="getProduct" resultMap="productVO">
+		select #{langType} as lang_type ,
+		B.`cont_product_id`,B.`product_name`,B.`category_id`,B.`sale_status`,B.`create_by`,B.`gmt_create`,B.`gmt_modified`
+		FROM cont_product B
+		WHERE B.cont_product_id = #{contProductId}
+	</select>
+
+	<select id="countProductByCategory" resultType="java.lang.Integer">
+		select
+		COUNT(B.cont_product_id)
+		FROM cont_category A,cont_product B
+		WHERE A.cont_category_id = B.category_id
+		AND A.category_type = #{categoryType}
+
+		<if test="contCategoryId != null and contCategoryId != ''">
+			AND A.cont_category_id in (
+			SELECT #{contCategoryId}
+			union all
+			select C.cont_category_id  FROM cont_category C WHERE C.parent_category_id = #{contCategoryId}
+			)
+		</if>
+	</select>
+
+
+	<select id="getInfo" resultType="com.cloudht.cont.domain.ContProductInfoDO">
+		SELECT A.`cont_product_info_id`,A.`cont_product_id`,A.`lang_type`,A.`product_name`,A.`product_desc`,A.`details`,A.`product_keywords`,A.`seo_keywords`,A.`seo_desc`,A.`seo_title`,A.`create_by`,A.`gmt_create`,A.`gmt_modified`
+		FROM cont_product_info A
+		WHERE A.cont_product_id = #{cont_product_id}
+		AND A.`lang_type`= #{lang_type}
+		<if test="searchKey != null and searchKey != null">
+			AND  A.product_name LIKE CONCAT('%',#{searchKey},'%')
+		</if>
+	</select>
+
+	<select id="queryImg" resultType="com.cloudht.cont.domain.ContProductImgDO">
+		select `cont_product_img_id`,`cont_product_id`,`img_url`,`sort`
+		from cont_product_img
+		where cont_product_id = #{cont_product_id}
+	</select>
+
+	<select id="queryParam" resultMap="paramDO">
+		select `cont_product_param_id`,`cont_product_id`,`lang_type`,`param_name`,`limit_num`,`sort`,`create_by`,`gmt_create`,`gmt_modified` from cont_product_param
+		WHERE cont_product_id = #{cont_product_id} AND lang_type = #{lang_type}
+	</select>
+
+	<select id="queryPk" resultType="com.cloudht.cont.domain.ContProductPkDO">
+		select `cont_product_pk_id`,`cont_product_param_id`,`param_value`,`sort` from cont_product_pk where cont_product_param_id = #{value}
+	</select>
+</mapper>
