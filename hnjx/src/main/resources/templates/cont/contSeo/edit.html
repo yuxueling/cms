@@ -13,7 +13,7 @@
 							<div class="form-group">	
 								<label class="col-sm-3 control-label">语言类型：</label>
 								<div class="col-sm-8">
-									<select name="langType">
+									<select name="langType" class="btn btn-default">
 										<hzof th:each="langType:${langTypes}">
 										<option th:value="${langType.value}" th:text="${langType.name}" th:selected="${contSeo.langType}==${langType.value}?true:false"></option>
 										</hzof>

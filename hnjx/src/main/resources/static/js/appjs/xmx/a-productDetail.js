@@ -14,7 +14,7 @@ var vm = new Vue({
         contactInfo:{},
         productList:{},
         hotProductList:{},
-        langType:'english',
+        langType:'en',
         events:[],
         activeIndex:0,
         activeProduct:{},

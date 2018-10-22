@@ -24,7 +24,7 @@ var vm = new Vue({
         ],
         limit:100,
         offset:0,
-        langType:'english',
+        langType:'en',
         categoryName:'',
         events:[],
         contentList: []

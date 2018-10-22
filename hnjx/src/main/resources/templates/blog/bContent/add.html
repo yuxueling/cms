@@ -35,16 +35,16 @@
 									</div>
 								</div>
 							</div>
-							<div class="form-group">
+							<!-- <div class="form-group">
 								<label class="col-sm-1 control-label">类型：</label>
 								<div class="col-sm-11">
 									<input id="categories" name="categories" class="form-control" type="text">
 								</div> 
-							</div>
+							</div> -->
 							<div class="form-group">
 								<label class="col-sm-1 control-label">语言：</label>
 								<div class="col-sm-11">
-									<select name="langType">
+									<select name="langType" class="btn btn-default">
 										<hzof th:each="langType,interStat:${langTypes}">
 											<option th:value="${langType.value}" th:text="${langType.name}"></option>
 										</hzof>
@@ -54,7 +54,7 @@
 							<div class="form-group">
 								<label class="col-sm-1 control-label">新闻类型：</label>
 								<div class="col-sm-11">
-									<select name="type">
+									<select name="type" class="btn btn-default">
 										<hzof th:each="newsType,interStat:${newsTypes}">
 											<option th:value="${newsType.value}" th:text="${newsType.name}"></option>
 										</hzof>

@@ -33,6 +33,7 @@ public class BaseController {
 		return ShiroUtils.getSession();
 	}
 	/**
+	 * 获取浏览器支持的语言类型，并放入session中，将页面seo放入model中
 	 * 此方法在多处使用，修改请慎重
 	 * @param pageAddress 访问的页面地址 如index
 	 * @param request HttpServletRequest

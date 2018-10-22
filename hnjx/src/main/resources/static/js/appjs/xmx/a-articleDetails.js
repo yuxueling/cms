@@ -11,7 +11,7 @@ var vm = new Vue({
         searchParam:{searchKey:'',contCategoryId:''},
         contactInfo:{},
         product:{},
-        langType:'english',
+        langType:'en',
         events:[],
         contentDO:{},
         formDO: {},
