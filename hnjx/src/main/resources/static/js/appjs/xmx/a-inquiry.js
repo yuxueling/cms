@@ -9,7 +9,7 @@ var vm = new Vue({
         categoryTree: {},
         searchParam:{searchKey:'',contCategoryId:''},
         contactInfo:{},
-        langType: 'english',
+        langType: 'en',
         events: [],
         formDO: {},
         formDataDOList: [
