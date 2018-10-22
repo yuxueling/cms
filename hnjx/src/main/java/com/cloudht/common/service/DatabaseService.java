@@ -15,8 +15,15 @@ import org.springframework.stereotype.Service;
  * 
  */
 @Service
-public interface GeneratorService {
+public interface DatabaseService {
 	List<Map<String, Object>> list();
 
 	byte[] generatorCode(String[] tableNames);
+	/**
+	 * 根据url地址
+	 * @param tableUrl
+	 * @return
+	 * @throws Exception 
+	 */
+	Boolean tableToSqlByTableUrl(String tableUrl) throws Exception;
 }

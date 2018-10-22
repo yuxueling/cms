@@ -3,7 +3,7 @@ package com.cloudht.system.service.impl;
 import java.io.ByteArrayOutputStream;
 import java.util.*;
 
-import com.cloudht.common.domain.FileDO;
+import com.cloudht.common.domain.SysFileDO;
 import com.cloudht.common.service.FileService;
 import com.cloudht.common.utils.*;
 import com.cloudht.system.vo.UserVO;
@@ -204,7 +204,7 @@ public class UserServiceImpl implements UserService {
     public Map<String, Object> updatePersonalImg(MultipartFile file, String avatar_data, Long userId) throws Exception {
         String fileName = file.getOriginalFilename();
         fileName = FileUtil.renameToUUID(fileName);
-        FileDO sysFile = new FileDO(FileType.fileType(fileName), "/files/" + fileName, new Date());
+        SysFileDO sysFile = new SysFileDO(FileType.fileType(fileName), "/files/" + fileName, new Date());
         try {
             ByteArrayOutputStream out = new ByteArrayOutputStream();
             //转换后存入数据库

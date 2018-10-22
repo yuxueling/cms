@@ -1,16 +1,23 @@
 package com.cloudht.common.controller;
 
 import com.alibaba.fastjson.JSON;
-import com.cloudht.common.dao.GeneratorMapper;
-import com.cloudht.common.service.GeneratorService;
+import com.cloudht.common.dao.DatabaseDao;
+import com.cloudht.common.domain.SysFileDO;
+import com.cloudht.common.service.DatabaseService;
+import com.cloudht.common.service.FileService;
 import com.cloudht.common.utils.GenUtils;
+import com.sxyht.common.utils.FileType;
+import com.sxyht.common.utils.PageUtils;
+import com.sxyht.common.utils.Query;
 import com.sxyht.common.utils.R;
 
 import org.apache.commons.configuration.Configuration;
 import org.apache.commons.configuration.ConfigurationException;
 import org.apache.commons.configuration.PropertiesConfiguration;
 import org.apache.commons.io.IOUtils;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -28,36 +35,36 @@ import java.util.Set;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
 
-@RequestMapping("/common/generator")
 @Controller
-public class GeneratorController {
+public class DatabaseController {
 	String prefix = "common/generator";
-	@Autowired
-	GeneratorService generatorService;
-	@Autowired  GeneratorMapper generatorMapper;
+	@Autowired private DatabaseService databaseService;
+	@Autowired private FileService sysFileService;
+	@Value("${uploadPath}") private String uploadPath;
+	@Autowired private DatabaseDao databaseDao;
 
-	@GetMapping()
+	@GetMapping("/common/generator")
 	String generator() {
 		return prefix + "/list";
 	}
 	
-	@GetMapping("/backupRestore")
+	@GetMapping("/common/generator/backupRestore")
 	String backupRestoreView() {
 		return prefix + "/backupRestore";
 	}
 
 	@ResponseBody
-	@GetMapping("/list")
+	@GetMapping("/common/generator/list")
 	List<Map<String, Object>> list() {
-		List<Map<String, Object>> list = generatorService.list();
+		List<Map<String, Object>> list = this.databaseService.list();
 		return list;
 	};
 
-	@RequestMapping("/code/{tableName}")
+	@RequestMapping("/common/generator/code/{tableName}")
 	public void code(HttpServletRequest request, HttpServletResponse response,
 			@PathVariable("tableName") String tableName) throws IOException {
 		String[] tableNames = new String[] { tableName };
-		byte[] data = generatorService.generatorCode(tableNames);
+		byte[] data = this.databaseService.generatorCode(tableNames);
 		response.reset();
 		response.setHeader("Content-Disposition", "attachment; filename=\"cloudht.zip\"");
 		response.addHeader("Content-Length", "" + data.length);
@@ -66,11 +73,11 @@ public class GeneratorController {
 		IOUtils.write(data, response.getOutputStream());
 	}
 
-	@RequestMapping("/batchCode")
+	@RequestMapping("/common/generator/batchCode")
 	public void batchCode(HttpServletRequest request, HttpServletResponse response, String tables) throws IOException {
 		String[] tableNames = new String[] {};
 		tableNames = JSON.parseArray(tables).toArray(tableNames);
-		byte[] data = generatorService.generatorCode(tableNames);
+		byte[] data = this.databaseService.generatorCode(tableNames);
 		response.reset();
 		response.setHeader("Content-Disposition", "attachment; filename=\"cloudht.zip\"");
 		response.addHeader("Content-Length", "" + data.length);
@@ -79,14 +86,14 @@ public class GeneratorController {
 		IOUtils.write(data, response.getOutputStream());
 	}
 	
-	@RequestMapping("/batchBackup")
+	@RequestMapping("/common/generator/batchBackup")
 	public void batchBackup(HttpServletRequest request, HttpServletResponse response, String tables) throws IOException {
 		String[] tableNames = new String[] {};
 		tableNames = JSON.parseArray(tables).toArray(tableNames);//将前端传来的表名转换成数组
 		ByteArrayOutputStream outputStream = new ByteArrayOutputStream();//字节数组输入流
 		ZipOutputStream zip = new ZipOutputStream(outputStream);//zip输入流
 		for(String tableName : tableNames){//遍历传来的每一张表
-			List<Map<String,Object>> listDatas = generatorMapper.listDatas(tableName);
+			List<Map<String,Object>> listDatas = this.databaseDao.listDatas(tableName);
 			List<String> listStrings=new ArrayList<String>();
 			zip.putNextEntry(new ZipEntry(tableName+".sql"));
 			for(Map<String,Object> map:listDatas) {
@@ -122,7 +129,7 @@ public class GeneratorController {
 		IOUtils.write(data, response.getOutputStream());
 	}
 
-	@GetMapping("/edit")
+	@GetMapping("/common/generator/edit")
 	public String edit(Model model) {
 		Configuration conf = GenUtils.getConfig();
 		Map<String, Object> property = new HashMap<>(16);
@@ -136,7 +143,7 @@ public class GeneratorController {
 	}
 
 	@ResponseBody
-	@PostMapping("/update")
+	@PostMapping("/common/generator/update")
 	R update(@RequestParam Map<String, Object> map) {
 		try {
 			PropertiesConfiguration conf = new PropertiesConfiguration("generator.properties");
@@ -150,5 +157,38 @@ public class GeneratorController {
 			return R.error("保存配置文件出错");
 		}
 		return R.ok();
+	}
+	/** 
+	 * /common/database/restore
+	 * 跳转到还原视图
+	 * @return
+	 */
+	@GetMapping("/common/database/restore")@RequiresPermissions("common:database:restore")
+	public String restoreView() {
+		return "common/database/restore";
+	}
+	@ResponseBody
+	@PostMapping("/common/database/restore")@RequiresPermissions("common:database:restore")
+	public R restore(Long sysFileId) {
+		try {
+			if(sysFileId==null)
+				return null;
+			Boolean bool = this.databaseService.tableToSqlByTableUrl(this.sysFileService.get(sysFileId).getUrl());
+			return R.ok(bool+"");
+		} catch (Exception e) {
+			R.error(404,e.getMessage());
+		}
+		return R.error();
+	}
+	@ResponseBody
+	@GetMapping("/common/database/list")@RequiresPermissions("common:database:restore")
+	public PageUtils list(@RequestParam Map<String, Object> params) {
+		params.put("type", FileType.fileType("*.sql"));
+		// 查询列表数据
+		Query query = new Query(params);
+		List<SysFileDO> sysFileList = sysFileService.list(query);
+		int total = sysFileService.count(query);
+		PageUtils pageUtils = new PageUtils(sysFileList, total);
+		return pageUtils;
 	}
 }

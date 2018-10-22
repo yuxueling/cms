@@ -1,6 +1,6 @@
 package com.cloudht.common.service;
 
-import com.cloudht.common.domain.FileDO;
+import com.cloudht.common.domain.SysFileDO;
 
 import java.util.List;
 import java.util.Map;
@@ -14,15 +14,15 @@ import java.util.Map;
  */
 public interface FileService {
 	
-	FileDO get(Long id);
+	SysFileDO get(Long id);
 	
-	List<FileDO> list(Map<String, Object> map);
+	List<SysFileDO> list(Map<String, Object> map);
 	
 	int count(Map<String, Object> map);
 	
-	int save(FileDO sysFile);
+	int save(SysFileDO sysFile);
 	
-	int update(FileDO sysFile);
+	int update(SysFileDO sysFile);
 	
 	int remove(Long id);
 	

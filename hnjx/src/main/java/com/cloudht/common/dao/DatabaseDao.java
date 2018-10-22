@@ -3,17 +3,18 @@ package com.cloudht.common.dao;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 
-public interface GeneratorMapper {
+public interface DatabaseDao {
 	/**
 	 * 到库中查看当前使用库的所有表
 	 * @return
 	 */
-	@Select("select table_name tableName, engine, table_comment tableComment, create_time createTime from information_schema.tables"
-			+ " where table_schema = (select database())")
+	@Select("select table_name tableName, engine, table_comment tableComment, create_time createTime"
+			+ " from information_schema.tables where table_schema = (select database())")
 	List<Map<String, Object>> list();
 	/**
 	 * 查询当前使用库的表总数
@@ -45,8 +46,9 @@ public interface GeneratorMapper {
 	 * @param tableName
 	 * @return
 	 */
-	@Select("select * from ${tableName}")
+	@Select("SELECT * FROM ${tableName}")
 	List<Map<String, Object>> listDatas(@Param("tableName") String tableName);
+	
 	/**
 	 * 向任意表中插入数据
 	 * @param insert 数据插入语句
@@ -54,10 +56,12 @@ public interface GeneratorMapper {
 	 */
 	@Insert("${insert}")
 	int insert( @Param("insert") String insert);
+	
 	/**
-	 * 将表摧毁
+	 * 将表摧毁,新插入数据主键将从新开始
 	 * @param tableName 摧毁表的名称
 	 * @return
 	 */
+	@Delete("TRUNCATE TABLE ${tableName}")
 	int truncate( @Param("tableName") String tableName);
 }

@@ -1,11 +1,11 @@
 package com.cloudht.common.dao;
 
-import com.cloudht.common.domain.FileDO;
-
 import java.util.List;
 import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
+
+import com.cloudht.common.domain.SysFileDO;
 
 /**
  * 文件上传
@@ -14,17 +14,17 @@ import org.apache.ibatis.annotations.Mapper;
  * @date 2017-10-03 15:45:42
  */
 @Mapper
-public interface FileDao {
+public interface SysFileDao {
 
-	FileDO get(Long id);
+    SysFileDO get(Long id);
 	
-	List<FileDO> list(Map<String,Object> map);
+	List<SysFileDO> list(Map<String,Object> map);
 	
 	int count(Map<String,Object> map);
 	
-	int save(FileDO file);
+	int save(SysFileDO file);
 	
-	int update(FileDO file);
+	int update(SysFileDO file);
 	
 	int remove(Long id);
 	

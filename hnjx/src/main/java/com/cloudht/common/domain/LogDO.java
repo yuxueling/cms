@@ -1,7 +1,7 @@
 package com.cloudht.common.domain;
 
-import com.cloudht.common.utils.ipAddress.IpAddressUtils;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.sxyht.common.utils.ipAddress.IpAddressUtils;
 
 import java.util.Date;
 

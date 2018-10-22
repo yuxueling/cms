@@ -8,8 +8,8 @@ import java.io.File;
 import java.util.List;
 import java.util.Map;
 
-import com.cloudht.common.dao.FileDao;
-import com.cloudht.common.domain.FileDO;
+import com.cloudht.common.dao.SysFileDao;
+import com.cloudht.common.domain.SysFileDO;
 import com.cloudht.common.service.FileService;
 import org.springframework.util.StringUtils;
 
@@ -17,16 +17,16 @@ import org.springframework.util.StringUtils;
 @Service
 public class FileServiceImpl implements FileService {
 	@Autowired
-	private FileDao sysFileMapper;
+	private SysFileDao sysFileMapper;
 
 	@Value("${uploadPath}") String uploadPath;
 	@Override
-	public FileDO get(Long id){
+	public SysFileDO get(Long id){
 		return sysFileMapper.get(id);
 	}
 	
 	@Override
-	public List<FileDO> list(Map<String, Object> map){
+	public List<SysFileDO> list(Map<String, Object> map){
 		return sysFileMapper.list(map);
 	}
 	
@@ -36,12 +36,12 @@ public class FileServiceImpl implements FileService {
 	}
 	
 	@Override
-	public int save(FileDO sysFile){
+	public int save(SysFileDO sysFile){
 		return sysFileMapper.save(sysFile);
 	}
 	
 	@Override
-	public int update(FileDO sysFile){
+	public int update(SysFileDO sysFile){
 		return sysFileMapper.update(sysFile);
 	}
 	

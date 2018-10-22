@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.cloudht.common.controller.BaseController;
-import com.cloudht.common.domain.FileDO;
+import com.cloudht.common.domain.SysFileDO;
 import com.cloudht.cont.domain.ContProductImgDO;
 import com.cloudht.cont.service.ContProductImgService;
 import com.sxyht.common.utils.FileType;
@@ -129,7 +129,7 @@ public class ContProductImgController extends BaseController {
 		ContProductImgDO contProductImg=new ContProductImgDO();
 		contProductImg.setImgUrl("/files/" + fileName);
 		contProductImg.setContProductId(contProductId);
-		FileDO sysFile = new FileDO(FileType.fileType(fileName), "/files/" + fileName, new Date());
+		SysFileDO sysFile = new SysFileDO(FileType.fileType(fileName), "/files/" + fileName, new Date());
 		try {
 			FileUtil.uploadFile(file.getBytes(), this.uploadPath, fileName);
 		} catch (Exception e) {
