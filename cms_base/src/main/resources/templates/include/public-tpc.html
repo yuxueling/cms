@@ -1,0 +1,232 @@
+<div th:fragment="header">
+    <header class="header-v1">
+        <!-- S top-main -->
+        <div class="top-main">
+            <div class="logo1"><a href="index.html"><img src="/tpc/images/logo.png" alt=""/></a></div>
+            <a href="#" class="languages"><img src="/tpc/picture/top_pic2.png" alt=""/></a>
+
+            <div class="top_search"><em></em>
+
+                <div class="search_con" style="height:200px;">
+                    <select class="form-control" v-model="searchParam.searchKey">
+                        <option value="">全部</option>
+                        <option v-for="(item,index) in categoryTree" :value="index">{{item.text}}</option>
+                    </select>
+                    <input type="button" class="bnts" value="" @click="search"/>
+                </div>
+            </div>
+            <div class="top-main-content"><!-- S nav -->
+                <div class="navBar">
+                    <ul class="nav clearfix">
+                        <li id="m1" class="m on"><h3><a href="/" title="Home">Home</a></h3>
+                            <div class="sub" style="display:none"></div>
+                        </li>
+                        <li id="m2" class="m"><h3><a href="/contTpc/view/a-tireProtectionChain"
+                                                     title="Tire protection chain">Tire protection chain</a></h3>
+                            <div class="sub" style="display:none"></div>
+                        </li>
+                        <li id="m3" class="m"><h3><a href="/contTpc/view/a-productCatalog" title="Product Catalog">Product
+                            Catalog</a></h3>
+                            <div class="sub" style="display:none">
+                                <dl>
+                                    <dd v-for="(item,index) in categoryTree">
+                                        <a href="javascript:void(0);" @click="listProduct(item.id,item.text)">{{item.text}}</a>
+                                    </dd>
+                                </dl>
+                            </div>
+                        </li>
+                        <li id="m4" class="m"><h3><a href="/contTpc/view/a-productionProcess"
+                                                     title="Production Process">Production Process</a></h3>
+                            <div class="sub" style="display:none"></div>
+                        </li>
+                        <li id="m5" class="m "><h3><a href="/contTpc/view/a-aboutUs" title="About US">About US</a></h3>
+                            <div class="sub" style="display:none"></div>
+                        </li>
+                        <li id="m6" class="m "><h3><a href="/contTpc/view/a-news" title="News">News</a></h3>
+                            <div class="sub" style="display:none"></div>
+                        </li>
+                        <li id="m7" class="m "><h3><a href="/contTpc/view/a-contactUs" title="Contact Us">Contact Us</a>
+                        </h3>
+                            <div class="sub" style="display:none"></div>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- E nav-->
+            </div>
+        </div>
+        <!-- E top-main -->
+        <div class="c_l"></div>
+    </header>
+
+
+    <!-- S touch-top-wrapper -->
+    <div class="touch-top">
+        <div class="touch-top-wrapper clearfix">
+            <div class="touch-logo" skinobjectzone="HtmlLogo_1514"><a class="" href="/"><img src="/tpc/images/logo.png"
+                                                                                             alt="logo"/></a></div>
+            <!-- S touch-navigation -->
+            <div class="touch-navigation">
+                <div class="touch-toggle">
+                    <ul>
+                        <li class="touch-toggle-item-last"><a href="javascript:void(0);" class="drawer-menu"
+                                                              data-drawer="search_div"><i
+                                class="touch-icon-search"><span>search for</span></i></a></li>
+                        <li class="touch-toggle-item-last"><a href="javascript:void(0);" class="drawer-menu"
+                                                              data-drawer="drawer-section-menu"><i
+                                class="touch-icon-menu"></i><span>导航</span></a></li>
+                    </ul>
+                </div>
+            </div>
+            <!-- E touch-navigation --></div>
+        <!-- S touch-top -->
+        <div class="touch-toggle-content touch-top-home">
+            <!-----------------------手机搜索begin---------------------->
+            <div class="drawer-section search_div">
+                <div class="search_con">
+
+                    <select class="form-control" v-model="searchParam.searchKey">
+                        <option value="">全部</option>
+                        <option v-for="(item,index) in categoryTree" :value="index">{{item.text}}</option>
+                    </select>
+                    <input type="submit" class="bnt1" value="" @click="search"/>
+                </div>
+            </div>
+            <!------------------------手机搜索end----------------------->
+            <!------------------------手机菜单begin--------------------->
+            <div class="drawer-section drawer-section-menu">
+                <div class="touch-menu" skinobjectzone="menu_2005">
+                    <ul>
+                        <li><a href="/"><span>Home</span></a>
+                        </li>
+
+                        <li><a href="/contTpc/view/a-tireProtectionChain"><span>Tire protection chain</span></a>
+                        </li>
+                        <li><a href="/contTpc/view/a-productCatalog"><span>Product Catalog</span><i class="touch-arrow-down"></i> </a>
+                            <ul>
+                                <li v-for="(item,index) in categoryTree"><a href="javascript:void(0);" @click="listProduct(item.id,item.text)"><span>{{item.text}}</span></a></li>
+                            </ul>
+                        </li>
+                        <li><a href="/contTpc/view/a-productionProcess"><span>Production Process</span></a>
+                        </li>
+                        <li><a href="/contTpc/view/a-aboutUs"><span>About US</span></a>
+                        </li>
+                        <li><a href="/contTpc/view/a-news"><span>News</span> </a>
+                            <ul></ul>
+                        </li>
+                        <li><a href="/contTpc/view/a-contactUs"><span>Contact Us</span> </a>
+                            <ul></ul>
+                        </li>
+                    </ul>
+                    <div class="closetitle"><img src="/tpc/picture/nav_bg2.png" alt=""></div>
+                </div>
+            </div>
+            <!----------------------手机菜单end---------------------------->
+
+        </div>
+        <!-- E touch-top -->
+    </div>
+
+    <div class="touch_bg">&nbsp;</div>
+    <!-- E touch-top-wrapper -->
+    <div class="blank_h">&nbsp;</div>
+</div><!-- 顶部部分结束 -->
+<div th:fragment="footer"><!-- 底部开始 -->
+    <!--尾部begin-->
+    <div class="footers">
+        <div class="container">
+            <div class="left col-lg-4">
+                <h2 style="margin:0;margin-bottom:20px;padding:0;">Contact Us</h2>
+                <ul>
+
+                    <li>
+                        <span class="glyphicon glyphicon-home" aria-hidden="true"
+                              style="float:left;margin-right:6px;"></span>
+                        <p>Address:Taiyuan City,Shanxi Province, China</p>
+                    </li>
+                    <li>
+                        <span class="glyphicon glyphicon-map-marker" aria-hidden="true"
+                              style="float:left;margin-right:6px;"></span>
+                        <p>Zip:030006</p>
+                    </li>
+                    <li>
+                        <span class="glyphicon glyphicon-earphone" aria-hidden="true"
+                              style="float:left;margin-right:6px;"></span>
+                        <p>Tel:0086-351-4063778</p>
+                    </li>
+                    <li>
+                        <span class="glyphicon glyphicon-print" aria-hidden="true"
+                              style="float:left;margin-right:6px;"></span>
+                        <p>Fax:0086-351-4063778</p></li>
+                    <li>
+                        <span class="glyphicon glyphicon-envelope" aria-hidden="true"
+                              style="float:left;margin-right:6px;"></span>
+                        <p>Email:sales@tire-protection-chain.com </p></li>
+                    <div class="clearfix"></div>
+                </ul>
+            </div>
+            <div class="right col-lg-8">
+                <div class="row">
+                    <h2 style="margin:0;padding:0 0 20px 0;">Send an enquiry</h2>
+                    <p>If you have questions or need help with the project, please fill out the enquiry，The form is as
+                        follow，Yutai Glass representative will contact you as soon as possible As much as possible.</p>
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6 col-sm-12">
+                            <input type="text" class="form-control" v-model="formDataDOList[0].value"
+                                   :placeholder="formDataDOList[0].value">
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-12">
+                            <input type="text" class="form-control" v-model="formDataDOList[1].value"
+                                   :placeholder="formDataDOList[1].value">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6 col-sm-12">
+                            <input type="text" class="form-control" v-model="formDataDOList[2].value"
+                                   :placeholder="formDataDOList[2].value">
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-12">
+                            <input type="text" class="form-control" v-model="formDataDOList[3].value"
+                                   :placeholder="formDataDOList[3].value">
+                        </div>
+                    </div>
+                    <form role="form" style="margin-top:12px;">
+                        <div class="form-group">
+
+                            <textarea class="form-control" rows="5" v-model="formDataDOList[4].value"
+                                      :placeholder="formDataDOList[4].value"></textarea>
+                        </div>
+                    </form>
+                    <button type="submit" v-on:click="" class="btn btn-default">Send inquiry</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <a href="javascript:void(0)" class="gotop" onClick="goTop()"></a>
+    <!--尾部end-->
+
+    <script src="/tpc/js/jquery-1.12.4.min.js"></script>
+    <script src="/tpc/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/tpc/js/jquery.superslide.2.1.1.js">//pc导航</script>
+    <script src="/tpc/js/jquery.caroufredsel.js">//轮显</script>
+    <script src="/tpc/js/jquery.touchswipe.min.js">//轮显</script>
+    <script src="/tpc/js/public.js">//导航</script>
+    <script src="/tpc/js/anim.js">//动画</script>
+
+    <script type="text/javascript" src="/tpc/js/idangerous.swiper-2.0.min.js"></script>
+    <script type="text/javascript" src="/tpc/js/index.js"></script>
+
+    <script src="/tpc/js/owl.carousel.js"></script>
+    <script language="javascript" src="/tpc/js/foot.js"></script>
+    <script language="javascript" src="/js/vue.min.js"></script>
+    <script type="text/javascript"> jQuery(".nav").slide({
+        type: "menu",
+        titCell: ".m",
+        targetCell: ".sub",
+        effect: "slideDown",
+        delayTime: 300,
+        triggerTime: 100,
+        returnDefault: true
+    });</script>
+
+</div><!-- 底部结束 -->

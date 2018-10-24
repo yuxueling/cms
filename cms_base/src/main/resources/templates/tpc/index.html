@@ -1,0 +1,397 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width"/>
+    <title>Tire protection chain</title>
+    <meta name="keywords" content="关键词"/>
+    <meta name="description" content="描述"/>
+    <meta name="author" content="作者"/>
+    <meta name="copyright" content="版权"/>
+
+    <link href="/tpc/css/style.css" rel="stylesheet"/>
+    <link href="/tpc/css/anim.css" rel="stylesheet"/>
+    <link href="/tpc/css/slide.css" rel="stylesheet"/>
+    <link href="/tpc/css/index.css" rel="stylesheet"/>
+    <link href="/tpc/css/css.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="/tpc/css/bootstrap.min.css">
+    <link rel="shortcut icon" href="/tpc/images/logosmall.png" type="image/x-icon"/>
+
+</head>
+
+<body >
+<div id="app">
+<div th:include="include/public-tpc :: header"></div><!-- 共用header部分 -->
+
+<!--轮显begin-->
+<div id="a1portalSkin_ctr211899211899_mainArea" class="module-content"><!-- Start_Module_211899 --><!-- S slideshow -->
+    <div class="slideshow carousel clearfix" style="height:750px; overflow:hidden;">
+        <div id="carousel-211899">
+            <div class="carousel-item">
+                <div class="carousel-img"><a href="javascript:void(0);" target=""><img src="/tpc/picture/banner1.jpg"
+                                                                                       height="750" alt=""/></a></div>
+            </div>
+            <div class="carousel-item">
+                <div class="carousel-img"><a href="javascript:void(0);" target=""><img src="/tpc/picture/banner2.jpg"
+                                                                                       height="750" alt=""/></a></div>
+            </div>
+        </div>
+
+        <div class="carousel-btn carousel-btn-fixed" id="carousel-page-211899"></div>
+        <div class="carousel-page">
+            <div class="carousel-prev" id="carousel-prev-211899"></div>
+            <div class="carousel-next" id="carousel-next-211899"></div>
+        </div>
+    </div>
+
+    <!-- E slideshow --><!-- End_Module_211899 --></div>
+<!--轮显end-->
+<!------------------------------banner start-------------------------->
+<div class="flash_div">
+    <div class="flash">
+        <ul class="ul_flash">
+            <li>
+                <a href="javascript:void(0);" title="">
+                    <img src="/tpc/picture/bannersmall1.jpg" alt="">
+                </a>
+            </li>
+            <li>
+                <a href="javascript:void(0);" title="">
+                    <img src="/tpc/picture/bannersmall2.jpg" alt="">
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+<!------------------------------banner end--------------------------->
+<!-----------------------------产品中心begin------------------------->
+<div class="i_pro_bg2">
+    <div class="i_pro_t  anim anim-1">Product Catalog</div>
+    <div id="owl-demo2" class="owl-carousel anim anim-2">
+        <div class="item" v-for="(item,index) in recProductList">
+            <dd class="not-animated">
+                <a href="javascript:void(0);" @click="viewProduct(item.contProductId)">
+                    <div class="imgs">
+                        <img :src="item.contProductImgDOList[0].imgUrl" alt="">
+                        <p>&nbsp;</p>
+                    </div>
+                    <h2>{{item.contProductInfoDO.productName}}</h2>
+                </a>
+            </dd>
+        </div>
+
+    </div>
+
+</div>
+<!-----------------------产品中心end------------------------------>
+<!----------------------生产过程begin----------------------------->
+<div class="i_pro_t anim anim-1" style="bottom:2%;">Production Process</div>
+<div id="owl-demo" class="owl-carousel anim anim-2">
+    <div class="item">
+        <div class="bg-list-img">
+            <a href="javascript:void(0)"><img class="lazyOwl" data-src="/tpc/picture/process1.jpg" alt=""></a>
+        </div>
+        <div class="bg-list-tit"><h4>1. Raw Material In Stock</h4></div>
+        <label class="bg-list-more"></label>
+
+        <div class="i_pro_bg">
+            <a href="javascript:void(0)">
+                <div class="bg-list-hs" style=" background:url(/tpc/images/59674aa856e5e.png) center top no-repeat;">
+
+                </div>
+                <div class="bg-list-yew">
+                    <h5> Raw Material In Stock</h5>
+                </div>
+            </a>
+        </div>
+    </div>
+    <div class="item">
+        <div class="bg-list-img">
+            <a href="javascript:void(0)"><img class="lazyOwl" data-src="/tpc/picture/process2.jpg" alt=""></a>
+        </div>
+        <div class="bg-list-tit"><h4>2. Forging links </h4></div>
+        <label class="bg-list-more"></label>
+
+        <div class="i_pro_bg">
+            <a href="javascript:void(0)">
+                <div class="bg-list-hs" style=" background:url(/tpc/images/59674aa856e5e.png) center top no-repeat;">
+                </div>
+                <div class="bg-list-yew">
+                    <h5> Forging links</h5>
+                </div>
+            </a>
+        </div>
+    </div>
+    <div class="item">
+        <div class="bg-list-img">
+            <a href="javascript:void(0)"><img class="lazyOwl" data-src="/tpc/picture/process3.jpg" alt=""></a>
+        </div>
+        <div class="bg-list-tit"><h4>3. Cutting rings </h4></div>
+        <label class="bg-list-more"></label>
+
+        <div class="i_pro_bg">
+            <a href="javascript:void(0)">
+                <div class="bg-list-hs" style=" background:url(/tpc/images/59674aa856e5e.png) center top no-repeat;">
+                </div>
+                <div class="bg-list-yew">
+                    <h5>Cutting rings </h5>
+                </div>
+            </a>
+        </div>
+    </div>
+    <div class="item">
+        <div class="bg-list-img">
+            <a href="javascript:void(0)"><img class="lazyOwl" data-src="/tpc/picture/process4.jpg" alt=""></a>
+        </div>
+        <div class="bg-list-tit"><h4>4. Welding </h4></div>
+        <label class="bg-list-more"></label>
+
+        <div class="i_pro_bg">
+            <a href="javascript:void(0)">
+                <div class="bg-list-hs" style=" background:url(/tpc/images/59674aa856e5e.png) center top no-repeat;">
+                </div>
+                <div class="bg-list-yew">
+                    <h5>Welding </h5>
+                </div>
+            </a>
+        </div>
+    </div>
+    <div class="item">
+        <div class="bg-list-img">
+            <a href="javascript:void(0)"><img class="lazyOwl" data-src="/tpc/picture/process5.jpg" alt=""></a>
+        </div>
+        <div class="bg-list-tit"><h4>5. Checking</h4></div>
+        <label class="bg-list-more"></label>
+
+        <div class="i_pro_bg">
+            <a href="javascript:void(0)">
+                <div class="bg-list-hs" style=" background:url(/tpc/images/59674aa856e5e.png) center top no-repeat;">
+                </div>
+                <div class="bg-list-yew">
+                    <h5> Checking</h5>
+                </div>
+            </a>
+        </div>
+    </div>
+    <div class="item">
+        <div class="bg-list-img">
+            <a href="javascript:void(0)"><img class="lazyOwl" data-src="/tpc/picture/process6.jpg" alt=""></a>
+        </div>
+        <div class="bg-list-tit"><h4>6. Heat treatment </h4></div>
+        <label class="bg-list-more"></label>
+
+        <div class="i_pro_bg">
+            <a href="javascript:void(0)">
+                <div class="bg-list-hs" style=" background:url(/tpc/images/59674aa856e5e.png) center top no-repeat;">
+                </div>
+                <div class="bg-list-yew">
+                    <h5> Heat treatment </h5>
+                </div>
+            </a>
+        </div>
+    </div>
+    <div class="item">
+        <div class="bg-list-img">
+            <a href="javascript:void(0)"><img class="lazyOwl" data-src="/tpc/picture/process7.jpg" alt=""></a>
+        </div>
+        <div class="bg-list-tit"><h4>7. Shot blasting </h4></div>
+        <label class="bg-list-more"></label>
+
+        <div class="i_pro_bg">
+            <a href="javascript:void(0)">
+                <div class="bg-list-hs" style=" background:url(/tpc/images/59674aa856e5e.png) center top no-repeat;">
+                </div>
+                <div class="bg-list-yew">
+                    <h5>Shot blasting </h5>
+                </div>
+            </a>
+        </div>
+    </div>
+    <div class="item">
+        <div class="bg-list-img">
+            <a href="javascript:void(0)"><img class="lazyOwl" data-src="/tpc/picture/process8.jpg" alt=""></a>
+        </div>
+        <div class="bg-list-tit"><h4>8. Coating </h4></div>
+        <label class="bg-list-more"></label>
+
+        <div class="i_pro_bg">
+            <a href="javascript:void(0)">
+                <div class="bg-list-hs" style=" background:url(/tpc/images/59674aa856e5e.png) center top no-repeat;">
+                </div>
+                <div class="bg-list-yew">
+                    <h5> Coating </h5>
+                </div>
+            </a>
+        </div>
+    </div>
+</div>
+
+<!-------------------------生产过程end---------------------------------->
+<!---------------关于我们begin----------------------------->
+<div class="i_about">
+    <div class="i_about_t anim anim-1">about us</div>
+    <div class="i_about_con">
+        <div class="imgs anim anim-2">
+            <img src="/tpc/picture/about1.png" alt="">
+        </div>
+        <div class="i_about_r anim anim-3" >
+            <div class="i_about_txt" v-html="aboutUsCont.content"></div>
+            <a href="/contTpc/index " class="i_about_more">see more</a>
+        </div>
+
+        <div class="c_l"></div>
+    </div>
+</div>
+<!--关于我们end-->
+<!--资讯中心begin-->
+<div class="i_news_bg">
+    <div class="i_about_t anim anim-1">information centre</div>
+    <div class="i_news_a anim anim-2">
+
+        <a href="javascript:void(0)" j class="osel">news</a>
+
+        <!--       <a href="javascript:void(0)">公司新闻</a>-->
+
+    </div>
+    <div class="i_news_con anim anim-3">
+        <div class="i_news_div" style="display:block;">
+            <!--公司资讯begin-->
+            <div id="owl-demo3" class="owl-carousel">
+                <div class="item">
+                    <dd class="not-animated">
+                        <div class="i_news_l">
+                            <ul>
+                                <li v-for="(item,index) in newsCont" v-if="index !=0">
+                                    <a :href="'/contTpc/openViewNewsDetail/'+item.cid">
+                                        <div class="four_date"><b v-text="getD(item.gtmCreate)"></b><span v-text="getYM(item.gtmCreate)"></span></div>
+                                        <div class="four_txt">
+                                            <h2 v-text="item.title"></h2>
+                                            <p v-text="item.content"></p>
+                                        </div>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <a href="news-con.html">
+                            <div class="imgs">
+                                <img src="/tpc/picture/news5.jpg" alt="">
+                                <h2><em v-text="newsCont[0].gtmCreate"></em><span v-text="newsCont[0].title"></span></h2></div>
+                        </a></dd>
+                </div>
+
+            </div>
+
+            <!--公司资讯end-->
+        </div>
+    </div>
+</div>
+<!--资讯中心end-->
+
+<!--尾部begin-->
+<div th:include="include/public-tpc :: footer"></div><!-- 共用footer部分 -->
+<script type="text/javascript" src="/js/appjs/tpc/index.js"></script>
+
+
+<script>
+    $("#owl-demo2").owlCarousel({
+        items: 3,
+        lazyLoad: true,
+        autoPlay: true,
+        itemsDesktop: [1199, 3],
+        itemsDesktopSmall: [979, 3],
+        itemsTablet: [768, 2],
+        itemsTabletSmall: false,
+        itemsMobile: [479, 2],
+        navigation: true
+    });
+
+    $("#owl-demo").owlCarousel({
+        items: 5,
+        lazyLoad: true,
+        itemsDesktop: [1600, 4],
+        itemsDesktopSmall: [1279, 3],
+        itemsTablet: [768, 2],
+        itemsMobile: [479, 2],
+        autoPlay: true,
+        navigation: true
+    });
+
+    $("#owl-demo3").owlCarousel({
+        items: 1,
+        lazyLoad: true,
+        itemsDesktop: [1600, 1],
+        itemsDesktopSmall: [1279, 1],
+        itemsTablet: [768, 1],
+        itemsMobile: [479, 1],
+        autoPlay: true,
+        navigation: true
+    });
+
+    $(window).bind("load resize", function () {
+
+        $("#carousel-211899").carouFredSel({
+
+            width: '100%',
+
+            items: {visible: 1},
+
+            auto: {pauseOnHover: true, timeoutDuration: 5000},
+
+            swipe: {onTouch: true, onMouse: true},
+
+            pagination: "#carousel-page-211899",
+
+            prev: {button: "#carousel-prev-211899"},
+
+            next: {button: "#carousel-next-211899"},
+
+            scroll: {fx: "crossfade"}//注释的话就是滚动的
+
+        });
+
+    });
+</script>
+
+
+<!--弹窗begin-->
+<!--<div class="case_bgs">&nbsp;</div>
+<div class="case_tc">
+    <div class="case_divs">
+        <img src="/tpc/picture/close.png" class="closed" alt="">
+        <img src="/tpc/picture/i_pro_img1.jpg" alt="" id="tc_big"/>
+
+        <div class="case_txt">
+            <h2>桥梁工程领域2</h2>
+
+            <p>
+                与比亚迪公司成功完成新能源汽车制造生产所需焊割设备的销售合同，提供TIG-315AC/DC、 Master-500DP焊接设备。<br/>
+                与比亚迪公司成功完成新能源汽车制造生产所需焊割设备的销售合同，提供TIG-315AC/DC、 Master-500DP焊接设备。
+            </p>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    $(".closed").click(function () {
+        $(".case_tc").animate({height: "0", top: "270px"});
+        $(".case_bgs").fadeOut();
+        $(".case_tc").fadeOut();
+
+    })
+    $("#owl-demo .item").click(function () {
+        $(".case_txt").find("h2").html($(this).find("h4").html());
+        $(".case_txt").find("p").html($(this).find("p").html());
+        $("#tc_big").attr("src", $(this).find("img").attr("src"))
+        $(".case_bgs").fadeIn();
+        $(".case_tc").fadeIn();
+        $(".case_tc").animate({
+            height: $(".case_tc").find("#tc_big").height() + $(".case_txt").height() + 50,
+            top: $("#owl-demo").offset().top
+        });
+
+
+    })
+</script>-->
+<!--弹窗end-->
+</div>
+</body>
+</html>
