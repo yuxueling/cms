@@ -10,6 +10,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 
 import com.sxyht.common.utils.ShiroUtils;
+import com.sxyhton.common.domain.DictDO;
+import com.sxyhton.common.service.DictService;
 import com.sxyhton.cont.domain.ContSeoDO;
 import com.sxyhton.cont.service.ContSeoService;
 import com.sxyhton.system.domain.UserDO;
@@ -17,6 +19,7 @@ import com.sxyhton.system.domain.UserDO;
 @Controller
 public class BaseController {
 	@Autowired private ContSeoService contSeoService;
+	@Autowired private DictService dictService;
 	public UserDO getUser() {
 		return (UserDO)ShiroUtils.getUser();
 	}
@@ -41,22 +44,26 @@ public class BaseController {
 	 */
 	public void commonSesssion(String pageAddress,HttpServletRequest request,Model model) {
 		if(getSession().getAttribute("langType") == null) {
+			this.getSession().setAttribute("langType", "en");
 			String langType = request.getHeader("accept-language");//获取浏览器支持的语言类型
 			try {
 				langType = langType.substring(0, langType.indexOf(","));//获取浏览器首要支持的语言类型
 			} catch (Exception e) {}
-			this.getSession().setAttribute("langType", langType);
+			List<DictDO> listByType = this.dictService.listByType("CmsLangType");
+			for(DictDO dictDO:listByType) {
+				if(langType.equals(dictDO.getValue())) {
+					this.getSession().setAttribute("langType", langType);
+					break;
+				}
+			}
 		}
 		HashMap<String,Object> map = new HashMap<>();
 		map.put("pageAddress", pageAddress);
 		map.put("langType", this.getSession().getAttribute("langType"));//如有需要传入语言类型
 		List<ContSeoDO> list = this.contSeoService.list(map);
-		ContSeoDO contSeoDO;
-        if (list == null || list.size() == 0) {
-            contSeoDO = new ContSeoDO();
-        }else {
-            contSeoDO = list.get(0);
-        }
+		ContSeoDO contSeoDO= new ContSeoDO();
+        if (list != null && list.size() > 0)
+        	contSeoDO = list.get(0);
 		model.addAttribute("seoTitle", contSeoDO.getSeoTitle());
 		model.addAttribute("keywords", contSeoDO.getKeywords());
 		model.addAttribute("description", contSeoDO.getDescription());
