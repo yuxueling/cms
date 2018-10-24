@@ -17,9 +17,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import ${package}.domain.${className}DO;
 import ${package}.service.${className}Service;
-import com.cloudht.common.utils.PageUtils;
-import com.cloudht.common.utils.Query;
-import com.cloudht.common.utils.R;
+import com.sxyht.common.utils.PageUtils;
+import com.sxyht.common.utils.Query;
+import com.sxyht.common.utils.R;
 
 /**
  * ${comments}
@@ -74,9 +74,8 @@ public class ${className}Controller {
 	@PostMapping("/save")
 	@RequiresPermissions("${pathName}:${classname}:add")
 	public R save( ${className}DO ${classname}){
-		if(${classname}Service.save(${classname})>0){
+		if(${classname}Service.save(${classname})>0)
 			return R.ok();
-		}
 		return R.error();
 	}
 	/**
@@ -97,9 +96,8 @@ public class ${className}Controller {
 	@ResponseBody
 	@RequiresPermissions("${pathName}:${classname}:remove")
 	public R remove( ${pk.attrType} ${pk.attrname}){
-		if(${classname}Service.remove(${pk.attrname})>0){
-		return R.ok();
-		}
+		if(${classname}Service.remove(${pk.attrname})>0)
+			return R.ok();
 		return R.error();
 	}
 	
