@@ -28,7 +28,7 @@ var vm = new Vue({
         init: function () {
 
             $.ajax({
-                url: "/cont/contCategory/treeInfo",
+                url: "/cont/contXmx/treeInfo",
                 type: "post",
                 data: {
                     langType: vm.langType

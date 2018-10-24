@@ -1,18 +1,23 @@
 package com.sxyhton.cont.controller;
 
-import com.sxyht.common.utils.*;
+
 import com.sxyhton.common.annotation.Log;
 import com.sxyhton.common.controller.BaseController;
+        
 import com.sxyhton.common.domain.DictDO;
+import com.sxyhton.common.domain.Tree;
 import com.sxyhton.common.service.DictService;
+       
 import com.sxyhton.cont.domain.ContCategoryDO;
 import com.sxyhton.cont.domain.ContCategoryInfoDO;
 import com.sxyhton.cont.domain.ContSeoDO;
 import com.sxyhton.cont.domain.ContentDO;
+import com.sxyhton.cont.service.ContCategoryService;
 import com.sxyhton.cont.service.ContSeoService;
 import com.sxyhton.cont.service.ContXmxService;
 import com.sxyhton.cont.service.ContentService;
 import com.sxyhton.cont.vo.ContProductVO;
+import com.sxyht.common.utils.*;
 
 import org.apache.catalina.servlet4preview.http.HttpServletRequest;
 import org.apache.shiro.session.Session;
@@ -30,9 +35,42 @@ public class ContXmxController extends BaseController {
 
 	@Autowired private ContXmxService contXmxService;
 	@Autowired private DictService dictService;
-	@Autowired private ContentService bContentService;
 	@Autowired private ContSeoService contSeoService;
+	@Autowired private ContCategoryService contCategoryService;
+	@Autowired private ContentService contentService;
 
+
+	/**
+	 * 加载分类含详情
+	 * @param params lang_type
+	 * @return
+	 */
+	@RequestMapping("/treeInfo")
+	@ResponseBody
+	private Tree<ContCategoryDO> treeInfo(@RequestParam Map<String, Object> params) {
+		Tree<ContCategoryDO> treeInfo = this.contCategoryService.getTreeInfo(params);
+		{
+			String langType  = params.get("langType").toString();
+			params.clear();
+			params.put("langType", langType);
+			params.put("type","news");
+			List<ContentDO> list = this.contentService.list(params);
+			treeInfo.getState().put("events", list);
+		}
+		{
+			String langType  = params.get("langType").toString();
+			params.clear();
+			params.put("langType", langType);
+			params.put("type","contactInfo");
+			List<ContentDO>  contactInfoList= this.contentService.list(params);
+			if(contactInfoList!=null &&  !contactInfoList.isEmpty()){
+				treeInfo.getState().put("contactInfo", contactInfoList.get(0));
+			}else {
+				treeInfo.getState().put("contactInfo", new ContentDO());
+			}
+		}
+		return treeInfo;
+	}
 	/**
 	 * 根据语种及类别查询产品（仅支持到两级类别查询）
 	 * http://localhost:8084/contXmx/listProductByCategory?limit=10&offset=0&contCategoryId=2&langType=simChinese
@@ -214,7 +252,7 @@ public class ContXmxController extends BaseController {
 		if(cidO==null){
 			return R.error("Session超时或未发现新闻主键");
 		}
-		ContentDO contentDO = bContentService.get(Long.parseLong(cidO.toString()));
+		ContentDO contentDO = contentService.get(Long.parseLong(cidO.toString()));
 		return R.ok().put("row",contentDO);
 	}
 
@@ -323,8 +361,8 @@ public class ContXmxController extends BaseController {
 	public R listContent(@RequestParam Map<String, Object> params){
 		//查询列表数据
 		Query query = new Query(params);
-		List<ContentDO> contentDOList = bContentService.list(query);
-		int total = bContentService.count(query);
+		List<ContentDO> contentDOList = contentService.list(query);
+		int total = contentService.count(query);
 		return R.ok().put("rows",contentDOList).put("total",total);
 	}
 

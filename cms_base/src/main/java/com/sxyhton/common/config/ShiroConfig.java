@@ -61,10 +61,10 @@ public class ShiroConfig {
         filterChainDefinitionMap.put("/css/**", "anon");//匿名访问过滤器
         filterChainDefinitionMap.put("/login", "anon");//设置登陆页面为可以访问
         filterChainDefinitionMap.put("/js/**", "anon");
-        filterChainDefinitionMap.put("/xmx/sendInquiry", "anon");
-        filterChainDefinitionMap.put("/xmx/**", "anon");//将xmx设置为开放访问
-        filterChainDefinitionMap.put("/contXmx/**", "anon");//将xmx设置为开放访问
-        filterChainDefinitionMap.put("/cont/**", "anon");//将xmx设置为开放访问
+        filterChainDefinitionMap.put("/xmx/**", "anon");//xmx静态文件
+        filterChainDefinitionMap.put("/tpc/**", "anon");//tpc静态文件
+        filterChainDefinitionMap.put("/contXmx/**", "anon");//xmx开放接口
+        filterChainDefinitionMap.put("/contTpc/**", "anon");//tpc开放接口
         filterChainDefinitionMap.put("/sitemap.xml", "anon");//将sitemap.xml设置为开放访问
         filterChainDefinitionMap.put("/fonts/**", "anon");
         filterChainDefinitionMap.put("/img/**", "anon");

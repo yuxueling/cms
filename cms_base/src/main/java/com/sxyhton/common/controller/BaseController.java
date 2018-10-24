@@ -40,7 +40,7 @@ public class BaseController {
 	 * @param model 页面内容域对象
 	 */
 	public void commonSesssion(String pageAddress,HttpServletRequest request,Model model) {
-		if("null".equals(this.getSession().getAttribute("langType")+"")) {
+		if(getSession().getAttribute("langType") == null) {
 			String langType = request.getHeader("accept-language");//获取浏览器支持的语言类型
 			try {
 				langType = langType.substring(0, langType.indexOf(","));//获取浏览器首要支持的语言类型
@@ -51,8 +51,12 @@ public class BaseController {
 		map.put("pageAddress", pageAddress);
 		map.put("langType", this.getSession().getAttribute("langType"));//如有需要传入语言类型
 		List<ContSeoDO> list = this.contSeoService.list(map);
-		if(list.size()==0) return;
-		ContSeoDO contSeoDO = list.get(0);
+		ContSeoDO contSeoDO;
+        if (list == null || list.size() == 0) {
+            contSeoDO = new ContSeoDO();
+        }else {
+            contSeoDO = list.get(0);
+        }
 		model.addAttribute("seoTitle", contSeoDO.getSeoTitle());
 		model.addAttribute("keywords", contSeoDO.getKeywords());
 		model.addAttribute("description", contSeoDO.getDescription());
