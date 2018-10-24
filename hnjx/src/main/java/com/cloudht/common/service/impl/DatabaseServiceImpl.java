@@ -59,18 +59,14 @@ public class DatabaseServiceImpl implements DatabaseService {
 			}
 			br.close();
 		} catch (Exception e) {}
-		String[] sqls = stringBuilder.toString().split(";", 0);
+		String[] sqls = stringBuilder.toString().split("孎", 0);
 		String tableName = sqlName.substring(0, sqlName.indexOf("."));
 		this.generatorMapper.truncate(tableName);
 		for(String sqli:sqls) {
-			try {	
-				System.out.println(sqli.substring(sqli.length()-1));
-				if(sqli.substring(sqli.length()-1).equals(")")) {
-					this.generatorMapper.insert(sqli);
-				}
+			try {
+				this.generatorMapper.insert(sqli);
 			} catch (Exception e) {
-				System.out.println(sqli);
-				continue;
+				throw new RuntimeException("部分语句还原失败");
 			}
 		}
 		return true;

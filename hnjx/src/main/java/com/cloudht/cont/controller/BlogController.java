@@ -1,7 +1,7 @@
-package com.cloudht.blog.controller;
+package com.cloudht.cont.controller;
 
-import com.cloudht.blog.domain.ContentDO;
-import com.cloudht.blog.service.ContentService;
+import com.cloudht.cont.domain.ContentDO;
+import com.cloudht.cont.service.ContentService;
 import com.sxyht.common.utils.DateUtils;
 import com.sxyht.common.utils.PageUtils;
 import com.sxyht.common.utils.Query;

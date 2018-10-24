@@ -8,7 +8,7 @@ function load() {
 			.bootstrapTable(
 					{
 						method : 'get', // 服务器数据的请求方式 get or post
-						url : prefix + "/list", // 服务器数据的加载地址
+						url : prefix + "/list?tablePrefix=cont", // 服务器数据的加载地址
 						showRefresh : true,
 						showToggle : true,
 						showColumns : true,
@@ -54,17 +54,6 @@ function load() {
 								{
 									field : 'createTime',
 									title : '创建时间'
-								},
-								{
-									title : '操作',
-									field : 'id',
-									align : 'center',
-									formatter : function(value, row, index) {
-										var e = '<a class="btn btn-primary btn-sm" href="#" mce_href="#" title="生成代码" onclick="code(\''
-												+ row.tableName
-												+ '\')"><i class="fa fa-code"></i></a> ';
-										return e;
-									}
 								} ]
 					});
 }

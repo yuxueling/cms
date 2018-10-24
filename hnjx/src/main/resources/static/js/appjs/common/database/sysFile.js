@@ -86,13 +86,21 @@ function reLoad() {
 	$('#exampleTable').bootstrapTable('refresh');
 }
 function add() {
-	layer.open({
-		type : 2,
-		title : '增加',
-		maxmin : true,
-		shadeClose : false, // 点击遮罩关闭层
-		area : [ '800px', '520px' ],
-		content : prefix + '/add' // iframe的url
+	$.ajax({
+		url : '/common/database/batchBackup',
+		type : "post",
+		data : {
+			'tablePrefix' : 'cont'
+		},
+		success : function(r) {
+			/*if (r.code==0) {
+				layer.msg(r.msg);
+				reLoad();
+			}else{
+				layer.msg(r.msg);
+			}*/
+			reLoad();
+		}
 	});
 }
 function edit(id) {

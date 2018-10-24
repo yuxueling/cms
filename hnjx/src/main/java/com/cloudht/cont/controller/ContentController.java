@@ -1,9 +1,9 @@
-package com.cloudht.blog.controller;
+package com.cloudht.cont.controller;
 
-import com.cloudht.blog.domain.ContentDO;
-import com.cloudht.blog.service.ContentService;
 import com.cloudht.common.controller.BaseController;
 import com.cloudht.common.service.DictService;
+import com.cloudht.cont.domain.ContentDO;
+import com.cloudht.cont.service.ContentService;
 import com.sxyht.common.utils.PageUtils;
 import com.sxyht.common.utils.Query;
 import com.sxyht.common.utils.R;

@@ -1,4 +1,4 @@
-package com.cloudht.blog.service.impl;
+package com.cloudht.cont.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -6,9 +6,9 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Map;
 
-import com.cloudht.blog.dao.ContentDao;
-import com.cloudht.blog.domain.ContentDO;
-import com.cloudht.blog.service.ContentService;
+import com.cloudht.cont.dao.ContentDao;
+import com.cloudht.cont.domain.ContentDO;
+import com.cloudht.cont.service.ContentService;
 
 
 

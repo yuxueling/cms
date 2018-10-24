@@ -32,20 +32,20 @@ public class GenUtils {
 
     public static List<String> getTemplates() {
         List<String> templates = new ArrayList<String>();
-        templates.add("templates/common/generator/domain.java.vm");
-        templates.add("templates/common/generator/Dao.java.vm");
-        //templates.add("templates/common/generator/Mapper.java.vm");
-        templates.add("templates/common/generator/Mapper.xml.vm");
-        templates.add("templates/common/generator/Service.java.vm");
-        templates.add("templates/common/generator/ServiceImpl.java.vm");
-        templates.add("templates/common/generator/Controller.java.vm");
-        templates.add("templates/common/generator/list.html.vm");
-        templates.add("templates/common/generator/add.html.vm");
-        templates.add("templates/common/generator/edit.html.vm");
-        templates.add("templates/common/generator/list.js.vm");
-        templates.add("templates/common/generator/add.js.vm");
-        templates.add("templates/common/generator/edit.js.vm");
-        //templates.add("templates/common/generator/menu.sql.vm");
+        templates.add("templates/common/database/generator/domain.java.vm");
+        templates.add("templates/common/database/generator/Dao.java.vm");
+      //templates.add("templates/common/database/generator/Mapper.java.vm");
+        templates.add("templates/common/database/generator/Mapper.xml.vm");
+        templates.add("templates/common/database/generator/Service.java.vm");
+        templates.add("templates/common/database/generator/ServiceImpl.java.vm");
+        templates.add("templates/common/database/generator/Controller.java.vm");
+        templates.add("templates/common/database/generator/list.html.vm");
+        templates.add("templates/common/database/generator/add.html.vm");
+        templates.add("templates/common/database/generator/edit.html.vm");
+        templates.add("templates/common/database/generator/list.js.vm");
+        templates.add("templates/common/database/generator/add.js.vm");
+        templates.add("templates/common/database/generator/edit.js.vm");
+      //templates.add("templates/common/database/generator/menu.sql.vm");
         return templates;
     }
 

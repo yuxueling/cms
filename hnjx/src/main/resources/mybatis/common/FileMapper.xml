@@ -12,7 +12,7 @@
         <where>  
 		  		  <if test="id != null and id != ''"> and id = #{id} </if>
 		  		  <if test="type != null and type != ''"> and type = #{type} </if>
-		  		  <if test="url != null and url != ''"> and url = #{url} </if>
+		  		  <if test="url != null and url != ''"> and url like '%${url}%' </if>
 		  		  <if test="createDate != null and createDate != ''"> and create_date = #{createDate} </if>
 		  		</where>
         <choose>

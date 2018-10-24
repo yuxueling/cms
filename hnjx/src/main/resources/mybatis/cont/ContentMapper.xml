@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.cloudht.blog.dao.ContentDao">
+<mapper namespace="com.cloudht.cont.dao.ContentDao">
 
-	<select id="get" resultType="com.cloudht.blog.domain.ContentDO">
-		select `cid`,`title`,`slug`,`created`,`modified`,`content`,`type`,`tags`,`categories`,`hits`,`comments_num`,`allow_comment`,`allow_ping`,`allow_feed`,`status`,`author`,`gtm_create`,`gtm_modified` from blog_content where cid = #{value}
+	<select id="get" resultType="com.cloudht.cont.domain.ContentDO">
+		select `cid`,`title`,`slug`,`created`,`modified`,`content`,`type`,`tags`,`categories`,`hits`,`comments_num`,`allow_comment`,`allow_ping`,`allow_feed`,`status`,`author`,`gtm_create`,`gtm_modified` from cont_content where cid = #{value}
 	</select>
 
-	<select id="list" resultType="com.cloudht.blog.domain.ContentDO">
-		select `cid`,`title`,`slug`,`created`,`modified`,`content`,`type`,`tags`,`categories`,`hits`,`comments_num`,`allow_comment`,`allow_ping`,`allow_feed`,`status`,`author`,`gtm_create`,`gtm_modified` from blog_content
+	<select id="list" resultType="com.cloudht.cont.domain.ContentDO">
+		select `cid`,`title`,`slug`,`created`,`modified`,`content`,`type`,`tags`,`categories`,`hits`,`comments_num`,`allow_comment`,`allow_ping`,`allow_feed`,`status`,`author`,`gtm_create`,`gtm_modified` from cont_content
         <where>  
 		  		  <if test="cid != null and cid != ''"> and cid = #{cid} </if>
 		  		  <if test="title != null and title != ''"> and title = #{title} </if>
@@ -43,7 +43,7 @@
 	</select>
 	
  	<select id="count" resultType="int">
-		select count(*) from blog_content
+		select count(*) from cont_content
 		 <where>  
 		  		  <if test="cid != null and cid != ''"> and cid = #{cid} </if>
 		  		  <if test="title != null and title != ''"> and title = #{title} </if>
@@ -66,8 +66,8 @@
 		  		</where>
 	</select>
 	 
-	<insert id="save" parameterType="com.cloudht.blog.domain.ContentDO" useGeneratedKeys="true" keyProperty="cid">
-		insert into blog_content
+	<insert id="save" parameterType="com.cloudht.cont.domain.ContentDO" useGeneratedKeys="true" keyProperty="cid">
+		insert into cont_content
 		(
 			`title`, 
 			`slug`, 
@@ -111,8 +111,8 @@
 		)
 	</insert>
 	 
-	<update id="update" parameterType="com.cloudht.blog.domain.ContentDO">
-		update blog_content 
+	<update id="update" parameterType="com.cloudht.cont.domain.ContentDO">
+		update cont_content 
 		<set>
 			<if test="title != null">`title` = #{title}, </if>
 			<if test="slug != null">`slug` = #{slug}, </if>
@@ -137,11 +137,11 @@
 	</update>
 	
 	<delete id="remove">
-		delete from blog_content where cid = #{value}
+		delete from cont_content where cid = #{value}
 	</delete>
 	
 	<delete id="batchRemove">
-		delete from blog_content where cid in 
+		delete from cont_content where cid in 
 		<foreach item="cid" collection="array" open="(" separator="," close=")">
 			#{cid}
 		</foreach>
