@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.cloudht.cont.dao.ContXmxDao">
+<mapper namespace="com.sxyhton.cont.dao.ContXmxDao">
 
-	<resultMap id="productVO" type="com.cloudht.cont.vo.ContProductVO">
+	<resultMap id="productVO" type="com.sxyhton.cont.vo.ContProductVO">
 		<id property="contProductId" column="cont_product_id"></id>
 		<result property="productName" column="product_name"></result>
 		<result property="categoryId" column="category_id"></result>
@@ -12,15 +12,15 @@
 		<result property="gmtModified" column="gmt_modified"></result>
 		<association property="contProductInfoDO" column="{cont_product_id=cont_product_id,lang_type=lang_type,searchKey=searchKey}" select="getInfo"/>
 
-		<collection property="contProductImgDOList" column="cont_product_id" ofType="com.cloudht.cont.domain.ContProductImgDO"
+		<collection property="contProductImgDOList" column="cont_product_id" ofType="com.sxyhton.cont.domain.ContProductImgDO"
 					select="queryImg">
 		</collection>
-		<collection property="contProductParamDOList" column="{cont_product_id=cont_product_id,lang_type=lang_type}" ofType="com.cloudht.cont.domain.ContProductParamDO"
+		<collection property="contProductParamDOList" column="{cont_product_id=cont_product_id,lang_type=lang_type}" ofType="com.sxyhton.cont.domain.ContProductParamDO"
 					select="queryParam">
 		</collection>
 	</resultMap>
 
-	<resultMap id="paramDO" type="com.cloudht.cont.domain.ContProductParamDO">
+	<resultMap id="paramDO" type="com.sxyhton.cont.domain.ContProductParamDO">
 		<id property="contProductParamId" column="cont_product_param_id"></id>
 		<result property="contProductId" column="cont_product_id"></result>
 		<result property="langType" column="lang_type"></result>
@@ -31,7 +31,7 @@
 		<result property="gmtCreate" column="gmt_create"></result>
 		<result property="gmtModified" column=" gmt_modified"></result>
 
-		<collection property="contProductPkDOList" column="cont_product_param_id" ofType="com.cloudht.cont.domain.ContProductPkDO"
+		<collection property="contProductPkDOList" column="cont_product_param_id" ofType="com.sxyhton.cont.domain.ContProductPkDO"
 					select="queryPk">
 		</collection>
 	</resultMap>
@@ -116,7 +116,7 @@
 	</select>
 
 
-	<select id="getInfo" resultType="com.cloudht.cont.domain.ContProductInfoDO">
+	<select id="getInfo" resultType="com.sxyhton.cont.domain.ContProductInfoDO">
 		SELECT A.`cont_product_info_id`,A.`cont_product_id`,A.`lang_type`,A.`product_name`,A.`product_desc`,A.`details`,A.`product_keywords`,A.`seo_keywords`,A.`seo_desc`,A.`seo_title`,A.`create_by`,A.`gmt_create`,A.`gmt_modified`
 		FROM cont_product_info A
 		WHERE A.cont_product_id = #{cont_product_id}
@@ -126,7 +126,7 @@
 		</if>
 	</select>
 
-	<select id="queryImg" resultType="com.cloudht.cont.domain.ContProductImgDO">
+	<select id="queryImg" resultType="com.sxyhton.cont.domain.ContProductImgDO">
 		select `cont_product_img_id`,`cont_product_id`,`img_url`,`sort`
 		from cont_product_img
 		where cont_product_id = #{cont_product_id}
@@ -137,7 +137,7 @@
 		WHERE cont_product_id = #{cont_product_id} AND lang_type = #{lang_type}
 	</select>
 
-	<select id="queryPk" resultType="com.cloudht.cont.domain.ContProductPkDO">
+	<select id="queryPk" resultType="com.sxyhton.cont.domain.ContProductPkDO">
 		select `cont_product_pk_id`,`cont_product_param_id`,`param_value`,`sort` from cont_product_pk where cont_product_param_id = #{value}
 	</select>
 </mapper>

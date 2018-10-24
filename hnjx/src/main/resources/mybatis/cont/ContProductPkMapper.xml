@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.cloudht.cont.dao.ContProductPkDao">
+<mapper namespace="com.sxyhton.cont.dao.ContProductPkDao">
 
-	<select id="get" resultType="com.cloudht.cont.domain.ContProductPkDO">
+	<select id="get" resultType="com.sxyhton.cont.domain.ContProductPkDO">
 		select `cont_product_pk_id`,`cont_product_param_id`,`param_value`,`sort` from cont_product_pk where cont_product_pk_id = #{value}
 	</select>
 
-	<select id="list" resultType="com.cloudht.cont.domain.ContProductPkDO">
+	<select id="list" resultType="com.sxyhton.cont.domain.ContProductPkDO">
 		select `cont_product_pk_id`,`cont_product_param_id`,`param_value`,`sort` from cont_product_pk
         <where>  
 		  		  <if test="contProductPkId != null and contProductPkId != ''"> and cont_product_pk_id = #{contProductPkId} </if>
@@ -38,7 +38,7 @@
 		  		</where>
 	</select>
 	 
-	<insert id="save" parameterType="com.cloudht.cont.domain.ContProductPkDO" useGeneratedKeys="true" keyProperty="contProductPkId">
+	<insert id="save" parameterType="com.sxyhton.cont.domain.ContProductPkDO" useGeneratedKeys="true" keyProperty="contProductPkId">
 		insert into cont_product_pk
 		(
 			`cont_product_param_id`, 
@@ -53,7 +53,7 @@
 		)
 	</insert>
 	 
-	<update id="update" parameterType="com.cloudht.cont.domain.ContProductPkDO">
+	<update id="update" parameterType="com.sxyhton.cont.domain.ContProductPkDO">
 		update cont_product_pk 
 		<set>
 			<if test="contProductParamId != null">`cont_product_param_id` = #{contProductParamId}, </if>
@@ -77,7 +77,7 @@
 
 	<!--	new					-->
 
-	<insert id="batchInsert" parameterType="com.cloudht.cont.domain.ContProductPkDO" useGeneratedKeys="true" keyProperty="contProductPkId">
+	<insert id="batchInsert" parameterType="com.sxyhton.cont.domain.ContProductPkDO" useGeneratedKeys="true" keyProperty="contProductPkId">
 		insert into cont_product_pk
 		(
 		`cont_product_param_id`,

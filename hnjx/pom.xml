@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.sxyhton</groupId>
     <artifactId>hnjx</artifactId>
-    <version>8.9.19</version>
+    <version>8.10.24</version>
     <packaging>war</packaging>
     <parent>
         <groupId>org.springframework.boot</groupId>

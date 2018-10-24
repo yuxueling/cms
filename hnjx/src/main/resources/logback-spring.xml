@@ -13,7 +13,7 @@
         <Prudent>true</Prudent>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
             <FileNamePattern>
-                ${catalina.base}/logs/htfq_crm/%d{yyyy-MM-dd}/%d{yyyy-MM-dd}.log
+                ${catalina.base}/logs/sxyhton/%d{yyyy-MM-dd}/%d{yyyy-MM-dd}.log
             </FileNamePattern>
             <!--<FileNamePattern>
                 D:/ProgramData/htfq_crm/%d{yyyy-MM-dd}/%d{yyyy-MM-dd}.log
@@ -26,7 +26,7 @@
         </layout>
     </appender>
 
-    <logger name="com.cloudht" level="info" additivity="false">
+    <logger name="com.sxyhton" level="info" additivity="false">
         <appender-ref ref="console"/>
         <appender-ref ref="logFile" />
     </logger>

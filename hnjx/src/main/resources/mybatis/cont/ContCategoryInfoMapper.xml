@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.cloudht.cont.dao.ContCategoryInfoDao">
+<mapper namespace="com.sxyhton.cont.dao.ContCategoryInfoDao">
 
-	<select id="get" resultType="com.cloudht.cont.domain.ContCategoryInfoDO">
+	<select id="get" resultType="com.sxyhton.cont.domain.ContCategoryInfoDO">
 		select `cont_category_info_id`,`cont_category_id`,`lang_type`,`category_name`,`details` from cont_category_info where cont_category_info_id = #{value}
 	</select>
 
-	<select id="list" resultType="com.cloudht.cont.domain.ContCategoryInfoDO">
+	<select id="list" resultType="com.sxyhton.cont.domain.ContCategoryInfoDO">
 		select `cont_category_info_id`,`cont_category_id`,`lang_type`,`category_name`,`details` from cont_category_info
         <where>  
 		  		  <if test="contCategoryInfoId != null and contCategoryInfoId != ''"> and cont_category_info_id = #{contCategoryInfoId} </if>
@@ -40,7 +40,7 @@
 		  		</where>
 	</select>
 	 
-	<insert id="save" parameterType="com.cloudht.cont.domain.ContCategoryInfoDO" useGeneratedKeys="true" keyProperty="contCategoryInfoId">
+	<insert id="save" parameterType="com.sxyhton.cont.domain.ContCategoryInfoDO" useGeneratedKeys="true" keyProperty="contCategoryInfoId">
 		insert into cont_category_info
 		(
 			`cont_category_id`, 
@@ -57,7 +57,7 @@
 		)
 	</insert>
 	 
-	<update id="update" parameterType="com.cloudht.cont.domain.ContCategoryInfoDO">
+	<update id="update" parameterType="com.sxyhton.cont.domain.ContCategoryInfoDO">
 		update cont_category_info 
 		<set>
 			<if test="contCategoryId != null">`cont_category_id` = #{contCategoryId}, </if>

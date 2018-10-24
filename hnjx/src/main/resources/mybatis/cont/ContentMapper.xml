@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.cloudht.cont.dao.ContentDao">
+<mapper namespace="com.sxyhton.cont.dao.ContentDao">
 
-	<select id="get" resultType="com.cloudht.cont.domain.ContentDO">
+	<select id="get" resultType="com.sxyhton.cont.domain.ContentDO">
 		select `cid`,`title`,`slug`,`created`,`modified`,`content`,`type`,`tags`,`categories`,`hits`,`comments_num`,`allow_comment`,`allow_ping`,`allow_feed`,`status`,`author`,`gtm_create`,`gtm_modified` from cont_content where cid = #{value}
 	</select>
 
-	<select id="list" resultType="com.cloudht.cont.domain.ContentDO">
+	<select id="list" resultType="com.sxyhton.cont.domain.ContentDO">
 		select `cid`,`title`,`slug`,`created`,`modified`,`content`,`type`,`tags`,`categories`,`hits`,`comments_num`,`allow_comment`,`allow_ping`,`allow_feed`,`status`,`author`,`gtm_create`,`gtm_modified` from cont_content
         <where>  
 		  		  <if test="cid != null and cid != ''"> and cid = #{cid} </if>
@@ -66,7 +66,7 @@
 		  		</where>
 	</select>
 	 
-	<insert id="save" parameterType="com.cloudht.cont.domain.ContentDO" useGeneratedKeys="true" keyProperty="cid">
+	<insert id="save" parameterType="com.sxyhton.cont.domain.ContentDO" useGeneratedKeys="true" keyProperty="cid">
 		insert into cont_content
 		(
 			`title`, 
@@ -111,7 +111,7 @@
 		)
 	</insert>
 	 
-	<update id="update" parameterType="com.cloudht.cont.domain.ContentDO">
+	<update id="update" parameterType="com.sxyhton.cont.domain.ContentDO">
 		update cont_content 
 		<set>
 			<if test="title != null">`title` = #{title}, </if>

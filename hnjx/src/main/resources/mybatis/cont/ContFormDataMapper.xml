@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.cloudht.cont.dao.ContFormDataDao">
+<mapper namespace="com.sxyhton.cont.dao.ContFormDataDao">
 
-	<select id="get" resultType="com.cloudht.cont.domain.ContFormDataDO">
+	<select id="get" resultType="com.sxyhton.cont.domain.ContFormDataDO">
 		select `cont_form_data_id`,`cont_form_id`,`title`,`value`,`title_style`,`input_style`,`gmt_create`,`gmt_modified`,`create_by` from cont_form_data where cont_form_data_id = #{value}
 	</select>
 
-	<select id="list" resultType="com.cloudht.cont.domain.ContFormDataDO">
+	<select id="list" resultType="com.sxyhton.cont.domain.ContFormDataDO">
 		select `cont_form_data_id`,`cont_form_id`,`title`,`value`,`title_style`,`input_style`,`gmt_create`,`gmt_modified`,`create_by` from cont_form_data
         <where>  
   		  <if test="contFormDataId != null and contFormDataId != ''"> and cont_form_data_id = #{contFormDataId} </if>
@@ -48,7 +48,7 @@
   		</where>
 	</select>
 	 
-	<insert id="save" parameterType="com.cloudht.cont.domain.ContFormDataDO" useGeneratedKeys="true" keyProperty="contFormDataId">
+	<insert id="save" parameterType="com.sxyhton.cont.domain.ContFormDataDO" useGeneratedKeys="true" keyProperty="contFormDataId">
 		insert into cont_form_data
 		(
 			`cont_form_id`, 
@@ -73,7 +73,7 @@
 		)
 	</insert>
 	 
-	<update id="update" parameterType="com.cloudht.cont.domain.ContFormDataDO">
+	<update id="update" parameterType="com.sxyhton.cont.domain.ContFormDataDO">
 		update cont_form_data 
 		<set>
 			<if test="contFormId != null">`cont_form_id` = #{contFormId}, </if>
@@ -104,7 +104,7 @@
 	<!--				New 			-->
 
 
-	<insert id="batchSave" parameterType="com.cloudht.cont.domain.ContFormDataDO" useGeneratedKeys="true" keyProperty="contFormDataId">
+	<insert id="batchSave" parameterType="com.sxyhton.cont.domain.ContFormDataDO" useGeneratedKeys="true" keyProperty="contFormDataId">
 		insert into cont_form_data
 		(
 		`cont_form_id`,
