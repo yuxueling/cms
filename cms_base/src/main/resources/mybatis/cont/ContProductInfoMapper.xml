@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.cloudht.cont.dao.ContProductInfoDao">
+<mapper namespace="com.sxyhton.cont.dao.ContProductInfoDao">
 
-	<select id="get" resultType="com.cloudht.cont.domain.ContProductInfoDO">
+	<select id="get" resultType="com.sxyhton.cont.domain.ContProductInfoDO">
 		select `cont_product_info_id`,`cont_product_id`,`lang_type`,`product_name`,`product_desc`,`details`,`product_keywords`,`seo_keywords`,`seo_desc`,`seo_title`,`create_by`,`gmt_create`,`gmt_modified` from cont_product_info where cont_product_info_id = #{value}
 	</select>
 
-	<select id="list" resultType="com.cloudht.cont.domain.ContProductInfoDO">
+	<select id="list" resultType="com.sxyhton.cont.domain.ContProductInfoDO">
 		select `cont_product_info_id`,`cont_product_id`,`lang_type`,`product_name`,`product_desc`,`details`,`product_keywords`,`seo_keywords`,`seo_desc`,`seo_title`,`create_by`,`gmt_create`,`gmt_modified` from cont_product_info
         <where>  
 		  		  <if test="contProductInfoId != null and contProductInfoId != ''"> and cont_product_info_id = #{contProductInfoId} </if>
@@ -56,7 +56,7 @@
 		  		</where>
 	</select>
 	 
-	<insert id="save" parameterType="com.cloudht.cont.domain.ContProductInfoDO" useGeneratedKeys="true" keyProperty="contProductInfoId">
+	<insert id="save" parameterType="com.sxyhton.cont.domain.ContProductInfoDO" useGeneratedKeys="true" keyProperty="contProductInfoId">
 		insert into cont_product_info
 		(
 			`cont_product_id`, 
@@ -89,7 +89,7 @@
 		)
 	</insert>
 	 
-	<update id="update" parameterType="com.cloudht.cont.domain.ContProductInfoDO">
+	<update id="update" parameterType="com.sxyhton.cont.domain.ContProductInfoDO">
 		update cont_product_info 
 		<set>
 			<if test="contProductId != null">`cont_product_id` = #{contProductId}, </if>
@@ -123,7 +123,7 @@
 
 	<!--             new                   -->
 
-	<select id="listByDict" resultType="com.cloudht.cont.domain.ContProductInfoDO">
+	<select id="listByDict" resultType="com.sxyhton.cont.domain.ContProductInfoDO">
 		  SELECT
 			C.`cont_product_info_id`,
 			C.`cont_product_id`,

@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.cloudht.cont.dao.ContFormDao">
+<mapper namespace="com.sxyhton.cont.dao.ContFormDao">
 
-	<select id="get" resultType="com.cloudht.cont.domain.ContFormDO">
+	<select id="get" resultType="com.sxyhton.cont.domain.ContFormDO">
 		select `cont_form_id`,`title`,`lang_type`,`seo_title`,`seo_keywords`,`seo_describe`,`remark`,`have_read`,`read_date`,`gmt_create`,`gmt_modified`,`create_by` from cont_form where cont_form_id = #{value}
 	</select>
 
-	<select id="list" resultType="com.cloudht.cont.domain.ContFormDO">
+	<select id="list" resultType="com.sxyhton.cont.domain.ContFormDO">
 		select `cont_form_id`,`title`,`lang_type`,`seo_title`,`seo_keywords`,`seo_describe`,`remark`,`have_read`,`read_date`,`gmt_create`,`gmt_modified`,`create_by` from cont_form
         <where>  
 		  		  <if test="contFormId != null and contFormId != ''"> and cont_form_id = #{contFormId} </if>
@@ -54,7 +54,7 @@
 		  		</where>
 	</select>
 	 
-	<insert id="save" parameterType="com.cloudht.cont.domain.ContFormDO" useGeneratedKeys="true" keyProperty="contFormId">
+	<insert id="save" parameterType="com.sxyhton.cont.domain.ContFormDO" useGeneratedKeys="true" keyProperty="contFormId">
 		insert into cont_form
 		(
 			`title`, 
@@ -85,7 +85,7 @@
 		)
 	</insert>
 	 
-	<update id="update" parameterType="com.cloudht.cont.domain.ContFormDO">
+	<update id="update" parameterType="com.sxyhton.cont.domain.ContFormDO">
 		update cont_form 
 		<set>
 			<if test="title != null">`title` = #{title}, </if>
