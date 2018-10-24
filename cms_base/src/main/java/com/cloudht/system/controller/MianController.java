@@ -35,7 +35,7 @@ public class MianController extends BaseController {
 	public String indexView(HttpServletRequest request,Model model) {
 		String pageAddress="index";
 		this.commonSesssion(pageAddress,request,model);
-		return "xmx/"+pageAddress;
+		return "tpc/"+pageAddress;
 	}
 	
 	/**请求访问登录页面 */

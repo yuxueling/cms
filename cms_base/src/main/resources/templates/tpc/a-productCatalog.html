@@ -1,0 +1,141 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width"/>
+    <title>Tire protection chain</title>
+    <meta name="keywords" content="关键词"/>
+    <meta name="description" content="描述"/>
+    <meta name="author" content="作者"/>
+    <meta name="copyright" content="版权"/>
+
+    <link href="/tpc/css/style.css" rel="stylesheet"/>
+    <link href="/tpc/css/anim.css" rel="stylesheet"/>
+    <link href="/tpc/css/slide.css" rel="stylesheet"/>
+    <link href="/tpc/css/index.css" rel="stylesheet"/>
+    <link href="/tpc/css/css.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="/tpc/css/bootstrap.min.css">
+    <link rel="shortcut icon" href="/tpc/images/logosmall.png" type="image/x-icon"/>
+</head>
+
+<body>
+
+<div th:include="include/public-tpc :: header"></div>
+
+<!--轮显begin-->
+<div id="a1portalSkin_ctr211899211899_mainArea" class="module-content"><!-- Start_Module_211899 --><!-- S slideshow -->
+
+    <!-- E slideshow --><!-- End_Module_211899 --></div>
+<!--轮显end-->
+<!------------------------------banner start-------------------------->
+<div class="banner">
+    <img src="picture/banner03.png" alt="" style="width:100%;">
+</div>
+<!------------------------------banner end--------------------------->
+<!-----------------------------生产过程begin------------------------->
+<div class="Catalog">
+    <div class="container">
+        <p style="margin-top:20px;">Our tire protection chains mainly used link-ring system. We designed many kinds of
+            links
+
+            according to tyre size and working condition, and we will choose suitable connecting rings to weave tire
+            protection chains. Our tire
+
+            protection chains contain as follows: </p>
+        <div class="row col-md-12 col-sm-12">
+            <div class="left col-md-3">
+                <div class="title">
+                    <h3>Product Catalog</h3>
+                </div>
+                <ul>
+                    <li class="current02">4 X 4 tire protection chains</li>
+                    <li>6 X 6 tire protection chains</li>
+                    <li>6 X 6 tire protection chains</li>
+                </ul>
+            </div>
+            <div class="right col-md-9 col-sm-12">
+                <div class="title">
+                    <h3>Product Catalog</h3>
+                </div>
+
+                <div class="content">
+                    <img src="picture/Catalog1.png" alt="">
+                    <img src="picture/Catalog1.png" alt="">
+                    <img src="picture/Catalog1.png" alt="">
+                    <img src="picture/Catalog1.png" alt="">
+                    <img src="picture/Catalog1.png" alt="">
+                    <img src="picture/Catalog1.png" alt="">
+                    <div class="pages anim anim-3 yema">
+                        <div>
+                            <span class="current">1</span>
+                            <a class="num" href="#">2</a>
+                            <a class="next" href="#">&rsaquo;&rsaquo;</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="content">
+                    <img src="picture/Catalog2.png" alt="">
+                    <img src="picture/Catalog2.png" alt="">
+                    <img src="picture/Catalog2.png" alt="">
+                    <img src="picture/Catalog2.png" alt="">
+                    <img src="picture/Catalog2.png" alt="">
+                    <img src="picture/Catalog2.png" alt="">
+                    <!-- <ul class="pagination" style="margin-left:40%;">
+                         <li><a href="#">&laquo;</a></li>
+                         <li><a href="#">1</a></li>
+                         <li><a href="#">2</a></li>
+                         <li><a href="#">&raquo;</a></li>
+                     </ul>-->
+                    <div class="pages anim anim-3 yema">
+                        <div>
+                            <span class="current">1</span>
+                            <a class="num" href="#">2</a>
+                            <a class="next" href="#">&rsaquo;&rsaquo;</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="content">
+                    <img src="picture/Catalog3.png" alt="">
+                    <img src="picture/Catalog1.png" alt="">
+                    <img src="picture/Catalog1.png" alt="">
+                    <img src="picture/Catalog1.png" alt="">
+                    <img src="picture/Catalog1.png" alt="">
+                    <img src="picture/Catalog1.png" alt="">
+                    <div class="pages anim anim-3 yema">
+                        <div>
+                            <span class="current">1</span>
+                            <a class="num" href="#">2</a>
+                            <a class="next" href="#">&rsaquo;&rsaquo;</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="application/javascript">
+    var x = 0
+    //显示第一组content，其它都隐藏
+    $(".content").hide().first().show()
+    $(".Catalog ul li").click(
+        function () {
+            $(this).addClass("current02").siblings().removeClass("current02")
+            /*$(this).addClass：当前对象添加个名称叫current的类，siblings().removeClass("current")，除自己以外的对象移除名叫current的类*/
+            //得到当前按钮的位置数
+            x = $(this).index()
+            /*document.title=x*///用来测试当前位置数是多少
+            //显示位置数对应的图片，其它图片接着隐藏
+            $(".content").hide().eq(x).show()//图像都隐藏只的第x个显示，点击哪个按钮，哪个对应的图片显示
+
+        }
+    )
+</script>
+<!--产品目录end-->
+
+<!--尾部begin-->
+<div th:include="include/public-tpc :: footer"></div>
+<!--尾部end-->
+
+</body>
+</html>

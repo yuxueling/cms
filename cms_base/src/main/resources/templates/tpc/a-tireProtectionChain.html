@@ -1,0 +1,78 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width"/>
+    <title>Tire protection chain</title>
+    <meta name="keywords" content="关键词"/>
+    <meta name="description" content="描述"/>
+    <meta name="author" content="作者"/>
+    <meta name="copyright" content="版权"/>
+
+    <link href="/tpc/css/style.css" rel="stylesheet"/>
+    <link href="/tpc/css/anim.css" rel="stylesheet"/>
+    <link href="/tpc/css/slide.css" rel="stylesheet"/>
+    <link href="/tpc/css/index.css" rel="stylesheet"/>
+    <link href="/tpc/css/css.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="/tpc/css/bootstrap.min.css">
+    <link rel="shortcut icon" href="/tpc/images/logosmall.png" type="image/x-icon"/>
+</head>
+
+<body>
+
+<div th:include="include/public-tpc :: header"></div>
+
+<!--轮显begin-->
+<div id="a1portalSkin_ctr211899211899_mainArea" class="module-content"><!-- Start_Module_211899 --><!-- S slideshow -->
+
+    <!-- E slideshow --><!-- End_Module_211899 --></div>
+<!--轮显end-->
+
+<!-----------------------------产品中心begin------------------------->
+<div class="Protection" style="margin-top:20px;">
+    <div class="container">
+        <div class="about_t3  anim anim-1">Tire protection chain</div>
+        <img src="/tpc/picture/banner01.png" alt="">
+        <h3>Why to use a Tire Protection Chain? </h3>
+        <p>Sharp, edged rock, muddy and slippery surfaces are a great hazard to tires – even when new. Equipment
+            downtime and loss of productivity are the result of sudden tire failure.</p>
+        <div class="row" style="border:none;">
+            <div class="left col-md-6 col-sm-6 col-xs-12">
+                <div class="bj">
+                    <h3>Application Areas of Tire Protection Chain</h3>
+                    <p style="margin-top:10px;">Open Pit Mining<br>
+                        Underground Mining &Tunnelling<br>
+                        Quarrying<br>
+                        Slag & Scrap Handling<br>
+                        Traction
+                    </p>
+                </div>
+            </div>
+            <div class="right col-md-6 col-sm-6 col-xs-12">
+                <div class="bj">
+                    <h3>The advantages of using tire protection chains are</h3>
+                    <p style="margin-top:10px;">Open Pit Mining<br>
+                        Reducing your operating costs<br>
+                        Lowering your downtime<br>
+                        Increasing your productivity<br>
+                        &nbsp;
+                    </p>
+
+                </div>
+            </div>
+
+        </div>
+        <h3>Tire Protection Chains installation</h3>
+        <div class="row" v-for="(item,index) in contentList" v-html="item.content"></div>
+    </div>
+</div>
+
+
+<!--产品中心end-->
+<!--资讯中心begin-->
+<!--尾部begin-->
+<div th:include="include/public-tpc :: footer"></div>
+<!--尾部end-->
+<script type="text/javascript" src="/js/appjs/tpc/a-tireProtectionChain.js"></script>
+</body>
+</html>

@@ -168,37 +168,6 @@ public class ContCategoryController extends BaseController {
         return this.contCategoryService.getTree();
     }
 
-    /**
-     * 加载分类含详情
-     * @param params lang_type
-     * @return
-     */
-    @RequestMapping("/treeInfo")
-    @ResponseBody
-    Tree<ContCategoryDO> treeInfo(@RequestParam Map<String, Object> params) {
-    	Tree<ContCategoryDO> treeInfo = this.contCategoryService.getTreeInfo(params);
-    	{
-    		String langType  = params.get("langType").toString();
-    		params.clear();
-    		params.put("langType", langType);
-    		params.put("type","news");
-    		List<ContentDO> list = this.contentService.list(params);
-    		treeInfo.getState().put("events", list);
-    	}
-        {
-            String langType  = params.get("langType").toString();
-            params.clear();
-            params.put("langType", langType);
-            params.put("type","contactInfo");
-            List<ContentDO>  contactInfoList= this.contentService.list(params);
-            if(contactInfoList!=null &&  !contactInfoList.isEmpty()){
-                treeInfo.getState().put("contactInfo", contactInfoList.get(0));
-            }else {
-                treeInfo.getState().put("contactInfo", new ContentDO());
-            }
-        }
-        return treeInfo;
-    }
 
     /**
      * 分类详情设置页面
