@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="zh"><head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>创意圆形轮播图js插件代码</title>
+<meta name="keywords" content="创意,圆形轮播图,js插件代码" />
+<meta name="description" content="创意圆形轮播图js插件代码下载。支持自动轮播播放。" /> 
+<meta name="author" content="js代码(www.jsdaima.com)" />
+<meta name="copyright" content="js代码(www.jsdaima.com)" />
+<link href="/css/jCircle.css" rel="stylesheet">
+<style type="text/css">
+	.container {
+		width: 800px;
+		margin: 0 auto;
+	   height:100%; 
+	}
+</style>
+</head>
+<body>
+<div class="container">
+  <div style="width:80%;margin:0 auto;">
+    <div id="circles-container">
+      <div id="main-circle-content"></div>
+      <div id="circle">
+	      <div class="min-circle" data-inside="min-circle" hzof="/yutai/index" onclick="zhuan(this)">
+		    <a href="/img/classification1.jpg">
+		        <img src="/img/classification1.jpg" alt=""><span style="color: red;">fjfoe</span>
+		      </a>
+		      <div class="content-text">Construction Glass</div>
+	      </div>
+	      <div class="min-circle" data-inside="min-circle" onclick="zhuan(this)"> <a href="/img/classification2.jpg"><img src="/img/classification2.jpg" alt=""></a>
+	        <div class="content-text">Electronic glass</div>                                                                   
+	      </div>                                                                                                               
+	      <div class="min-circle" data-inside="min-circle" onclick="zhuan(this)"> <a href="/img/classification3.jpg"><img src="/img/classification3.jpg" alt=""></a>
+	         <div class="content-text">Decorative glass</div>                                                                  
+	      </div>                                                                                                               
+	      <div class="min-circle" data-inside="min-circle" onclick="zhuan(this)"> <a href="/img/classification4.jpg"><img src="/img/classification4.jpg" alt=""></a>
+	        <div class="content-text">Glassware</div>                                                                          
+	      </div>                                                                                                               
+	      <div class="min-circle" data-inside="min-circle" onclick="zhuan(this)"> <a href="/img/classification5.jpg"><img src="/img/classification5.jpg" alt=""></a>
+	       <div class="content-text">Shower room</div>                                                                         
+	      </div>                                                                                                               
+	      <div class="min-circle" data-inside="min-circle" onclick="zhuan(this)"> <a href="/img/classification6.jpg"><img src="/img/classification6.jpg" alt=""></a>
+	        <div class="content-text">Glass equipment</div>
+	      </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="/js/jCircle.min.js"></script> 
+<script src="/js/jquery-3.3.1.min.js"></script> 
+<script>
+	$(function(){
+		$(".caption").remove();
+	});
+    var circle=new jCircle({
+	    'container': 'circles-container',
+	    'circle': 'circle',
+	    'mainContent':'main-circle-content',
+	    'animateCircles':true,
+	            
+	    'speed':2,
+	    'mainViewStyle':'normal',
+	    'minCirclesEffectOver':'pulse',
+	    'contentType':'images',
+	    'stopOnOverMain':false,
+	    'mainContentOverAction':'normal'
+	});
+	circle.create();
+	  
+    var textCircle=new jCircle({
+      'container': 'circles-container-text',
+      'circle': 'circle-text',
+      'mainContent':'main-circle-content-text',
+      'animateCircles':true,
+      'speed':3,
+      'mainViewStyle':'normal',
+      'minCirclesEffectOver':'rotate',
+      'contentType':'text',
+      'stopOnOverMain':true
+    });
+    textCircle.create();
+    
+    function zhuan(obj){
+  	  var url = obj.getAttribute('hzof');
+  	  if(url==null) return;
+  	  location.href=url;
+  	  console.log(url);
+    }
+</script>
+</body>
+</html>

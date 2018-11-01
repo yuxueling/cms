@@ -49,6 +49,11 @@ public class YutaiController extends BaseController {
 	public String yutai(HttpServletRequest request,@RequestParam Map<String,Object> params,@PathVariable("view")String view,Model model) {
 		this.commonSesssion(view,request,model);
 		params.put("langType", this.getSession().getAttribute("langType"));
+		if("Resource-4".equals(view)) {//如果请求的是新闻列表页面
+			List<ContentDO> list = contentService.list(params);
+			model.addAttribute("contents", list);
+			return "yutai/"+view;
+		}
 		if(params.get("productsClassify")!=null) 
 			model.addAttribute("productsClassify", params.get("productsClassify"));
 		if(view.equals("products")) {//判断页面是否为产品页面将分类列表放入页面中,页面会根据选中的
