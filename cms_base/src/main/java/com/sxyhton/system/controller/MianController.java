@@ -2,7 +2,7 @@ package com.sxyhton.system.controller;
 
 import com.sxyht.common.utils.MD5Utils;
 import com.sxyht.common.utils.R;
-import com.sxyhton.common.annotation.Log;
+import com.sxyhton.common.aspect.Log;
 import com.sxyhton.common.controller.BaseController;
 import com.sxyhton.common.domain.Tree;
 import com.sxyhton.common.utils.WebSiteMapUtils;
@@ -27,7 +27,8 @@ import java.util.List;
 @Controller
 public class MianController extends BaseController {
 	@Autowired MenuService menuService;
-	@Autowired private ContSitemapDao contSitemapDao;
+	@Autowired ContSitemapDao contSitemapDao;
+
 
 //	@Log("/xmx/*")
 //	@GetMapping({"","/"})
@@ -55,8 +56,7 @@ public class MianController extends BaseController {
 	 * @param password
 	 * @return
 	 */
-	@Log("登录") 
-	@PostMapping("/login") @ResponseBody
+	@Log("登录")@PostMapping("/login")@ResponseBody
 	R ajaxLogin(String username, String password) {
 		password = MD5Utils.encrypt(username, password);
 		//创建认证令牌对象
@@ -95,12 +95,9 @@ public class MianController extends BaseController {
 	 * 谷歌搜索专用
 	 * @return
 	 */
-	@Log("sitemap爬虫一次")
-	@GetMapping("/sitemap.xml")@ResponseBody
+	@GetMapping("/sitemap.xml")@Log("sitemap")@ResponseBody
 	public String WebSiteMap() {
 		Collection<ContSitemapDO> s = this.contSitemapDao.list(null);
-		
-		
 		StringBuffer bf=new StringBuffer();
 		bf.append(WebSiteMapUtils.URLSET_START);
 		for(ContSitemapDO u:s)

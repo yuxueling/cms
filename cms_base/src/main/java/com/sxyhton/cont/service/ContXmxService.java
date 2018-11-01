@@ -20,7 +20,10 @@ public interface ContXmxService {
 	List<ContProductVO> listProductByCategory(Map<String,Object> map);
 
 	int countProductByCategory(Map<String,Object> map);
-
+	/**
+	 * @param map 参数例子 contProductId=6, langType=en
+	 * @return
+	 */
 	ContProductVO getProduct(Map<String,Object> map);
 
 	List<ContProductVO> listCateProdsByProdId(Map<String,Object> map);
@@ -34,6 +37,20 @@ public interface ContXmxService {
 	List<ContCategoryInfoDO> listCategoryInfo(Map<String,Object> map);
 
 	Tree<ContCategoryDO> getTreeInfo(Map<String, Object> map);
-
+	
+	/**
+	 * 根据当前的主键查询下一个主键
+	 * @author Hzof
+	 * @param contProductId 当前的主键
+	 * @return 下一个主键
+	 */
+	Integer queryNextContProductId(Integer contProductId);
+	/**
+	 * 根据当前的主键查询上一个主键
+	 * @author Hzof
+	 * @param contProductId 当前的主键
+	 * @return 上一个主键
+	 */
+	Integer queryPrevContProductId(Integer contProductId);
 
 }

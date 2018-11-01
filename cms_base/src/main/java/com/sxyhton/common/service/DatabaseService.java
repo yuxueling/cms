@@ -26,4 +26,10 @@ public interface DatabaseService {
 	 * @throws Exception 
 	 */
 	Boolean tableToSqlByTableUrl(String tableUrl) throws Exception;
+	/**
+	 * 将表摧毁，数据库新数据从0 开始
+	 * @param tableName
+	 * @return
+	 */
+	int truncate(String tableName);
 }

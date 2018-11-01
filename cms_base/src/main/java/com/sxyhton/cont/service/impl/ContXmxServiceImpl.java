@@ -99,6 +99,17 @@ public class ContXmxServiceImpl implements ContXmxService {
 		return contCategoryService.getTreeInfo(map);
 	}
 
+	@Override
+	public Integer queryNextContProductId(Integer contProductId) {
+		return this.contXmxDao.queryNextContProductId(contProductId);
+	}
+
+	@Override
+	public Integer queryPrevContProductId(Integer contProductId) {
+		// TODO Auto-generated method stub
+		return this.contXmxDao.queryPrevContProductId(contProductId);
+	}
+
 
 
 }
