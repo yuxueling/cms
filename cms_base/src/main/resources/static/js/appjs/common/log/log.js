@@ -178,3 +178,28 @@ function batchRemove() {
     }, function () {
     });
 }
+function truncate() {
+    layer.confirm('确定要将表摧毁吗？主键将从0开始，该操作完成后无法恢复，请谨慎操作', {
+        btn: ['确定', '取消']
+    }, function () {
+        $.ajax({
+            url: "/common/database/truncate",
+            type: "post",
+            data: {
+                'tableName': 'sys_log'
+            },
+            beforeSend: function (request) {
+                index = layer.load();
+            },
+            success: function (r) {
+                if (r.code == 0) {
+                    layer.close(index);
+                    layer.msg(r.msg);
+                    reLoad();
+                } else {
+                    layer.msg(r.msg+"联系管理员获取权限common:database:truncate");
+                }
+            }
+        });
+    })
+}

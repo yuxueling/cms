@@ -62,5 +62,10 @@ public class ContProductServiceImpl implements ContProductService {
 		PageUtils pageUtils = new PageUtils(leftCategoryList, leftCategoryListCount);
 		return pageUtils;
 	}
+
+	@Override
+	public List<Map<String, Object>> productList(Map<String, Object> map) {
+		return this.contProductDao.productList(map);
+	}
 	
 }

@@ -1,4 +1,4 @@
-package com.sxyhton.common.annotation;
+package com.sxyhton.common.aspect;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.ElementType;

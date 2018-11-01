@@ -1,7 +1,7 @@
 package com.sxyhton.system.controller;
 
 import com.sxyht.common.utils.R;
-import com.sxyhton.common.annotation.Log;
+import com.sxyhton.common.aspect.Log;
 import com.sxyhton.common.controller.BaseController;
 import com.sxyhton.common.domain.Tree;
 import com.sxyhton.system.domain.MenuDO;

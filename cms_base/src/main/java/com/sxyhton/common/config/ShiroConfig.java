@@ -57,17 +57,20 @@ public class ShiroConfig {
     	//shiro框架的过滤器工厂对象
         ShiroFilterFactoryBean shiroFilterFactoryBean = new ShiroFilterFactoryBean();
         LinkedHashMap<String, String> filterChainDefinitionMap = new LinkedHashMap<>();
-        filterChainDefinitionMap.put("/", "anon");
-        filterChainDefinitionMap.put("/css/**", "anon");//匿名访问过滤器
-        filterChainDefinitionMap.put("/login", "anon");//设置登陆页面为可以访问
-        filterChainDefinitionMap.put("/js/**", "anon");
-        filterChainDefinitionMap.put("/xmx/**", "anon");//xmx静态文件
+        filterChainDefinitionMap.put("/css/**", "anon");//静态文件
+        filterChainDefinitionMap.put("/editor-app/**", "anon");//静态文件
+        filterChainDefinitionMap.put("/fonts/**", "anon");//静态文件
+        filterChainDefinitionMap.put("/img/**", "anon");//静态文件
+        filterChainDefinitionMap.put("/js/**", "anon");//静态文件
+        filterChainDefinitionMap.put("/lib/**", "anon");//静态文件
         filterChainDefinitionMap.put("/tpc/**", "anon");//tpc静态文件
+        filterChainDefinitionMap.put("/xmx/**", "anon");//xmx静态文件
+        filterChainDefinitionMap.put("/", "anon");
+        filterChainDefinitionMap.put("/login", "anon");//设置登陆页面为可以访问
         filterChainDefinitionMap.put("/contXmx/**", "anon");//xmx开放接口
         filterChainDefinitionMap.put("/contTpc/**", "anon");//tpc开放接口
+        filterChainDefinitionMap.put("/yutai/**", "anon");
         filterChainDefinitionMap.put("/sitemap.xml", "anon");//将sitemap.xml设置为开放访问
-        filterChainDefinitionMap.put("/fonts/**", "anon");
-        filterChainDefinitionMap.put("/img/**", "anon");
         filterChainDefinitionMap.put("/docs/**", "anon");
         filterChainDefinitionMap.put("/druid/**", "anon");
         filterChainDefinitionMap.put("/upload/**", "anon");

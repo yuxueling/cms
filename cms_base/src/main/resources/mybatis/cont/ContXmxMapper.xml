@@ -93,7 +93,7 @@
 	</select>
 
 	<select id="getProduct" resultMap="productVO">
-		select #{langType} as lang_type ,
+		select #{langType} as lang_type ,'' as searchKey ,
 		B.`cont_product_id`,B.`product_name`,B.`category_id`,B.`sale_status`,B.`create_by`,B.`gmt_create`,B.`gmt_modified`
 		FROM cont_product B
 		WHERE B.cont_product_id = #{contProductId}
@@ -139,5 +139,11 @@
 
 	<select id="queryPk" resultType="com.sxyhton.cont.domain.ContProductPkDO">
 		select `cont_product_pk_id`,`cont_product_param_id`,`param_value`,`sort` from cont_product_pk where cont_product_param_id = #{value}
+	</select>
+	<select id="queryNextContProductId" resultType="int">
+	SELECT cont_product_id FROM cont_product WHERE cont_product_id &gt; #{contProductId} LIMIT 1
+	</select>
+	<select id="queryPrevContProductId" resultType="int">
+	    SELECT cont_product_id FROM cont_product WHERE cont_product_id &lt; #{contProductId} ORDER BY cont_product_id DESC LIMIT 1 
 	</select>
 </mapper>

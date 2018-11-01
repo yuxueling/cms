@@ -30,4 +30,5 @@ public interface ContProductService {
 	int batchRemove(Integer[] contProductIds);
 
 	PageUtils leftCategoryList(Map<String, Object> params);
+	List<Map<String,Object>> productList(Map<String,Object> map);
 }

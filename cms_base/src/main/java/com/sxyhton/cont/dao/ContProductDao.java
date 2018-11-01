@@ -33,4 +33,5 @@ public interface ContProductDao {
 	List<ContProductDO> leftCategoryList(Map<String, Object> map);
 	
 	int leftCategoryListCount(Map<String, Object> map);
+	List<Map<String,Object>> productList(Map<String,Object> map);
 }

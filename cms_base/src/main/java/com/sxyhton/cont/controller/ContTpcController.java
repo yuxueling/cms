@@ -1,6 +1,6 @@
 package com.sxyhton.cont.controller;
 
-import com.sxyhton.common.annotation.Log;
+import com.sxyhton.common.aspect.Log;
 import com.sxyhton.common.controller.BaseController;
 import com.sxyhton.common.domain.Tree;
 import com.sxyhton.cont.domain.ContCategoryDO;

@@ -280,4 +280,15 @@ public class DatabaseController {
 		PageUtils pageUtils = new PageUtils(sysFileList, total);
 		return pageUtils;
 	}
+	/**
+	 * 将表摧毁，数据库新数据从0 开始
+	 * @param tableName
+	 * @return
+	 */
+	@PostMapping("/common/database/truncate")@RequiresPermissions("common:database:truncate")@ResponseBody
+	public R truncate(String tableName) {
+		if(this.databaseService.truncate(tableName)==1)
+			return R.ok();
+		return R.error();
+	}
 }

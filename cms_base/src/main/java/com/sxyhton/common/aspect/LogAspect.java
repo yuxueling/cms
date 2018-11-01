@@ -17,7 +17,6 @@ import com.sxyht.common.utils.HttpContextUtils;
 import com.sxyht.common.utils.IPUtils;
 import com.sxyht.common.utils.JSONUtils;
 import com.sxyht.common.utils.ShiroUtils;
-import com.sxyhton.common.annotation.Log;
 import com.sxyhton.common.domain.LogDO;
 import com.sxyhton.common.service.LogService;
 import com.sxyhton.system.domain.UserDO;
@@ -30,7 +29,7 @@ public class LogAspect {
     LogService logService;
 
 
-    @Pointcut("@annotation(com.sxyhton.common.annotation.Log)")
+    @Pointcut("@annotation(com.sxyhton.common.aspect.Log)")
     public void logPointCut() {
     }
 
@@ -79,7 +78,7 @@ public class LogAspect {
                 sysLog.setUsername(sysLog.getParams());
             } else {
                 sysLog.setUserId(-1L);
-                sysLog.setUsername("获取用户信息为空");
+                sysLog.setUsername("未登录");
             }
         } else {
             sysLog.setUserId(((UserDO)ShiroUtils.getUser()).getUserId());

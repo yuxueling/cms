@@ -72,4 +72,10 @@ public class DatabaseServiceImpl implements DatabaseService {
 		return true;
 	}
 
+	@Override
+	public int truncate(String tableName) {
+		this.generatorMapper.truncate(tableName);
+		return 1;
+	}
+
 }

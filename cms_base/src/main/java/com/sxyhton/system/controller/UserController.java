@@ -5,7 +5,7 @@ import com.sxyht.common.utils.MD5Utils;
 import com.sxyht.common.utils.PageUtils;
 import com.sxyht.common.utils.Query;
 import com.sxyht.common.utils.R;
-import com.sxyhton.common.annotation.Log;
+import com.sxyhton.common.aspect.Log;
 import com.sxyhton.common.controller.BaseController;
 import com.sxyhton.common.domain.Tree;
 import com.sxyhton.common.service.DictService;

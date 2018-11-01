@@ -32,9 +32,8 @@ public interface ContCategoryDao {
 	int batchRemove(Integer[] contCategoryIds);
 
 	List<ContCategoryInfoDO> listInfoByDict(Map<String, Object> map);
-
+	
 	List<ContCategoryDO> listInfo(Map<String, Object> map);
 
 	ContCategoryDO getContainInfo(Map<String, Object> map);
-
 }

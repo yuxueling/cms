@@ -131,5 +131,24 @@
 	  		<if test="gmtModified != null and gmtModified != ''"> and pd.gmt_modified = #{gmtModified} </if>
   		</where>
 	</select>
-
+	<select id="productList" resultType="java.util.Map">
+		select cp.cont_product_id,cpi.product_name,cpi.product_desc,cpm.img_url 
+		from cont_product as cp left join cont_product_info as cpi on cp.cont_product_id=cpi.cont_product_id
+		left join cont_product_img as cpm on cp.cont_product_id=cpm.cont_product_id
+		<where>  
+			<if test="contCategoryId != null and contCategoryId != ''"> and cont_category_id = #{contCategoryId} </if>
+			<if test="categoryType != null and categoryType != ''"> and category_type = #{categoryType} </if>
+		</where>
+		<choose>
+            <when test="sort != null and sort.trim() != ''">
+                order by ${sort} ${order}
+            </when>
+			<otherwise>
+                order by cont_product_id desc
+			</otherwise>
+        </choose>
+		<if test="offset != null and limit != null">
+			limit #{offset}, #{limit}
+		</if>
+	</select>
 </mapper>

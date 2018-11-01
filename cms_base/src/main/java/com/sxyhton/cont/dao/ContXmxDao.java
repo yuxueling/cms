@@ -19,6 +19,19 @@ public interface ContXmxDao {
 	List<ContProductVO> listProductByCategoryCode(Map<String,Object> map);
 
 	List<ContProductVO> listRecProduct(Map<String,Object> map);
-
-
+	
+	/**
+	 * 根据当前的主键查询下一个主键
+	 * @author Hzof
+	 * @param contProductId 当前的主键
+	 * @return 下一个主键
+	 */
+	Integer queryNextContProductId(Integer contProductId);
+	/**
+	 * 根据当前的主键查询上一个主键
+	 * @author Hzof
+	 * @param contProductId 当前的主键
+	 * @return 上一个主键
+	 */
+	Integer queryPrevContProductId(Integer contProductId);
 }
