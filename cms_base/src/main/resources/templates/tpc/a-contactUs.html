@@ -4,10 +4,9 @@
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width"/>
 	<title>Tire protection chain</title>
-    <meta name="keywords" content="关键词" />
-    <meta name="description" content="描述" /> 
-    <meta name="author" content="作者" />
-    <meta name="copyright" content="版权" />
+    <title th:text="${seoTitle}">Tire protection chain</title>
+    <meta name="keywords" th:content="${keywords}" />
+    <meta name="description" th:content="${description}" />
 
     <link href="/tpc/css/style.css" rel="stylesheet"/>
     <link href="/tpc/css/anim.css" rel="stylesheet"/>
@@ -51,105 +50,25 @@
     
 </div>
 <div class="about_t3  anim anim-5">Suggest message</div>
-<div class="feedback_div anim anim-6">
+<div class="feedback_div anim anim-6" id="main">
 
-    <form actionurl="#" method="post"  onload="init()" id="qiandaoform" onSubmit="return checkform2(this);">
+    <form actionurl="#" method="post"  onload="init()" id="qiandaoform">
     <div>
-        <input class="inputs2" name="name" value="Company：" onFocus="if(value=='Company：'){value=''}" onBlur="if(value==''){value='Company：'}"/>
-        <input class="inputs2" name="tel" value="contact number：" onFocus="if(value=='contact number：'){value=''}" onBlur="if(value==''){value='contact number：'}"/>
-        <input class="inputs2" name="email" value="E-mail：" onFocus="if(value=='E-mail：'){value=''}" onBlur="if(value==''){value='E-mail：'}"/>
+        <input class="inputs2" v-model="formDataDOList[0].value" :placeholder="formDataDOList[0].title" />
+        <input class="inputs2" v-model="formDataDOList[1].value" :placeholder="formDataDOList[1].title"/>
+        <input class="inputs2" v-model="formDataDOList[2].value" :placeholder="formDataDOList[2].title"/>
     </div>
-    <textarea name="content" cols="" rows="5" class="textarea" onFocus="if(this.value=='leave a message')this.value=''" onBlur="if(this.value=='')this.value='leave a message'">leave a message</textarea>
-    <input type="submit" value="submit" class="bnts2">
+    <textarea cols="" rows="5" class="textarea" v-model="formDataDOList[3].value" :placeholder="formDataDOList[3].title"></textarea>
+    <input type="button" value="submit" class="bnts2" v-on:click="submit">
     </form>
-    <script language="javascript">
-        function checkform2(nForm)
-        {
-            if(nForm.name.value=="contact number")
-            {   alert("contact number");
-                nForm.name.focus();
-                return false;
-            }
-            if(nForm.tel.value=="contact number")
-            {
-                alert("请填写您的手机号码!");
-                nForm.tel.focus();
-                return false;
-            }
-            var teln = nForm.tel.value;
-            if(!(/^1[34578]\d{9}$/.test(teln))){
-                alert("手机号码有误，请重填");
-                nForm.tel.focus();
-                return false;
-            }
-            if(nForm.email.value=="E-mail：")
-            {   alert("请填写您的邮箱!");
-                nForm.email.focus();
-                return false;
-            }
-            $.ajax({
-                type:"post",
-                url:$('#qiandaoform').attr('actionurl'),
-                async:true,
-                data:$("#qiandaoform").serialize(),
-                success:function(data){
-                    if (data.status == 1) {
-                        alert(data.info);
-                        window.location.href=data.url;
 
-                    }else{
-                        alert(data.info);
-                    }
-                }
-            });
-            return false;
-        }
-        function en_checkform2(nForm)
-        {
-            if(nForm.name.value=="Your name: ")
-            {   alert("Fill in your name, please!");
-                nForm.name.focus();
-                return false;
-            }
-            if(nForm.tel.value=="Contact number：")
-            {
-                alert("Please fill in your Contact number!");
-                nForm.tel.focus();
-                return false;
-            }
-            var teln = nForm.tel.value;
-            if(!(/^1[34578]\d{9}$/.test(teln))){
-                alert("The cell phone number is incorrect. Please fill it in again");
-                return false;
-            }
-            if(nForm.email.value=="Contact mailbox:")
-            {   alert("Please fill in your Mailbox!");
-                nForm.email.focus();
-                return false;
-            }
-            $.ajax({
-                type:"post",
-                url:$('#qiandaoform').attr('actionurl'),
-                async:true,
-                data:$("#qiandaoform").serialize(),
-                success:function(data){
-                    if (data.status == 1) {
-                        alert(data.info);
-                        window.location.href=data.url;
-
-                    }else{
-                        alert(data.info);
-                    }
-                }
-            });
-            return false;
-        }
-    </script>
 </div>
 <!--新闻end-->
 
 <!--尾部begin-->
 <div th:include="include/public-tpc :: footer"></div>
+
+<script type="text/javascript" src="/js/appjs/tpc/a-contactUs.js"></script>
 <!--尾部end-->
 
 </body>

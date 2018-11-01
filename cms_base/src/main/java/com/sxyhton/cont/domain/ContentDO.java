@@ -52,6 +52,10 @@ public class ContentDO implements Serializable {
 	private Date gtmCreate;
 	//修改时间
 	private Date gtmModified;
+	//摘要
+	private String resume;
+	//图片url
+	private String imgUrl;
 
 	/**
 	 * 设置：
@@ -276,6 +280,22 @@ public class ContentDO implements Serializable {
 	 */
 	public Date getGtmModified() {
 		return gtmModified;
+	}
+
+	public String getResume() {
+		return resume;
+	}
+
+	public void setResume(String resume) {
+		this.resume = resume;
+	}
+
+	public String getImgUrl() {
+		return imgUrl;
+	}
+
+	public void setImgUrl(String imgUrl) {
+		this.imgUrl = imgUrl;
 	}
 
 	@Override

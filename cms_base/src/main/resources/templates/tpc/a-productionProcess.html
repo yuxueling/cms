@@ -14,14 +14,16 @@
     <link href="/tpc/css/slide.css" rel="stylesheet"/>
     <link href="/tpc/css/index.css" rel="stylesheet"/>
     <link href="/tpc/css/css.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="/tpc/css/iconfont.css">
     <link rel="stylesheet" href="/tpc/css/bootstrap.min.css">
-    <link rel="shortcut icon" href="/tpc/images/logosmall.png" type="image/x-icon"/>
-
+    <link rel="shortcut icon" href="/tpc/images/logosmall.png" type="image/x-icon" />
+	
 </head>
 
 <body>
 
-<div th:include="include/public-tpc :: header"></div>
+
+<div th:include="include/public-tpc :: header"></div><!-- 共用header部分 -->
 
 <!--轮显begin-->
 <div id="a1portalSkin_ctr211899211899_mainArea" class="module-content"><!-- Start_Module_211899 --><!-- S slideshow -->
@@ -30,114 +32,415 @@
 <!--轮显end-->
 <!------------------------------banner start-------------------------->
 <div class="banner">
-    <img src="picture/banner04.png" alt="" style="width:100%;">
+    <img src="/tpc/picture/banner04.png" alt="" style="width:100%;">
 </div>
+
 <!------------------------------banner end--------------------------->
 <!-----------------------------生产过程begin------------------------->
-<div class="Process">
-  <div class="container">
-      <div class="about_t3  anim anim-1">Production Process</div>
-      <div class="row">
-          <div class="tetle">
-              <h4>1. Raw Material In Stock</h4>
-              <p>We have enough raw material in stock every year. 
-                The material of connecting ring is 20CrMnTI, and diameter of connecting rings contain 12mm, 13mm, 14mm, 16mm, 18mm, 20mm and 22mm. 
-             The material of link is 40Cr, and diameter of steel bars for links contain 16mm, 18mm, 20mm. 22mm, 26mm, 28mm, 32mm and 46mm. 
-              </p>
-          </div>
-          <div class="photo col-md-12 col-sm-12 col-xs-12">
-            <img src="picture/photo1.png" alt="" class="col-md-4 col-sm-6 col-xs-12">
-            <img src="picture/photo2.png" alt="" class="col-md-4 col-sm-6  col-xs-12">
-            <img src="picture/photo3.png" alt="" class="col-md-4 col-sm-6  col-xs-12">
-          </div>
-      </div>
-      <div class="row">
-          <div class="tetle">
-              <h4>2. Forging links </h4>
-              <p>We have many kinds of links, and we choose different links according to tire size and customer requirements. We have two forging lines, and we forge the links and spare parts for tire protection chain. 
-              </p>
-          </div>
-          <div class="photo col-md-12 col-sm-12">
-            <video src="video/Forging links1.mp4" muted autoplay loop  class="col-md-4 col-sm-6  col-xs-12"></video>
-            <video src="video/Forging links2.mp4" muted autoplay loop  class="col-md-4 col-sm-6  col-xs-12"></video>  
-            <video src="video/Forging links3.mp4" muted autoplay loop  class="col-md-4 col-sm-6  col-xs-12"></video>
-          </div>
-      </div>
-       <div class="row">
-          <div class="tetle">
-              <h4>3. Cutting rings  </h4>
-              <p> We just bought one machine that it can cutting rings from steel bars. 
-              </p>
-          </div>
-          <div class="photo col-md-12 col-sm-12">
-            <video src="video/Cutting rings .mp4" muted autoplay loop  class="col-md-4 col-sm-6  col-xs-12"></video>
-          </div>
-      </div>
-       <div class="row">
-          <div class="tetle">
-              <h4>4. Welding  </h4>
-              <p> We have three welding lines and we can weld the connecting rings with links together.  
-              </p>
-          </div>
-          <div class="photo col-md-12 col-sm-12">
-            <img src="picture/photo4.png" alt="" class="col-md-4 col-sm-6 col-xs-12">
-            <img src="picture/photo5.png" alt="" class="col-md-4 col-sm-6  col-xs-12">
-            <img src="picture/photo6.png" alt="" class="col-md-4 col-sm-6  col-xs-12">
-          </div>
-      </div>
-       <div class="row">
-          <div class="tetle">
-              <h4>5. Checking</h4>
-              <p> After Welding is completed, we will organize the chains to ensure that all of welds are full.
-              </p>
-          </div>
-          <div class="photo col-md-12 col-sm-12">
-            <video src="video/Checking.mp4" muted autoplay loop  class="col-md-4 col-sm-6  col-xs-12"></video>
-          </div>
-      </div>
-       <div class="row">
-          <div class="tetle">
-              <h4>6. Heat treatment </h4>
-              <p> After welding, we will do heat treatment for the whole chains in order to increase the hardness of chains. 
-              </p>
-          </div>
-          <div class="photo col-md-12 col-sm-12">
-            <img src="picture/photo7.png" alt="" class="col-md-4 col-sm-6 col-xs-12">
-            <img src="picture/photo8.png" alt="" class="col-md-4 col-sm-6  col-xs-12">
-            <img src="picture/photo9.png" alt="" class="col-md-4 col-sm-6  col-xs-12">
-          </div>
-      </div>
-      <div class="row">
-          <div class="tetle">
-              <h4>7.  Shot blasting </h4>
-              <p> We will do shot blasting for the chains after heat treatment in order to remove burrs and oxidation skin.  
-              </p>
-          </div>
-          <div class="photo col-md-12 col-sm-12">
-            <img src="picture/photo10.png" alt="" class="col-md-4 col-sm-6 col-xs-12">
-            <img src="picture/photo11.png" alt="" class="col-md-4 col-sm-6  col-xs-12">
-            <img src="picture/photo12.png" alt="" class="col-md-4 col-sm-6  col-xs-12">
-          </div>
-      </div>
-       <div class="row">
-          <div class="tetle">
-              <h4>8. Coating  </h4>
-              <p>  All of chains will be coated with black paint and drying before shipment.  
-              </p>
-          </div>
-          <div class="photo col-md-12 col-sm-12">
-            <img src="picture/photo13.png" alt="" class="col-md-4 col-sm-6 col-xs-12">
-            <img src="picture/photo14.png" alt="" class="col-md-4 col-sm-6  col-xs-12">
-            <img src="picture/photo15.png" alt="" class="col-md-4 col-sm-6  col-xs-12">
-          </div>
-      </div>
-  </div> 
+<div class="Process" style="background:url(/tpc/picture/brand-bg.jpg)">
+    <div class="container">
+        <div class="about_t3  anim anim-1" style="color:#fff;">Production Process</div>
+        <!-------------流程1-------------->
+        <div class="row content">
+            <div class="left col-md-6">
+                <img src="/tpc/picture/photo1.jpg" alt="" class="col-6">
+            </div>
+            <div class="right col-md-6">
+                <h3>1. Raw Material In Stock </h3>
+                <p>
+                    <span class="iconfont icon-AppIcon-copy"></span>The material of connecting ring is 20CrMnTI, and diameter of connecting rings contain 12mm, 13mm, 14mm, 16mm, 18mm, 20mm and 22mm.We have enough raw material in stock every year. The material of link is 40Cr, and diameter of steel bars for links contain 16mm, 18mm, 20mm. 22mm, 26mm, 28mm, 32mm and 46mm.
+
+                </p>
+            </div>
+            <div id="one" class="one">
+                <ul>
+                    <li>
+                        <a href="javascript:;">
+                            <img src="/tpc/picture/photosmall01.jpg" alt="">
+                            <span>Process name01</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:;">
+                            <img src="/tpc/picture/photosmall02.jpg" alt="">
+                            <span>Process name02</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:;">
+                            <img src="/tpc/picture/photosmall03.jpg" alt="">
+                            <span>Process name03</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:;">
+                            <img src="/tpc/picture/photosmall04.jpg" alt="">
+                            <span>Process name04</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-------------流程2-------------->
+        <div class="row content1">
+            <div class="left col-md-6">
+                <h3>2. Forging links </h3>
+                <p><span class="iconfont icon-AppIcon-copy"></span>We have many kinds of links, and we choose different links according to tire size and customer requirements. We have two forging lines, and we forge the links and spare parts for tire protection chain. <br><br>
+                </p>
+            </div>
+            <div class="right col-md-6">
+                <img src="/tpc/picture/photo2.jpg" alt="" class="col-6">
+            </div>
+            <div id="two" class="one">
+                <ul>
+                    <li>
+                        <a href="javascript:;">
+                            <img src="/tpc/picture/photosmall05.jpg" alt="">
+                            <span>Process name01</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:;">
+                            <img src="/tpc/picture/photosmall06.jpg" alt="">
+                            <span>Process name02</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:;">
+                            <img src="/tpc/picture/photosmall07.jpg" alt="">
+                            <span>Process name03</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:;">
+                            <img src="/tpc/picture/photosmall08.jpg" alt="">
+                            <span>Process name04</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:;">
+                            <img src="/tpc/picture/photosmall09.jpg" alt="">
+                            <span>Process name05</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:;">
+                            <img src="/tpc/picture/photosmall10.jpg" alt="">
+                            <span>Process name06</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!-------------流程3-------------->
+        <div class="row content">
+            <div class="left col-md-6">
+                <img src="/tpc/picture/photo3.jpg" alt="" class="col-6">
+            </div>
+            <div class="right col-md-6">
+                <h3>3. Cutting rings  </h3>
+                <p>
+                    <span class="iconfont icon-AppIcon-copy"></span>We just bought one machine that it can cutting rings from steel bars. <br>
+                </p>
+            </div>
+            <div id="three" class="one">
+                <ul>
+                    <li>
+                        <a href="javascript:;">
+                            <img src="/tpc/picture/photosmall11.jpg" alt="">
+                            <span>Process name01</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:;">
+                            <img src="/tpc/picture/photosmall12.jpg" alt="">
+                            <span>Process name02</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:;">
+                            <img src="/tpc/picture/photosmall13.jpg" alt="">
+                            <span>Process name03</span>
+                        </a>
+                    </li>
+
+                </ul>
+            </div>
+
+        </div>
+
+        <!-------------流程4-------------->
+        <div class="row content1">
+            <div class="left col-md-6">
+                <h3>4. Welding  </h3>
+                <p><span class="iconfont icon-AppIcon-copy"></span> We have three welding lines and we can weld the connecting rings with links together. <br><br>
+                </p>
+            </div>
+            <div class="right col-md-6">
+                <img src="/tpc/picture/photo4.jpg" alt="" class="col-6">
+            </div>
+            <div id="four" class="one">
+                <ul>
+                    <li>
+                        <a href="javascript:;">
+                            <img src="/tpc/picture/photosmall14.jpg" alt="">
+                            <span>Process name01</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:;">
+                            <img src="/tpc/picture/photosmall15.jpg" alt="">
+                            <span>Process name02</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:;">
+                            <img src="/tpc/picture/photosmall16.jpg" alt="">
+                            <span>Process name03</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:;">
+                            <img src="/tpc/picture/photosmall17.jpg" alt="">
+                            <span>Process name04</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!-------------流程5-------------->
+        <div class="row content">
+            <div class="left col-md-6">
+                <img src="/tpc/picture/photo5.jpg" alt="" class="col-6">
+            </div>
+            <div class="right col-md-6">
+                <h3>5. Checking</h3>
+                <p>
+                    <span class="iconfont icon-AppIcon-copy"></span>After Welding is completed, we will organize the chains to ensure that all of welds are full.<br>
+                </p>
+            </div>
+            <div id="Fives" class="one">
+                <ul>
+                    <li>
+                        <a href="javascript:;">
+                            <img src="/tpc/picture/photosmall18.jpg" alt="">
+                            <span>Process name01</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:;">
+                            <img src="/tpc/picture/photosmall19.jpg" alt="">
+                            <span>Process name02</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:;">
+                            <img src="/tpc/picture/photosmall20.jpg" alt="">
+                            <span>Process name03</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:;">
+                            <img src="/tpc/picture/photosmall21.jpg" alt="">
+                            <span>Process name04</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:;">
+                            <img src="/tpc/picture/photosmall22.jpg" alt="">
+                            <span>Process name05</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-------------流程6-------------->
+        <div class="row content1">
+            <div class="left col-md-6">
+                <h3>6. Heat treatment </h3>
+                <p><span class="iconfont icon-AppIcon-copy"></span>After welding, we will do heat treatment for the whole chains in order to increase the hardness of chains. <br><br>
+                </p>
+            </div>
+            <div class="right col-md-6">
+                <img src="/tpc/picture/photo6.jpg" alt="" class="col-6">
+            </div>
+            <div id="six" class="one">
+                <ul>
+                    <li>
+                        <a href="javascript:;">
+                            <img src="/tpc/picture/photosmall23.jpg" alt="">
+                            <span>Process name01</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:;">
+                            <img src="/tpc/picture/photosmall24.jpg" alt="">
+                            <span>Process name02</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:;">
+                            <img src="/tpc/picture/photosmall25.jpg" alt="">
+                            <span>Process name03</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!-------------流程7-------------->
+        <div class="row content">
+            <div class="left col-md-6">
+                <img src="/tpc/picture/photo7.jpg" alt="" class="col-6">
+            </div>
+            <div class="right col-md-6">
+                <h3>7.Shot blasting </h3>
+                <p>
+                    <span class="iconfont icon-AppIcon-copy"></span> We will do shot blasting for the chains after heat treatment in order to remove burrs and oxidation skin. <br>
+                </p>
+            </div>
+            <div id="Seven" class="one">
+                <ul>
+                    <li>
+                        <a href="javascript:;">
+                            <img src="/tpc/picture/photosmall26.jpg" alt="">
+                            <span>Process name01</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:;">
+                            <img src="/tpc/picture/photosmall27.jpg" alt="">
+                            <span>Process name02</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:;">
+                            <img src="/tpc/picture/photosmall28.jpg" alt="">
+                            <span>Process name03</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-------------流程8-------------->
+        <div class="row content1" style="margin-bottom:40px;">
+            <div class="left col-md-6">
+                <h3>8. Coating</h3>
+                <p><span class="iconfont icon-AppIcon-copy"></span>All of chains will be coated with black paint and drying before shipment. <br><br>
+                </p>
+            </div>
+            <div class="right col-md-6">
+                <img src="/tpc/picture/photo8.jpg" alt="" class="col-6">
+            </div>
+            <div id="Eight" class="one">
+                <ul>
+                    <li>
+                        <a href="javascript:;">
+                            <img src="/tpc/picture/photosmall39.jpg" alt="">
+                            <span>Process name01</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:;">
+                            <img src="/tpc/picture/photosmall30.jpg" alt="">
+                            <span>Process name02</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:;">
+                            <img src="/tpc/picture/photosmall31.jpg" alt="">
+                            <span>Process name03</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:;">
+                            <img src="/tpc/picture/photosmall32.jpg" alt="">
+                            <span>Process name04</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:;">
+                            <img src="/tpc/picture/photosmall33.jpg" alt="">
+                            <span>Process name05</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
 </div>
+
 <!--生产过程end-->
 
 <!--尾部begin-->
-<div th:include="include/public-tpc :: footer"></div>
-<!--尾部end-->
 
+<div th:include="include/public-tpc :: footer"></div><!-- 共用header部分 -->
+
+<script type="text/javascript" src="/js/appjs/tpc/a-productionProcess.js"></script>
+<script>
+    function reurl(){
+        url = location.href;var times = url.split("?");
+        if(times[1] != 1){url += "?1"; self.location.replace(url);}
+    }
+    onload=reurl ;
+    $(document).ready(function () {
+        var box0 = $("#one"),v0 = 1.5; //这里添加滚动的对象和其速率
+        Rin(box0,v0);
+
+        var box2 = $("#two"),v2 = 1.5; //这里添加滚动的对象和其速率
+        Rin(box2,v2);
+
+        var box3 = $("#three"),v3 = 1.5; //这里添加滚动的对象和其速率
+        Rin(box3,v3);
+
+        var box4 = $("#four"),v4 = 1.5; //这里添加滚动的对象和其速率
+        Rin(box4,v4);
+
+        var box5 = $("#Fives"),v5 = 1.5; //这里添加滚动的对象和其速率
+        Rin(box5,v5);
+
+        var box6 = $("#six"),v6 = 1.5; //这里添加滚动的对象和其速率
+        Rin(box6,v6);
+
+        var box7 = $("#Seven"),v7 = 1.5; //这里添加滚动的对象和其速率
+        Rin(box7,v7);
+
+        var box8 = $("#Eight"),v8 = 1.5; //这里添加滚动的对象和其速率
+        Rin(box8,v8);
+
+
+
+        function Rin($Box,v){//$Box移动的对象，v对象移动的速率
+            var $Box_ul = $Box.find("ul"),
+                $Box_li = $Box_ul.find("li"),
+                $Box_li_span = $Box_li.find("span"),
+                left = 0,
+                s=0,
+                timer;//定时器
+
+            $Box_li.each(function(index){
+                $($Box_li_span[index]).width($(this).width());//hover
+                s += $(this).outerWidth(true); //即要滚动的长度
+            })
+
+            window.requestAnimationFrame = window.requestAnimationFrame||function(Tmove){return setTimeout(Tmove,1000/60)};
+            window.cancelAnimationFrame = window.cancelAnimationFrame||clearTimeout;
+
+            if( s>=$Box.width()-300){//如果滚动长度超出Box长度即开始滚动，没有的话就不执行滚动
+                $Box_li.clone(true).appendTo($Box_ul);
+                Tmove();
+                function Tmove(){
+                    //运动是移动left  从0到-s;（个人习惯往左滚）
+                    left -= v;
+                    if(left <= -s){left = 0;$Box_ul.css("left",left)}else{ $Box_ul.css("left",left) }
+                    timer = requestAnimationFrame(Tmove);
+                }
+                $Box_ul.hover(function(){cancelAnimationFrame(timer)},function(){Tmove()})
+            }
+        }
+    })
+</script>
 </body>
 </html>

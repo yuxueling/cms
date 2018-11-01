@@ -72,7 +72,7 @@ var vm = new Vue({
             vm.formDO.title="您有新消息了~";
 
             $.ajax({
-                url: "/cont/contForm/openSave",
+                url: "/contTpc/saveInquery",
                 type: "post",
                 data: {
                     contForm: JSON.stringify(vm.formDO),

@@ -4,21 +4,23 @@
         <div class="top-main">
             <div class="logo1"><a href="index.html"><img src="/tpc/images/logo.png" alt=""/></a></div>
             <a href="#" class="languages"><img src="/tpc/picture/top_pic2.png" alt=""/></a>
-
             <div class="top_search"><em></em>
-
                 <div class="search_con" style="height:200px;">
-                    <select class="form-control" v-model="searchParam.searchKey">
-                        <option value="">全部</option>
-                        <option v-for="(item,index) in categoryTree" :value="index">{{item.text}}</option>
-                    </select>
-                    <input type="button" class="bnts" value="" @click="search"/>
+                    <input id="searchKeyA" type="text" class="input1" placeholder="search"/>
+                    <input type="button" class="bnts" value="" onclick="searchA()"/>
                 </div>
             </div>
             <div class="top-main-content"><!-- S nav -->
                 <div class="navBar">
                     <ul class="nav clearfix">
-                        <li id="m1" class="m on"><h3><a href="/" title="Home">Home</a></h3>
+                        <li id="m1" class="m"><h3><a href="/" title="Home">Home</a></h3>
+                            <div class="sub" style="display:none"></div>
+                        </li>
+                        <li id="m5" class="m "><h3><a href="/contTpc/view/a-aboutUs" title="About US">About US</a></h3>
+                            <div class="sub" style="display:none"></div>
+                        </li>
+                        <li id="m4" class="m"><h3><a href="/contTpc/view/a-productionProcess"
+                                                     title="Production Process">Production Process</a></h3>
                             <div class="sub" style="display:none"></div>
                         </li>
                         <li id="m2" class="m"><h3><a href="/contTpc/view/a-tireProtectionChain"
@@ -29,24 +31,17 @@
                             Catalog</a></h3>
                             <div class="sub" style="display:none">
                                 <dl>
-                                    <dd v-for="(item,index) in categoryTree">
-                                        <a href="javascript:void(0);" @click="listProduct(item.id,item.text)">{{item.text}}</a>
+                                    <dd th:each="item,stat : ${productCateTree.children}">
+                                        <a th:href="'/contTpc/viewProductCatalog/'+${item.id}" th:text="${item.text}"></a>
                                     </dd>
-                                </dl>
+                                </dl>N
                             </div>
-                        </li>
-                        <li id="m4" class="m"><h3><a href="/contTpc/view/a-productionProcess"
-                                                     title="Production Process">Production Process</a></h3>
-                            <div class="sub" style="display:none"></div>
-                        </li>
-                        <li id="m5" class="m "><h3><a href="/contTpc/view/a-aboutUs" title="About US">About US</a></h3>
-                            <div class="sub" style="display:none"></div>
-                        </li>
-                        <li id="m6" class="m "><h3><a href="/contTpc/view/a-news" title="News">News</a></h3>
-                            <div class="sub" style="display:none"></div>
                         </li>
                         <li id="m7" class="m "><h3><a href="/contTpc/view/a-contactUs" title="Contact Us">Contact Us</a>
                         </h3>
+                            <div class="sub" style="display:none"></div>
+                        </li>
+                        <li id="m6" class="m "><h3><a href="/contTpc/view/a-news" title="News">News</a></h3>
                             <div class="sub" style="display:none"></div>
                         </li>
                     </ul>
@@ -58,8 +53,6 @@
         <!-- E top-main -->
         <div class="c_l"></div>
     </header>
-
-
     <!-- S touch-top-wrapper -->
     <div class="touch-top">
         <div class="touch-top-wrapper clearfix">
@@ -84,12 +77,8 @@
             <!-----------------------手机搜索begin---------------------->
             <div class="drawer-section search_div">
                 <div class="search_con">
-
-                    <select class="form-control" v-model="searchParam.searchKey">
-                        <option value="">全部</option>
-                        <option v-for="(item,index) in categoryTree" :value="index">{{item.text}}</option>
-                    </select>
-                    <input type="submit" class="bnt1" value="" @click="search"/>
+                    <input id="searchKeyB" type="text" class="input1" placeholder="search"/>
+                    <input type="submit col-sm-4" class="bnt1" value="" onclick="searchB()"/>
                 </div>
             </div>
             <!------------------------手机搜索end----------------------->
@@ -104,7 +93,9 @@
                         </li>
                         <li><a href="/contTpc/view/a-productCatalog"><span>Product Catalog</span><i class="touch-arrow-down"></i> </a>
                             <ul>
-                                <li v-for="(item,index) in categoryTree"><a href="javascript:void(0);" @click="listProduct(item.id,item.text)"><span>{{item.text}}</span></a></li>
+                                <li th:each="item,stat : ${productCateTree.children}">
+                                    <a th:href="'/contTpc/viewProductCatalog/'+${item.id}" th:text="${item.text}"></a>
+                                </li>
                             </ul>
                         </li>
                         <li><a href="/contTpc/view/a-productionProcess"><span>Production Process</span></a>
@@ -126,14 +117,12 @@
         </div>
         <!-- E touch-top -->
     </div>
-
     <div class="touch_bg">&nbsp;</div>
     <!-- E touch-top-wrapper -->
     <div class="blank_h">&nbsp;</div>
 </div><!-- 顶部部分结束 -->
-<div th:fragment="footer"><!-- 底部开始 -->
-    <!--尾部begin-->
-    <div class="footers">
+<div th:fragment="footer">
+    <div class="footers" id="footer">
         <div class="container">
             <div class="left col-lg-4">
                 <h2 style="margin:0;margin-bottom:20px;padding:0;">Contact Us</h2>
@@ -170,56 +159,47 @@
                     <h2 style="margin:0;padding:0 0 20px 0;">Send an enquiry</h2>
                     <p>If you have questions or need help with the project, please fill out the enquiry，The form is as
                         follow，Yutai Glass representative will contact you as soon as possible As much as possible.</p>
-                    <div class="row">
+                    <div class="row" id="inquiry">
                         <div class="col-lg-6 col-md-6 col-sm-12">
                             <input type="text" class="form-control" v-model="formDataDOList[0].value"
-                                   :placeholder="formDataDOList[0].value">
+                                   :placeholder="formDataDOList[0].title">
                         </div>
                         <div class="col-lg-6 col-md-6 col-sm-12">
                             <input type="text" class="form-control" v-model="formDataDOList[1].value"
-                                   :placeholder="formDataDOList[1].value">
+                                   :placeholder="formDataDOList[1].title">
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-lg-6 col-md-6 col-sm-12">
                             <input type="text" class="form-control" v-model="formDataDOList[2].value"
-                                   :placeholder="formDataDOList[2].value">
+                                   :placeholder="formDataDOList[2].title">
                         </div>
                         <div class="col-lg-6 col-md-6 col-sm-12">
                             <input type="text" class="form-control" v-model="formDataDOList[3].value"
-                                   :placeholder="formDataDOList[3].value">
+                                   :placeholder="formDataDOList[3].title">
                         </div>
                     </div>
                     <form role="form" style="margin-top:12px;">
                         <div class="form-group">
 
                             <textarea class="form-control" rows="5" v-model="formDataDOList[4].value"
-                                      :placeholder="formDataDOList[4].value"></textarea>
+                                      :placeholder="formDataDOList[4].title"></textarea>
                         </div>
                     </form>
-                    <button type="submit" v-on:click="" class="btn btn-default">Send inquiry</button>
+                    <button v-on:click="submit" class="btn btn-default">Send inquiry</button>
                 </div>
             </div>
         </div>
     </div>
-    <a href="javascript:void(0)" class="gotop" onClick="goTop()"></a>
-    <!--尾部end-->
 
     <script src="/tpc/js/jquery-1.12.4.min.js"></script>
     <script src="/tpc/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="/tpc/js/jquery.superslide.2.1.1.js">//pc导航</script>
-    <script src="/tpc/js/jquery.caroufredsel.js">//轮显</script>
     <script src="/tpc/js/jquery.touchswipe.min.js">//轮显</script>
     <script src="/tpc/js/public.js">//导航</script>
     <script src="/tpc/js/anim.js">//动画</script>
-
-    <script type="text/javascript" src="/tpc/js/idangerous.swiper-2.0.min.js"></script>
-    <script type="text/javascript" src="/tpc/js/index.js"></script>
-
-    <script src="/tpc/js/owl.carousel.js"></script>
-    <script language="javascript" src="/tpc/js/foot.js"></script>
-    <script language="javascript" src="/js/vue.min.js"></script>
-    <script type="text/javascript"> jQuery(".nav").slide({
+    <script type="text/javascript">
+        $(".nav").slide({
         type: "menu",
         titCell: ".m",
         targetCell: ".sub",
@@ -229,4 +209,14 @@
         returnDefault: true
     });</script>
 
-</div><!-- 底部结束 -->
+    <a href="javascript:void(0)" class="gotop" onClick="goTop()"></a>
+
+
+<!--    <script type="text/javascript" src="/tpc/js/idangerous.swiper-2.0.min.js"></script>
+    <script type="text/javascript" src="/tpc/js/index.js"></script>-->
+
+    <script src="/tpc/js/owl.carousel.js"></script>
+    <script language="javascript" src="/tpc/js/foot.js"></script>
+    <script language="javascript" src="/js/vue.min.js"></script>
+
+</div>

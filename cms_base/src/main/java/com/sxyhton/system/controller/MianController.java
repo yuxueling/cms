@@ -29,13 +29,20 @@ public class MianController extends BaseController {
 	@Autowired MenuService menuService;
 	@Autowired private ContSitemapDao contSitemapDao;
 
+//	@Log("/xmx/*")
+//	@GetMapping({"","/"})
+//	public String indexView(HttpServletRequest request,Model model) {
+//		String pageAddress="index";
+//		this.commonSesssion(pageAddress,request,model);
+//		return "tpc/"+pageAddress;
+//	}
+
 	@Log("/xmx/*")
 	@GetMapping({"","/"})
-	public String indexView(HttpServletRequest request,Model model) {
-		String pageAddress="index";
-		this.commonSesssion(pageAddress,request,model);
-		return "tpc/"+pageAddress;
+	public String indexView() {
+		return "forward:/contTpc/initIndex";
 	}
+
 	
 	/**请求访问登录页面 */
 	@GetMapping("/login")

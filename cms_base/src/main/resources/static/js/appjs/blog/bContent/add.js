@@ -63,3 +63,31 @@ function returnList() {
 	var index = parent.layer.getFrameIndex(window.name); // 获取窗口索引
 	parent.layer.close(index);
 }
+
+
+layui.use('upload', function () {
+    var upload = layui.upload;
+    //执行实例
+    var uploadInst = upload.render({
+        elem: '#test1', //绑定元素
+        url: '/blog/bContent/upload', //上传接口
+        size: 1000,
+        accept: 'file',
+        done: function (r) {
+        	if(r.code==0){
+                $("#image").attr("src",r.imgUrl);
+                $("#imgUrl").val(r.imgUrl);
+			}else{
+                layer.msg("上传失败！");
+			}
+        },
+        error: function (r) {
+            layer.msg(r.msg);
+        }
+    });
+});
+
+function removeImg() {
+    $("#imgUrl").val('');
+    $("#image").attr("src",'');
+}

@@ -1,18 +1,20 @@
 package com.sxyhton.cont.controller;
 
-import com.sxyht.common.utils.PageUtils;
-import com.sxyht.common.utils.Query;
-import com.sxyht.common.utils.R;
+import com.sxyht.common.utils.*;
 import com.sxyhton.common.controller.BaseController;
+import com.sxyhton.common.domain.SysFileDO;
 import com.sxyhton.common.service.DictService;
+import com.sxyhton.cont.domain.ContProductImgDO;
 import com.sxyhton.cont.domain.ContentDO;
 import com.sxyhton.cont.service.ContentService;
 
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.Date;
 import java.util.List;
@@ -29,6 +31,7 @@ import java.util.Map;
 public class ContentController extends BaseController {
 	@Autowired ContentService bContentService;
 	@Autowired private DictService dictService;
+	@Value("${uploadPath}") String uploadPath;
 	
 	@GetMapping()
 	@RequiresPermissions("blog:bContent:bContent")
@@ -60,6 +63,8 @@ public class ContentController extends BaseController {
 	String edit(@PathVariable("cid") Long cid, Model model) {
 		ContentDO bContentDO = bContentService.get(cid);
 		model.addAttribute("bContent", bContentDO);
+		model.addAttribute("langTypes", this.dictService.listByType("CmsLangType"));//将语言类型放到前台
+		model.addAttribute("newsTypes", this.dictService.listByType("cmsNewsType"));
 		return "blog/bContent/edit";
 	}
 
@@ -123,6 +128,20 @@ public class ContentController extends BaseController {
 		return R.ok();
 	}
 
+	@ResponseBody
+	@PostMapping("/upload")
+	R upload(@RequestParam("file") MultipartFile file) {
+		String fileName = file.getOriginalFilename();
+		fileName = FileUtil.renameToUUID(fileName);
 
+		SysFileDO sysFile = new SysFileDO(FileType.fileType(fileName), "/files/" + fileName, new Date());
+		try {
+			FileUtil.uploadFile(file.getBytes(), this.uploadPath, fileName);
+		} catch (Exception e) {
+			return R.error();
+		}
+
+		return R.ok().put("imgUrl","/files/" + fileName);
+	}
 
 }

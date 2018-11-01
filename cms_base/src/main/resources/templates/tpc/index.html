@@ -3,11 +3,10 @@
 <head>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width"/>
-    <title>Tire protection chain</title>
-    <meta name="keywords" content="关键词"/>
-    <meta name="description" content="描述"/>
-    <meta name="author" content="作者"/>
-    <meta name="copyright" content="版权"/>
+    <title th:text="${seoTitle}">Tire protection chain</title>
+    <meta name="keywords" th:content="${keywords}" />
+    <meta name="description" th:content="${description}" />
+
 
     <link href="/tpc/css/style.css" rel="stylesheet"/>
     <link href="/tpc/css/anim.css" rel="stylesheet"/>
@@ -20,32 +19,44 @@
 </head>
 
 <body >
-<div id="app">
+
 <div th:include="include/public-tpc :: header"></div><!-- 共用header部分 -->
 
-<!--轮显begin-->
-<div id="a1portalSkin_ctr211899211899_mainArea" class="module-content"><!-- Start_Module_211899 --><!-- S slideshow -->
-    <div class="slideshow carousel clearfix" style="height:750px; overflow:hidden;">
-        <div id="carousel-211899">
-            <div class="carousel-item">
-                <div class="carousel-img"><a href="javascript:void(0);" target=""><img src="/tpc/picture/banner1.jpg"
-                                                                                       height="750" alt=""/></a></div>
-            </div>
-            <div class="carousel-item">
-                <div class="carousel-img"><a href="javascript:void(0);" target=""><img src="/tpc/picture/banner2.jpg"
-                                                                                       height="750" alt=""/></a></div>
-            </div>
-        </div>
+<div id="main">
 
-        <div class="carousel-btn carousel-btn-fixed" id="carousel-page-211899"></div>
-        <div class="carousel-page">
-            <div class="carousel-prev" id="carousel-prev-211899"></div>
-            <div class="carousel-next" id="carousel-next-211899"></div>
+<!--轮显begin-->
+    <!------------------------------banner start-------------------------->
+    <div class="carousel slide" data-ride="carousel" id="myCarousel">
+        <!----小圆点---->
+        <ol class="carousel-indicators">
+            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+            <li data-target="#myCarousel" data-slide-to="1"></li>
+
+        </ol>
+        <div class="carousel-inner" >
+            <div class="item active">
+                <img src="/tpc/picture/banner1.jpg" alt="">
+                <div class="carousel-caption">
+
+                </div>
+            </div>
+            <div class="item">
+                <img src="/tpc/picture/banner2.jpg" alt="">
+                <div class="carousel-caption">
+
+                </div>
+            </div>
         </div>
+        <!----左右箭头---->
+        <a class="carousel-control left" href="#myCarousel" data-slide="prev">
+            <span class="glyphicon glyphicon-chevron-left"></span>
+        </a>
+        <a class="carousel-control right" href="#myCarousel" data-slide="next">
+            <span class="glyphicon glyphicon-chevron-right"></span>
+        </a>
     </div>
 
-    <!-- E slideshow --><!-- End_Module_211899 --></div>
-<!--轮显end-->
+    <!--轮显end-->
 <!------------------------------banner start-------------------------->
 <div class="flash_div">
     <div class="flash">
@@ -68,14 +79,15 @@
 <div class="i_pro_bg2">
     <div class="i_pro_t  anim anim-1">Product Catalog</div>
     <div id="owl-demo2" class="owl-carousel anim anim-2">
-        <div class="item" v-for="(item,index) in recProductList">
+
+        <div class="item" th:each="item : ${recProductList}">
             <dd class="not-animated">
-                <a href="javascript:void(0);" @click="viewProduct(item.contProductId)">
+                <a th:href="'javascript:viewProduct('+${item.contProductId}+');'">
                     <div class="imgs">
-                        <img :src="item.contProductImgDOList[0].imgUrl" alt="">
+                        <img th:src="${item.contProductImgDOList[0].imgUrl}" alt="">
                         <p>&nbsp;</p>
                     </div>
-                    <h2>{{item.contProductInfoDO.productName}}</h2>
+                    <h2 th:text="${item.contProductInfoDO.productName}"></h2>
                 </a>
             </dd>
         </div>
@@ -235,8 +247,8 @@
             <img src="/tpc/picture/about1.png" alt="">
         </div>
         <div class="i_about_r anim anim-3" >
-            <div class="i_about_txt" v-html="aboutUsCont.content"></div>
-            <a href="/contTpc/index " class="i_about_more">see more</a>
+            <div class="i_about_txt" th:utext="${aboutUsCont.content}"></div>
+            <a href="/contTpc/view/a-aboutUs " class="i_about_more">see more</a>
         </div>
 
         <div class="c_l"></div>
@@ -261,22 +273,29 @@
                     <dd class="not-animated">
                         <div class="i_news_l">
                             <ul>
-                                <li v-for="(item,index) in newsCont" v-if="index !=0">
-                                    <a :href="'/contTpc/openViewNewsDetail/'+item.cid">
-                                        <div class="four_date"><b v-text="getD(item.gtmCreate)"></b><span v-text="getYM(item.gtmCreate)"></span></div>
-                                        <div class="four_txt">
-                                            <h2 v-text="item.title"></h2>
-                                            <p v-text="item.content"></p>
-                                        </div>
-                                    </a>
+                                <li th:each="item,stat : ${newsList}">
+                                    <th:block th:if='!${stat.first}'>
+                                        <a th:href="'/contTpc/openViewNewsDetail/'+${item.cid}">
+                                            <div class="four_date"><b th:text="${#dates.format(item.gtmCreate, 'dd')}"></b><span th:text="${#dates.format(item.gtmCreate, 'yyyy-MM')}"></span></div>
+                                            <div class="four_txt">
+                                                <h2 th:text="${item.title}"></h2>
+                                                <p th:text="${item.resume}"></p>
+                                            </div>
+                                        </a>
+                                    </th:block>
                                 </li>
                             </ul>
                         </div>
-                        <a href="news-con.html">
+                        <a th:href="'/contTpc/openViewNewsDetail/'+${newsFirst.cid}">
                             <div class="imgs">
                                 <img src="/tpc/picture/news5.jpg" alt="">
-                                <h2><em v-text="newsCont[0].gtmCreate"></em><span v-text="newsCont[0].title"></span></h2></div>
-                        </a></dd>
+                                <h2>
+                                    <em th:text="${newsFirst.gtmCreate}"></em>
+                                    <span th:text="${newsFirst.title}"></span>
+                                </h2>
+                            </div>
+                        </a>
+                    </dd>
                 </div>
 
             </div>
@@ -287,10 +306,11 @@
 </div>
 <!--资讯中心end-->
 
+</div>
+
 <!--尾部begin-->
 <div th:include="include/public-tpc :: footer"></div><!-- 共用footer部分 -->
 <script type="text/javascript" src="/js/appjs/tpc/index.js"></script>
-
 
 <script>
     $("#owl-demo2").owlCarousel({
@@ -327,71 +347,11 @@
         navigation: true
     });
 
-    $(window).bind("load resize", function () {
-
-        $("#carousel-211899").carouFredSel({
-
-            width: '100%',
-
-            items: {visible: 1},
-
-            auto: {pauseOnHover: true, timeoutDuration: 5000},
-
-            swipe: {onTouch: true, onMouse: true},
-
-            pagination: "#carousel-page-211899",
-
-            prev: {button: "#carousel-prev-211899"},
-
-            next: {button: "#carousel-next-211899"},
-
-            scroll: {fx: "crossfade"}//注释的话就是滚动的
-
-        });
-
+    $('myCarousel').carousel({
+        interval: 500
     });
+
 </script>
 
-
-<!--弹窗begin-->
-<!--<div class="case_bgs">&nbsp;</div>
-<div class="case_tc">
-    <div class="case_divs">
-        <img src="/tpc/picture/close.png" class="closed" alt="">
-        <img src="/tpc/picture/i_pro_img1.jpg" alt="" id="tc_big"/>
-
-        <div class="case_txt">
-            <h2>桥梁工程领域2</h2>
-
-            <p>
-                与比亚迪公司成功完成新能源汽车制造生产所需焊割设备的销售合同，提供TIG-315AC/DC、 Master-500DP焊接设备。<br/>
-                与比亚迪公司成功完成新能源汽车制造生产所需焊割设备的销售合同，提供TIG-315AC/DC、 Master-500DP焊接设备。
-            </p>
-        </div>
-    </div>
-</div>
-<script type="text/javascript">
-    $(".closed").click(function () {
-        $(".case_tc").animate({height: "0", top: "270px"});
-        $(".case_bgs").fadeOut();
-        $(".case_tc").fadeOut();
-
-    })
-    $("#owl-demo .item").click(function () {
-        $(".case_txt").find("h2").html($(this).find("h4").html());
-        $(".case_txt").find("p").html($(this).find("p").html());
-        $("#tc_big").attr("src", $(this).find("img").attr("src"))
-        $(".case_bgs").fadeIn();
-        $(".case_tc").fadeIn();
-        $(".case_tc").animate({
-            height: $(".case_tc").find("#tc_big").height() + $(".case_txt").height() + 50,
-            top: $("#owl-demo").offset().top
-        });
-
-
-    })
-</script>-->
-<!--弹窗end-->
-</div>
 </body>
 </html>

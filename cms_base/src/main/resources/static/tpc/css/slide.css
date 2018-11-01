@@ -194,7 +194,9 @@
 	.carousel-thumbs a img { display:none; }
 
 	.slideshow .carousel-page{ display:none;}
-
+    .about .left img{
+        width:100%;
+    }
 }
 
 

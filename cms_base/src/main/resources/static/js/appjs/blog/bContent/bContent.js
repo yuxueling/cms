@@ -62,6 +62,13 @@ function load() {
                                     }
                                 },
 								{
+									field : 'langType',
+									title : '语种',
+									formatter:function (value,row,index) {
+										return convertByDict(value,"CmsLangType");
+									}
+								},
+								{
 									field : 'author',
 									title : '作者'
 								},
@@ -92,9 +99,11 @@ function load() {
 								},
 								
 								{
-									visible : false,
 									field : 'type',
-									title : '类型'
+									title : '文章类型',
+									formatter:function (value,row,index) {
+										return convertByDict(value,"cmsNewsType");
+									}
 								},
 								{
 									visible : false,
@@ -129,9 +138,10 @@ function load() {
 									}
 								},
 								{
-									field : 'allowComment',
-									title : '开启评论',
-									align : 'center',
+                                    visible : false,
+                                    field : 'allowComment',
+                                    title : '开启评论',
+                                    align : 'center',
 									formatter : function(value, row, index) {
 										if (value == '0') {
 											return '<span class="label label-danger">否</span>';
@@ -154,6 +164,7 @@ function load() {
 									}
 								},
 								{
+                                    visible : false,
 									field : 'allowFeed',
 									title : '允许订阅',
 									align : 'center',
@@ -184,6 +195,30 @@ function load() {
 								} ]
 					});
 }
+var dictCatche={};
+function convertByDict(itemValue, dictType)//value表示当前单元格的值
+{
+    if (!dictCatche[dictType + itemValue]) {
+        $.ajax({
+            url: "/common/dict/list/" + dictType,
+            type: 'get',
+            async: false,
+            success: function (data) {
+                for (var i in data) {
+                    dictCatche[dictType + data[i].value] = data[i].name;
+                }
+                if (!dictCatche[dictType + itemValue]) {
+                    if (!itemValue) itemValue = '';
+                    dictCatche[dictType + itemValue] = itemValue;
+                }
+            },
+            fail: function () {
+            }
+        });
+    }
+    return dictCatche[dictType + itemValue];
+}
+
 function reLoad() {
 	$('#exampleTable').bootstrapTable('refresh');
 }

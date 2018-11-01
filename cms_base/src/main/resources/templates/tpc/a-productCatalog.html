@@ -4,10 +4,9 @@
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width"/>
     <title>Tire protection chain</title>
-    <meta name="keywords" content="关键词"/>
-    <meta name="description" content="描述"/>
-    <meta name="author" content="作者"/>
-    <meta name="copyright" content="版权"/>
+    <title th:text="${seoTitle}">Tire protection chain</title>
+    <meta name="keywords" th:content="${keywords}"/>
+    <meta name="description" th:content="${description}"/>
 
     <link href="/tpc/css/style.css" rel="stylesheet"/>
     <link href="/tpc/css/anim.css" rel="stylesheet"/>
@@ -33,108 +32,52 @@
 </div>
 <!------------------------------banner end--------------------------->
 <!-----------------------------生产过程begin------------------------->
-<div class="Catalog">
+<div class="Catalog" id="main">
     <div class="container">
-        <p style="margin-top:20px;">Our tire protection chains mainly used link-ring system. We designed many kinds of
-            links
-
-            according to tyre size and working condition, and we will choose suitable connecting rings to weave tire
-            protection chains. Our tire
-
-            protection chains contain as follows: </p>
+        <div style="margin-top:20px;" v-html="catalogCont.content"></div>
         <div class="row col-md-12 col-sm-12">
             <div class="left col-md-3">
                 <div class="title">
                     <h3>Product Catalog</h3>
                 </div>
                 <ul>
-                    <li class="current02">4 X 4 tire protection chains</li>
-                    <li>6 X 6 tire protection chains</li>
-                    <li>6 X 6 tire protection chains</li>
+                    <li th:each="item,stat : ${productCateTree.children}" th:text="${item.text}"
+                        th:onclick="'javascript:listProduct('+${item.id}+')'"></li>
                 </ul>
             </div>
             <div class="right col-md-9 col-sm-12">
                 <div class="title">
-                    <h3>Product Catalog</h3>
+                    <h3 v-text="categoryInfo.categoryName"></h3>
                 </div>
 
                 <div class="content">
-                    <img src="picture/Catalog1.png" alt="">
-                    <img src="picture/Catalog1.png" alt="">
-                    <img src="picture/Catalog1.png" alt="">
-                    <img src="picture/Catalog1.png" alt="">
-                    <img src="picture/Catalog1.png" alt="">
-                    <img src="picture/Catalog1.png" alt="">
-                    <div class="pages anim anim-3 yema">
-                        <div>
-                            <span class="current">1</span>
-                            <a class="num" href="#">2</a>
-                            <a class="next" href="#">&rsaquo;&rsaquo;</a>
+                    <!--<img v-for="(imgItem,imgIndex) in item.contProductImgDOList" :src="imgItem.imgUrl" title="Tire protection chain" alt="Tire protection chain" />-->
+                    <!--<div style="padding-bottom: 15px;"></div>-->
+
+                    <div class="row" style="padding-bottom: 10px;">
+                        <div class="text col-md-4" v-for="(item,index) in productList">
+                            <img :src="item.contProductImgDOList[0].imgUrl" alt="Tire protection chain">
+                            <p v-text="item.contProductInfoDO.productName"></p>
+                            <a href="#inquiry">
+                                <button type="button">inquiry</button>
+                            </a>
                         </div>
-                    </div>
-                </div>
-                <div class="content">
-                    <img src="picture/Catalog2.png" alt="">
-                    <img src="picture/Catalog2.png" alt="">
-                    <img src="picture/Catalog2.png" alt="">
-                    <img src="picture/Catalog2.png" alt="">
-                    <img src="picture/Catalog2.png" alt="">
-                    <img src="picture/Catalog2.png" alt="">
-                    <!-- <ul class="pagination" style="margin-left:40%;">
-                         <li><a href="#">&laquo;</a></li>
-                         <li><a href="#">1</a></li>
-                         <li><a href="#">2</a></li>
-                         <li><a href="#">&raquo;</a></li>
-                     </ul>-->
-                    <div class="pages anim anim-3 yema">
-                        <div>
-                            <span class="current">1</span>
-                            <a class="num" href="#">2</a>
-                            <a class="next" href="#">&rsaquo;&rsaquo;</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="content">
-                    <img src="picture/Catalog3.png" alt="">
-                    <img src="picture/Catalog1.png" alt="">
-                    <img src="picture/Catalog1.png" alt="">
-                    <img src="picture/Catalog1.png" alt="">
-                    <img src="picture/Catalog1.png" alt="">
-                    <img src="picture/Catalog1.png" alt="">
-                    <div class="pages anim anim-3 yema">
-                        <div>
-                            <span class="current">1</span>
-                            <a class="num" href="#">2</a>
-                            <a class="next" href="#">&rsaquo;&rsaquo;</a>
-                        </div>
+
                     </div>
                 </div>
             </div>
+
+
         </div>
     </div>
 </div>
 
-<script type="application/javascript">
-    var x = 0
-    //显示第一组content，其它都隐藏
-    $(".content").hide().first().show()
-    $(".Catalog ul li").click(
-        function () {
-            $(this).addClass("current02").siblings().removeClass("current02")
-            /*$(this).addClass：当前对象添加个名称叫current的类，siblings().removeClass("current")，除自己以外的对象移除名叫current的类*/
-            //得到当前按钮的位置数
-            x = $(this).index()
-            /*document.title=x*///用来测试当前位置数是多少
-            //显示位置数对应的图片，其它图片接着隐藏
-            $(".content").hide().eq(x).show()//图像都隐藏只的第x个显示，点击哪个按钮，哪个对应的图片显示
-
-        }
-    )
-</script>
 <!--产品目录end-->
 
 <!--尾部begin-->
 <div th:include="include/public-tpc :: footer"></div>
+
+<script type="text/javascript" src="/js/appjs/tpc/a-productCatalog.js"></script>
 <!--尾部end-->
 
 </body>

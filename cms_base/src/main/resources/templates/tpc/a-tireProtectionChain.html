@@ -3,76 +3,184 @@
 <head>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width"/>
-    <title>Tire protection chain</title>
-    <meta name="keywords" content="关键词"/>
-    <meta name="description" content="描述"/>
-    <meta name="author" content="作者"/>
-    <meta name="copyright" content="版权"/>
+	<title>Tire protection chain</title>
+    <meta name="keywords" content="关键词" />
+    <meta name="description" content="描述" /> 
+    <meta name="author" content="作者" />
+    <meta name="copyright" content="版权" />
 
     <link href="/tpc/css/style.css" rel="stylesheet"/>
     <link href="/tpc/css/anim.css" rel="stylesheet"/>
     <link href="/tpc/css/slide.css" rel="stylesheet"/>
     <link href="/tpc/css/index.css" rel="stylesheet"/>
     <link href="/tpc/css/css.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="/tpc/css/iconfont.css">
     <link rel="stylesheet" href="/tpc/css/bootstrap.min.css">
-    <link rel="shortcut icon" href="/tpc/images/logosmall.png" type="image/x-icon"/>
+    <link rel="shortcut icon" href="images/logosmall.png" type="image/x-icon" /> 
+    
+
 </head>
 
 <body>
 
-<div th:include="include/public-tpc :: header"></div>
+<div th:include="include/public-tpc :: header"></div><!-- 共用header部分 -->
 
 <!--轮显begin-->
 <div id="a1portalSkin_ctr211899211899_mainArea" class="module-content"><!-- Start_Module_211899 --><!-- S slideshow -->
-
+ 
     <!-- E slideshow --><!-- End_Module_211899 --></div>
 <!--轮显end-->
 
-<!-----------------------------产品中心begin------------------------->
-<div class="Protection" style="margin-top:20px;">
+<div class="Protection">
     <div class="container">
-        <div class="about_t3  anim anim-1">Tire protection chain</div>
-        <img src="/tpc/picture/banner01.png" alt="">
-        <h3>Why to use a Tire Protection Chain? </h3>
-        <p>Sharp, edged rock, muddy and slippery surfaces are a great hazard to tires – even when new. Equipment
-            downtime and loss of productivity are the result of sudden tire failure.</p>
-        <div class="row" style="border:none;">
-            <div class="left col-md-6 col-sm-6 col-xs-12">
-                <div class="bj">
-                    <h3>Application Areas of Tire Protection Chain</h3>
-                    <p style="margin-top:10px;">Open Pit Mining<br>
-                        Underground Mining &Tunnelling<br>
-                        Quarrying<br>
-                        Slag & Scrap Handling<br>
-                        Traction
-                    </p>
-                </div>
-            </div>
-            <div class="right col-md-6 col-sm-6 col-xs-12">
-                <div class="bj">
-                    <h3>The advantages of using tire protection chains are</h3>
-                    <p style="margin-top:10px;">Open Pit Mining<br>
-                        Reducing your operating costs<br>
-                        Lowering your downtime<br>
-                        Increasing your productivity<br>
-                        &nbsp;
-                    </p>
-
-                </div>
-            </div>
-
+        <div class="Tire">
+            <img src="/tpc/picture/banner01.jpg" alt="" style="margin-top:80px;">
+            <div class="about_t3  anim anim-1">What is tire protection chain? </div>
+            <p>A Tire Protection Chain is a close mesh of high-alloy, hardened steel chains. It protects the tread and sidewalls of the tires. The flexible design of the chains let them adjust to every tire deformation. Their high level of self-cleaning prevents the tread mesh becoming filled and clogged, which contributes to achieving the best possible road-holding and traction.</p>
         </div>
-        <h3>Tire Protection Chains installation</h3>
-        <div class="row" v-for="(item,index) in contentList" v-html="item.content"></div>
+        <div class="use">
+
+            <div class="about_t3  anim anim-1">Why to use a Tire Protection Chain?</div>
+            <p>Sharp, edged rock, muddy and slippery surfaces are a great hazard to tires – even when new. Equipment downtime and loss of productivity are the result of sudden tire failure.</p>
+        </div>
+        <div class="application">
+            <div class="about_t3  anim anim-1">Application Areas of Tire Protection Chain</div>
+            <div class="row col-md-12">
+
+                <!------------图标1------------>
+                <div class="content col-md-2 col-sm-6 col-xs-6">
+                    <img src="/tpc/picture/application1.png" alt="">
+                    <p style="margin-top:0px;">Open Pit Mining</p>
+                </div>
+                <!------------图标2------------>
+                <div class="content col-md-2 col-sm-6 col-xs-6">
+                    <img src="/tpc/picture/application2.png" alt="">
+                    <p style="margin-top:0px;">Underground Mining &Tunnelling</p>
+                </div>
+                <!------------图标3------------>
+                <div class="content col-md-2 col-sm-6 col-xs-6">
+                    <img src="/tpc/picture/application3.png" alt="">
+                    <p style="margin-top:0px;">Quarrying</p>
+                </div>
+                <!------------图标4------------>
+                <div class="content col-md-2 col-sm-6 col-xs-6">
+                    <img src="/tpc/picture/application4.png" alt="">
+                    <p style="margin-top:0px;">Slag & Scrap Handling</p>
+                </div>
+                <!------------图标5------------>
+                <div class="content col-md-2 col-sm-6 col-xs-6">
+                    <img src="/tpc/picture/application5.png" alt="">
+                    <p style="margin-top:0px;">Traction</p>
+                </div>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+        <div class="advantage">
+            <div class="about_t3  anim anim-1">The advantages of using tire protection chains are</div>
+            <div class="row " style="border:none;">
+                <div class="adv col-md-4 col-sm-12 col-xs-12">
+                    <span class="iconfont icon-iconjdcb"></span>
+                    <p>Reducing your operating costs</p>
+                </div>
+                <div class="adv col-md-4 col-sm-12 col-xs-12">
+                    <span class="iconfont icon-shijian"></span>
+                    <p>Lowering your downtime</p>
+                </div>
+                <div class="adv col-md-4 col-sm-12 col-xs-12">
+                    <span class="iconfont icon-shengchan"></span>
+                    <p>Increasing your productivity</p>
+                </div>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+        <div class="stepBox">
+            <div class="about_t3  anim anim-1">Tire Protection Chains installation</div>
+            <!----------------------步骤1--------------------->
+            <div class="row step">
+                <div class="left col-md-8 col-sm-8">
+                    <p> 1.Let the loader raise the shovel, adjust one side of the tire and drive directly at tire protection chain then stop it when move to the 20 cm position of the tire protection chain. Make the tire half empty and the use about one meter iron wire through the circle of two sides of the front of the tire protection chain, and tighten it. Pull the iron wire by two men then hitch it into the trench.
+                    </p>
+                </div>
+                <div class="right col-md-4 col-sm-4">
+                    <img src="/tpc/picture/Open Pit Mining.jpg" alt="" class="col-md-6" style="width:260px;">
+
+                </div>
+            </div>
+            <!----------------------步骤2--------------------->
+            <div class="row step1">
+                <div class="left col-md-4 col-sm-4">
+                    <img src="/tpc/picture/Open Pit Mining1.jpg" alt="" class="col-md-6" style="width:260px;">
+                </div>
+                <div class="right col-md-8 col-sm-8">
+
+                    <p> 2. Back the loader, roll up the tire protection chains on the tire(drive the front when installing the tire back),a man should stand near both side of the tire, using a stick to pull the chain and then make the edgiest rhombuses assembly of the chain, both sides directly at the two sides tip of the tire, do not deviation, turn round a complete circle.
+                    </p>
+                </div>
+            </div>
+            <!----------------------步骤3--------------------->
+            <div class="row step">
+                <div class="left col-md-8 col-sm-8">
+                    <p> 3. Connected the tire protection chains from both sides with pin link, tools can be usedfor installing. Connected the two tips of chain with connecting assembly and put down the board for pressing well, pierce the screw, tighten up it .Spot welding later.
+                    </p>
+                </div>
+                <div class="right col-md-4 col-sm-4">
+                    <img src="/tpc/picture/Open Pit Mining2.jpg" alt="" class="col-md-6" style="width:260px;">
+
+                </div>
+            </div>
+            <!----------------------步骤4--------------------->
+            <div class="row step1">
+                <div class="left col-md-4 col-sm-4">
+                    <img src="/tpc/picture/Open Pit Mining3.jpg" alt="" class="col-md-6" style="width:260px;">
+                </div>
+                <div class="right col-md-8 col-sm-8">
+
+                    <p>4. Let the long lock chain throughout the ring of outside one by one and then connect with a stick of steel wire rope ,hitch one side of steel wire rope on it, raising the shovel and then pull tighten slowly, meanwhile, using a hammer to knock the ring which throughout the chain. Do this process for 3 or 4 times until tightens the tire protection chain.
+                    </p>
+                </div>
+            </div>
+            <!----------------------步骤5--------------------->
+            <div class="row step">
+                <div class="left col-md-8 col-sm-8">
+                    <p> 5. Insert a thin wire into cross of the chain for tighten and ring, taking down the steel wire rope,making the tip of chain back to ring and then through screw and tighten it .
+                    </p>
+                </div>
+                <div class="right col-md-4 col-sm-4">
+                    <img src="/tpc/picture/Open Pit Mining4.jpg" alt="" class="col-md-6" style="width:260px;">
+
+                </div>
+            </div>
+            <!----------------------步骤6--------------------->
+            <div class="row step1">
+                <div class="left col-md-4 col-sm-4">
+                    <img src="/tpc/picture/Open Pit Mining5.jpg" alt="" class="col-md-6" style="width:260px;">
+                </div>
+                <div class="right col-md-8 col-sm-8">
+
+                    <p> 6.Aerate the tire to normal then the installing of the tire protection chain is over.
+                    </p>
+                </div>
+            </div>
+            <!----------------------步骤7--------------------->
+            <div class="row step">
+                <div class="left col-md-8 col-sm-8">
+                    <p> 7. Use the spot welding solders one side of screw of connecting assembly so that the screw can not fall off.
+                    </p>
+                </div>
+                <div class="right col-md-4 col-sm-4">
+                    <img src="/tpc/picture/Open Pit Mining6.jpg" alt="" class="col-md-6" style="width:260px;">
+
+                </div>
+            </div>
+        </div>
     </div>
 </div>
-
-
 <!--产品中心end-->
-<!--资讯中心begin-->
-<!--尾部begin-->
-<div th:include="include/public-tpc :: footer"></div>
-<!--尾部end-->
+
+<div th:include="include/public-tpc :: footer"></div><!-- 共用footer部分 -->
+
+
 <script type="text/javascript" src="/js/appjs/tpc/a-tireProtectionChain.js"></script>
+
 </body>
 </html>

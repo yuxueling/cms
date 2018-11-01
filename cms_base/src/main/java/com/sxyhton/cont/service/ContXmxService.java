@@ -1,5 +1,7 @@
 package com.sxyhton.cont.service;
 
+import com.sxyht.common.utils.R;
+import com.sxyhton.common.domain.Tree;
 import com.sxyhton.cont.domain.ContCategoryDO;
 import com.sxyhton.cont.domain.ContCategoryInfoDO;
 import com.sxyhton.cont.vo.ContProductVO;
@@ -30,5 +32,8 @@ public interface ContXmxService {
 	List<ContProductVO> listRecProduct(Map<String,Object> map);
 
 	List<ContCategoryInfoDO> listCategoryInfo(Map<String,Object> map);
+
+	Tree<ContCategoryDO> getTreeInfo(Map<String, Object> map);
+
 
 }

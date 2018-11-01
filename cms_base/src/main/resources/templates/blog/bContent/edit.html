@@ -27,6 +27,12 @@
 								</div>
 							</div>
 							<div class="form-group">
+								<label class="col-sm-1 control-label">摘要：</label>
+								<div class="col-sm-11">
+									<textarea th:value="${bContent.resume}" id="resume" name="resume" class="form-control" rows="3"/>
+								</div>
+							</div>
+							<div class="form-group">
 								<input id="content" name="content" type="hidden"
 									th:value="${bContent.content}"> <label
 									class="col-sm-1 control-label">内容：</label>
@@ -37,38 +43,20 @@
 								</div>
 							</div>
 							<div class="form-group">
-								<label class="col-sm-1 control-label">类型：</label>
+								<label class="col-sm-1 control-label">语言：</label>
 								<div class="col-sm-11">
-									<input th:value="${bContent.categories}" id="categories"
-										name="categories" class="form-control" type="text">
+									<select class="btn btn-default" name="langType" th:field="${bContent.content}">
+										<option th:each="item,interStat:${langTypes}" th:text="${item.name}" th:value="${item.value}"></option>
+									</select>
 								</div>
 							</div>
 							<div class="form-group">
-								<label class="col-sm-2 control-label">开启评论：</label>
-								<div class="switch onoffswitch col-sm-1">
-									<div class="onoffswitch">
-										<input id="allowComment" name="allowComment" checked=""
-											type="checkbox" value="1" class="onoffswitch-checkbox"
-											th:checked=${bContent.allowComment==1}> <label
-											class="onoffswitch-label" for="allowComment"> <span
-											class="onoffswitch-inner"></span> <span
-											class="onoffswitch-switch"></span>
-										</label>
-									</div>
+								<label class="col-sm-1 control-label">文章类型：</label>
+								<div class="col-sm-11">
+									<select class="btn btn-default" name="langType" th:field="${bContent.type}">
+										<option th:each="item,interStat:${newsTypes}" th:text="${item.name}" th:value="${item.value}"></option>
+									</select>
 								</div>
-								<label class="col-sm-2 control-label">允许订阅：</label>
-								<div class="switch onoffswitch col-sm-2">
-									<div class="onoffswitch">
-										<input id="allowFeed" name="allowFeed" type="checkbox"
-											checked="" value="1" class="onoffswitch-checkbox"
-											th:checked=${bContent.allowFeed==1}> <label
-											class="onoffswitch-label" for="allowFeed"> <span
-											class="onoffswitch-inner"></span> <span
-											class="onoffswitch-switch"></span>
-										</label>
-									</div>
-								</div>
-								<input id="status" name="status" type="hidden">
 							</div>
 							<div class="text-right form-group">
 								<a class="btn btn-default waves-effect waves-light"

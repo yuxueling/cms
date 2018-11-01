@@ -1,0 +1,58 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width"/>
+    <title>Tire protection chain</title>
+    <title th:text="${seoTitle}">Tire protection chain</title>
+    <meta name="keywords" th:content="${keywords}" />
+    <meta name="description" th:content="${description}" />
+
+    <link href="/tpc/css/style.css" rel="stylesheet"/>
+    <link href="/tpc/css/anim.css" rel="stylesheet"/>
+    <link href="/tpc/css/slide.css" rel="stylesheet"/>
+    <link href="/tpc/css/index.css" rel="stylesheet"/>
+    <link href="/tpc/css/css.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="/tpc/css/bootstrap.min.css">
+    <link rel="shortcut icon" href="images/logosmall.png" type="image/x-icon"/>
+
+
+</head>
+
+<body>
+
+
+<div th:include="include/public-tpc :: header"></div><!-- 共用header部分 -->
+
+<!--轮显begin-->
+<div id="a1portalSkin_ctr211899211899_mainArea" class="module-content"><!-- Start_Module_211899 --><!-- S slideshow -->
+
+    <!-- E slideshow --><!-- End_Module_211899 --></div>
+<!--轮显end-->
+<!------------------------------banner start-------------------------->
+<div class="banner">
+    <img src="picture/banner08.jpg" alt="" style="width:100%;">
+</div>
+
+<!------------------------------banner end--------------------------->
+<!-----------------------------新闻begin------------------------->
+<div class="news_bg2" id="main">
+    <div class="wrap2">
+        <div class="about_x anim anim-2">
+            <h1 class="show_t" v-text="newsCont.title"></h1>
+
+            <div class="con_line" v-text="'发布日期：'+ newsCont.gtmCreate"></div>
+            <div class="con_id" v-html="newsCont.content"></div>
+            <div class="prenext">
+                <a href="javascript:history.back()" class="goback">Back to list</a>
+            </div>
+        </div>
+    </div>
+</div>
+<!--新闻end-->
+
+<div th:include="include/public-tpc :: footer"></div>
+
+<script type="text/javascript" src="/js/appjs/tpc/a-newsDetail.js"></script>
+</body>
+</html>

@@ -3,13 +3,14 @@
     padding: 0;
     border: 0;
     text-decoration: none;
+    font-family: "Azedo-Bold","Arial",'思源黑体 CN bold';
 }
 body {
     background-color: #fff;
     overflow-x: hidden;
     color: #333;
     font-size: 12px;
-    font-family: "微软雅黑", "Microsoft YaHei", "Arial", "Helvetica Neue", "Helvetica", "Arial", "sans-serif";
+   
 }
 a {
     color: #333;
@@ -255,10 +256,10 @@ em, cite, th {
     width:80px;
 }
 .nav #m2 {
-    width:186px;
+    width:174px;
 }
 .nav #m3 {
-    width:174px;
+    width:154px;
 }
 .nav #m4 {
     width:174px;
@@ -578,9 +579,9 @@ em, cite, th {
     text-transform: uppercase;
 }
 /*******保护链介绍*******/
-.Protection h2{
-    text-align:center;
-}
+/*.Protection .about_t3{
+    overflow:inherit;
+}*/
 .Protection img{
     width:100%;
     margin:10px auto;
@@ -589,29 +590,71 @@ em, cite, th {
     padding:10px auto;
     border-bottom:solid 1px #aeaeae;
 }
-.Protection .row p{
+.stepBox p{
     margin-top:26px;
 }
-.Protection .bj{
-    background-color:#ff6600;
-    width:100%;
-    
+.Protection .step .right img,
+.Protection .step1 .left img{
+    border-top-left-radius: 3em;
+    border-bottom-right-radius: 3em;
+    margin-left:calc(50% - 130px);
 }
-.Protection .bj h3,p{
-    paddint:20px 0;
+.application .content:first-child{
+    margin-left:10%;
+}
+.application span{
+    color:#ff6600;
+    text-align: center;
 
 }
-.Protection .bj h3{
-    padding-top:10px;
+
+.application img{
+    width:60%;
+    margin-left:calc(50% - 46px);
+}
+.application p{
     text-align: center;
-    color:#fff;
 }
-.Protection .bj p{
-    padding:0 0 10px 20px;
-    color:#fff;
+.Protection .Tire,
+.Protection .use{
+    border-bottom:solid 1px #aeaeae;
 }
-.Protection .about_t3{
-    margin-top:40px;
+.Protection .Tire p,
+.Protection .use p{
+    padding-bottom: 40px;
+}
+.application .row{
+    box-shadow:2px 4px 10px #aeaeae;
+    margin-bottom: 40px;
+    padding-top:10px;
+}
+.application .content:first-child{
+    margin-left:10%;
+}
+.application img{
+    width:60%;
+    margin-left:calc(50% - 46px);
+}
+.application p{
+    text-align: center;
+}
+.advantage .adv{
+    background-color:#DBDBDB;
+    margin:10px;
+    width:calc(33.33% - 20px);
+}
+.advantage .adv p{
+    
+    padding-top:20px;
+    text-align: center;
+}
+.advantage .adv span{
+    font-size:60px;
+    color:#ff6600;
+    margin-left:calc(50% - 30px);
+   
+    
+    
 }
 /*********产品分类**********/
 .Catalog .title h3{
@@ -648,30 +691,139 @@ em, cite, th {
     padding:0 10px;
     margin-bottom:20px;
 }
+
+.Catalog .content .text p{
+    text-align: center;
+}
+.Catalog .content .text img{
+    width:100%;
+    margin-bottom:10px;
+}
+.Catalog .content button{
+    background-color:#ff6600;
+    padding:4px 6px;
+    border-radius: 4px;
+    color:#fff;
+    margin-left:20px;
+}
 /*********生产过程**********/
-.Process h4{
-  /* width:auto;
-	text-align:left;
-	line-height:40px;
-	border-bottom:4px solid #ff6600;
-	display: inline-block;*/
-	background-color:#ff6600;
-   line-height:40px;
-   color:#fff;
-   padding:0 10px;
-   border-top-left-radius: 10px;
-   border-bottom-right-radius: 10px;
-   display: inline-block;
-   width:auto;
-}
+
 .Process .row{
-    margin-left:0px;
-    margin-right:0px;
+    background-color:#fff;
+    border: solid 4px #fff;
+    margin-top:20px;
+    overflow: hidden;
+    box-sizing: border-box;
+    
 }
-.Process .photo img,video{
-    margin:20px 0;
+.Process .content .left,
+.Process .content1 .right{
+    padding:0;
+    overflow: hidden;
+    height:100%;
+}
+.Process .content .left img,
+.Process .content1 .right img{
+    width:100%;
+    transition:transform 300ms;
+    transform:scale(1);
+}
+.Process .content .left img:hover ,
+.Process .content1 .right img:hover{
+    transform:scale(1.1,1.1);
+    border:solid 4px #fff;  
+}
+.Process .photo{
+    margin-top:4px;
+    padding:0px;
+    margin-bottom:0px;
+    overflow: hidden;
+}
+.Process .photo .photo_cen{
+    margin-left:20%;
+}
+.Process .photo .photo_cen img{
+    padding:0px;
+    border:solid 2px #fff;
+    transition:transform 300ms;
+    transform:scale(1);
+    overflow: hidden;
+    margin:4px;
+    width:16.6%;
+    border-radius: 4px;
+    
+  
+}
+.Process .photo .photo_cen img:hover{
+     transform:scale(1.1,1.1);
+    
+}
+.Process .content .right a,
+.Process .content1 .left a{
+   text-decoration: none; 
+}
+.Process .right,
+.Process .content1 .left{
+    padding:20px;
+}
+.Process .content .right span,
+.Process .content1 .left span{
+    color:#ff6600;
+    margin-right:10px;
 }
 
+
+.Process .content .right h3,
+.Process .content1 .left h3{
+    color:#ff6600;
+  
+}
+
+.one{
+    margin:0px auto;
+    height:160px;
+    width:100%;
+    overflow:hidden;
+    position:relative; 
+}
+.one ul{
+    height:160px;
+    width:100000px;
+    position:absolute;
+    left:0;
+} /*ul width的宽不能过小*/
+.one ul li{
+    display:block;
+    float:left;
+    margin:5px;
+    height:150px;
+    border-radius:5px;
+    position:relative;
+}
+.one ul li a{
+    display:inline-block;
+    height:150px;
+} 
+.one ul li img{
+    border-radius:5px;
+    display:block;
+}
+.one ul li a span{
+    height:0;
+    display:block;
+    background:rgba(0,0,0,0.4);
+    position:absolute;
+    bottom:0;
+    color:#fff;
+    font-size:0px;
+}
+.one ul li a:hover span{
+    height:150px;
+    line-height:150px;
+    font-size:20px;
+    text-align:center;
+    transition:all 0.7s;
+}
 /*********关于我们**********/
 .about{
     margin-top:20px; 
@@ -911,9 +1063,6 @@ em, cite, th {
 .footers h2{
         text-align:center;
     }   
-/*.footers .left li{
-   margin-left:10%;
-    }*/
  .footers .left li{
    float:left;
    width:100%;
@@ -938,8 +1087,21 @@ em, cite, th {
     margin-left:calc(50% - 126px);
     }
  .Catalog .right .content img{
-        width:100%;
+    width:100%;
     }
+ .application .content:first-child {
+    margin-left: 0; 
+}
+.advantage .row{
+    padding-right:20px;
+   
+    }
+.advantage .adv{
+    background-color:#DBDBDB;
+    width:100%;
+   
+}    
+
 }
 
 

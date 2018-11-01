@@ -32,9 +32,7 @@
                 <div class="padd" style="padding-right:32px;">
                     <h2>{{categoryInfo.categoryName}}</h2>
                     <div>Total <span class="red">{{pageTool.total}}</span> Product(s)</div>
-                    <div class="cdes" v-html="categoryInfo.details">
-
-                    </div>
+                    <div class="cdes" v-html="categoryInfo.details"></div>
                 </div>
                 <div class="clear"></div>
                 <form action="" method="get" name="Inquire">
@@ -58,13 +56,13 @@
                             <center>
                                 <div class="proimg">
                                     <p><a href="javascript:void(0);" v-on:click="viewProduct(item.contProductId)"
-                                          :title="item.contProductName" rel="nofollow"><img
-                                            :src="item.contProductImgDOList[0].imgUrl" :alt="item.contProductName"
+                                          :title="item.contProductInfoDO.productName" rel="nofollow"><img
+                                            :src="item.contProductImgDOList[0].imgUrl" :alt="item.contProductInfoDO.productName"
                                             vspace="0" border="0"/></a>
                                     </p>
                                 </div>
                                 <div class="protext"><a href="javascript:void(0);"
-                                                        v-on:click="viewProduct(item.contProductId)" title="turbine blade"
+                                                        v-on:click="viewProduct(item.contProductId)" :title="item.contProductInfoDO.productName"
                                                         rel="nofollow">
                                     <h2>{{item.contProductInfoDO.productName}}</h2></a> <span></span></div>
                                 <div class="prodes" style="display:none;" v-html="item.contProductInfoDO.details">

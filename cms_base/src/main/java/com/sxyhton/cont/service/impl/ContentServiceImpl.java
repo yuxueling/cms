@@ -51,5 +51,5 @@ public class ContentServiceImpl implements ContentService {
 	public int batchRemove(Long[] cids){
 		return bContentMapper.batchRemove(cids);
 	}
-	
+
 }
