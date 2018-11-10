@@ -51,12 +51,6 @@ function load() {
 										return '<a href="#" onclick="queryFormDataByFormId(\''+ row.contFormId + '\')"  class="text-info" >'+value+'</a> ';
 									}
 								},{
-									field : 'langType', 
-									title : '语种 字典CmsLangType' 
-								},{
-									field : 'remark', 
-									title : '备注' 
-								},{
 									field : 'haveRead', 
 									title : '是否读取' ,
 									formatter : function(value, row, index) {

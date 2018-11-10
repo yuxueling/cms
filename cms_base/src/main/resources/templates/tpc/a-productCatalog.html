@@ -3,8 +3,7 @@
 <head>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width"/>
-    <title>Tire protection chain</title>
-    <title th:text="${seoTitle}">Tire protection chain</title>
+    <title th:text="${seoTitle}"></title>
     <meta name="keywords" th:content="${keywords}"/>
     <meta name="description" th:content="${description}"/>
 
@@ -28,7 +27,7 @@
 <!--轮显end-->
 <!------------------------------banner start-------------------------->
 <div class="banner">
-    <img src="picture/banner03.png" alt="" style="width:100%;">
+    <img src="/tpc/picture/banner03.png" alt="" style="width:100%;">
 </div>
 <!------------------------------banner end--------------------------->
 <!-----------------------------生产过程begin------------------------->
@@ -51,17 +50,41 @@
                 </div>
 
                 <div class="content">
-                    <!--<img v-for="(imgItem,imgIndex) in item.contProductImgDOList" :src="imgItem.imgUrl" title="Tire protection chain" alt="Tire protection chain" />-->
-                    <!--<div style="padding-bottom: 15px;"></div>-->
-
                     <div class="row" style="padding-bottom: 10px;">
                         <div class="text col-md-4" v-for="(item,index) in productList">
                             <img :src="item.contProductImgDOList[0].imgUrl" alt="Tire protection chain">
-                            <p v-text="item.contProductInfoDO.productName"></p>
-                            <a href="#inquiry">
-                                <button type="button">inquiry</button>
-                            </a>
+                            <div style="text-align: center;">
+                                <p v-text="item.contProductInfoDO.productName"></p>
+                                <a href="#inquiry">
+                                    <button type="button">inquiry</button>
+                                </a>
+                            </div>
                         </div>
+
+                    </div>
+                    <div class="styled-pagination text-center" style="margin-top:20px;">
+                        <ul class="clearfix">
+                            <li class="prev">
+                                <a href="javascript:void(0);" @click="selectPage('currentPage',-1)">Prev</a>
+                            </li>
+                            <li v-for="(item,index) in pageTool.pageList" :class="item==pageTool.currentPage? 'active':'' ">
+                                <a href="javascript:void(0);" @click="selectPage(item,0)" v-text="item"></a>
+                            </li>
+                            <li class="next">
+                                <a href="javascript:void(0);" @click="selectPage('currentPage',1)">Next </a></li>
+                            <ul class="page">
+                                <li>
+                      <span class="page-sum">Total Page
+                        <strong v-text="pageTool.totalPages"></strong>
+                      </span>
+                                    <span class="page-go">&nbsp;&nbsp;Jump<input v-model="pageTool.goPage" type="text">page</span>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0);" @click="selectPage(pageTool.goPage,0  )"> <span class="page-btn">GO</span></a>
+                                </li>
+                            </ul>
+                        </ul>
+
 
                     </div>
                 </div>

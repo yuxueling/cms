@@ -3,6 +3,7 @@ package com.sxyhton.cont.controller;
 import java.util.List;
 import java.util.Map;
 
+import com.sxyhton.common.utils.MailUtils;
 import org.apache.catalina.servlet4preview.http.HttpServletRequest;
 import org.apache.shiro.session.Session;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +16,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.sxyht.common.utils.MailUtils;
 import com.sxyht.common.utils.PageUtils;
 import com.sxyht.common.utils.Query;
 import com.sxyht.common.utils.R;
@@ -212,14 +212,6 @@ public class YutaiController extends BaseController {
 
 		List<ContProductVO> contProductList = contXmxService.listCateProdsByProdId(params);
 		return R.ok().put("rows",contProductList).put("contProductId",productIdObj);
-	}
-
-
-	@PostMapping("/classify/sendInquiry")
-	public String sendInquiry(@RequestParam Map<String, Object> params) {
-		DictDO dictDO = this.dictService.listByType("mailbox").get(0);
-		MailUtils.sendMail("AM网站客户留言信息", "<h3>"+params.toString()+"</h3>", dictDO.getValue());
-		return "/xmx/index";
 	}
 
 

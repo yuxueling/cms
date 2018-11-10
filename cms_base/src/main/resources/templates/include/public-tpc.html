@@ -150,7 +150,7 @@
                     <li>
                         <span class="glyphicon glyphicon-envelope" aria-hidden="true"
                               style="float:left;margin-right:6px;"></span>
-                        <p>Email:sales@tire-protection-chain.com </p></li>
+                        <p>Email:sales@tire-protection-chain.cn </p></li>
                     <div class="clearfix"></div>
                 </ul>
             </div>
@@ -186,6 +186,11 @@
                                       :placeholder="formDataDOList[4].title"></textarea>
                         </div>
                     </form>
+                    <div v-show="errorList.length>0" class="alert alert-warning">
+                        <a href="javascript:void(0);" v-on:click="clearErrorList" class="close">&times;</a>
+                        <h5 v-for="(item,index) in errorList" v-text="item"></h5>
+                    </div>
+                    <div v-show="success.length>0" class="alert alert-success" v-text="success"></div>
                     <button v-on:click="submit" class="btn btn-default">Send inquiry</button>
                 </div>
             </div>
@@ -211,12 +216,7 @@
 
     <a href="javascript:void(0)" class="gotop" onClick="goTop()"></a>
 
-
-<!--    <script type="text/javascript" src="/tpc/js/idangerous.swiper-2.0.min.js"></script>
-    <script type="text/javascript" src="/tpc/js/index.js"></script>-->
-
-    <script src="/tpc/js/owl.carousel.js"></script>
     <script language="javascript" src="/tpc/js/foot.js"></script>
     <script language="javascript" src="/js/vue.min.js"></script>
-
+    <script language="javascript" src="/js/appjs/public/public-tpc.js"></script>
 </div>

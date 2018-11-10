@@ -3,11 +3,9 @@
 <head>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width"/>
-	<title>Tire protection chain</title>
-    <meta name="keywords" content="关键词" />
-    <meta name="description" content="描述" /> 
-    <meta name="author" content="作者" />
-    <meta name="copyright" content="版权" />
+    <title th:text="${seoTitle}"></title>
+    <meta name="keywords" th:content="${keywords}" />
+    <meta name="description" th:content="${description}" />
 
     <link href="/tpc/css/style.css" rel="stylesheet"/>
     <link href="/tpc/css/anim.css" rel="stylesheet"/>

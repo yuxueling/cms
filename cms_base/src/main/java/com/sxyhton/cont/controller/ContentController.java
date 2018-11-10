@@ -29,7 +29,7 @@ import java.util.Map;
  */
 @Controller@RequestMapping("/blog/bContent")
 public class ContentController extends BaseController {
-	@Autowired ContentService bContentService;
+	@Autowired private ContentService bContentService;
 	@Autowired private DictService dictService;
 	@Value("${uploadPath}") String uploadPath;
 	

@@ -4,8 +4,6 @@ import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
-import com.alibaba.fastjson.JSON;
-import com.sxyht.common.utils.MailUtils;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
@@ -21,10 +19,8 @@ import com.sxyht.common.utils.PageUtils;
 import com.sxyht.common.utils.Query;
 import com.sxyht.common.utils.R;
 import com.sxyhton.common.controller.BaseController;
-import com.sxyhton.common.domain.DictDO;
 import com.sxyhton.common.service.DictService;
 import com.sxyhton.cont.domain.ContFormDO;
-import com.sxyhton.cont.domain.ContFormDataDO;
 import com.sxyhton.cont.service.ContFormDataService;
 import com.sxyhton.cont.service.ContFormService;
 
@@ -118,50 +114,5 @@ public class ContFormController extends BaseController{
 		contFormService.batchRemove(contFormIds);
 		return R.ok();
 	}
-
-
-	//new
-
-	/**
-	 * http://loaclhost:8080/cont/contForm/openSave
-	 * @param contForm
-	 * @param contFormData
-	 * @return
-	 */
-	@ResponseBody
-	@RequestMapping("/openSave")
-	public R openSave( String contForm,String contFormData){
-		Object langType = getSession().getAttribute("langType");
-		Date date = new Date();
-		ContFormDO formDO = JSON.parseObject(contForm, ContFormDO.class);
-		formDO.setGmtCreate(date);
-		formDO.setGmtModified(date);
-		formDO.setHaveRead(0);
-		formDO.setLangType(langType==null?"":langType.toString());
-		if(contFormService.save(formDO)>0){
-			List<ContFormDataDO> contFormDataDOS = JSON.parseArray(contFormData, ContFormDataDO.class);
-			for (ContFormDataDO formDataDO:contFormDataDOS){
-				formDataDO.setGmtCreate(date);
-				formDataDO.setGmtModified(date);
-				formDataDO.setContFormId(formDO.getContFormId());
-			}
-			if (contFormDataService.batchSave(contFormDataDOS) > 0) {
-
-				try {
-					List<DictDO> dictDOList = this.dictService.listByType("mailbox");
-					for (DictDO dictDO: dictDOList){
-						MailUtils.sendMail(dictDO.getName(), "<h3>"+contFormData+"</h3>", dictDO.getValue());
-					}
-				}catch (Exception e){
-
-				}
-
-				return R.ok();
-			}
-		}
-
-		return R.error();
-	}
-
 
 }

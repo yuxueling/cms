@@ -8,7 +8,7 @@
         <div class="col-sm-12">
             <div class="ibox float-e-margins">
                 <div class="ibox-content" v-for="(item, index) in rows" v-show="index==activeIndex">
-                    <form class="form-horizontal m-t">
+                    <div class="form-horizontal m-t">
                         <ul class="nav nav-tabs nav-justified">
                             <li v-bind:class="[ item.langType==langItem.value?activeClass : ''  ]"
                                 v-for="(langItem, langIndex) in langDictList"><a v-on:click="langBarClick(langItem.value)">{{langItem.name}}</a>
@@ -79,7 +79,7 @@
                                 <button v-on:click="saveInfo(index)" class="btn btn-primary">提交</button>
                             </div>
                         </div>
-                    </form>
+                    </div>
                 </div>
 
 
@@ -145,13 +145,22 @@
                 }
             } ,
             saveInfo: function (index) {
-
+debugger;
                 $.ajax({
                     type: "POST",
                     url: "/cont/contProduct/saveInfo?contProductId="+contProductId,
                     data: {contProductInfo: JSON.stringify(this.rows)},
                     dataType: "json",
                     success: function (data) {
+                        if (data.code == 0) {
+                            parent.layer.msg("保存成功!");
+                            var index = parent.layer.getFrameIndex(window.name); // 获取窗口索引
+                            parent.layer.close(index);
+
+                        }
+                    },
+                    error:function(data){
+                        debugger;
                         if (data.code == 0) {
                             parent.layer.msg("保存成功!");
                             var index = parent.layer.getFrameIndex(window.name); // 获取窗口索引

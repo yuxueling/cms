@@ -1,4 +1,4 @@
-package com.sxyhton.common.config;
+    package com.sxyhton.common.config;
 
 import at.pollux.thymeleaf.shiro.dialect.ShiroDialect;
 
@@ -57,6 +57,12 @@ public class ShiroConfig {
     	//shiro框架的过滤器工厂对象
         ShiroFilterFactoryBean shiroFilterFactoryBean = new ShiroFilterFactoryBean();
         LinkedHashMap<String, String> filterChainDefinitionMap = new LinkedHashMap<>();
+        //设置开放的静态资源和开放链接的url
+        shiroFilterFactoryBean.setFilterChainDefinitionMap(filterChainDefinitionMap);
+        shiroFilterFactoryBean.setSecurityManager(securityManager);//注入安全管理器对象
+        shiroFilterFactoryBean.setLoginUrl("/login");//设置首页或者登陆页面，登录为/login
+        shiroFilterFactoryBean.setSuccessUrl("/main");//设置登陆成功后跳转的页面
+        shiroFilterFactoryBean.setUnauthorizedUrl("/403");//设置没有权限需要跳转的页面
         filterChainDefinitionMap.put("/css/**", "anon");//静态文件
         filterChainDefinitionMap.put("/editor-app/**", "anon");//静态文件
         filterChainDefinitionMap.put("/fonts/**", "anon");//静态文件
@@ -80,12 +86,7 @@ public class ShiroConfig {
         //filterChainDefinitionMap.put("/page_base_staff", "perms[staff-list]");
         //一切请求都会经过这个过滤器，检查当前用户是否已经完成登录
         filterChainDefinitionMap.put("/**", "authc");
-        //设置开放的静态资源和开放链接的url
-        shiroFilterFactoryBean.setFilterChainDefinitionMap(filterChainDefinitionMap);
-        shiroFilterFactoryBean.setSecurityManager(securityManager);//注入安全管理器对象
-        shiroFilterFactoryBean.setLoginUrl("/");//设置首页或者登陆页面，登录为/login
-        shiroFilterFactoryBean.setSuccessUrl("/main");//设置登陆成功后跳转的页面
-        shiroFilterFactoryBean.setUnauthorizedUrl("/403");//设置没有权限需要跳转的页面
+
         return shiroFilterFactoryBean;
     }
 

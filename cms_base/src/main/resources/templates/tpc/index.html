@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width"/>
-    <title th:text="${seoTitle}">Tire protection chain</title>
+    <title th:text="${seoTitle}"></title>
     <meta name="keywords" th:content="${keywords}" />
     <meta name="description" th:content="${description}" />
 
@@ -107,7 +107,7 @@
         <label class="bg-list-more"></label>
 
         <div class="i_pro_bg">
-            <a href="javascript:void(0)">
+            <a href="/contTpc/view/a-productionProcess">
                 <div class="bg-list-hs" style=" background:url(/tpc/images/59674aa856e5e.png) center top no-repeat;">
 
                 </div>
@@ -125,7 +125,7 @@
         <label class="bg-list-more"></label>
 
         <div class="i_pro_bg">
-            <a href="javascript:void(0)">
+            <a href="/contTpc/view/a-productionProcess">
                 <div class="bg-list-hs" style=" background:url(/tpc/images/59674aa856e5e.png) center top no-repeat;">
                 </div>
                 <div class="bg-list-yew">
@@ -142,7 +142,7 @@
         <label class="bg-list-more"></label>
 
         <div class="i_pro_bg">
-            <a href="javascript:void(0)">
+            <a href="/contTpc/view/a-productionProcess">
                 <div class="bg-list-hs" style=" background:url(/tpc/images/59674aa856e5e.png) center top no-repeat;">
                 </div>
                 <div class="bg-list-yew">
@@ -159,7 +159,7 @@
         <label class="bg-list-more"></label>
 
         <div class="i_pro_bg">
-            <a href="javascript:void(0)">
+            <a href="/contTpc/view/a-productionProcess">
                 <div class="bg-list-hs" style=" background:url(/tpc/images/59674aa856e5e.png) center top no-repeat;">
                 </div>
                 <div class="bg-list-yew">
@@ -176,7 +176,7 @@
         <label class="bg-list-more"></label>
 
         <div class="i_pro_bg">
-            <a href="javascript:void(0)">
+            <a href="/contTpc/view/a-productionProcess">
                 <div class="bg-list-hs" style=" background:url(/tpc/images/59674aa856e5e.png) center top no-repeat;">
                 </div>
                 <div class="bg-list-yew">
@@ -193,7 +193,7 @@
         <label class="bg-list-more"></label>
 
         <div class="i_pro_bg">
-            <a href="javascript:void(0)">
+            <a href="/contTpc/view/a-productionProcess">
                 <div class="bg-list-hs" style=" background:url(/tpc/images/59674aa856e5e.png) center top no-repeat;">
                 </div>
                 <div class="bg-list-yew">
@@ -210,7 +210,7 @@
         <label class="bg-list-more"></label>
 
         <div class="i_pro_bg">
-            <a href="javascript:void(0)">
+            <a href="/contTpc/view/a-productionProcess">
                 <div class="bg-list-hs" style=" background:url(/tpc/images/59674aa856e5e.png) center top no-repeat;">
                 </div>
                 <div class="bg-list-yew">
@@ -227,7 +227,7 @@
         <label class="bg-list-more"></label>
 
         <div class="i_pro_bg">
-            <a href="javascript:void(0)">
+            <a href="/contTpc/view/a-productionProcess">
                 <div class="bg-list-hs" style=" background:url(/tpc/images/59674aa856e5e.png) center top no-repeat;">
                 </div>
                 <div class="bg-list-yew">
@@ -247,7 +247,9 @@
             <img src="/tpc/picture/about1.png" alt="">
         </div>
         <div class="i_about_r anim anim-3" >
-            <div class="i_about_txt" th:utext="${aboutUsCont.content}"></div>
+            <div class="i_about_txt">
+                <p style="text-indent:37px" th:text="${aboutUsCont.resume}"></p>
+            </div>
             <a href="/contTpc/view/a-aboutUs " class="i_about_more">see more</a>
         </div>
 
@@ -274,21 +276,21 @@
                         <div class="i_news_l">
                             <ul>
                                 <li th:each="item,stat : ${newsList}">
-                                    <th:block th:if='!${stat.first}'>
-                                        <a th:href="'/contTpc/openViewNewsDetail/'+${item.cid}">
-                                            <div class="four_date"><b th:text="${#dates.format(item.gtmCreate, 'dd')}"></b><span th:text="${#dates.format(item.gtmCreate, 'yyyy-MM')}"></span></div>
-                                            <div class="four_txt">
-                                                <h2 th:text="${item.title}"></h2>
-                                                <p th:text="${item.resume}"></p>
-                                            </div>
-                                        </a>
-                                    </th:block>
+                                    <a th:href="'/contTpc/openViewNewsDetail/'+${item.cid}">
+                                        <div class="four_date"><b th:text="${#dates.format(item.gtmCreate, 'dd')}"></b><span th:text="${#dates.format(item.gtmCreate, 'yyyy-MM')}"></span></div>
+                                        <div class="four_txt">
+                                            <h2 th:text="${item.title}"></h2>
+                                            <p th:text="${item.resume}"></p>
+                                        </div>
+                                    </a>
                                 </li>
                             </ul>
                         </div>
                         <a th:href="'/contTpc/openViewNewsDetail/'+${newsFirst.cid}">
-                            <div class="imgs">
-                                <img src="/tpc/picture/news5.jpg" alt="">
+                            <div class="imgs"  style="height: 380px">
+                                <div>
+                                    <img th:src="${newsFirst.imgUrl}" style="width: 100%;display: block;">
+                                </div>
                                 <h2>
                                     <em th:text="${newsFirst.gtmCreate}"></em>
                                     <span th:text="${newsFirst.title}"></span>
@@ -310,6 +312,7 @@
 
 <!--尾部begin-->
 <div th:include="include/public-tpc :: footer"></div><!-- 共用footer部分 -->
+<script src="/tpc/js/owl.carousel.js"></script>
 <script type="text/javascript" src="/js/appjs/tpc/index.js"></script>
 
 <script>

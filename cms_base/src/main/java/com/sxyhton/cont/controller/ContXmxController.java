@@ -7,7 +7,8 @@ import com.sxyhton.common.controller.BaseController;
 import com.sxyhton.common.domain.DictDO;
 import com.sxyhton.common.domain.Tree;
 import com.sxyhton.common.service.DictService;
-       
+
+import com.sxyhton.common.utils.MailUtils;
 import com.sxyhton.cont.domain.ContCategoryDO;
 import com.sxyhton.cont.domain.ContCategoryInfoDO;
 import com.sxyhton.cont.domain.ContSeoDO;
@@ -207,13 +208,6 @@ public class ContXmxController extends BaseController {
 		return R.ok().put("rows",contProductList).put("contProductId",productIdObj);
 	}
 
-
-	@PostMapping("/sendInquiry")
-	public String sendInquiry(@RequestParam Map<String, Object> params) {
-		DictDO dictDO = this.dictService.listByType("mailbox").get(0);
-		MailUtils.sendMail("AM网站客户留言信息", "<h3>"+params.toString()+"</h3>", dictDO.getValue());
-		return "/xmx/index";
-	}
 
 
 	/**

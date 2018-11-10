@@ -2,7 +2,7 @@ uploadPath: D:/ProgramData/hnjx/
 logging:
   level:
     root: info
-    com.ftcsp: info
+    com.sxyhton: DEBUG
 spring:
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource

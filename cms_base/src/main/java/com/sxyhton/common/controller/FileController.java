@@ -9,7 +9,11 @@ import com.sxyhton.common.domain.SysFileDO;
 import com.sxyhton.common.service.FileService;
 
 import javax.servlet.http.HttpServletRequest;
+
+import com.sxyhton.system.controller.MianController;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
@@ -31,7 +35,7 @@ import java.util.Map;
 @Controller
 @RequestMapping("/common/sysFile")
 public class FileController extends BaseController {
-
+	private static Logger logger = LoggerFactory.getLogger(FileController.class);
 	@Autowired
 	private FileService sysFileService;
 
@@ -139,8 +143,12 @@ public class FileController extends BaseController {
 		fileName = FileUtil.renameToUUID(fileName);
 		SysFileDO sysFile = new SysFileDO(FileType.fileType(fileName), "/files/" + fileName, new Date());
 		try {
+			logger.info("FileController-upload:uploadPath={},fileName={}",uploadPath,fileName);
 			FileUtil.uploadFile(file.getBytes(), this.uploadPath, fileName);
 		} catch (Exception e) {
+			logger.error("FileController-upload:error={},error={}",e.getMessage(),e.toString());
+			logger.error("FileController-upload:error={},error={}",e.getMessage(),e.toString());
+			logger.error(e.getMessage(), e);
 			return R.error();
 		}
 		if (sysFileService.save(sysFile) > 0) 

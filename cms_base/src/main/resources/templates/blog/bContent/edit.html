@@ -29,7 +29,7 @@
 							<div class="form-group">
 								<label class="col-sm-1 control-label">摘要：</label>
 								<div class="col-sm-11">
-									<textarea th:value="${bContent.resume}" id="resume" name="resume" class="form-control" rows="3"/>
+									<textarea th:text="${bContent.resume}" id="resume" name="resume" class="form-control" rows="3"/>
 								</div>
 							</div>
 							<div class="form-group">
@@ -45,7 +45,7 @@
 							<div class="form-group">
 								<label class="col-sm-1 control-label">语言：</label>
 								<div class="col-sm-11">
-									<select class="btn btn-default" name="langType" th:field="${bContent.content}">
+									<select class="btn btn-default" name="langType" th:field="${bContent.langType}">
 										<option th:each="item,interStat:${langTypes}" th:text="${item.name}" th:value="${item.value}"></option>
 									</select>
 								</div>
@@ -53,17 +53,53 @@
 							<div class="form-group">
 								<label class="col-sm-1 control-label">文章类型：</label>
 								<div class="col-sm-11">
-									<select class="btn btn-default" name="langType" th:field="${bContent.type}">
+									<select class="btn btn-default" name="type" th:field="${bContent.type}">
 										<option th:each="item,interStat:${newsTypes}" th:text="${item.name}" th:value="${item.value}"></option>
 									</select>
 								</div>
 							</div>
+							<div class="form-group">
+								<div class="row">
+									<div class="col-sm-3">
+										<div class="ibox float-e-margins">
+											<div class="ibox-content">
+												<div class="file-manager">
+													<button type="button" class="layui-btn" id="test1">
+														<i class="fa fa-cloud"></i>上传文件
+													</button>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="col-sm-9 animated fadeInRight">
+										<div class="row">
+											<div class="col-sm-12">
+												<div class="file-box">
+													<div class="file">
+														<a href="#">
+															<span class="corner"></span>
+															<div class="image">
+																<img id="image" alt="image" class="img-responsive" th:src="${bContent.imgUrl}">
+																<input id="imgUrl" name="imgUrl" type="hidden" th:value="${bContent.imgUrl}"/>
+															</div>
+															&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;
+															<button class="btn btn-danger btn-xs" onclick="removeImg()">删除</button>
+														</a>
+													</div>
+												</div>
+												<div id="incomeNum"></div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+
 							<div class="text-right form-group">
 								<a class="btn btn-default waves-effect waves-light"
 									onclick="returnList()">返回列表</a>
 								<button type="button"
 									class="btn btn-primary waves-effect waves-light"
-									onclick="save(1)">保存文章</button>
+									onclick="save(1)">提交上线</button>
 								<button type="button"
 									class="btn btn-warning waves-effect waves-light"
 									onclick="save(0)">存为草稿</button>
@@ -75,6 +111,7 @@
 		</div>
 	</div>
 	<div th:include="include::footer"></div>
+	<script src="/js/layui.js"></script>
 	<script type="text/javascript" src="/js/appjs/blog/bContent/edit.js"></script>
 </body>
 </html>

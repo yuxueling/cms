@@ -1,5 +1,6 @@
 package com.sxyhton.system.controller;
 
+import com.alibaba.fastjson.JSON;
 import com.sxyht.common.utils.MD5Utils;
 import com.sxyht.common.utils.R;
 import com.sxyhton.common.aspect.Log;
@@ -9,12 +10,15 @@ import com.sxyhton.common.utils.WebSiteMapUtils;
 import com.sxyhton.cont.dao.ContSitemapDao;
 import com.sxyhton.cont.domain.ContSitemapDO;
 import com.sxyhton.system.domain.MenuDO;
+import com.sxyhton.system.filter.XssFilter;
 import com.sxyhton.system.service.MenuService;
 
 import org.apache.catalina.servlet4preview.http.HttpServletRequest;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.subject.Subject;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -26,17 +30,10 @@ import java.util.List;
 
 @Controller
 public class MianController extends BaseController {
+	private static Logger logger = LoggerFactory.getLogger(MianController.class);
 	@Autowired MenuService menuService;
 	@Autowired ContSitemapDao contSitemapDao;
 
-
-//	@Log("/xmx/*")
-//	@GetMapping({"","/"})
-//	public String indexView(HttpServletRequest request,Model model) {
-//		String pageAddress="index";
-//		this.commonSesssion(pageAddress,request,model);
-//		return "tpc/"+pageAddress;
-//	}
 
 	@Log("/xmx/*")
 	@GetMapping({"","/"})
@@ -58,6 +55,7 @@ public class MianController extends BaseController {
 	 */
 	@Log("登录")@PostMapping("/login")@ResponseBody
 	R ajaxLogin(String username, String password) {
+		logger.info("MianController-login-session：{}",JSON.toJSONString(getSession().getId()));
 		password = MD5Utils.encrypt(username, password);
 		//创建认证令牌对象
 		UsernamePasswordToken token = new UsernamePasswordToken(username, password);
@@ -67,6 +65,7 @@ public class MianController extends BaseController {
 		} catch (Exception e) {
 			return R.error("账号或密码错误");
 		}
+		logger.info("MianController-login-userInfo：{}",JSON.toJSONString(getUser()));
 		return R.ok();
 	}
 	/**
@@ -76,6 +75,8 @@ public class MianController extends BaseController {
 	 */
 	@GetMapping("/main")
 	String main(Model model) {
+		logger.info("MianController-main-session：{}",JSON.toJSONString(getSession().getId()));
+		logger.info("MianController-main-userInfo：{}",JSON.toJSONString(getUser()));
 		List<Tree<MenuDO>> menus = menuService.listMenuTree(getUserId());//通过用户id加载菜单选项
 		model.addAttribute("menus", menus);
 		model.addAttribute("name", getUser().getName());

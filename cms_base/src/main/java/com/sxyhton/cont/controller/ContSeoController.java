@@ -59,6 +59,7 @@ public class ContSeoController extends BaseController {
 	@RequiresPermissions("cont:contSeo:add")
 	String add(Model model){
 		model.addAttribute("listLangType",this.dictService.listByType("CmsLangType"));
+		model.addAttribute("pageAddressList",this.dictService.listByType("cmsPageAddress"));
 	    return "cont/contSeo/add";
 	}
 
@@ -68,6 +69,7 @@ public class ContSeoController extends BaseController {
 		ContSeoDO contSeo = contSeoService.get(contSeoId);
 		model.addAttribute("contSeo", contSeo);
 		model.addAttribute("langTypes", this.dictService.listByType("CmsLangType"));
+		model.addAttribute("pageAddressList",this.dictService.listByType("cmsPageAddress"));
 	    return "cont/contSeo/edit";
 	}
 	

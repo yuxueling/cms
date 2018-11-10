@@ -58,7 +58,6 @@
 		</if>
 	</select>
 
-
 	<select id="listCateProdsByProdId" resultMap="productVO">
 		select #{langType} as lang_type ,'' as searchKey ,
 		B.`cont_product_id`,B.`product_name`,B.`category_id`,B.`sale_status`,B.`create_by`,B.`gmt_create`,B.`gmt_modified`
@@ -121,9 +120,10 @@
 		FROM cont_product_info A
 		WHERE A.cont_product_id = #{cont_product_id}
 		AND A.`lang_type`= #{lang_type}
-		<if test="searchKey != null and searchKey != null">
+		<if test="searchKey != null and searchKey != ''">
 			AND  A.product_name LIKE CONCAT('%',#{searchKey},'%')
 		</if>
+		limit 0,1
 	</select>
 
 	<select id="queryImg" resultType="com.sxyhton.cont.domain.ContProductImgDO">

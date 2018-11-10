@@ -6,8 +6,10 @@ import com.sxyhton.common.aspect.Log;
 
 import com.sxyhton.common.controller.BaseController;
 import com.sxyhton.common.domain.DictDO;
+import com.sxyhton.common.domain.MailSiteDO;
 import com.sxyhton.common.domain.Tree;
 import com.sxyhton.common.service.DictService;
+import com.sxyhton.common.utils.MailUtils;
 import com.sxyhton.cont.domain.*;
 import com.sxyhton.cont.service.*;
 import com.sxyhton.cont.vo.ContProductVO;
@@ -40,32 +42,33 @@ public class ContTpcController extends BaseController {
 
     /**
      * 初始化首页
+     *
      * @param request
      * @param model
      * @return
      */
     @GetMapping("/initIndex")
-    public String initIndex(HttpServletRequest request,Model model){
-        String pageAddress="index";
-		this.commonSesssion(pageAddress,request,model);
+    public String initIndex(HttpServletRequest request, Model model) {
+        String pageAddress = "index";
+        this.commonSesssion(pageAddress, request, model);
 
-		//导航栏产品分类
-        Map<String,Object> p0=new HashMap<>();
+        //导航栏产品分类
+        Map<String, Object> p0 = new HashMap<>();
         p0.put("langType", getSession().getAttribute("langType"));
         Tree<ContCategoryDO> treeInfo = this.contCategoryService.getTreeInfo(p0);
-        model.addAttribute("productCateTree",treeInfo);
+        model.addAttribute("productCateTree", treeInfo);
 
-		//首页推荐产品
-        Map<String,Object> p1=new HashMap<>();
+        //首页推荐产品
+        Map<String, Object> p1 = new HashMap<>();
         p1.put("langType", getSession().getAttribute("langType"));
-        p1.put("level",11);
+        p1.put("level", 11);
         List<ContProductVO> contProductVOList = contXmxService.listRecProduct(p1);
-        model.addAttribute("recProductList",contProductVOList);
+        model.addAttribute("recProductList", contProductVOList);
 
         //首页关于我们
-        Map<String,Object> p2=new HashMap<>();
+        Map<String, Object> p2 = new HashMap<>();
         p2.put("langType", getSession().getAttribute("langType"));
-        p2.put("type","companyProfile");
+        p2.put("type", "companyProfile");
         List<ContentDO> contentDOList = this.contentService.list(p2);
         if (contentDOList != null && !contentDOList.isEmpty()) {
             model.addAttribute("aboutUsCont", contentDOList.get(0));
@@ -74,22 +77,22 @@ public class ContTpcController extends BaseController {
         }
 
         //首页新闻
-        Map<String,Object> p3=new HashMap<>();
+        Map<String, Object> p3 = new HashMap<>();
         p3.put("langType", getSession().getAttribute("langType"));
-        p3.put("type","companyNew");
-        p3.put("limit",4);
-        p3.put("offset",0);
+        p3.put("type", "companyNew");
+        p3.put("limit", 3);
+        p3.put("offset", 0);
         Query query = new Query(p3);
         List<ContentDO> newsList = contentService.list(query);
-        if(newsList != null && !newsList.isEmpty()){
-            model.addAttribute("newsList",newsList);
-            model.addAttribute("newsFirst",newsList.get(0));
-        }else {
-            model.addAttribute("newsList",new ArrayList());
-            model.addAttribute("newsFirst",new ContentDO());
+        if (newsList != null && !newsList.isEmpty()) {
+            model.addAttribute("newsList", newsList);
+            model.addAttribute("newsFirst", newsList.get(0));
+        } else {
+            model.addAttribute("newsList", new ArrayList());
+            model.addAttribute("newsFirst", new ContentDO());
         }
 
-		return "tpc/"+pageAddress;
+        return "tpc/" + pageAddress;
     }
 
 
@@ -103,13 +106,16 @@ public class ContTpcController extends BaseController {
     @RequestMapping("/getContent")
     @ResponseBody
     public R getContent(@RequestParam Map<String, Object> params) {
-        params.put("langType", getSession().getAttribute("langType"));
-        List<ContentDO> contentDOList = this.contentService.list(params);
-        if (contentDOList != null && !contentDOList.isEmpty()) {
-            return R.ok().put("row", contentDOList.get(0));
+
+        long cid = 1L;
+        Object cidObj = getSession().getAttribute("cid");
+        if (cidObj != null) {
+            cid = Long.parseLong(cidObj.toString());
         } else {
-            return R.ok().put("row", new ContentDO());
+            return R.error();
         }
+        return R.ok().put("row", contentService.get(cid));
+
     }
 
 
@@ -130,11 +136,10 @@ public class ContTpcController extends BaseController {
         getSession().setAttribute("contProductId", contProductId);
 
         //导航栏产品分类
-        Map<String,Object> p0=new HashMap<>();
+        Map<String, Object> p0 = new HashMap<>();
         p0.put("langType", getSession().getAttribute("langType"));
         Tree<ContCategoryDO> treeInfo = this.contCategoryService.getTreeInfo(p0);
-        model.addAttribute("productCateTree",treeInfo);
-
+        model.addAttribute("productCateTree", treeInfo);
 
         return "tpc/" + pageAddress;
     }
@@ -154,10 +159,10 @@ public class ContTpcController extends BaseController {
         commonSesssion(pageAddress, request, model);
 
         //导航栏产品分类
-        Map<String,Object> p0=new HashMap<>();
+        Map<String, Object> p0 = new HashMap<>();
         p0.put("langType", getSession().getAttribute("langType"));
         Tree<ContCategoryDO> treeInfo = this.contCategoryService.getTreeInfo(p0);
-        model.addAttribute("productCateTree",treeInfo);
+        model.addAttribute("productCateTree", treeInfo);
 
         return "tpc/" + pageAddress;
     }
@@ -176,10 +181,10 @@ public class ContTpcController extends BaseController {
         this.commonSesssion(target, request, model);
 
         //导航栏产品分类
-        Map<String,Object> p0=new HashMap<>();
+        Map<String, Object> p0 = new HashMap<>();
         p0.put("langType", getSession().getAttribute("langType"));
         Tree<ContCategoryDO> treeInfo = this.contCategoryService.getTreeInfo(p0);
-        model.addAttribute("productCateTree",treeInfo);
+        model.addAttribute("productCateTree", treeInfo);
 
         return "tpc/" + target;
     }
@@ -188,6 +193,7 @@ public class ContTpcController extends BaseController {
     /**
      * 导航栏跳转产品页
      * http://localhost:8080/viewProductCatalog/1
+     *
      * @param request
      * @param productActIndex
      * @param model
@@ -195,16 +201,16 @@ public class ContTpcController extends BaseController {
      */
     @Log("/xmx/*")
     @GetMapping("/viewProductCatalog/{contCategoryId}")
-    public String viewProductCatalog(HttpServletRequest request,@PathVariable("contCategoryId") Integer contCategoryId, Model model) {
+    public String viewProductCatalog(HttpServletRequest request, @PathVariable("contCategoryId") Integer contCategoryId, Model model) {
         String pageAddress = "a-productCatalog";
         this.commonSesssion(pageAddress, request, model);
-        getSession().setAttribute("contCategoryId",contCategoryId);
+        getSession().setAttribute("contCategoryId", contCategoryId);
 
         //导航栏产品分类
-        Map<String,Object> p0=new HashMap<>();
+        Map<String, Object> p0 = new HashMap<>();
         p0.put("langType", getSession().getAttribute("langType"));
         Tree<ContCategoryDO> treeInfo = this.contCategoryService.getTreeInfo(p0);
-        model.addAttribute("productCateTree",treeInfo);
+        model.addAttribute("productCateTree", treeInfo);
 
         return "tpc/" + pageAddress;
     }
@@ -247,25 +253,26 @@ public class ContTpcController extends BaseController {
     /**
      * 根据语种及类别查询产品（仅支持到两级类别查询）
      * http://localhost:8084/contTpc/listProductByCategory?limit=10&offset=0&contCategoryId=2
+     *
      * @param params
      * @return
      */
     @RequestMapping("/listProductByCategory")
     @ResponseBody
-    public PageUtils listProductByCategory(@RequestParam Map<String, Object> params){
+    public PageUtils listProductByCategory(@RequestParam Map<String, Object> params) {
 
         Object categoryIdObj = params.get("contCategoryId");
-        if(categoryIdObj != null){
-            getSession().setAttribute("contCategoryId",categoryIdObj);
-        }else {
+        if (categoryIdObj != null) {
+            getSession().setAttribute("contCategoryId", categoryIdObj);
+        } else {
             categoryIdObj = getSession().getAttribute("contCategoryId");
         }
-        params.put("contCategoryId",categoryIdObj);
+        params.put("contCategoryId", categoryIdObj);
         params.put("langType", getSession().getAttribute("langType"));
 
         //查询列表数据
         Query query = new Query(params);
-        query.put("categoryType",0);
+        query.put("categoryType", 0);
         List<ContProductVO> productVOList = contXmxService.listProductByCategory(query);
         int total = contXmxService.countProductByCategory(query);
         PageUtils pageUtils = new PageUtils(productVOList, total);
@@ -276,38 +283,57 @@ public class ContTpcController extends BaseController {
 
     /**
      * http://loaclhost:8080/contTpc/saveInquery
+     * 询盘信息保存并发送邮件
      * @param contForm
      * @param contFormData
      * @return
      */
     @ResponseBody
     @RequestMapping("/saveInquery")
-    public R saveInquery( String contForm,String contFormData){
+    public R saveInquery(String contForm, String contFormData) {
         Object langType = getSession().getAttribute("langType");
         Date date = new Date();
         ContFormDO formDO = JSON.parseObject(contForm, ContFormDO.class);
         formDO.setGmtCreate(date);
         formDO.setGmtModified(date);
         formDO.setHaveRead(0);
-        formDO.setLangType(langType==null?"":langType.toString());
-        if(contFormService.save(formDO)>0){
+        formDO.setLangType(langType == null ? "" : langType.toString());
+        //保存询盘
+        if (contFormService.save(formDO) > 0) {
             List<ContFormDataDO> contFormDataDOS = JSON.parseArray(contFormData, ContFormDataDO.class);
-            for (ContFormDataDO formDataDO:contFormDataDOS){
+            for (ContFormDataDO formDataDO : contFormDataDOS) {
                 formDataDO.setGmtCreate(date);
                 formDataDO.setGmtModified(date);
                 formDataDO.setContFormId(formDO.getContFormId());
             }
+            //保存询盘详情
             if (contFormDataService.batchSave(contFormDataDOS) > 0) {
-
+                //发送邮件
                 try {
-                    List<DictDO> dictDOList = this.dictService.listByType("mailbox");
-                    for (DictDO dictDO: dictDOList){
-                        MailUtils.sendMail(dictDO.getName(), "<h3>"+contFormData+"</h3>", dictDO.getValue());
+                    List<DictDO> recipientList = this.dictService.listByType("mailbox");
+                    List<DictDO> mailSite = dictService.listByType("cmsMail");
+                    MailSiteDO mailSiteDO = new MailSiteDO();
+                    //邮件配置
+                    for (DictDO dictDO : mailSite) {
+                        if ("smtp_host".equals(dictDO.getName()))
+                            mailSiteDO.setSmtpHost(dictDO.getValue());
+                        if ("username".equals(dictDO.getName()))
+                            mailSiteDO.setUsername(dictDO.getValue());
+                        if ("password".equals(dictDO.getName()))
+                            mailSiteDO.setPassword(dictDO.getValue());
+                        if ("from".equals(dictDO.getName()))
+                            mailSiteDO.setFrom(dictDO.getValue());
                     }
-                }catch (Exception e){
-
+                    //多收件人发送
+                    for (DictDO dictDO : recipientList) {
+                        mailSiteDO.setSubject(dictDO.getName());
+                        mailSiteDO.setContent(genMailContent(contFormDataDOS));
+                        mailSiteDO.setRecipient(dictDO.getValue());
+                        MailUtils.sendMail(mailSiteDO);
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
                 }
-
                 return R.ok();
             }
         }
@@ -317,21 +343,38 @@ public class ContTpcController extends BaseController {
     }
 
     /**
+     * 重新组装询盘信息
+     *
+     * @param formDataDOList
+     * @return
+     */
+    private String genMailContent(List<ContFormDataDO> formDataDOList) {
+        StringBuffer sb = new StringBuffer();
+        sb.append("<h4>消息正文：</h4>");
+        for (ContFormDataDO formData : formDataDOList) {
+            sb.append("<strong>" + formData.getTitle() + "：</strong>" + formData.getValue() + "</br>");
+        }
+        return sb.toString();
+    }
+
+
+    /**
      * 获取分类详情
      * http://localhost:8080/conTpc/getCategoryInfo
-     * @param params  conCategoryId
+     *
+     * @param params conCategoryId
      * @return
      */
     @RequestMapping("/getCategoryInfo")
     @ResponseBody
-    public R getCategoryInfo(@RequestParam Map<String, Object> params){
+    public R getCategoryInfo(@RequestParam Map<String, Object> params) {
         params.put("langType", getSession().getAttribute("langType"));
         List<ContCategoryInfoDO> categoryInfoDOList = contXmxService.listCategoryInfo(params);
-        if(categoryInfoDOList!=null && !categoryInfoDOList.isEmpty()){
-            if(categoryInfoDOList.size()==1){
-                return R.ok().put("row",categoryInfoDOList.get(0));
-            }else{
-                return R.ok().put("rows",categoryInfoDOList);
+        if (categoryInfoDOList != null && !categoryInfoDOList.isEmpty()) {
+            if (categoryInfoDOList.size() == 1) {
+                return R.ok().put("row", categoryInfoDOList.get(0));
+            } else {
+                return R.ok().put("rows", categoryInfoDOList);
             }
         }
         return R.error();

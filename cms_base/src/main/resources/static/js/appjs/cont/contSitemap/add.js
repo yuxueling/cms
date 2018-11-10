@@ -1,5 +1,8 @@
 $().ready(function() {
 	validateRule();
+    laydate({
+        elem : '#lastmod'
+    });
 });
 
 $.validator.setDefaults({

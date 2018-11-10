@@ -13,19 +13,29 @@
 							<div class="form-group">	
 								<label class="col-sm-3 control-label">语言：</label>
 								<div class="col-sm-8">
-									<input id="langType" name="langType" th:value="${contSitemap.langType}" class="form-control" type="text">
+									<select name="langType" th:field="${contSitemap.langType}" class="form-control">
+										<option th:each="langType:${langTypes}" th:value="${langType.value}" th:text="${langType.name}" ></option>
+									</select>
 								</div>
+
+
 							</div>
 							<div class="form-group">	
 								<label class="col-sm-3 control-label">页面类型：</label>
 								<div class="col-sm-8">
-									<input id="pageType" name="pageType" th:value="${contSitemap.pageType}" class="form-control" type="text">
+									<select name="pageType" th:field="${contSitemap.pageType}" class="form-control">
+										<option value="page">页面</option>
+										<option value="content">文章</option>
+										<option value="product">产品</option>
+									</select>
 								</div>
 							</div>
 							<div class="form-group">	
 								<label class="col-sm-3 control-label">页面标题：</label>
 								<div class="col-sm-8">
-									<input id="pageTitle" name="pageTitle" th:value="${contSitemap.pageTitle}" class="form-control" type="text">
+									<select name="pageTitle" th:field="${contSitemap.pageTitle}" class="form-control">
+										<option th:each="item,interStat:${pageAddressList}" th:value="${item.name}" th:text="${item.name}"></option>
+									</select>
 								</div>
 							</div>
 							<div class="form-group">	
@@ -37,13 +47,23 @@
 							<div class="form-group">	
 								<label class="col-sm-3 control-label">页面更新时间：</label>
 								<div class="col-sm-8">
-									<input id="lastmod" name="lastmod" th:value="${contSitemap.lastmod}" class="form-control" type="text">
+									<div class="col-sm-8 gg-formDetail">
+										<input type="text" class="laydate-icon layer-date form-control" id="lastmod" name="lastmod"  th:value="${contSitemap.lastmod}==null?null:${#dates.format(contSitemap.lastmod,'yyyy-MM-dd')}" placeholder="请选择日期"
+											   onclick="laydate({istime: true, format: 'YYYY-MM-DD'})" style="background-color: #fff;" readonly="readonly"/>
+									</div>
 								</div>
 							</div>
 							<div class="form-group">	
 								<label class="col-sm-3 control-label">更新频率：</label>
 								<div class="col-sm-8">
-									<input id="changefreq" name="changefreq" th:value="${contSitemap.changefreq}" class="form-control" type="text">
+									<select name="changefreq" th:field="${contSitemap.changefreq}" class="form-control">
+										<option value="always">always</option>
+										<option value="hourly">hourly</option>
+										<option value="daily">daily</option>
+										<option value="weekly">weekly</option>
+										<option value="monthly">monthly</option>
+										<option value="yearly">yearly</option>
+									</select>
 								</div>
 							</div>
 							<div class="form-group">	
@@ -64,6 +84,7 @@
 	</div>
 	</div>
 	<div th:include="include::footer"></div>
+	<script type="text/javascript" src="/js/plugins/layer/laydate/laydate.js" ></script>
 	<script type="text/javascript" src="/js/appjs/cont/contSitemap/edit.js">
 	</script>
 </body>

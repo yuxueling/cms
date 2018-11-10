@@ -3,6 +3,7 @@ package com.sxyhton.cont.controller;
 import java.util.List;
 import java.util.Map;
 
+import com.sxyhton.common.service.DictService;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
@@ -33,6 +34,8 @@ import com.sxyhton.cont.service.ContSitemapService;
 public class ContSitemapController {
 	@Autowired
 	private ContSitemapService contSitemapService;
+	@Autowired
+	private DictService dictService;
 	
 	@GetMapping()
 	@RequiresPermissions("cont:contSitemap:contSitemap")
@@ -54,7 +57,9 @@ public class ContSitemapController {
 	
 	@GetMapping("/add")
 	@RequiresPermissions("cont:contSitemap:add")
-	String add(){
+	String add(Model model){
+		model.addAttribute("langTypes", this.dictService.listByType("CmsLangType"));//将语言类型放到前台
+		model.addAttribute("pageAddressList", this.dictService.listByType("cmsPageAddress"));
 	    return "cont/contSitemap/add";
 	}
 
@@ -63,6 +68,8 @@ public class ContSitemapController {
 	String edit(@PathVariable("contSitemapId") Integer contSitemapId,Model model){
 		ContSitemapDO contSitemap = contSitemapService.get(contSitemapId);
 		model.addAttribute("contSitemap", contSitemap);
+		model.addAttribute("langTypes", this.dictService.listByType("CmsLangType"));
+		model.addAttribute("pageAddressList", this.dictService.listByType("cmsPageAddress"));
 	    return "cont/contSitemap/edit";
 	}
 	
